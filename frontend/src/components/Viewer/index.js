@@ -11,7 +11,7 @@ export default class Viewer extends Component {
     var ViewerDiv = this.viewerRef.current
 
     var scene = new THREE.Scene();
-    // scene.background = new THREE.Color( 0x00ffff );
+    scene.background = new THREE.Color( 0x00ffff );
     var camera = new THREE.OrthographicCamera(ViewerDiv.offsetWidth / -2, ViewerDiv.offsetWidth / 2, ViewerDiv.offsetHeight / -2, ViewerDiv.offsetHeight / 2, 1, 500);
     var controls = new THREE.OrbitControls( camera, ViewerDiv );
 
