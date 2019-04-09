@@ -1,6 +1,7 @@
 import express from 'express';
 import { render } from '@jaredpalmer/after';
 import routes from './routes';
+import axios from 'axios'
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
