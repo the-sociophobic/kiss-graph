@@ -1,0 +1,26 @@
+{
+  "name": "kiss",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "concurrently": "^4.1.0"
+  },
+  "scripts": {
+    "start": "concurrently \"cd backend && sails lift\" \"cd frontend && npm start\"",
+    "server": "cd backend && nodemon app.js",
+    "client": "cd frontend && npm start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/sociophobic/kiss.git"
+  },
+  "author": "Lev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/sociophobic/kiss/issues"
+  },
+  "homepage": "https://gitlab.com/sociophobic/kiss#readme"
+}
