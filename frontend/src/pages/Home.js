@@ -4,16 +4,17 @@ import fetch from 'isomorphic-unfetch'
 
 class Home extends Component {
   static async getInitialProps({ req, res, match }) {
-    const stuff = await fetch('http://localhost:1337/user')
-    return { stuff };
+    const users = await fetch('http://localhost:1337/user')
+    const user = await users.json()
+    return { user };
   }
 
   render() {
+    console.log(this.props.user)
     return (
       <div className="Home">
         <p className="Home-intro">
-          To get started, edit <code>src/Home.js</code> or{' '}
-          <code>src/About.js</code>and save to reload.
+          Hello, {this.props.user ? this.props.user[0].firstName : '...'}
         </p>
         <Link to="/about">About -></Link>
       </div>
