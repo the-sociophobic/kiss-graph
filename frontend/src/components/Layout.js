@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Viever from 'components/Viewer'
-import './index.sass'
 
 export default class Layout extends Component {
   constructor(props) {

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import fetch from 'isomorphic-unfetch'
+import Block from 'components/interface/Block'
+import Layout from 'components/Layout';
 
 class Home extends Component {
   static async getInitialProps({ req, res, match }) {
@@ -11,12 +13,16 @@ class Home extends Component {
 
   render() {
     return (
+      <Layout>
       <div className="Home">
-        <p className="Home-intro">
-          Hello, {this.props.user ? this.props.user[0].firstName : '...'}
-        </p>
-        <Link to="/about">About -></Link>
+        <Block>
+          <p>Hello, {this.props.user ? this.props.user[0].firstName : '...'}</p>
+        </Block>
+        <Block>
+          <Link to="/about">О проекте</Link><br />
+        </Block>
       </div>
+      </Layout>
     );
   }
 }

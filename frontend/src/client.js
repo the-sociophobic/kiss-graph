@@ -3,17 +3,15 @@ import { hydrate } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { ensureReady, After } from '@jaredpalmer/after';
 import routes from './routes';
-import Layout from 'components/Layout';
+
+import Layout from './components/Layout';
 import 'styles/default.sass'
+import 'styles/modificators.sass'
 
 ensureReady(routes).then(data =>
   hydrate(
     <BrowserRouter>
-      <div>
-        <Layout>
-          <After data={data} routes={routes} />
-        </Layout>
-      </div>
+      <After data={data} routes={routes} />
     </BrowserRouter>,
     document.getElementById('root')
   )
