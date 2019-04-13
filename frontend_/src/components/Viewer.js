@@ -30,7 +30,7 @@ export default class Viewer extends Component {
 
     this.scene = new THREE.Scene();
     const scene = this.scene
-    scene.background = new THREE.Color( 0xffffff );
+    scene.background = new THREE.Color( 0x0affff );
 
     // this.camera = new THREE.OrthographicCamera(ViewerDiv.offsetWidth / -2, ViewerDiv.offsetWidth / 2, ViewerDiv.offsetHeight / -2, ViewerDiv.offsetHeight / 2, 1, 500);
     this.camera = new THREE.PerspectiveCamera( 45, ViewerDiv.offsetWidth / ViewerDiv.offsetHeight, 1, 5000 )
