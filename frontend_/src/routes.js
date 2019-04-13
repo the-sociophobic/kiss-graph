@@ -2,14 +2,13 @@ import React from 'react';
 
 import { asyncComponent } from '@jaredpalmer/after';
 
-export default [
-// export default [{
-  // path: '/',
-  // component: asyncComponent({
-  //   loader: () => import('components/Layout'), // required
-  //   Placeholder: () => <div>...LOADING...</div>, // this is optional, just returns null by default
-  // }),
-  // routes: [
+import Layout from 'components/Layout'
+
+// export default [
+export default [{
+  path: '/',
+  component: Layout,
+  routes: [
     {
       path: '/',
       exact: true,
@@ -26,5 +25,5 @@ export default [
         Placeholder: () => <div>...LOADING...</div>, // this is optional, just returns null by default
       }),
     },
-  ];
-// }];
+  // ];
+]}];

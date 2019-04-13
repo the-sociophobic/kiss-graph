@@ -1,0 +1,159 @@
+*
+  font-family: -apple-system, system-ui, Roboto, "Open Sans", "Helvetica Neue", sans-serif
+  font-weight: normal
+  outline: none
+  box-sizing: border-box
+  margin: 0
+  padding: 0
+  line-height: 1
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+body, html
+//   font-size: 16px
+  font-size: 1em
+
+a
+  text-decoration: none
+
+button
+  border: none
+  background-color: rgba(255, 255, 255, 0)
+  cursor: pointer
+
+h1
+  // font-size: 32px
+  font-size: 2em
+h2
+  // font-size: 24px
+  font-size: 1.5em
+h3
+  // font-size: 18px
+  font-size: 1.125em
+h4
+  // font-size: 16px
+  font-size: 1em
+
+h1, h2, h3
+  b
+    font-weight: 500
+span
+  // font-size: 15px
+  font-size: .9375em
+p
+  // font-size: 14px
+  font-size: .875em
+small
+  // font-size: 13px
+  font-size: .8125em
+
+.App
+  min-height: 100vh
+  display: flex
+  flex-direction: column
+  align-items: stretch
+  .content
+    flex-grow: 1
+    overflow-y: auto
+    flex-shrink: 0
+    display: flex
+    flex-direction: column
+    align-items: stretch
+
+.container
+  height: 100%
+  margin: auto
+  margin-top: 0
+  margin-bottom: 0
+
+.smart-content
+  position: absolute
+  width: 100%
+  height: 100%
+  top: 0
+  bottom: 0
+
+
+
+
+
+//ITERFACE BLOCK
+$interface-block-margin: 8px
+$interface-block-padding: 8px
+.interface-block
+  width: calc(100% - 2 * #{$interface-block-margin})
+  margin: $interface-block-margin $interface-block-margin 0 $interface-block-margin
+  position: relative
+  &__backdrop
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: rgba(255, 255, 255, .75)
+    border-radius: 5px
+  &__content
+    padding: $interface-block-padding
+    position: relative
+
+
+
+
+
+
+
+//VIEWER
+$canvas-offset: 40px
+.page-container
+  position: relative
+  width: 100vw
+  height: 100vh
+  .viever-container,
+  .Viewer,
+  .interface-container
+    position: absolute
+  .viever-container,
+    width: 100%
+    height: 100%
+    bottom: 0
+    right: 0
+  .Viewer
+    width: calc(100% + 2 * #{$canvas-offset})
+    height: calc(100% + 2 * #{$canvas-offset})
+    bottom: -$canvas-offset
+    right: -$canvas-offset
+  .interface-container
+    z-index: 2
+    width: 20%
+    min-width: 300px
+    height: 100%
+    bottom: 0
+    right: 0
+    overflow: hidden
+    .backdrop-blur
+      position: absolute;
+      width: calc(100vw + 2 * #{$canvas-offset})
+      height: calc(100vh + 2 * #{$canvas-offset})
+      opacity: .99
+      overflow: hidden
+      bottom: -$canvas-offset
+      right: -$canvas-offset
+      canvas
+        filter: blur(8px)
+      &::after
+        width: 100%
+        height: 100%
+        position: absolute
+        content: ""
+        bottom: 0
+        right: 0
+        background-color: rgba(125, 125, 125, .5)
+        z-index: 4
+    .interface
+      position: absolute
+      width: 100%
+      height: 100%
+      top: 0
+      left: 0
+      z-index: 5
+
