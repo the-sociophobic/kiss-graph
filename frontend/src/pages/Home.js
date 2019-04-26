@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import Block from 'components/interface/Block'
+import Parser from 'components/Parser'
 
 class Home extends Component {
   constructor(props) {
@@ -13,9 +14,10 @@ class Home extends Component {
     axios
       .get('user')
       .then(res => this.setState({user: res.data[0]}))
+      .catch(err => console.log("DB is off"))
   }
 
-  render() {
+  render() {      
     return (
       <div className="Home">
         <Block>
@@ -24,6 +26,7 @@ class Home extends Component {
         <Block>
           <Link to="/about">О проекте</Link><br />
         </Block>
+        <Parser />
       </div>
     );
   }
