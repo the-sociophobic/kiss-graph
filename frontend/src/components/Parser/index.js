@@ -47,7 +47,8 @@ export default class Parser extends Component {
     return(
       <Block>
         <textarea
-          value={edgeString}
+          // value={edgeString}
+          value={nodeString}
           rows={40}
           cols={40}
           ref={this.copytextRef}

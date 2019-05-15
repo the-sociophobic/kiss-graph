@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"cd backend && sails lift\" \"cd frontend && yarn start\"",
+    "start": "concurrently \"cd backend\" \"cd frontend && yarn start\"",
     "server": "cd backend && sails lift",
     "client": "cd frontend && yarn start",
     "test": "echo \"Error: no test specified\" && exit 1"
