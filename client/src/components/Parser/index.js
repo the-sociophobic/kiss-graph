@@ -3,6 +3,7 @@ import Block from 'components/interface/Block'
 
 import parser from './parser'
 import data from './data'
+import metaParser from './metaParser'
 
 import axios from 'axios'
 export default class Parser extends Component {
@@ -43,6 +44,8 @@ export default class Parser extends Component {
     // })
     //   .then(res => console.log("aaa " + res))
     //   .catch(err => console.log("bbb " + err))
+
+    console.log(metaParser(parser(data)))
 
     return(
       <Block>
