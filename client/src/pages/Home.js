@@ -27,7 +27,7 @@ class Home extends Component {
         <Block>
           <Link to="/about">О проекте</Link><br />
         </Block>
-        {/* <Parser /> */}
+        <Parser />
       </div>
     );
   }
