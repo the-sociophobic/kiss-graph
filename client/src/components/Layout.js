@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import Viever from 'components/Viewer'
 
+import ThreeScene from './ThreeScene'
+import Cube from 'libs/units/Cube'
+
 export default class Layout extends Component {
   constructor(props) {
     super(props)
@@ -30,18 +33,12 @@ export default class Layout extends Component {
     return (
       <div className="page-container">
         <div className="viever-container" >
-          <Viever
-            blurredCanvasRef={this.blurredCanvasRef}
-          />
+          {/* <Viever /> */}
+          <ThreeScene>
+            <Cube />
+          </ThreeScene>
         </div>
         <div className="interface-container">
-          <div className="backdrop-blur">
-            <canvas
-              width={this.state.W + 80}
-              height={this.state.H + 80}
-              className="blured-canvas" ref={this.blurredCanvasRef}
-            />
-          </div>
           <div className="interface">
             {this.props.children}
           </div>

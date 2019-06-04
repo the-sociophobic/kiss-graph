@@ -101,6 +101,7 @@ export default data => {
     {
       nickName: "Andrey%20Potashev",
       mentalDisorder: 4,
+      iq: 121,
     },
     {
       nickName: "Kate%20Sulina",
@@ -137,10 +138,12 @@ export default data => {
     {
       nickName: "Vadim%20Zimin",
       mentalDisorder: 3,
+      iq: 115,
     },
     {
       nickName: "Kate%20Alexandrova",
       mentalDisorder: 1,
+      iq: 121,
     },
     {
       nickName: "Nata%20Naumova",
@@ -163,6 +166,7 @@ export default data => {
     {
       nickName: "Kira%20Kastaneda",
       mentalDisorder: 2.5,
+      iq: 115,
     },
     {
       nickName: "Natasha%20Kozhevnikova",

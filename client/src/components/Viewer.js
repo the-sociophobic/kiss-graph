@@ -97,3 +97,4 @@ export default class Viewer extends Component {
 
   render = () => <div className="Viewer" ref={this.viewerRef} />
 }
+
