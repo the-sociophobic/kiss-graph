@@ -180,6 +180,14 @@ export default data => {
       nickName: "Kate%20Rusetskaya",
       mentalDisorder: 1.5,
     },
+    {
+      nickName: "Dasha%20Solovyova",
+      iq: 118,
+    },
+    {
+      nickName: "Sasha%20Kovanova",
+      iq: 123,
+    },
   ]
 
   return {
