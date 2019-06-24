@@ -1,10 +1,28 @@
 import React, { Component } from 'react';
-import * as THREE from 'three';
+import THREE from 'libs/engine/three';
 
-class ThreeScene extends Component{
+export default class ThreeScene extends Component{
+  constructor(props) {
+    super(props)
+    this.viewerRef = new React.createRef()
+  }
+
+  updateDimensions() {
+    const ViewerDiv = this.viewerRef && this.viewerRef.current
+    if (!this.renderer || !ViewerDiv || !this.camera)
+      return
+    this.camera.aspect = ViewerDiv.clientWidth / ViewerDiv.clientHeight
+    this.camera.updateProjectionMatrix()
+    this.renderer.setSize(ViewerDiv.clientWidth, ViewerDiv.clientHeight)
+  }
+
   componentDidMount(){
-    const width = this.mount.clientWidth
-    const height = this.mount.clientHeight
+    window.addEventListener('resize', this.updateDimensions.bind(this))
+
+    const ViewerDiv = this.viewerRef.current
+    const width = ViewerDiv.clientWidth
+    const height = ViewerDiv.clientHeight
+
     //ADD SCENE
     this.scene = new THREE.Scene()
     //ADD CAMERA
@@ -15,20 +33,30 @@ class ThreeScene extends Component{
       1000
     )
     this.camera.position.z = 4
+
+    this.controls = new THREE.OrbitControls( this.camera, ViewerDiv )
+
+
     //ADD RENDERER
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
     this.renderer.setClearColor('#f6f6f6')
     this.renderer.setSize(width, height)
-    this.mount.appendChild(this.renderer.domElement)
 
-    // this.props.children.forEach(child => child.init())
+    ViewerDiv.appendChild(this.renderer.domElement)
+
+    this.units = []
+    const props = {
+      THREE: THREE,
+      renderer: this.renderer,
+      scene: this.scene,
+    }
+    this.props.myScene.units.forEach(unit => this.units.push(new unit(props)))
     this.start()
   }
   componentWillUnmount(){
-    if (this.props.children)
-      React.Children.forEach(child => child.antiInit())
+    this.units.forEach(unit => unit.antiInit())
     this.stop()
-    this.mount.removeChild(this.renderer.domElement)
+    this.viewerRef.removeChild(this.renderer.domElement)
   }
 
   start = () => {
@@ -38,27 +66,15 @@ class ThreeScene extends Component{
   stop = () => cancelAnimationFrame(this.frameId)
 
   animate = () => {
-    if (this.props.children)
-      React.Children.forEach(child => child.animate())
-
-    this.renderScene()
+    this.units.forEach(unit => unit.animate())
+    this.renderer.render(this.scene, this.camera)
     this.frameId = window.requestAnimationFrame(this.animate)
   }
   
-  renderScene = () => {
-    this.renderer.render(this.scene, this.camera)
-  }
-
-  render() {
-    return(
-      <div
-        style={{ width: '400px', height: '400px' }}
-        ref={(mount) => { this.mount = mount }}
-      >
-        {this.props.children}
-      </div>
-    )
-  }
+  render = () => (
+    <div
+      ref={this.viewerRef}
+      className="Viewer"
+    />
+  )
 }
-
-export default ThreeScene
