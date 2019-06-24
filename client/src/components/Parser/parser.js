@@ -8,7 +8,8 @@ export default data => {
 
   const parsedNodes = nodes.map(node => {
     const nickName = node.split(' E ')[0].replace('%20', ' ')
-    const pos = node.split(' E @')[1].split(',')
+    // const pos = node.split(' E @')[1].split(',')
+    const pos = [0, 0]
     return {
       nickName: nickName,
       firstName: nickName.split(' ')[0],
