@@ -161,6 +161,11 @@ export default data => {
     {
       nickName: "Sergay%20Nikitin",
       mentalDisorder: 2,
+      iq: 119,
+    },
+    {
+      nickName: "Artyom%20Arsenyan",
+      mentalDisorder: 2,
       iq: 105,
     },
     {

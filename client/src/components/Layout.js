@@ -34,9 +34,9 @@ export default class Layout extends Component {
       <div className="page-container">
         <div className="viever-container" >
           {/* <Viever /> */}
-          <ThreeScene>
+          {/* <ThreeScene>
             <Cube />
-          </ThreeScene>
+          </ThreeScene> */}
         </div>
         <div className="interface-container">
           <div className="interface">
