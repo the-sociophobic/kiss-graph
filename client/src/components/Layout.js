@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import Viever from 'components/Viewer'
 
 import ThreeScene from './ThreeScene'
-import Cube from 'libs/units/Cube'
+import myScene from 'libs/myScene'
 
 export default class Layout extends Component {
   constructor(props) {
@@ -11,8 +10,6 @@ export default class Layout extends Component {
       W: 0,
       H: 0,
     }
-    this.canvasRef = React.createRef()
-    this.blurredCanvasRef = React.createRef()
   }
 
   updateDimensions = () => this.setState({
@@ -30,13 +27,17 @@ export default class Layout extends Component {
   }
 
   render = () => {
+    const props = {
+      W: this.state.W,
+      H: this.state.H,
+    }
     return (
       <div className="page-container">
         <div className="viever-container" >
-          {/* <Viever /> */}
-          {/* <ThreeScene>
-            <Cube />
-          </ThreeScene> */}
+          <ThreeScene
+            myScene={myScene}
+            {...props}
+          />
         </div>
         <div className="interface-container">
           <div className="interface">
