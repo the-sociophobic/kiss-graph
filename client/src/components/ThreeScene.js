@@ -56,7 +56,7 @@ export default class ThreeScene extends Component{
   componentWillUnmount(){
     this.units.forEach(unit => unit.antiInit())
     this.stop()
-    this.viewerRef.removeChild(this.renderer.domElement)
+    // this.viewerRef.removeChild(this.renderer.domElement)
   }
 
   start = () => {
