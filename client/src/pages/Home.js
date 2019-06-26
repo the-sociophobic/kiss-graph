@@ -20,13 +20,13 @@ class Home extends Component {
   render() {      
     return (
       <div className="Home">
-        <Block>
-          {/* <p>Hello, {this.state.user ? this.state.user.firstName : '...'}</p> */}
+        {/* <Block>
+          <p>Hello, {this.state.user ? this.state.user.firstName : '...'}</p>
           <p>Дратути</p>
         </Block>
         <Block>
           <Link to="/about">О проекте</Link><br />
-        </Block>
+        </Block> */}
         <Parser />
       </div>
     );

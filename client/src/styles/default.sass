@@ -126,13 +126,13 @@ $canvas-offset: 40px
   .interface-container
     z-index: 2
     width: 20%
-    min-width: 300px
+    min-width: 800px
     height: 100%
     bottom: 0
     right: 0
     overflow: hidden
     .backdrop-blur
-      position: absolute;
+      position: absolute
       width: calc(100vw + 2 * #{$canvas-offset})
       height: calc(100vh + 2 * #{$canvas-offset})
       opacity: .99
@@ -158,3 +158,65 @@ $canvas-offset: 40px
       left: 0
       z-index: 5
 
+
+
+
+$arrow-size: 7px
+
+.rating
+  &-row
+    width: 100%
+    display: table
+    padding: 3px 10px
+    background: white
+    border-bottom: 1px solid #c1c1c1
+    border-left: 1px solid #c1c1c1
+    &__index
+      width: 20px
+      float: left
+      font-size: 12px
+      color: grey
+      padding-top: 2px
+    &__name
+      width: 200px
+      float: left
+      position: relative
+      padding-left: 20px
+      font-size: 14px
+    &__connections
+      width: 25px
+      float: right
+      font-size: 14px
+      font-weight: 600
+      color: #110cd7
+    &__addition
+      width: 35px
+      min-height: 1px
+      float: right
+      font-size: 14px
+      color: green
+  &-row.up, &-row.down, &-row.neutral
+    .rating-row__name::before
+      position: absolute
+      content: ""
+      top: 4px
+      left: 0
+      width: 0
+      height: 0
+      border-style: solid
+  &-row.up .rating-row__name::before
+      border-width: 0 $arrow-size $arrow-size $arrow-size
+      border-color: transparent transparent green transparent
+      transform: scale(0.66, 1)
+  &-row.down .rating-row__name::before
+      border-width: $arrow-size $arrow-size 0 $arrow-size
+      border-color: red transparent transparent transparent
+      transform: scale(0.66, 1)
+  &-row.neutral .rating-row__name::before
+      width: $arrow-size * 1.15
+      height: $arrow-size * 1.15
+      border-radius: $arrow-size
+      background-color: #aaaaaa
+      border: 0
+      left: 3px
+      top: 3px

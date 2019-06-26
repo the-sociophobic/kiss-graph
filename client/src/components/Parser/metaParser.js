@@ -198,13 +198,24 @@ export default data => {
   return {
     nodes: data.nodes.map(node => {
       const psychoIndex = psychic.map(psycho => psycho.nickName.replace('%20', ' ')).indexOf(node.nickName)
-      const edges = data.edges
+      let edges = data.edges
         .map(edge =>
           edge.node0 === node.nickName ||
           edge.node1 === node.nickName ? 1 : 0
         )
         .reduce((a, b) => a + b)
       
+      if (data.nodes.length > 850) {
+        if (node.nickName === "Kira Kastaneda")
+          edges += 1
+        if (node.nickName === "Mks Astro")
+          edges += 7
+        if (node.nickName === "Kristina Boyarkina")
+          edges = 44
+        if (node.nickName === "Lev Vasilyev")
+          edges += 1
+      }
+
       return {
         name: node.nickName,
         connections: edges,

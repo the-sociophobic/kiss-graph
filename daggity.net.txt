@@ -27,7 +27,7 @@ Alexandra%20Polosukhina E @0.171,1.311
 Alexandra%20Rokacheva E @0.068,0.362
 Alexandra%20Schlyakhtina E @0.911,0.118
 Alexandra%20Tarasova E @0.056,0.144
-Alexandrov%20Konstantin E @-0.075,0.735
+Konstantin%20Alexandrov E @-0.075,0.735
 Alexey%20Bobrov E @0.218,-0.362
 Alexey%20Dmitriev E @0.725,0.289
 Alexey%20Fastovets E @-0.080,1.313
@@ -131,7 +131,7 @@ Anya%20Vinogradova E @0.247,0.399
 Anya%20Zinevich E @-0.042,0.920
 Anzhela%20Balabekyan E @0.493,1.090
 Anzhela%20Groznova E @0.276,1.074
-Archi E @0.317,1.369
+Artur%20Kuratnikov E @0.317,1.369
 Arina%20Gavrilova E @-0.008,0.889
 Arina%20Nachinova E @0.772,0.293
 Arina%20Nevzorova E @0.427,0.003
@@ -869,7 +869,7 @@ Alexandra%20Medvedeva Anton%20Shilovskiy
 Alexandra%20Perfilova Vera%20Nesterova
 Alexandra%20Polosukhina Kristina%20Kukushkina
 Alexandra%20Tarasova Alexander%20Lazarev
-Alexandrov%20Konstantin Anna%20Vilpon Anya%20Kosti Evgeniya%20Damme Leonid%20Dmitriev Liza%20Vlasova Ronya%20Shurze Sveta%20Topol Uliya%20Korzh Vasilisa%20Nesterenko
+Konstantin%20Alexandrov Anna%20Vilpon Anya%20Kosti Evgeniya%20Damme Leonid%20Dmitriev Liza%20Vlasova Ronya%20Shurze Sveta%20Topol Uliya%20Korzh Vasilisa%20Nesterenko
 Alexey%20Bobrov Ludmila%20Churzina Oksana%20Filatova
 Alexey%20Dmitriev Kira%20Kastaneda
 Alexey%20Hudozhnik Kira%20Kastaneda
@@ -932,7 +932,7 @@ Anya%20Smirnova Alexander%20Lazarev Kira%20Kastaneda
 Anya%20Usacheva Danya%20Skibin
 Anya%20Vinogradova Vlad%20Guriev
 Anzhela%20Balabekyan Artyom%20Tomilov David%20Zharnitsky Elina%20Kulikova Kira%20Kastaneda Lev%20Vasilyev
-Archi Alisa%20Verhovskaya Angelina%20Ryabchenko Boris%20Evdokimov Ekaterina%20Saprykina Elizaveta%20Horetzhkaya Elizaveta%20Pashkovskaya Mariya%20Semyonova Polina%20Makarova Svetlana%20Klyavlina Vika%20Nikolaeva
+Artur%20Kuratnikov Alisa%20Verhovskaya Angelina%20Ryabchenko Boris%20Evdokimov Ekaterina%20Saprykina Elizaveta%20Horetzhkaya Elizaveta%20Pashkovskaya Mariya%20Semyonova Polina%20Makarova Svetlana%20Klyavlina Vika%20Nikolaeva
 Arina%20Nachinova Katrin%20Tublina
 Arina%20Nevzorova Denchik
 Arina%20Ponomareva Leonid%20Ivanov
