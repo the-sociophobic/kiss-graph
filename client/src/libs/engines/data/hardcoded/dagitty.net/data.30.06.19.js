@@ -1,3 +1,4 @@
+export default `
 Aelitta%20Ezugbaya E @0.038,1.039
 Agarkova%20Nastya E @0.487,-0.009
 Aglaya%20Lobantseva E @0.802,1.257
@@ -866,7 +867,7 @@ Alexander%20Gromov Dmitry%20Em Kate%20Alexandrova
 Alexander%20Khudyakov Roman%20Khuzin
 Alexander%20Koshelev Katrin%20Tublina
 Alexander%20Lazarev Kira%20Kastaneda
-Alexander%20Lebedev Aelitta%20Ezugbaya Alexey%20Fastovets Alexey%20PavlovRyzhyi Anya%20Chernyshova Anya%20Doroshenko Anya%20Ivanova Anya%20Ivanova2 Anya%20Kuzlo Anya%20Zinevich Arina%20Gavrilova Artyom%20Afanasyev Artyom%20Makarov Artyomka%20Dotrakiyskiy Egor%20Chaos Elizaveta%20Barkova Gleb%20Pechorin Igor%20Molchanov Katya%20Butovskaya Katya%20Hlebushkina Katya%20Kalmitskaya Katya%20Matveeva Kira%20Longvenova Lena%20Korzh Lera%20Zhuk @-0.005,1.120 Liza%20Korshunova Liza%20Pashkovskaya Liza%20Yeromkina Mariya%20Oshurpova Nastya%20Dal Nastya%20Ivanova Nastya%20Klukova Nastya%20Kozlova Nastya%20Solovyova Pavel%20Gultyaev Sveta%20Ivanova Tonya%20Kuper Uliya%20Babaeva Venya%20Migay Vera%20Tsygankova Vika%20Ermolaeva Yana%20Doza Yulya%20Meller Yura%20Evstigneev
+Alexander%20Lebedev Aelitta%20Ezugbaya Alexey%20Fastovets Alexey%20PavlovRyzhyi Anya%20Chernyshova Anya%20Doroshenko Anya%20Ivanova Anya%20Ivanova2 Anya%20Kuzlo Anya%20Zinevich Arina%20Gavrilova Artyom%20Afanasyev Artyom%20Makarov Artyomka%20Dotrakiyskiy Egor%20Chaos Elizaveta%20Barkova Gleb%20Pechorin Igor%20Molchanov Katya%20Butovskaya Katya%20Hlebushkina Katya%20Kalmitskaya Katya%20Matveeva Kira%20Longvenova Lena%20Korzh Lera%20Zhuk Liza%20Korshunova Liza%20Pashkovskaya Liza%20Yeromkina Mariya%20Oshurpova Nastya%20Dal Nastya%20Ivanova Nastya%20Klukova Nastya%20Kozlova Nastya%20Solovyova Pavel%20Gultyaev Sveta%20Ivanova Tonya%20Kuper Uliya%20Babaeva Venya%20Migay Vera%20Tsygankova Vika%20Ermolaeva Yana%20Doza Yulya%20Meller Yura%20Evstigneev
 Alexander%20Marxon Veronika%20Petrukhina
 Alexander%20Sankhnyukov Nastya%20IvanovaMonro
 Alexandr%20Polyarny Vadim%20Zimin
@@ -1269,7 +1270,7 @@ Petr%20Sverdlov Kira%20Kastaneda Vadim%20Zimin
 Polina%20Bobinsky Turik%20Mordovtsev
 Polina%20Egorkina Dasha%20Solovyova
 Polina%20Eremina Emil%20Soldatkin
-Polina%20Mishago David%20Zharnitsky Kristina%20Boyarkina Lev%20Vasilyev @0.299,0.707 Natalia%20Lebedeva Tikhon%20Timanov
+Polina%20Mishago David%20Zharnitsky Kristina%20Boyarkina Lev%20Vasilyev Natalia%20Lebedeva Tikhon%20Timanov
 Polina%20Nazarova Alexey%20Nevsky Mikhail%20Lisyanskiy Nikita%20Fadeev Syoma%20Shutkin Vitaliy%20Memes Vlad%20Golev
 Polina%20Nikolaeva Margarita%20Chernyshevskaya Oleg%20Kalinin
 Polina%20Ovsyannikova Vlad%20Guriev
@@ -1417,3 +1418,4 @@ Yulya%20Tasenko Misha%20Taranov
 Yura%20Kuperman Lubof%20Safonova
 Zhenya%20Selicheva Dasha%20Solovyova
 unknown1 Kostya%20Solovyov
+`

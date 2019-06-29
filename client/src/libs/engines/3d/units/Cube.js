@@ -1,4 +1,4 @@
-import Unit from 'libs/engine/Unit'
+import Unit from 'libs/engines/3d/Unit'
 
 export default class Cube extends Unit {
   constructor(props) {
