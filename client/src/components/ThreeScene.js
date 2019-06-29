@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import THREE from 'libs/engine/three';
+import THREE from 'libs/engines/3d/three';
 
 export default class ThreeScene extends Component{
   constructor(props) {

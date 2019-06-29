@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import Block from 'components/interface/Block'
-import Parser from 'components/Parser'
+import StockExchange from 'components/intermediate/StockExchange'
 
 class Home extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class Home extends Component {
         <Block>
           <Link to="/about">О проекте</Link><br />
         </Block> */}
-        <Parser />
+        <StockExchange />
       </div>
     );
   }

@@ -1,15 +1,18 @@
 export default data => {
-  const nodes = data
+  let nodes = [], edges = []
+  data
     .split('\n')
-    .filter(line => line.includes('@'))
-  const edges = data
-    .split('\n')
-    .filter(line => line.length > 5 && !line.includes('@'))
+    .filter(line => line.length > 5)
+    .forEach(line => {
+      if (line.includes('@') && line.includes(' E '))
+        nodes.push(line)
+      else
+        edges.push(line)
+    })
 
   const parsedNodes = nodes.map(node => {
     const nickName = node.split(' E ')[0].replace('%20', ' ')
-    // const pos = node.split(' E @')[1].split(',')
-    const pos = [0, 0]
+    const pos = node.split(' E @')[1].split(',')
     return {
       nickName: nickName,
       firstName: nickName.split(' ')[0],
