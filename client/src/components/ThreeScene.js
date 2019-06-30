@@ -49,7 +49,9 @@ export default class ThreeScene extends Component{
       THREE: THREE,
       renderer: this.renderer,
       scene: this.scene,
+      ...this.props.data //TODO adequately
     }
+
     this.props.myScene.units.forEach(unit => this.units.push(new unit(props)))
     this.start()
   }
