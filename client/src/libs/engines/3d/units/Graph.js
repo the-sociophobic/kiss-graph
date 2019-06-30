@@ -8,6 +8,8 @@ export default class Cube extends Unit {
     const material = new THREE.MeshBasicMaterial({ color: '#433F81'     })
     this.cube = new THREE.Mesh(geometry, material)
     scene.add(this.cube)
+
+    console.log(this.props.store.get({name: "Lev Vasilyev"}))
   }
   animate() {
     this.cube.rotation.x += 0.01

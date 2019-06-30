@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import axios from 'axios'
-import Block from 'components/interface/Block'
+// import Block from 'components/interface/Block'
 import StockExchange from 'components/intermediate/StockExchange'
 
 class Home extends Component {
@@ -17,9 +17,12 @@ class Home extends Component {
       .catch(err => console.log("DB is off"))
   }
 
-  render() {      
+  render() {
     return (
       <div className="Home">
+        {/* <Helmet>
+          <title>Граф Транзитивных Поцелуев</title>
+        </Helmet> */}
         {/* <Block>
           <p>Hello, {this.state.user ? this.state.user.firstName : '...'}</p>
           <p>Дратути</p>
@@ -27,7 +30,7 @@ class Home extends Component {
         <Block>
           <Link to="/about">О проекте</Link><br />
         </Block> */}
-        <StockExchange />
+        {/* <StockExchange /> */}
       </div>
     );
   }
