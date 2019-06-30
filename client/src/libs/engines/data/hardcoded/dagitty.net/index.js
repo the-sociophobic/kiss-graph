@@ -20,8 +20,8 @@ export default data => {
         nickName.split(' ').slice(1).reduce((a, b) => a + ' ' + b)
         : '',
         pos: {
-          X: Number(pos[0]),
-          Y: Number(pos[1]),
+          X: (Number(pos[0]) - .5) * 2,
+          Y: (.5 - Number(pos[1])),
           Z: 0,
         }
     }

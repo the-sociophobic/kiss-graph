@@ -14,6 +14,7 @@ export default class ThreeScene extends Component{
     this.camera.aspect = ViewerDiv.clientWidth / ViewerDiv.clientHeight
     this.camera.updateProjectionMatrix()
     this.renderer.setSize(ViewerDiv.clientWidth, ViewerDiv.clientHeight)
+    this.controls.update()
   }
 
   componentDidMount(){
@@ -23,8 +24,15 @@ export default class ThreeScene extends Component{
     const width = ViewerDiv.clientWidth
     const height = ViewerDiv.clientHeight
 
+    //ADD RENDERER
+    this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+    this.renderer.setClearColor('#f6f6f6')
+    this.renderer.setSize(width, height)
+    ViewerDiv.appendChild(this.renderer.domElement)
+
     //ADD SCENE
     this.scene = new THREE.Scene()
+
     //ADD CAMERA
     this.camera = new THREE.PerspectiveCamera(
       75,
@@ -32,17 +40,10 @@ export default class ThreeScene extends Component{
       0.1,
       1000
     )
+    this.controls = new THREE.OrbitControls( this.camera, this.render.domElement )
     this.camera.position.z = 4
+    this.controls.update()
 
-    this.controls = new THREE.OrbitControls( this.camera, ViewerDiv )
-
-
-    //ADD RENDERER
-    this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
-    this.renderer.setClearColor('#f6f6f6')
-    this.renderer.setSize(width, height)
-
-    ViewerDiv.appendChild(this.renderer.domElement)
 
     this.units = []
     const props = {
@@ -71,6 +72,7 @@ export default class ThreeScene extends Component{
     this.units.forEach(unit => unit.animate())
     this.renderer.render(this.scene, this.camera)
     this.frameId = window.requestAnimationFrame(this.animate)
+    this.controls.update()
   }
   
   render = () => (
