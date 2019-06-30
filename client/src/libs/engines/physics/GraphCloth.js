@@ -4,14 +4,8 @@ export default class GraphCloth extends PhysicalUnit {
   constructor(props) {
     super(props)
 
-    this.nodes = props.nodes.map(node => ({
-      ...node.pos,
-      weight: node.connections
-    }))
-    this.edges = props.edges.map(edge => ({
-      node0: props.nodes.map(node => node.name).indexOf(edge.node0),
-      node1: props.nodes.map(node => node.name).indexOf(edge.node1),
-    }))
+    this.nodes = props.nodes
+    this.edges = props.edges
   }
 
   recalculate = deltaTime => {
@@ -21,9 +15,11 @@ export default class GraphCloth extends PhysicalUnit {
     this.nodes = nodes
   }
 
-  getRecalculatedPos = () => this.nodes.map(node => ({
-    X: node.X,
-    Y: node.Y,
-    Z: node.Z,
-  }))
+  getRecalculatedPos = () => this.nodes
+    .map(node => ([
+      node.X,
+      node.Y,
+      node.Z,
+    ]))
+    // .reduce((a, b) => [...a, ...b])
 }
