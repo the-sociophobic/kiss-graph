@@ -17,6 +17,7 @@ export default data => {
 
       return {
         name: node.nickName,
+        pos: node.pos,
         connections: edges,
         mentalDisorder: meta.mentalDisorder,
         iq: meta.iq,

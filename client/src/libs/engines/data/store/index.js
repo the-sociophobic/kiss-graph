@@ -22,7 +22,10 @@ class store {
 
   get = (props) => {
     if (typeof props === "undefined")
-      return this.data
+      return {
+        nodes: this.metaData,
+        edges: this.data.edges,
+      }
 
     const { nodeId, name, version } = props
 
