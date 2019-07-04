@@ -28,7 +28,7 @@ export default [
   },
   {
     nickName: "Tikhon%20Timanov",
-    mentalDisorder: 4,
+    mentalDisorder: 6.5,
   },
   {
     nickName: "Kristina%20Boyarkina",
