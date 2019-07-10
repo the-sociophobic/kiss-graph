@@ -4,6 +4,7 @@ import Unit from 'libs/engines/3d/Unit'
 import GraphCloth from 'libs/engines/physics/GraphCloth'
 
 import heatMap from 'img/heat.png'
+import { isThisSecond } from 'date-fns';
 
 export default class Graph extends Unit {
   constructor(props) {
@@ -28,7 +29,7 @@ export default class Graph extends Unit {
       vector: new THREE.Vector3(
         node.pos.X * 2.15,
         node.pos.Y * 2.15,
-        Math.random() * (60 - node.connections) / 45
+        Math.random() * (60 - node.connections) / 15
       ),
       weight: node.connections,
     }))
@@ -62,8 +63,24 @@ export default class Graph extends Unit {
     )
     this.geometry.addAttribute('uv', new THREE.BufferAttribute(UVs, 2))
 
+    this.deltaTime = .005
+    this.frameNumber = 0
     setInterval(() => {
-      this.GraphCloth.recalculate(.00001)
+      this.frameNumber++
+      // if (this.frameNumber === 50)
+      //   this.deltaTime *= 1.2
+      // if (this.frameNumber === 100)
+      //   this.deltaTime *= 1.2
+      // if (this.frameNumber === 150)
+      //   this.deltaTime *= 1.2
+      if (this.frameNumber === 300)
+        this.deltaTime *= 1.5
+      // if (this.frameNumber === 450)
+      //   this.deltaTime *= 2
+      if (this.frameNumber === 600)
+        this.deltaTime *= 1.5
+
+      this.GraphCloth.recalculate(this.deltaTime)
       const positions = this.GraphCloth.getRecalculatedPos()
       const vertices = new Float32Array(
         this.edges
@@ -77,7 +94,7 @@ export default class Graph extends Unit {
       // console.log(vertices)
       this.verticesBuffer.needsUpdate = true
       // this.geometry.attributes.position.needsUpdate = true
-    }, 100);
+    }, 80)
 
 
     var textureLoader = new THREE.TextureLoader()

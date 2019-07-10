@@ -14,60 +14,110 @@ export default class GraphCloth extends PhysicalUnit {
     this.velocities = Array
       .from(Array(this.nodes.length))
       .map(() => new THREE.Vector3())
+
+    this.maxWeight = Math.max(...props.nodes.map(node => node.weight))
   }
-
-  // recalculate = deltaTime => {
-  //   const { nodes, edges, forces, velocities } = this
-
-  //   //ATTENUATION
-  //   forces.forEach((force, index) => {
-  //     let resistanceForce = velocities[index].clone()
-  //       .multiplyScalar(attenuationK * deltaTime)
-  //     force.sub(resistanceForce)
-  //     // force.multiplyScalar(.5)
-  //   })
-
-  //   //FORCES ADDITION
-  //   edges.forEach(edge => {
-  //     const force = edgeForce(nodes[edge.node0], nodes[edge.node1])
-  //     forces[edge.node0].add(force)
-  //     forces[edge.node1].add(force.multiplyScalar(-1))
-  //   })
-
-  //   //VELOCITY, MOVEMENT CALCULATION
-  //   this.nodes.forEach((node, index) => {
-  //     const velocityChange = forces[index].clone().multiplyScalar(deltaTime / node.weight)
-  //     velocities[index].add(velocityChange)
-  //     node.vector
-  //       .add(velocities[index].clone().multiplyScalar(deltaTime * velocityK))
-  //       .clampLength(0, maxLength)
-  //     // if (isNaN(node.vector.x))
-  //     //   console.log(node.vector)
-  //   })
-  // }
 
   recalculate = deltaTime => {
     let { nodes, edges, forces, velocities } = this
 
-    forces.forEach(force => force.multiplyScalar(forceAttenuation))
+    //FORCE RECALCULATE
+    forces.forEach(force => force.multiplyScalar(0))
 
+    //VELOCITY ATTENUATION
+    velocities.forEach(velocity => {
+      // if (velocity.lengthSq() > 5)
+        velocity.multiplyScalar(.25 + velocityAttenuation ** velocity.lengthSq())
+    })
+
+    //INTERMOLECULAR FORCES
     nodes
       .slice(0, -1)
       .forEach((node0, index0) => {
         nodes.slice(index0)
           .forEach((node1, index1) => {
+            //
+            if (
+              (node0.weight === 1 && node1.weight !== 1) ||
+              (node1.weight === 1 && node0.weight !== 1)
+            )
+              return
             let force = intermolecularForce(node0, node1)
-            forces[index0].add(force)
-            forces[index0 + index1].add(force.multiplyScalar(-1))
+            forces[index0]
+            .sub(force)
+            .clampLength(0, maxVectorLength)
+            forces[index0 + index1]
+            .add(force)
+            .clampLength(0, maxVectorLength)
           })
       })
-    
-    //FORCES TO POS
+
+    //EDGE RESISTANCE FORCES
+    edges.forEach(edge => {
+      const node0 = nodes[edge.node0]
+      const node1 = nodes[edge.node1]
+      const force = edgeResistanceForce(node0, node1)
+      
+      forces[edge.node0]
+      .add(force)
+      .clampLength(0, maxVectorLength)
+      forces[edge.node1]
+      .sub(force)
+      .clampLength(0, maxVectorLength)
+    })
+
+    //AIR RESISTANCE (DRAG)
+    forces.forEach((force, index) => {
+      const velocity = velocities[index]
+      const resistanceForceLength = velocity.lengthSq() * airResistanceK
+      const airResistanceForce = force.clone().normalize().multiplyScalar(resistanceForceLength)
+      force
+      .sub(airResistanceForce)
+      .clampLength(0, maxVectorLength)
+    })
+
+    //RETURN INTO TESTING SPHERE FORCE
     nodes.forEach((node, index) => {
-      const force = forces[index]      
+      const distanceFromCenter = node.vector.length()
+      const overflow = distanceFromCenter - overflowForceDistanceFromCenter
+      if (overflow > 0) {
+        const force = node.vector
+        .clone().normalize()
+        .multiplyScalar(-overflow / overflowForceDistanceFromCenter * overflowForceK)
+        forces[index]
+        .add(force)
+        .clampLength(0, maxVectorLength)
+      }
+    })
+    //RETURN TO CENTER FORCE
+    nodes.forEach((node, index) => {
+      const distanceFromCenter = node.vector.lengthSq()
+      const force = node.vector
+      .clone().normalize()
+      .multiplyScalar(distanceFromCenter * (node.weight ** .5) * returnToCenterForceK)
+      forces[index]
+      .sub(force)
+      .clampLength(0, maxVectorLength)
+    })
+    
+    //RECALCULATE VELOCITIES
+    velocities.forEach((velocity, index) => {
+      let force = forces[index]
+      const node = nodes[index]
+      //force here gets mutated, but I don't care, I won't use it again
+      velocity
+      .add(force.multiplyScalar(deltaTime / node.weight))
+      .clampLength(0, maxVectorLength)
+    })
+
+    //RECALCULATE POSITIONS
+    nodes.forEach((node, index) => {
+      if (node.weight === this.maxWeight)
+        return
+      const velocity = velocities[index]
       node.vector
-        .add(force.clone().multiplyScalar(deltaTime / node.weight))
-        .clampLength(0, maxLength)
+      .add(velocity.clone().multiplyScalar(deltaTime))
+      .clampLength(0, clampDistanceFromCenter)
     })
   }
 
@@ -76,26 +126,46 @@ export default class GraphCloth extends PhysicalUnit {
 }
 
 
-const velocityK = 1
-const attenuationK = 0
-const forceAttenuation = .999
-const edgeLengthK = 1
-const edgeForceK = 1
-const maxLength = 3.5
+const velocityAttenuation = .99
 
-const edgeLength = (weight0, weight1) => Math.pow(weight0 * weight1, .5) * edgeLengthK
-const edgeForce = (node0, node1) => {
-  let dist = node0.vector.clone().sub(node1.vector)
-  const lenght = edgeLength(node0.weight, node1.weight)
-  let delta = (lenght - dist.length()) / lenght
+const airResistanceK = 0
 
-  return dist.multiplyScalar(delta * Math.abs(delta) * node0.weight * node1.weight * edgeForceK)
+const overflowForceK = 10//100
+const overflowForceDistanceFromCenter = 55
+const clampDistanceFromCenter = 66
+const returnToCenterForceK = 0
+
+const maxVectorLength = 50000
+
+const edgeLengthK = .5
+const edgeLength = (weight0, weight1) => {
+  const localWeight0 = weight0 + 2
+  const localWeight1 = weight1 + 2
+  return ((localWeight0 * localWeight1) ** .5) * edgeLengthK
 }
 
-
-
-const intermolecularForceK = .24
+const intermolecularForceK = 10
 const intermolecularForce = (node0, node1) => {
   let distance = node0.vector.clone().sub(node1.vector)
-  return distance.multiplyScalar(-distance.length() * intermolecularForceK * node0.weight * node1.weight)
+  const weightInfluence = (node0.weight * node1.weight) ** 1
+  let K = -1 * intermolecularForceK * weightInfluence / distance.lengthSq()
+  if (!isFinite(K))
+    K = -10000
+  return distance
+  .normalize()
+  .multiplyScalar(K)
+  .clampLength(0, maxVectorLength)
+}
+
+const edgeResistanceK = 5000
+const edgeResistanceForce = (node0, node1) => {
+  let subVector = node0.vector.clone().sub(node1.vector)
+  const currentLength = subVector.length()
+  const idealLength = edgeLength(node0.weight, node1.weight)
+  const deformation = (idealLength - currentLength) / idealLength
+
+  return subVector
+  .normalize()
+  .multiplyScalar(deformation * edgeResistanceK)
+  .clampLength(0, maxVectorLength)
 }
