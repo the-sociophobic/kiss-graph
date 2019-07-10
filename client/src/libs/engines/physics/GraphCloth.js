@@ -25,10 +25,7 @@ export default class GraphCloth extends PhysicalUnit {
     forces.forEach(force => force.multiplyScalar(0))
 
     //VELOCITY ATTENUATION
-    velocities.forEach(velocity => {
-      // if (velocity.lengthSq() > 5)
-        velocity.multiplyScalar(.25 + velocityAttenuation ** velocity.lengthSq())
-    })
+    velocities.forEach(velocity => velocity.multiplyScalar(.25 + velocityAttenuation ** velocity.lengthSq()))
 
     //INTERMOLECULAR FORCES
     nodes
@@ -63,16 +60,6 @@ export default class GraphCloth extends PhysicalUnit {
       .clampLength(0, maxVectorLength)
       forces[edge.node1]
       .sub(force)
-      .clampLength(0, maxVectorLength)
-    })
-
-    //AIR RESISTANCE (DRAG)
-    forces.forEach((force, index) => {
-      const velocity = velocities[index]
-      const resistanceForceLength = velocity.lengthSq() * airResistanceK
-      const airResistanceForce = force.clone().normalize().multiplyScalar(resistanceForceLength)
-      force
-      .sub(airResistanceForce)
       .clampLength(0, maxVectorLength)
     })
 
@@ -128,11 +115,9 @@ export default class GraphCloth extends PhysicalUnit {
 
 const velocityAttenuation = .99
 
-const airResistanceK = 0
-
-const overflowForceK = 10//100
-const overflowForceDistanceFromCenter = 55
-const clampDistanceFromCenter = 66
+const overflowForceK = 10
+const overflowForceDistanceFromCenter = 35
+const clampDistanceFromCenter = 50
 const returnToCenterForceK = 0
 
 const maxVectorLength = 50000
