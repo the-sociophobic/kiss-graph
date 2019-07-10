@@ -1,4 +1,5 @@
 import { MeshLine, MeshLineMaterial } from 'three.meshline'
+import TextSprite from 'three.textsprite'
 
 import Unit from 'libs/engines/3d/Unit'
 import GraphCloth from 'libs/engines/physics/GraphCloth'
@@ -57,14 +58,30 @@ export default class Graph extends Unit {
     this.line = new THREE.LineSegments( this.geometry, material )
     scene.add( this.line )
       
-    this.billboards = []
+    // this.billboards = []
+    // nodes.forEach(node => {
+    //   var billboardGeometry = new THREE.PlaneGeometry(1, 1)
+    //   var billboardMaterial = new THREE.MeshBasicMaterial( {color: 0xf00000, side: THREE.DoubleSide} )
+    //   var plane = new THREE.Mesh( billboardGeometry, billboardMaterial )
+    //   plane.position.set(node.pos.x, node.pos.y, node.pos.z)
+    //   scene.add(plane)
+    //   this.billboards.push(plane)
+    // })
     nodes.forEach(node => {
-      var billboardGeometry = new THREE.PlaneGeometry(1, 1)
-      var billboardMaterial = new THREE.MeshBasicMaterial( {color: 0xf00000, side: THREE.DoubleSide} )
-      var plane = new THREE.Mesh( billboardGeometry, billboardMaterial )
-      plane.position.set(node.pos.x, node.pos.y, node.pos.z)
-      scene.add(plane)
-      this.billboards.push(plane)
+      let sprite = new TextSprite({
+        material: {
+          color: 0x000000,
+          fog: false,
+        },
+        redrawInterval: 250,
+        textSize: .25,
+        texture: {
+          fontFamily: 'Arial, Helvetica, sans-serif',
+          text: node.name.replace(' ', '\n'),
+        },  
+      })
+      sprite.position.set(node.pos.x, node.pos.y, node.pos.z)
+      scene.add(sprite)
     })
 
 
@@ -103,11 +120,12 @@ export default class Graph extends Unit {
         // var line = new THREE.LineSegments( wireframe )
         // scene.add(line)
       // })
+
   }
   animate() {
-    this.billboards.forEach(billboard =>
-      billboard.quaternion.copy(this.props.camera.quaternion)
-    )
+    // this.billboards.forEach(billboard =>
+    //   billboard.quaternion.copy(this.props.camera.quaternion)
+    // )
   }
   antiInit() {}
 }
