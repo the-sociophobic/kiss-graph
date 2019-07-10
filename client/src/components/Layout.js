@@ -11,6 +11,7 @@ export default class Layout extends Component {
     this.state = {
       W: 0,
       H: 0,
+      retrievedData: "",
     }
   }
 
@@ -35,6 +36,7 @@ export default class Layout extends Component {
       W: this.state.W,
       H: this.state.H,
       data: this.context,
+      sendData: data => this.setState({retrievedData: data}),
     }
     return (
       <div className="page-container">
@@ -47,6 +49,11 @@ export default class Layout extends Component {
         <div className="interface-container">
           <div className="interface">
             {this.props.children}
+            {/* <textarea
+              value={this.state.retrievedData}
+              rows={40}
+              cols={20}
+            /> */}
           </div>
         </div>
       </div>

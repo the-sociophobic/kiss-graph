@@ -1,8 +1,9 @@
 import psychic from './mental-iq-social'
+import position from 'libs/engines/data/hardcoded/position/10.07.19.json'
 
 export default data => {
   return {
-    nodes: data.nodes.map(node => {
+    nodes: data.nodes.map((node, index) => {
       const psychoIndex = psychic.map(psycho => psycho.nickName.replace('%20', ' ')).indexOf(node.nickName)
       const meta = psychoIndex !== -1 ? psychic[psychoIndex] : {}
       let edges = data.edges
@@ -17,13 +18,14 @@ export default data => {
 
       return {
         name: node.nickName,
-        pos: node.pos,
+        posRaw: node.pos,
+        pos: position[index] || {x: 100, y: 100, z: 100},
         connections: edges,
         mentalDisorder: meta.mentalDisorder,
         iq: meta.iq,
       }
-    })
-    .sort((a, b) => b.connections - a.connections),
+    }),
+    // .sort((a, b) => b.connections - a.connections),
     edges: data.edges
   }
 }

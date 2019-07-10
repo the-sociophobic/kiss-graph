@@ -41,6 +41,7 @@ export default class ThreeScene extends Component{
       1000
     )
     this.controls = new THREE.OrbitControls( this.camera, this.render.domElement )
+    this.controls.screenSpacePanning = true
     this.camera.position.z = 4
     this.controls.update()
 
@@ -50,7 +51,9 @@ export default class ThreeScene extends Component{
       THREE: THREE,
       renderer: this.renderer,
       scene: this.scene,
-      ...this.props.data //TODO adequately
+      camera: this.camera,
+      ...this.props.data, //TODO adequately
+      sendData: this.props.sendData,
     }
 
     this.props.myScene.units.forEach(unit => this.units.push(new unit(props)))

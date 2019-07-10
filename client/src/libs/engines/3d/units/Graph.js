@@ -4,7 +4,6 @@ import Unit from 'libs/engines/3d/Unit'
 import GraphCloth from 'libs/engines/physics/GraphCloth'
 
 import heatMap from 'img/heat.png'
-import { isThisSecond } from 'date-fns';
 
 export default class Graph extends Unit {
   constructor(props) {
@@ -23,30 +22,18 @@ export default class Graph extends Unit {
       node1: nodes.map(node => node.name).indexOf(edge.node1),
     }))
     this.nodes = nodes
-    .filter(node => node.connections > 0)
     .map(node => ({
-      // vector: new THREE.Vector3(node.pos.X, node.pos.Y, node.pos.Z),
-      vector: new THREE.Vector3(
-        node.pos.X * 2.15,
-        node.pos.Y * 2.15,
-        Math.random() * (60 - node.connections) / 15
-      ),
-      weight: node.connections,
+      vector: new THREE.Vector3(node.pos.x, node.pos.y, node.pos.z),
+      weight: node.connections > 0 ? node.connections : 1,
     }))
-
-    this.GraphCloth = new GraphCloth({
-      nodes: this.nodes,
-      edges: this.edges,
-    })
 
     this.geometry = new THREE.BufferGeometry();
 
-    const positions = this.GraphCloth.getRecalculatedPos()
     const vertices = new Float32Array(
       this.edges
         .map(edge => [
-          ...positions[edge.node0],
-          ...positions[edge.node1],
+          nodes[edge.node0].pos.x, nodes[edge.node0].pos.y, nodes[edge.node0].pos.z,
+          nodes[edge.node1].pos.x, nodes[edge.node1].pos.y, nodes[edge.node1].pos.z,
         ])
         .reduce((a, b) => [...a, ...b])
     )
@@ -55,58 +42,33 @@ export default class Graph extends Unit {
 
     this.geometry.addAttribute('position', this.verticesBuffer)
 
-    const maxWeight = Math.max(...this.nodes.map(node => node.weight))
-    const UVs = new Float32Array(
-      this.nodes
-        .map(node => [.5, .3])
-        .reduce((a, b) => [...a, ...b])
-    )
-    this.geometry.addAttribute('uv', new THREE.BufferAttribute(UVs, 2))
+    // const maxWeight = Math.max(...this.nodes.map(node => node.weight))
+    // const UVs = new Float32Array(
+    //   this.nodes
+    //     .map(node => [.5, .3])
+    //     .reduce((a, b) => [...a, ...b])
+    // )
+    // this.geometry.addAttribute('uv', new THREE.BufferAttribute(UVs, 2))
 
-    this.deltaTime = .005
-    this.frameNumber = 0
-    setInterval(() => {
-      this.frameNumber++
-      // if (this.frameNumber === 50)
-      //   this.deltaTime *= 1.2
-      // if (this.frameNumber === 100)
-      //   this.deltaTime *= 1.2
-      // if (this.frameNumber === 150)
-      //   this.deltaTime *= 1.2
-      if (this.frameNumber === 300)
-        this.deltaTime *= 1.5
-      // if (this.frameNumber === 450)
-      //   this.deltaTime *= 2
-      if (this.frameNumber === 600)
-        this.deltaTime *= 1.5
-
-      this.GraphCloth.recalculate(this.deltaTime)
-      const positions = this.GraphCloth.getRecalculatedPos()
-      const vertices = new Float32Array(
-        this.edges
-          .map(edge => [
-            ...positions[edge.node0],
-            ...positions[edge.node1],
-          ])
-          .reduce((a, b) => [...a, ...b])
-      )
-      this.verticesBuffer.array = vertices
-      // console.log(vertices)
-      this.verticesBuffer.needsUpdate = true
-      // this.geometry.attributes.position.needsUpdate = true
-    }, 80)
-
-
-    var textureLoader = new THREE.TextureLoader()
-      .load(heatMap, texture => {
+    // var textureLoader = new THREE.TextureLoader()
+    //   .load(heatMap, texture => {
         // var material = new THREE.MeshBasicMaterial( { map: texture } );
-        var material = new THREE.MeshBasicMaterial( { color: 0x0000ff } );
-        this.line = new THREE.LineSegments( this.geometry, material );
-        scene.add( this.line )
+    var material = new THREE.MeshBasicMaterial( { color: 0x0000ff } );
+    this.line = new THREE.LineSegments( this.geometry, material )
+    scene.add( this.line )
+      
+    this.billboards = []
+    nodes.forEach(node => {
+      var billboardGeometry = new THREE.PlaneGeometry(1, 1)
+      var billboardMaterial = new THREE.MeshBasicMaterial( {color: 0xf00000, side: THREE.DoubleSide} )
+      var plane = new THREE.Mesh( billboardGeometry, billboardMaterial )
+      plane.position.set(node.pos.x, node.pos.y, node.pos.z)
+      scene.add(plane)
+      this.billboards.push(plane)
+    })
 
 
-
-        // var material = new MeshLineMaterial({ map: texture });
+        // var material = new MeshLineMaterial({ map: texture })
     
         // var geometry = new THREE.Geometry();
         // for( var j = 0; j < Math.PI * 2; j += 2 * Math.PI / 100 ) {
@@ -140,9 +102,12 @@ export default class Graph extends Unit {
         // var wireframe = new THREE.WireframeGeometry( geometry );
         // var line = new THREE.LineSegments( wireframe )
         // scene.add(line)
-      })
+      // })
   }
   animate() {
+    this.billboards.forEach(billboard =>
+      billboard.quaternion.copy(this.props.camera.quaternion)
+    )
   }
   antiInit() {}
 }
