@@ -1,3 +1,4 @@
+export default `
 Aelitta%20Ezugbaya E @0.038,1.039
 Agarkova%20Nastya E @0.487,-0.009
 Aglaya%20Lobantseva E @0.802,1.257
@@ -6,7 +7,7 @@ Aleksandr%20Krymov E @0.911,0.802
 Alesya%20Nikolaeva E @0.261,1.282
 Alexander%20Drozd E @0.720,-0.011
 Alexander%20Gromov E @0.854,0.944
-Alexander%20Ilyin E @0.393,-0.392
+Alexander%20Ilyin E @0.354,-0.400
 Alexander%20Khudyakov E @0.602,0.108
 Alexander%20Koshelev E @0.763,0.252
 Alexander%20Kuzyakin E @0.093,0.522
@@ -51,7 +52,7 @@ Alisa%20Grebenschikova E @0.862,1.234
 Alisa%20Tamarchenko E @0.292,0.481
 Alisa%20Verhovskaya E @0.310,1.429
 Alyona%20Lushina E @0.222,0.620
-Amanda%20Palmer E @0.457,-0.412
+Amanda%20Palmer E @0.456,-0.373
 Anastasia%20Snytko E @0.103,-0.027
 Anastasiya%20Alieva E @0.244,0.491
 Anastasiya%20Baranova E @0.108,0.772
@@ -263,7 +264,7 @@ Egor%20Sedykh E @0.911,-0.084
 Egor%20Sibirsky E @0.114,1.287
 Egor%20Sveshnikov E @0.056,-0.344
 Egor%20Tatarenko E @-0.052,0.520
-Egor%20Tsygankov E @0.388,-0.481
+Egor%20Tsygankov E @0.345,-0.485
 Egor%20Vysberg E @0.711,-0.047
 Ekaterina%20Avdeeva E @0.214,0.568
 Ekaterina%20Dotsenko E @0.078,0.567
@@ -349,6 +350,7 @@ Ioan%20Chaikovsky E @0.819,0.525
 Ira E @0.792,-0.476
 Ira%20Bibisheva E @0.581,-0.312
 Ira%20Khanakhbeeva E @0.837,0.292
+Ira%20Novitskaya E @0.415,-0.429
 Irina%20Medel E @-0.008,0.570
 Irina%20Meppltorp E @0.195,0.866
 Irina%20Pligina E @0.049,0.789
@@ -369,7 +371,7 @@ Jeremy%20Walker E @0.217,0.690
 Jerry E @0.157,-0.188
 Julia%20Resh E @0.803,0.991
 Kalina%20Seryakovskaya E @0.748,1.016
-Kamilla%20Kadyrova E @0.392,-0.302
+Kamilla%20Kadyrova E @0.369,-0.227
 Karina%20Kuramshina E @0.821,1.442
 Karina%20Madatova E @0.020,-0.129
 Karina%20Mullayanova E @0.357,0.762
@@ -404,7 +406,7 @@ Katya%20Ustinova E @0.492,0.081
 Kedr%20Livansky E @0.643,-0.167
 Keren%20Karieva E @0.702,-0.170
 Kira%20Green E @0.041,-0.370
-Kira%20Kastaneda E @0.729,0.170
+Kira%20Kastaneda E @0.726,0.150
 Kira%20Longvenova E @-0.016,0.975
 Kirill%20Ermakov E @0.688,1.395
 Kirill%20Koranov E @0.263,0.892
@@ -424,7 +426,7 @@ Kostya%20Polytech E @-0.077,0.307
 Kostya%20Schegolev E @0.064,0.278
 Kostya%20Smirnov E @0.597,-0.127
 Kostya%20Solovyov E @0.502,-0.295
-Kostya%20Unknown E @0.407,-0.442
+Kostya%20Unknown E @0.367,-0.456
 Kristina%20Boyarkina E @0.615,0.528
 Kristina%20Chesnokova E @0.222,0.439
 Kristina%20Filipova E @-0.030,0.437
@@ -465,7 +467,7 @@ Lera%20Stepanova E @0.738,-0.198
 Lera%20Zhuk E @-0.064,0.813
 Lesha%20Antipov E @-0.003,-0.262
 Lesha%20Briliantov E @0.440,0.859
-Lesha%20Pavlov E @0.339,-0.392
+Lesha%20Pavlov E @0.319,-0.381
 Lesha%20Rogov E @0.764,0.734
 Lev%20Vasilyev E @0.289,0.746
 Liliya%20Zubrilova E @0.016,0.799
@@ -492,6 +494,7 @@ Ludmila%20Churzina E @0.258,-0.361
 Lyonya%20Broverman E @0.729,-0.114
 Lyonya%20Tseytin E @0.801,0.179
 Lyosha%20Loginov E @0.474,0.642
+Mama%20Chukalskaya E @0.417,-0.277
 Marat%20Kabaloev E @0.829,-0.097
 Marfa%20Veselova E @0.839,-0.283
 Margarita%20Chernyshevskaya E @0.904,0.725
@@ -522,7 +525,7 @@ Masha%20Batashova E @0.517,1.319
 Masha%20Chukalskaya E @0.657,-0.193
 Masha%20Flex E @0.235,1.234
 Masha%20Masterova E @0.294,0.111
-Masha%20Nikitina E @0.444,-0.236
+Masha%20Nikitina E @0.454,-0.238
 Masha%20Orekhova E @0.272,1.024
 Masha%20Safronova E @0.355,0.935
 Masha%20Tublina E @0.796,0.440
@@ -570,7 +573,7 @@ Nastya%20Kozlova E @-0.107,1.205
 Nastya%20Leschik E @0.241,0.620
 Nastya%20Luneva E @0.562,1.443
 Nastya%20Mozhaeva E @0.232,1.011
-Nastya%20Nikolaeva E @0.539,-0.175
+Nastya%20Nikolaeva E @0.540,-0.158
 Nastya%20Novakova E @0.202,1.036
 Nastya%20Pavlova E @0.243,0.067
 Nastya%20Ryazanova E @0.414,1.160
@@ -597,6 +600,7 @@ Nikita%20Azelitsky E @0.421,1.253
 Nikita%20Baklazhenko E @0.159,0.800
 Nikita%20Danilchenko E @0.042,0.697
 Nikita%20Fadeev E @-0.105,0.071
+Nikita%20Kiyanov E @0.694,0.072
 Nikita%20Kunitsyn E @0.738,0.013
 Nikita%20Loginov E @0.090,-0.318
 Nikita%20Mikhailov E @0.705,0.322
@@ -610,7 +614,6 @@ Nikita%20Shubin E @0.039,0.412
 Nikita%20Skripnik E @-0.062,-0.490
 Nikita%20Tsyganok E @0.147,0.080
 Nikita%20Zhatin E @0.639,-0.355
-Nikita%20Kiyanov E @0.694,0.072
 Nikitos%20Iqos E @0.769,0.114
 Niko%20Shanidze E @0.332,0.366
 Nikolay%20Gabriel E @0.302,0.608
@@ -632,6 +635,7 @@ Olya%20Bykova E @0.134,-0.060
 Olya%20Lipskaya E @0.569,1.348
 Oslab%20Segodnya E @0.597,0.855
 Paksutova%20Tatyana E @0.789,1.198
+Papa%20Chukalsky E @0.381,-0.280
 ParenAni1 E @0.058,-0.283
 ParenAni2 E @0.056,-0.222
 Pasha%20Klimachov E @0.615,-0.233
@@ -642,8 +646,8 @@ Pavel%20Gultyaev E @0.099,1.241
 Pavel%20Nosov%202 E @0.665,1.238
 Petr%20Bondarenko E @0.317,-0.140
 Petr%20Kostenko E @0.324,0.630
-Petr%20Sverdlov E @0.637,0.093
-Podruga%20Lery E @0.328,-0.315
+Petr%20Sverdlov E @0.634,0.091
+Podruga%20Lery E @0.321,-0.319
 Polina%20Bobinsky E @0.761,-0.128
 Polina%20Egorkina E @0.428,1.294
 Polina%20Eremina E @0.663,0.321
@@ -657,17 +661,17 @@ Polina%20Ovsyannikova E @0.306,0.422
 Polina%20Rozhko E @0.836,0.049
 Polina%20Savosina E @0.351,0.818
 Polina%20Tammi E @-0.099,-0.489
-Polina%20Tavturina E @0.404,-0.207
+Polina%20Tavturina E @0.403,-0.192
 Polina%20Vingorodova E @0.613,0.727
 Polina%20Zolotukhina E @0.831,0.743
 Pyotr%20Grachev E @0.251,-0.194
-Radik%20Kadyrov E @0.374,-0.181
+Radik%20Kadyrov E @0.378,-0.116
 Rebecca%20Filipp E @0.712,-0.275
 Rita%20Popova E @0.467,-0.312
 Rita%20Svintsova E @0.658,0.751
 Rita%20Zelenskaya E @0.273,-0.308
 Robert%20Shtabley E @0.456,0.969
-Rodion%20Raskolnikov E @0.560,-0.228
+Rodion%20Raskolnikov E @0.559,-0.223
 Rolan%20Alexeev E @0.343,-0.099
 Roma E @0.381,0.247
 Roma%20Anglichanin E @0.872,-0.343
@@ -682,7 +686,7 @@ Roman%20Sadyrbaev E @0.882,1.196
 Roman%20Vershinin E @0.459,0.062
 Ronya%20Shurze E @-0.021,0.749
 Roofina%20Kapkan E @0.326,0.873
-Ruslan%20Kudanko E @0.364,-0.248
+Ruslan%20Kudanko E @0.365,-0.160
 Ruslan%20Usachev E @0.860,1.012
 Sabina%20Isaeva E @0.284,1.434
 Sacha%20Czarnecki E @0.014,-0.360
@@ -695,8 +699,8 @@ Sasha%20Bashmakov E @0.821,-0.479
 Sasha%20Baybarzov E @0.769,0.941
 Sasha%20Boyarinov E @0.317,0.236
 Sasha%20Chernyshov E @0.562,0.530
-Sasha%20Glutshetskiy E @0.418,-0.144
-Sasha%20Grey E @0.438,-0.489
+Sasha%20Glutshetskiy E @0.417,-0.126
+Sasha%20Grey E @0.418,-0.486
 Sasha%20Korotkova E @0.245,0.751
 Sasha%20Kovanova E @0.115,0.248
 Sasha%20Sysolina E @0.231,0.553
@@ -710,10 +714,10 @@ Seraphima%20Pantykina E @0.822,1.198
 Sergay%20Nikitin E @0.203,1.122
 Sergey%20Ch E @0.907,1.337
 Sergey%20Dvoryanchikov E @0.413,1.408
-Sergey%20Married E @0.346,-0.474
+Sergey%20Married E @0.310,-0.482
 Sergey%20Sokolov E @0.171,-0.308
 Sergey%20Vakhnin E @0.818,-0.329
-Sestra%20Peti E @0.368,-0.348
+Sestra%20Peti E @0.352,-0.343
 Sima%20Radnaeva E @0.411,0.345
 Slava%20Bazaliy E @0.841,-0.146
 Slava%20Golubev E @0.280,-0.110
@@ -733,7 +737,7 @@ Stasya%20Ivanova E @0.317,1.250
 Stefan%20Tushkov E @0.656,-0.274
 Stepa%20Smurygin E @0.367,1.053
 Stepan%20Nesmiyan E @0.332,0.799
-Stoya%20Doll E @0.431,-0.416
+Stoya%20Doll E @0.441,-0.442
 Styopa%20Saytyrly E @-0.053,0.206
 Sveta%20Ivanova E @-0.039,1.395
 Sveta%20Konukhova E @-0.062,-0.355
@@ -763,7 +767,7 @@ Timofey%20Sherstenyov E @0.472,0.221
 Timur%20Finov E @0.132,0.338
 Timur%20Ivashkevich E @0.763,1.270
 Timur%20Selyutin E @0.719,0.250
-Tonya%20Evdokimova E @0.371,-0.430
+Tonya%20Evdokimova E @0.328,-0.431
 Tonya%20Kuper E @-0.035,0.852
 Turik%20Mordovtsev E @0.773,-0.062
 Uliya%20Babaeva E @0.007,0.944
@@ -777,7 +781,7 @@ Uriy%20Hovansky E @0.830,1.063
 Ustina%20Zhulanova E @0.642,-0.226
 Ustya%20Zhulanova E @0.343,0.894
 Vadim%20Ashder E @0.435,0.345
-Vadim%20Zimin E @0.571,0.943
+Vadim%20Zimin E @0.555,0.946
 Valera%20Tsifirov E @0.130,-0.146
 Valeria%20Lavrentyeva E @0.552,-0.420
 Valeriya%20Lapina E @0.730,1.380
@@ -805,6 +809,7 @@ Veronika%20Froneva E @0.293,0.946
 Veronika%20Litvinova E @0.171,-0.047
 Veronika%20Melnik E @0.358,1.137
 Veronika%20Petrukhina E @0.140,1.364
+Veronika%20Tselishcheva E @0.379,-0.412
 Veronika%20Voychuk E @0.663,-0.077
 Vika%20Bogomolova E @0.461,1.442
 Vika%20Ermolaeva E @0.087,1.122
@@ -813,6 +818,7 @@ Vika%20Nikolaeva E @0.361,1.297
 Vika%20Solovyova E @0.726,1.328
 Viktor%20Maffin E @0.880,-0.181
 Viktor%20Petrov%20Valera%20Klinsky E @0.850,0.483
+Viktor%20Tsoy E @0.430,-0.341
 Viktor%20Vilisov E @-0.108,0.555
 Viktoria%20Sergeeva E @0.064,-0.093
 Viktoriya%20Begaeva E @0.911,0.040
@@ -834,6 +840,7 @@ Vlad%20Guriev E @0.273,0.445
 Vlad%20Moroz E @0.018,0.215
 Vladimir%20Eldzhin E @0.809,0.933
 Vladimir%20Suzdaltsev E @0.887,0.159
+Vladimir%20Tsselishchev E @0.390,-0.480
 Vladimir%20Uriev E @0.467,1.167
 Vladislav%20Bokhan E @0.299,1.216
 Vladislav%20Chernyshov E @0.021,-0.421
@@ -849,14 +856,14 @@ Yan%20Fisher E @0.844,0.374
 Yan%20Tamkovich%20Friske E @0.653,0.903
 Yana%20Antonova E @0.249,1.041
 Yana%20Doza E @-0.110,0.930
-Yana%20Dubovitskaya E @0.440,-0.302
+Yana%20Dubovitskaya E @0.422,-0.228
 Yana%20Kurilovich E @-0.075,0.377
 Yana%20Moiseeva E @0.737,1.433
 Yana%20Shu E @0.881,-0.486
 Yaroslava%20Gordeeva E @0.863,0.270
 Yasha%20Karaev E @0.826,0.173
 Yudoshin E @0.187,-0.193
-Yukka%20Maleka E @0.314,-0.479
+Yukka%20Maleka E @0.268,-0.486
 Yulia%20Alentieva E @0.207,1.429
 Yulia%20Morozova E @-0.105,-0.075
 Yulia%20Renyova E @0.105,-0.421
@@ -1202,6 +1209,7 @@ Lubof%20Safonova Dmitry%20Listvin
 Luda%20Syagina Misha%20Repin
 Lyonya%20Broverman Egor%20Vysberg Kira%20Kastaneda
 Lyonya%20Tseytin Anya%20Kudryavtseva Asya%20Dobina Kate%20Goman Kate%20Sizova Katrin%20Tublina Leo Margo Maria%20Alexeeva Polina%20Rozhko
+Mama%20Chukalskaya Viktor%20Tsoy
 Marat%20Kabaloev Dasha%20Goman
 Margarita%20Kiseleva Egor%20Kozyrev
 Margarita%20Sergeeva Nikita%20Danilchenko
@@ -1269,6 +1277,7 @@ Nathan%20Cox Anya%20Khmeleva
 Nikita%20Alexeev Alina%20Nesmiyan
 Nikita%20Baklazhenko Igor%20Zhidkov Irina%20Meppltorp Nikita%20Danilchenko
 Nikita%20Danilchenko Kate%20Rusetskaya Uliya%20Korzh
+Nikita%20Kiyanov Kira%20Kastaneda
 Nikita%20Kunitsyn Kira%20Kastaneda
 Nikita%20Loginov Alexandra%20Kuchumova Anya%20Maxutova
 Nikita%20Mikhailov Kira%20Kastaneda
@@ -1281,7 +1290,6 @@ Nikita%20Sheresh Lubof%20Safonova
 Nikita%20Shubin Anna%20Vikhoreva
 Nikita%20Tsyganok Nastya%20Pavlova
 Nikita%20Zhatin Katya%20Abramova Pasha%20Klimachov Ustina%20Zhulanova Ustya%20Zhulanova
-Nikita%20Kiyanov Kira%20Kastaneda
 Nikitos%20Iqos Kira%20Kastaneda
 Niko%20Shanidze Natasha%20Kozhevnikova
 Nina%20LoveNight Vlad%20Guriev
@@ -1298,6 +1306,7 @@ Olya%20Bykova Ivan%20Kachmar Veronika%20Litvinova
 Olya%20Lipskaya Dasha%20Solovyova Lera%20Snitsar
 Oslab%20Segodnya Vadim%20Zimin
 Paksutova%20Tatyana Seraphima%20Pantykina
+Papa%20Chukalsky Mama%20Chukalskaya
 Pasha%20Klimachov Nastya%20Klimacheva
 Pasha%20Nosov Yasha%20Karaev
 Pavel%20Burachenkov Dasha%20Solovyova
@@ -1416,11 +1425,13 @@ Vera%20Zubenko Vladislav%20Bokhan
 Veronika%20Froneva Danya%20Skibin
 Veronika%20Litvinova Fydor%20Bilef Nastya%20Pavlova
 Veronika%20Petrukhina Azamat%20Vishenin
+Veronika%20Tselishcheva Ira%20Novitskaya Vladimir%20Tsselishchev
 Veronika%20Voychuk Nastya%20Bogdanova
 Vika%20Bogomolova Dasha%20Solovyova
 Vika%20Solovyova Anton%20Alexandrovich Kirill%20Ermakov
 Viktor%20Maffin Anastasiya%20Batanina Anna%20Vasilyeva Darya%20Gerasimova Lubov%20Burukhina Mariya%20Stolik Viktoriya%20Shanina
 Viktor%20Petrov%20Valera%20Klinsky Lubof%20Safonova
+Viktor%20Tsoy Ira%20Novitskaya
 Viktoria%20Sergeeva Alexander%20Lazarev
 Viktoriya%20Begaeva Egor%20Sedykh
 Vita%20Polovinkina Lev%20Vasilyev
@@ -1435,6 +1446,7 @@ Vlad%20Guriev Alisa%20Tamarchenko Kate%20Alexandrova
 Vlad%20Moroz Anya%20Korkina
 Vladimir%20Eldzhin Ildar%20Dzharahov Kate%20Alexandrova
 Vladimir%20Suzdaltsev Alexandra%20Schlyakhtina Alina%20Khadzhakhova Anna%20Vasilyeva Darya%20Romanovskaya Margarita%20Kiseleva Pasha%20Nosov Varya%20Tuchkova Viktoriya%20Begaeva Viktoriya%20Gil Yaroslava%20Gordeeva
+Vladimir%20Tsselishchev Ira%20Novitskaya
 Vladislav%20Bokhan Alexandra%20Perfilova Minasyan%20Viktoria Varya
 Vladislav%20Chernyshov Sacha%20Czarnecki
 Vladislav%20Lebedev Nastya%20Pavlova
@@ -1460,3 +1472,4 @@ Zhenya%20Ivonin Liza%20Nikolaenko
 Zhenya%20Selicheva Dasha%20Solovyova
 Zhora Alina%20Zlobinskaya
 unknown1 Kostya%20Solovyov
+`

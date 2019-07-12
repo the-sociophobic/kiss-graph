@@ -244,7 +244,8 @@ export default [
   {
     nickName: "Kira%20Kastaneda",
     mentalDisorder: 2.5,
-    iq: 115,
+    iq: 123
+    ,
     additionalConnections: 1,
   },
   {
@@ -291,6 +292,12 @@ export default [
     nickName: "Liza%20Lepaslen",
     social: {
       inst: "lepaslen",
+    }
+  },
+  {
+    nickName: "Stefan%20Pushkov",
+    social: {
+      inst: "stefan_pushkov",
     }
   },
 ]

@@ -5,6 +5,8 @@ import myScene from 'libs/myScene'
 
 import StoreContext from 'libs/engines/data/store/StoreContext'
 
+import axios from 'axios'
+
 export default class Layout extends Component {
   constructor(props) {
     super(props)
@@ -23,6 +25,8 @@ export default class Layout extends Component {
   componentDidMount() {
     this.updateDimensions()
     window.addEventListener('resize', this.updateDimensions)
+
+    axios.get('http://localhost:1335/node').then(a => console.log(a))
   }
 
   componentWillUnmount() {
