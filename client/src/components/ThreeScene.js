@@ -30,6 +30,17 @@ export default class ThreeScene extends Component{
     this.renderer.setSize(width, height)
     ViewerDiv.appendChild(this.renderer.domElement)
 
+    const preventDefault = event => event.preventDefault()
+    //Web
+    ViewerDiv.addEventListener("onscroll", preventDefault, {passive: false})    
+    ViewerDiv.addEventListener("wheel", preventDefault, {passive: false})    
+    //Mobile
+    ViewerDiv.addEventListener("touchstart", preventDefault, {passive: false})
+    ViewerDiv.addEventListener("touchend", preventDefault, {passive: false})
+    ViewerDiv.addEventListener("touchcancel", preventDefault, {passive: false})
+    ViewerDiv.addEventListener("touchmove", preventDefault, {passive: false})    
+    
+
     //ADD SCENE
     this.scene = new THREE.Scene()
 
