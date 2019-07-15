@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Hammer from 'react-hammerjs'
+import Hammer from 'hammerjs'
 
 import THREE from 'libs/engines/3d/three'
 
@@ -19,7 +19,7 @@ export default class ThreeScene extends Component{
     this.controls.update()
   }
 
-  componentDidMount(){
+  componentDidMount() {
     window.addEventListener('resize', this.updateDimensions.bind(this))
 
     const ViewerDiv = this.viewerRef.current
@@ -73,7 +73,17 @@ export default class ThreeScene extends Component{
 
     this.props.myScene.units.forEach(unit => this.units.push(new unit(props)))
     this.start()
+
+    this.hammer = new Hammer(this.viewerRef.current)
+    this.hammer.get('pinch').set({ enable: true })
+    this.hammer.on('pinch', this.cameraCustomZoom.bind(this))
+
   }
+
+  cameraCustomZoomm = e => {
+    console.log("e")
+  }
+
   componentWillUnmount(){
     this.units.forEach(unit => unit.antiInit())
     this.stop()
@@ -94,27 +104,29 @@ export default class ThreeScene extends Component{
   }
 
   cameraCustomZoom = e => {
+    const delta = typeof e.deltaY !== "undefined" ? e.deltaY * .125 : (e.scale - 1)
     var vector = new THREE.Vector3(0, 0, -1)
     .applyQuaternion(this.camera.quaternion)
-    .multiplyScalar(e.deltaY * .125)
+    .multiplyScalar(delta)
     this.camera.position.add(vector)
     this.controls.target.add(vector)
     this.controls.update()
-    console.log(this.controls.zoom0)
   }
   
   render = () => (
-    // <Hammer
-    //   onPinch={this.cameraCustomZoom}
-    //   options={{
-    //     recognizers: {
-    //       pinch: { enable: true }
-    //     }}}
-    // >
-      <div
-        ref={this.viewerRef}
-        className="Viewer"
-      />
-    // </Hammer>
+    // <div ref={this.viewerRef} className="Viewer">
+    //   <Hammer
+    //     onPinch={this.cameraCustomZoom}
+    //     options={{
+    //       recognizers: {
+    //         pinch: { enable: true }
+    //       }}}
+    //   >
+        <div
+          className="Viewer"
+          ref={this.viewerRef}
+        />
+    //   </Hammer>
+    // </div>
   )
 }
