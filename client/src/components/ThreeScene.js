@@ -75,8 +75,8 @@ export default class ThreeScene extends Component{
     this.start()
 
     this.hammer = new Hammer(this.viewerRef.current)
-    this.hammer.get('pinch').set({ enable: true })
-    this.hammer.on('pinch', this.cameraCustomZoom.bind(this))
+    this.hammer.get('pinchmove').set({ enable: true })
+    this.hammer.on('pinchmove', this.cameraCustomZoom.bind(this))
 
   }
 
@@ -104,10 +104,10 @@ export default class ThreeScene extends Component{
   }
 
   cameraCustomZoom = e => {
-    const delta = typeof e.deltaY !== "undefined" ? e.deltaY * .125 : (e.scale - 1)
+    const delta = typeof e.deltaY !== "undefined" ? e.deltaY : (1 - e.scale)
     var vector = new THREE.Vector3(0, 0, -1)
     .applyQuaternion(this.camera.quaternion)
-    .multiplyScalar(delta)
+    .multiplyScalar(delta * .125)
     this.camera.position.add(vector)
     this.controls.target.add(vector)
     this.controls.update()
