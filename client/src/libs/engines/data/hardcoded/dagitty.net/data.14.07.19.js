@@ -1,3 +1,4 @@
+export default `
 Aelitta%20Ezugbaya E @0.038,1.039
 Agarkova%20Nastya E @0.487,-0.009
 Aglaya%20Lobantseva E @0.802,1.257
@@ -1499,3 +1500,4 @@ Zhenya%20Selicheva Dasha%20Solovyova
 Zhenya%20Afro Nikita%20Kiyanov
 Zhora Alina%20Zlobinskaya
 unknown1 Kostya%20Solovyov
+`

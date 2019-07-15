@@ -10,11 +10,11 @@ module.exports = {
   attributes: {
 
     node0: {
-      collection: 'edge',
+      collection: 'node',
       via: 'edgesOut'
     },
     node1: {
-      collection: 'edge',
+      collection: 'node',
       via: 'edgesIn'
     },
 

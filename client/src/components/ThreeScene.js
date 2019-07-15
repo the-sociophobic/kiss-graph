@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Hammer from 'react-hammerjs'
+
 import THREE from 'libs/engines/3d/three'
 
 export default class ThreeScene extends Component{
@@ -28,18 +30,7 @@ export default class ThreeScene extends Component{
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
     this.renderer.setClearColor('#f6f6f6')
     this.renderer.setSize(width, height)
-    ViewerDiv.appendChild(this.renderer.domElement)
-
-    const preventDefault = event => event.preventDefault()
-    //Web
-    ViewerDiv.addEventListener("onscroll", preventDefault, {passive: false})    
-    ViewerDiv.addEventListener("wheel", preventDefault, {passive: false})    
-    //Mobile
-    ViewerDiv.addEventListener("touchstart", preventDefault, {passive: false})
-    ViewerDiv.addEventListener("touchend", preventDefault, {passive: false})
-    ViewerDiv.addEventListener("touchcancel", preventDefault, {passive: false})
-    ViewerDiv.addEventListener("touchmove", preventDefault, {passive: false})    
-    
+    ViewerDiv.appendChild(this.renderer.domElement)    
 
     //ADD SCENE
     this.scene = new THREE.Scene()
@@ -53,8 +44,21 @@ export default class ThreeScene extends Component{
     )
     this.controls = new THREE.OrbitControls( this.camera, this.render.domElement )
     this.controls.screenSpacePanning = true
-    this.camera.position.z = 4
+    this.controls.enableZoom = false //disable zoom on mousewheel
+    this.controls.panSpeed = 2
+    window.addEventListener("wheel", this.cameraCustomZoom.bind(this), {passive: false})
+    this.camera.position.z = 5
     this.controls.update()
+    //prevent window from reactiong to controls 
+    const preventDefault = event => event.preventDefault()
+    //Web
+    ViewerDiv.addEventListener("onscroll", preventDefault, {passive: false})    
+    ViewerDiv.addEventListener("wheel", preventDefault, {passive: false})    
+    //Mobile
+    ViewerDiv.addEventListener("touchstart", preventDefault, {passive: false})
+    ViewerDiv.addEventListener("touchend", preventDefault, {passive: false})
+    ViewerDiv.addEventListener("touchcancel", preventDefault, {passive: false})
+    ViewerDiv.addEventListener("touchmove", preventDefault, {passive: false})    
 
 
     this.units = []
@@ -88,11 +92,29 @@ export default class ThreeScene extends Component{
     this.frameId = window.requestAnimationFrame(this.animate)
     this.controls.update()
   }
+
+  cameraCustomZoom = e => {
+    var vector = new THREE.Vector3(0, 0, -1)
+    .applyQuaternion(this.camera.quaternion)
+    .multiplyScalar(e.deltaY * .125)
+    this.camera.position.add(vector)
+    this.controls.target.add(vector)
+    this.controls.update()
+    console.log(this.controls.zoom0)
+  }
   
   render = () => (
-    <div
-      ref={this.viewerRef}
-      className="Viewer"
-    />
+    // <Hammer
+    //   onPinch={this.cameraCustomZoom}
+    //   options={{
+    //     recognizers: {
+    //       pinch: { enable: true }
+    //     }}}
+    // >
+      <div
+        ref={this.viewerRef}
+        className="Viewer"
+      />
+    // </Hammer>
   )
 }
