@@ -75,7 +75,7 @@ export default class ThreeScene extends Component{
     this.start()
 
     this.hammer = new Hammer(this.viewerRef.current)
-    this.hammer.get('pinchmove').set({ enable: true })
+    this.hammer.get('pinch').set({ enable: true })
     this.hammer.on('pinchmove', this.cameraCustomZoom.bind(this))
 
   }
