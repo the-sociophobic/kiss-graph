@@ -670,7 +670,7 @@ import * as THREE from 'three'
         dollyEnd.set( 0, distance );
 
         const delta = dollyEnd.y - dollyStart.y
-        const k = Math.min(50, Math.abs(delta)) ** (delta > 0 ? .5 : .7) * 3
+        const k = Math.min(50, Math.abs(delta)) ** (delta < 0 ? .5 : .7) * 2
         dollyDelta.set( 0, Math.pow( dollyEnd.y / dollyStart.y, scope.zoomSpeed * k ) );
 
         // dollyIn( dollyDelta.y );
