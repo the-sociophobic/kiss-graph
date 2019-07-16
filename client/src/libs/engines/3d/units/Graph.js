@@ -127,5 +127,5 @@ export default class Graph extends Unit {
     //   billboard.quaternion.copy(this.props.camera.quaternion)
     // )
   }
-  antiInit() {}
+  dispose() {}
 }

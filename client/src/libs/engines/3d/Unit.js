@@ -3,5 +3,5 @@ export default class Unit {
     this.props = props
   }
   animate() {}
-  antiInit() {}
+  dispose() {}
 }

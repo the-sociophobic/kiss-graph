@@ -65,7 +65,7 @@ export default class Graph extends Unit {
       this.verticesBuffer.array = vertices
       this.verticesBuffer.needsUpdate = true
 
-      if (this.frameNumber === 2500)
+      if (this.frameNumber === 7500)
         this.props.sendData(
           JSON.stringify(positions.map(pos => ({
             x: pos[0],
@@ -73,8 +73,12 @@ export default class Graph extends Unit {
             z: pos[2],
           })))
         )
+      
+      if (this.frameNumber % 100 === 0)
+        console.log(this.frameNumber)
 
-    }, 80)
+
+    }, 120)
 
     var material = new THREE.MeshBasicMaterial( { color: 0x0000ff } );
     this.line = new THREE.LineSegments( this.geometry, material );
@@ -82,5 +86,5 @@ export default class Graph extends Unit {
   }
   animate() {
   }
-  antiInit() {}
+  dispose() {}
 }
