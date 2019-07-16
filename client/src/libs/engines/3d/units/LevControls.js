@@ -670,7 +670,7 @@ import * as THREE from 'three'
         dollyEnd.set( 0, distance );
 
         const delta = dollyEnd.y - dollyStart.y
-        const k = Math.min(50, Math.abs(delta)) ** (delta < 0 ? .5 : .7) * 2
+        const k = Math.min(25, Math.abs(delta)) ** (delta < 0 ? .35 : .7) * 2
         dollyDelta.set( 0, Math.pow( dollyEnd.y / dollyStart.y, scope.zoomSpeed * k ) );
 
         // dollyIn( dollyDelta.y );
@@ -688,7 +688,7 @@ import * as THREE from 'three'
         panEnd.set( x, y );
 
         panDelta.subVectors( panEnd, panStart )
-        .multiplyScalar( 1 + (panDelta.length() ** .5) / 5 )
+        .multiplyScalar( .5 + (panDelta.length() ** .5) / 3.5 )
         .multiplyScalar( scope.panSpeed );
 
         pan( panDelta.x, panDelta.y );
