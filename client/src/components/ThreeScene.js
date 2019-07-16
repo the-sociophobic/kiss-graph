@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-// import LevControls from 'libs/engines/3d/units/LevControls'
-import Hammer from 'hammerjs'
 
 import THREE from 'libs/engines/3d/three'
+
 import LevControls from 'libs/engines/3d/units/LevControls'
 
 export default class ThreeScene extends Component{

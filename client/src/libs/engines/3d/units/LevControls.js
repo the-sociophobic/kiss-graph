@@ -431,7 +431,7 @@ import * as THREE from 'three'
       // const delta = typeof e.deltaY !== "undefined" ? -e.deltaY : (1 - e.scale)
       var vector = new THREE.Vector3(0, 0, -1)
       .applyQuaternion(object.quaternion)
-      .multiplyScalar(-delta * .125)
+      .multiplyScalar((1 - delta) * 6)
       object.position.add(vector)
       scope.target.add(vector)
       scope.update()
@@ -496,12 +496,12 @@ import * as THREE from 'three'
       if ( dollyDelta.y > 0 ) {
 
         // dollyIn( getZoomScale() );
-        translateZ( dollyDelta.y );
+        translateZ( 1 / getZoomScale() );
 
       } else if ( dollyDelta.y < 0 ) {
 
         // dollyOut( getZoomScale() );
-        translateZ( dollyDelta.y );
+        translateZ( getZoomScale() );
 
       }
 
@@ -542,12 +542,12 @@ import * as THREE from 'three'
       if ( event.deltaY < 0 ) {
 
         // dollyOut( getZoomScale() );
-        translateZ( event.deltaY )
+        translateZ( getZoomScale() )
 
       } else if ( event.deltaY > 0 ) {
 
         // dollyIn( getZoomScale() );
-        translateZ( event.deltaY )
+        translateZ( 1 / getZoomScale() )
 
       }
 
@@ -667,7 +667,7 @@ import * as THREE from 'three'
         dollyDelta.set( 0, Math.pow( dollyEnd.y / dollyStart.y, scope.zoomSpeed ) );
 
         // dollyIn( dollyDelta.y );
-        translateZ( dollyDelta.y )
+        translateZ( 1 / dollyDelta.y )
 
         dollyStart.copy( dollyEnd );
 
