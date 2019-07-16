@@ -286,9 +286,14 @@ import * as THREE from 'three'
 
     }
 
-    function getZoomScale() {
+    function getZoomScale(delta) {
 
-      return Math.pow( 0.95, scope.zoomSpeed );
+      if (typeof delta === "undefined")
+        return Math.pow( 0.95, scope.zoomSpeed );
+
+      // console.log(delta)
+      const k = Math.min(50, Math.abs(delta)) ** (delta > 0 ? .5 : .7) * 3
+      return Math.pow( 0.95, scope.zoomSpeed * k );
 
     }
 
@@ -431,7 +436,7 @@ import * as THREE from 'three'
       // const delta = typeof e.deltaY !== "undefined" ? -e.deltaY : (1 - e.scale)
       var vector = new THREE.Vector3(0, 0, -1)
       .applyQuaternion(object.quaternion)
-      .multiplyScalar((1 - delta) * 6)
+      .multiplyScalar((1 - delta) * 2)
       object.position.add(vector)
       scope.target.add(vector)
       scope.update()
@@ -496,12 +501,12 @@ import * as THREE from 'three'
       if ( dollyDelta.y > 0 ) {
 
         // dollyIn( getZoomScale() );
-        translateZ( 1 / getZoomScale() );
+        translateZ( 1 / getZoomScale(dollyDelta.y) );
 
       } else if ( dollyDelta.y < 0 ) {
 
         // dollyOut( getZoomScale() );
-        translateZ( getZoomScale() );
+        translateZ( getZoomScale(dollyDelta.y) );
 
       }
 
@@ -518,7 +523,7 @@ import * as THREE from 'three'
       panEnd.set( event.clientX, event.clientY );
 
       panDelta.subVectors( panEnd, panStart )
-      .multiplyScalar( 1 + panDelta.length() / 25 )
+      .multiplyScalar( 1 + (panDelta.length() ** .5) / 5 )
       .multiplyScalar( scope.panSpeed );
 
       pan( panDelta.x, panDelta.y );
@@ -542,12 +547,12 @@ import * as THREE from 'three'
       if ( event.deltaY < 0 ) {
 
         // dollyOut( getZoomScale() );
-        translateZ( getZoomScale() )
+        translateZ( getZoomScale(event.deltaY) )
 
       } else if ( event.deltaY > 0 ) {
 
         // dollyIn( getZoomScale() );
-        translateZ( 1 / getZoomScale() )
+        translateZ( 1 / getZoomScale(event.deltaY) )
 
       }
 
@@ -664,7 +669,9 @@ import * as THREE from 'three'
 
         dollyEnd.set( 0, distance );
 
-        dollyDelta.set( 0, Math.pow( dollyEnd.y / dollyStart.y, scope.zoomSpeed ) );
+        const delta = dollyEnd.y - dollyStart.y
+        const k = Math.min(50, Math.abs(delta)) ** (delta > 0 ? .5 : .7) * 3
+        dollyDelta.set( 0, Math.pow( dollyEnd.y / dollyStart.y, scope.zoomSpeed * k ) );
 
         // dollyIn( dollyDelta.y );
         translateZ( 1 / dollyDelta.y )
@@ -680,7 +687,9 @@ import * as THREE from 'three'
 
         panEnd.set( x, y );
 
-        panDelta.subVectors( panEnd, panStart ).multiplyScalar( scope.panSpeed );
+        panDelta.subVectors( panEnd, panStart )
+        .multiplyScalar( 1 + (panDelta.length() ** .5) / 5 )
+        .multiplyScalar( scope.panSpeed );
 
         pan( panDelta.x, panDelta.y );
 
