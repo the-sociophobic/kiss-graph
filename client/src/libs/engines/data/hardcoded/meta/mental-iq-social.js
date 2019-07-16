@@ -300,4 +300,8 @@ export default [
       inst: "stefan_pushkov",
     }
   },
+  {
+    nickName: "Viktor%20Tsoy",
+    additionalConnections: 3,
+  },
 ]

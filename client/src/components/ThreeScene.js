@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+// import LevControls from 'libs/engines/3d/units/LevControls'
 import Hammer from 'hammerjs'
 
 import THREE from 'libs/engines/3d/three'
+import LevControls from 'libs/engines/3d/units/LevControls'
 
 export default class ThreeScene extends Component{
   constructor(props) {
@@ -42,24 +44,10 @@ export default class ThreeScene extends Component{
       0.1,
       1000
     )
-    this.controls = new THREE.OrbitControls( this.camera, this.render.domElement )
-    this.controls.screenSpacePanning = true
-    this.controls.enableZoom = false //disable zoom on mousewheel
-    this.controls.panSpeed = 2
-    window.addEventListener("wheel", this.cameraCustomZoom.bind(this), {passive: false})
+    this.controls = new LevControls( this.camera, this.render.domElement )
+    this.controls.panSpeed = 1.5
     this.camera.position.z = 5
     this.controls.update()
-    //prevent window from reactiong to controls 
-    const preventDefault = event => event.preventDefault()
-    //Web
-    ViewerDiv.addEventListener("onscroll", preventDefault, {passive: false})    
-    ViewerDiv.addEventListener("wheel", preventDefault, {passive: false})    
-    //Mobile
-    ViewerDiv.addEventListener("touchstart", preventDefault, {passive: false})
-    ViewerDiv.addEventListener("touchend", preventDefault, {passive: false})
-    ViewerDiv.addEventListener("touchcancel", preventDefault, {passive: false})
-    ViewerDiv.addEventListener("touchmove", preventDefault, {passive: false})    
-
 
     this.units = []
     const props = {
@@ -74,18 +62,10 @@ export default class ThreeScene extends Component{
     this.props.myScene.units.forEach(unit => this.units.push(new unit(props)))
     this.start()
 
-    this.hammer = new Hammer(this.viewerRef.current)
-    this.hammer.get('pinch').set({ enable: true })
-    this.hammer.on('pinchmove', this.cameraCustomZoom.bind(this))
-
-  }
-
-  cameraCustomZoomm = e => {
-    console.log("e")
   }
 
   componentWillUnmount(){
-    this.units.forEach(unit => unit.antiInit())
+    this.units.forEach(unit => unit.dispose())
     this.stop()
     // this.viewerRef.removeChild(this.renderer.domElement)
   }
@@ -102,31 +82,11 @@ export default class ThreeScene extends Component{
     this.frameId = window.requestAnimationFrame(this.animate)
     this.controls.update()
   }
-
-  cameraCustomZoom = e => {
-    const delta = typeof e.deltaY !== "undefined" ? e.deltaY : (1 - e.scale)
-    var vector = new THREE.Vector3(0, 0, -1)
-    .applyQuaternion(this.camera.quaternion)
-    .multiplyScalar(delta * .125)
-    this.camera.position.add(vector)
-    this.controls.target.add(vector)
-    this.controls.update()
-  }
   
   render = () => (
-    // <div ref={this.viewerRef} className="Viewer">
-    //   <Hammer
-    //     onPinch={this.cameraCustomZoom}
-    //     options={{
-    //       recognizers: {
-    //         pinch: { enable: true }
-    //       }}}
-    //   >
-        <div
-          className="Viewer"
-          ref={this.viewerRef}
-        />
-    //   </Hammer>
-    // </div>
+    <div
+      className="Viewer"
+      ref={this.viewerRef}
+    />
   )
 }

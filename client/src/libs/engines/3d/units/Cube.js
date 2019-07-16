@@ -13,5 +13,5 @@ export default class Cube extends Unit {
     this.cube.rotation.x += 0.01
     this.cube.rotation.y += 0.01
   }
-  antiInit() {}
+  dispose() {}
 }

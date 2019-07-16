@@ -16,6 +16,8 @@ export default class GraphCloth extends PhysicalUnit {
       .map(() => new THREE.Vector3())
 
     this.maxWeight = Math.max(...props.nodes.map(node => node.weight))
+    this.maxWeightIndex = props.nodes.map(node => node.weight).indexOf(this.maxWeight)
+    this.nodes.forEach(node => node.vector.sub(this.nodes[this.maxWeightIndex].vector))
   }
 
   recalculate = deltaTime => {
@@ -86,6 +88,16 @@ export default class GraphCloth extends PhysicalUnit {
       .sub(force)
       .clampLength(0, maxVectorLength)
     })
+    //CLAMP FORCES
+    nodes.forEach((node, index) => {
+      const distanceFromCenter = node.vector.length()
+      if (distanceFromCenter > clampDistanceFromCenter) {
+        const normal = node.vector.clone().normalize()
+        const forceOverflow = forces[index].clone().dot(normal)
+        if (forceOverflow > 0)  
+          forces[index].sub(normal.clone().multiplyScalar(forceOverflow))
+      }
+    })
     
     //RECALCULATE VELOCITIES
     velocities.forEach((velocity, index) => {
@@ -104,7 +116,7 @@ export default class GraphCloth extends PhysicalUnit {
       const velocity = velocities[index]
       node.vector
       .add(velocity.clone().multiplyScalar(deltaTime))
-      .clampLength(0, clampDistanceFromCenter)
+      // .clampLength(0, clampDistanceFromCenter)
     })
   }
 
@@ -113,7 +125,7 @@ export default class GraphCloth extends PhysicalUnit {
 }
 
 
-const velocityAttenuation = .99
+const velocityAttenuation = .975
 
 const overflowForceK = 10
 const overflowForceDistanceFromCenter = 35
@@ -129,7 +141,7 @@ const edgeLength = (weight0, weight1) => {
   return ((localWeight0 * localWeight1) ** .5) * edgeLengthK
 }
 
-const intermolecularForceK = 10
+const intermolecularForceK = 25
 const intermolecularForce = (node0, node1) => {
   let distance = node0.vector.clone().sub(node1.vector)
   const weightInfluence = (node0.weight * node1.weight) ** 1
@@ -142,7 +154,7 @@ const intermolecularForce = (node0, node1) => {
   .clampLength(0, maxVectorLength)
 }
 
-const edgeResistanceK = 5000
+const edgeResistanceK = 4200
 const edgeResistanceForce = (node0, node1) => {
   let subVector = node0.vector.clone().sub(node1.vector)
   const currentLength = subVector.length()

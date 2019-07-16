@@ -5,5 +5,5 @@ export default class PhysicalUnit {
   
   recalculate = deltaTime => {}
 
-  antiInit() {}
+  dispose() {}
 }
