@@ -122,7 +122,8 @@ export default [
   {
     nickName: "Lev%20Vasilyev",
     mentalDisorder: 3,
-    iq: 123,
+    iq: 131,
+    // iq: 123,
     additionalConnections: 1,
     social: {
       vk: "",
@@ -301,7 +302,17 @@ export default [
     }
   },
   {
+    nickName: "Kirill%20Vselensky",
+    social: {
+      inst: "krbsbeauty",
+    }
+  },
+  {
     nickName: "Viktor%20Tsoy",
     additionalConnections: 3,
+  },
+  {
+    nickName: "Polina%20Mishago",
+    additionalConnections: 20,
   },
 ]

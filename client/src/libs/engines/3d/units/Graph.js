@@ -2,7 +2,6 @@ import { MeshLine, MeshLineMaterial } from 'three.meshline'
 import TextSprite from 'three.textsprite'
 
 import Unit from 'libs/engines/3d/Unit'
-import GraphCloth from 'libs/engines/physics/GraphCloth'
 
 import heatMap from 'img/heat.png'
 

@@ -38,7 +38,10 @@ module.exports = {
     },
     instId: {
       type: 'number',
-      example: 404465085,
+      example: 15404731780,
+      // example: 404465085,
+      //https://www.instagram.com/oauth/authorize/?client_id=e4c0b09f2b8e47ec88ae28e20af1841e&redirect_uri=http://kiss-graph.com&response_type=token
+      //404465085.e4c0b09.2c95b36c38fd4fb99ab273633a7e5f77
     },
     fbId: {
       type: 'number',
