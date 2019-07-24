@@ -1,7 +1,7 @@
 import Unit from 'libs/engines/3d/Unit'
 import GraphCloth from 'libs/engines/physics/GraphCloth'
 
-export default class Graph extends Unit {
+export default class GraphPosCalculator extends Unit {
   constructor(props) {
     super(props)
     const { THREE, scene } = props
@@ -14,7 +14,10 @@ export default class Graph extends Unit {
     this.nodes = nodes
     // .filter(node => node.connections > 0)
     .map(node => ({
-      vector: new THREE.Vector3(
+      vector: //node.pos ? 
+      // new THREE.Vector3(node.pos.x, node.pos.y, node.pos.z)
+      // :
+      new THREE.Vector3(
         node.posRaw.x * 2.15,
         node.posRaw.y * 2.15,
         Math.random() * (60 - node.connections) / 15
@@ -65,7 +68,7 @@ export default class Graph extends Unit {
       this.verticesBuffer.array = vertices
       this.verticesBuffer.needsUpdate = true
 
-      if (this.frameNumber === 7500)
+      if (this.frameNumber === 3500)
         this.props.sendData(
           JSON.stringify(positions.map(pos => ({
             x: pos[0],
