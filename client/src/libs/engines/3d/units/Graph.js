@@ -122,10 +122,10 @@ export default class Graph extends Unit {
           color: 0x000000,
           fog: false,
         },
-        redrawInterval: 500,
+        redrawInterval: 1000,
         textSize: .25,
-        minFontSize: 16,
-        maxFontSize: 128,
+        minFontSize: 32,
+        maxFontSize: 96,
         texture: {
           fontFamily: 'Arial, Helvetica, sans-serif',
           text: node.name.replace(' ', '\n') + " " + this.nodes[index].weight,
