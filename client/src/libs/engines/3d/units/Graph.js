@@ -1,33 +1,82 @@
-import { MeshLine, MeshLineMaterial } from 'three.meshline'
 import TextSprite from 'three.textsprite'
 
 import Unit from 'libs/engines/3d/Unit'
 
 import heatMap from 'img/heat.png'
 
+const cylinderVertices = (R, length, segments, weight0, weight1) => {
+  var vertices = [segments * 2 * 3]
+  var uvs = [segments * 2 * 2]
+
+  for (var i = 0; i < segments; i++) {
+    const angle = Math.PI * 2 * i / segments
+    const x = Math.sin(angle) * R
+    const y = length / 2
+    const z = Math.cos(angle) * R
+
+    vertices[i * 6]     = x
+    vertices[i * 6 + 1] = 0
+    vertices[i * 6 + 2] = z
+    vertices[i * 6 + 3] = x
+    vertices[i * 6 + 4] = y
+    vertices[i * 6 + 5] = z
+
+    uvs[i * 4]     = weight0
+    uvs[i * 4 + 1] = 0
+    uvs[i * 4 + 2] = weight1
+    uvs[i * 4 + 3] = 0
+  }
+
+  return {
+    vertices: new Float32Array(vertices),
+    uvs: new Float32Array(uvs),
+  }
+}
+
+const cylinderGraph = (THREE, nodes, edges) => {
+  const up = new THREE.Vector3(0, 1, 0)
+  edges.forEach(edge => {
+    const node0 = nodes[edge.node0]
+    const node1 = nodes[edge.node1]
+    const vec0 = new THREE.Vector3(node0.pos)
+    const vec1 = new THREE.Vector3(node1.pos)
+    const normal = new THREE.Vector3().subVectors(vec1, vec0).normalize()
+
+  })
+}
+
 export default class Graph extends Unit {
   constructor(props) {
     super(props)
     const { THREE, scene } = props
-    // const geometry = new THREE.BoxGeometry(1, 1, 1)
-    // const material = new THREE.MeshBasicMaterial({ color: '#433F81' })
-    // this.cube = new THREE.Mesh(geometry, material)
-    // scene.add(this.cube)
-
-
     const { nodes, edges } = this.props.store.get()
 
     this.edges = edges.map(edge => ({
       node0: nodes.map(node => node.name).indexOf(edge.node0),
       node1: nodes.map(node => node.name).indexOf(edge.node1),
     }))
-    this.nodes = nodes
-    .map(node => ({
-      vector: new THREE.Vector3(node.pos.x, node.pos.y, node.pos.z),
-      weight: node.connections > 0 ? node.connections : 1,
-    }))
 
-    this.geometry = new THREE.BufferGeometry();
+
+    const maxWeight = Math.max(...nodes.map(node => node.connections))
+    const colorsArray = [0x990099, 0x0000ff, 0x00ff00, 0xffff00, 0xffff00, 0xff0000, 0xffffff]
+    this.nodes = nodes
+    .map(node => {
+      // const weight = node.connections > 0 ? node.connections : 1
+      const weight = node.connections
+
+      // const floatSc = weight / maxWeight * colorsArray.length - 1
+      // const index = Math.floor(floatSc)
+      // const subs = floatSc - index
+      // const color = colorsArray[index] * subs + colorsArray[index + 1] * (1 - subs)
+
+      return ({
+        vector: new THREE.Vector3(node.pos.x, node.pos.y, node.pos.z),
+        weight: weight,
+        color: weight / maxWeight,
+      })
+    })
+
+    this.bufferGeometry = new THREE.BufferGeometry();
 
     const vertices = new Float32Array(
       this.edges
@@ -40,43 +89,46 @@ export default class Graph extends Unit {
     this.verticesBuffer = new THREE.BufferAttribute(vertices, 3)
     this.verticesBuffer.dynamic = true
 
-    this.geometry.addAttribute('position', this.verticesBuffer)
+    this.bufferGeometry.addAttribute('position', this.verticesBuffer)
 
-    // const maxWeight = Math.max(...this.nodes.map(node => node.weight))
-    // const UVs = new Float32Array(
-    //   this.nodes
-    //     .map(node => [.5, .3])
+    // const colors = new Float32Array(
+    //   this.edges
+    //     .map(edge => {
+    //       const node0 = this.nodes[edge.node0]
+    //       const node1 = this.nodes[edge.node1]
+          
+    //       return [
+    //         ((node0.color & 0xff0000) >> 8) / 16,
+    //         ((node0.color & 0x00ff00) >> 4) / 16,
+    //         ((node0.color & 0x0000ff)) / 16,
+    //         ((node1.color & 0xff0000) >> 8) / 16,
+    //         ((node1.color & 0x00ff00) >> 4) / 16,
+    //         ((node1.color & 0x0000ff)) / 16,
+    //       ]
+    //     })
     //     .reduce((a, b) => [...a, ...b])
     // )
-    // this.geometry.addAttribute('uv', new THREE.BufferAttribute(UVs, 2))
+    // this.bufferGeometry.addAttribute('color', new THREE.BufferAttribute(colors, 3))
 
-    // var textureLoader = new THREE.TextureLoader()
-    //   .load(heatMap, texture => {
-        // var material = new THREE.MeshBasicMaterial( { map: texture } );
+
     var material = new THREE.MeshBasicMaterial( { color: 0x0000ff } );
-    this.line = new THREE.LineSegments( this.geometry, material )
+    // var material = new THREE.MeshBasicMaterial( { vertexColors: THREE.VertexColors } );
+    this.line = new THREE.LineSegments( this.bufferGeometry, material )
     scene.add( this.line )
       
-    // this.billboards = []
-    // nodes.forEach(node => {
-    //   var billboardGeometry = new THREE.PlaneGeometry(1, 1)
-    //   var billboardMaterial = new THREE.MeshBasicMaterial( {color: 0xf00000, side: THREE.DoubleSide} )
-    //   var plane = new THREE.Mesh( billboardGeometry, billboardMaterial )
-    //   plane.position.set(node.pos.x, node.pos.y, node.pos.z)
-    //   scene.add(plane)
-    //   this.billboards.push(plane)
-    // })
-    nodes.forEach(node => {
+    nodes.forEach((node, index) => {
       let sprite = new TextSprite({
         material: {
           color: 0x000000,
           fog: false,
         },
-        redrawInterval: 250,
+        redrawInterval: 500,
         textSize: .25,
+        minFontSize: 16,
+        maxFontSize: 128,
         texture: {
           fontFamily: 'Arial, Helvetica, sans-serif',
-          text: node.name.replace(' ', '\n'),
+          text: node.name.replace(' ', '\n') + " " + this.nodes[index].weight,
         },  
       })
       sprite.position.set(node.pos.x, node.pos.y, node.pos.z)
@@ -84,47 +136,20 @@ export default class Graph extends Unit {
     })
 
 
-        // var material = new MeshLineMaterial({ map: texture })
-    
-        // var geometry = new THREE.Geometry();
-        // for( var j = 0; j < Math.PI * 2; j += 2 * Math.PI / 100 ) {
-        //   var v = new THREE.Vector3( Math.cos( j ) * 2, Math.sin( j ), 0 );
-        //   geometry.vertices.push( v );
-        // }
+    // var textureLoader = new THREE.TextureLoader()
+    //   .load(heatMap, texture => {
+    //     // var material = new MeshLineMaterial({ color: 0x0000ff })
+    //     var material = new MeshLineMaterial({ map: texture, useMap: true, sizeAttenuation: 0, lineWidth: .1 })
+    //     var geometry = new THREE.Geometry().fromBufferGeometry( this.bufferGeometry )
+    //     var line = new MeshLine()
+    //     line.setGeometry(geometry, p => .1)
 
-        // var line = new MeshLine()
-        // line.setGeometry(geometry)
-
-        // var mesh = new THREE.Mesh( line.geometry, material ); // this syntax could definitely be improved!
-        // scene.add( mesh );
-
-
-
-
-        // var geometry = new THREE.Geometry();
-        // geometry.vertices.push(new THREE.Vector3(1, 1, 0))
-        // geometry.vertices.push(new THREE.Vector3(0, 1, 0))
-        // geometry.vertices.push(new THREE.Vector3(1, 0, 0))
-        // geometry.faces.push( new THREE.Face3( 0, 1, 2 ) )
-        // geometry.faceVertexUvs[0].push([
-        //   new THREE.Vector2(0, 1),
-        //   new THREE.Vector2(1, 1),
-        //   new THREE.Vector2(1, 0)
-        // ])
-
-        // var material = new THREE.MeshBasicMaterial({ map: texture })
-        // var mesh = new THREE.Mesh( geometry, material )
-        // scene.add(mesh)
-        // var wireframe = new THREE.WireframeGeometry( geometry );
-        // var line = new THREE.LineSegments( wireframe )
-        // scene.add(line)
-      // })
+    //     var mesh = new THREE.Mesh( line.geometry, material ) // this syntax could definitely be improved!
+    //     scene.add( mesh )
+    //   })
 
   }
   animate() {
-    // this.billboards.forEach(billboard =>
-    //   billboard.quaternion.copy(this.props.camera.quaternion)
-    // )
   }
   dispose() {}
 }
