@@ -23,6 +23,7 @@ export default class Layout extends Component {
   })
 
   componentDidMount() {
+    window.minimize() //wil it work ???
     this.updateDimensions()
     window.addEventListener('resize', this.updateDimensions)
 
