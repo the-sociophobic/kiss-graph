@@ -30,7 +30,9 @@ export default class ThreeScene extends Component{
     //ADD RENDERER
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
     this.renderer.setClearColor('#f6f6f6')
+    // this.renderer.setClearColor('#555555')
     this.renderer.setSize(width, height)
+    this.renderer.setPixelRatio(2)
     ViewerDiv.appendChild(this.renderer.domElement)    
 
     //ADD SCENE
