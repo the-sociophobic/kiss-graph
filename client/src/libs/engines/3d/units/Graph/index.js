@@ -1,4 +1,6 @@
 import TextSprite from 'three.textsprite'
+import UserSprite from 'libs/engines/3d/units/UserSprite'
+
 import Unit from 'libs/engines/3d/Unit'
 import LineGraph from './LineGraph'
 import HeatGraph from './HeatGraph'
@@ -26,7 +28,8 @@ export default class Graph extends Unit {
     scene.add( HeatGraph(this.nodes, this.edges, scene) )
       
     nodes.forEach((node, index) => {
-      let sprite = new TextSprite({
+      // let sprite = new TextSprite({
+      let sprite = new UserSprite({
         material: {
           color: 0x000000,
           fog: false,
@@ -44,11 +47,7 @@ export default class Graph extends Unit {
       sprite.position.set(node.pos.x, node.pos.y, node.pos.z)
       scene.add(sprite)
     })
-
-
-
   }
-  animate() {
-  }
+  animate() {}
   dispose() {}
 }
