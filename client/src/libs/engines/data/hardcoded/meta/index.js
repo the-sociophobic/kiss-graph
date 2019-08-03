@@ -4,7 +4,7 @@ import position from 'libs/engines/data/hardcoded/position/23.07.19.json'
 export default data => {
   return {
     nodes: data.nodes.map((node, index) => {
-      const psychoIndex = psychic.map(psycho => psycho.nickName.replace('%20', ' ')).indexOf(node.nickName)
+      const psychoIndex = psychic.map(psycho => psycho.nickName.replace(/%20/g, ' ')).indexOf(node.nickName)
       const meta = psychoIndex !== -1 ? psychic[psychoIndex] : {}
       let edges = data.edges
         .map(edge =>

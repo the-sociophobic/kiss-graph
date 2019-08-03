@@ -1,5 +1,5 @@
 import Unit from 'libs/engines/3d/Unit'
-import GraphCloth from 'libs/engines/physics/GraphCloth'
+import GraphCloth from './GraphCloth'
 
 export default class GraphPosCalculator extends Unit {
   constructor(props) {

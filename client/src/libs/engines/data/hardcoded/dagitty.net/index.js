@@ -11,7 +11,7 @@ export default data => {
     })
 
   const parsedNodes = nodes.map(node => {
-    const nickName = node.split(' E ')[0].replace('%20', ' ')
+    const nickName = node.split(' E ')[0].replace(/%20/g, ' ')
     const pos = node.split(' E @')[1].split(',')
     return {
       nickName: nickName,
@@ -31,7 +31,7 @@ export default data => {
     .map(edge => {
       const edgeNodes = edge
         .split(' ')
-        .map(node => node.replace('%20', ' '))
+        .map(node => node.replace(/%20/g, ' '))
       return edgeNodes.slice(1).map(node => ({
         node0: edgeNodes[0],
         node1: node,

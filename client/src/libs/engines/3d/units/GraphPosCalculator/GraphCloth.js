@@ -1,6 +1,6 @@
 import THREE from 'libs/engines/3d/three'
 
-import PhysicalUnit from './PhysicalUnit'
+import PhysicalUnit from 'libs/engines/physics/PhysicalUnit'
 
 export default class GraphCloth extends PhysicalUnit {
   constructor(props) {
