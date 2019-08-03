@@ -18,6 +18,11 @@ export default class ThreeScene extends Component{
     this.camera.updateProjectionMatrix()
     this.renderer.setSize(ViewerDiv.clientWidth, ViewerDiv.clientHeight)
     this.controls.update()
+
+    if (ViewerDiv.clientWidth < 900 || ViewerDiv.clientHeight < 900)
+      this.renderer.setPixelRatio(2)
+    else
+      this.renderer.setPixelRatio(1)
   }
 
   componentDidMount() {
@@ -32,7 +37,8 @@ export default class ThreeScene extends Component{
     this.renderer.setClearColor('#f6f6f6')
     // this.renderer.setClearColor('#555555')
     this.renderer.setSize(width, height)
-    this.renderer.setPixelRatio(2)
+    if (width < 900 || height < 900)
+      this.renderer.setPixelRatio(2)
     ViewerDiv.appendChild(this.renderer.domElement)    
 
     //ADD SCENE
