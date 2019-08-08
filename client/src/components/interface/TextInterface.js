@@ -7,13 +7,12 @@ export default class TextInterface extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentName: "",
       currentOptions: [],
     }
   }
 
   setNode = nodeName => {
-    this.setState({currentName: nodeName})
+    this.updateOptions(nodeName)
     const node = this.props.data.store.get({name: nodeName})
     this.props.setNode(node.id)
   }

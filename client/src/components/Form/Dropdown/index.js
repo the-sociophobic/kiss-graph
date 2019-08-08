@@ -13,7 +13,8 @@ export default class Dropdown extends Component {
   }
 
   externalAreaClick = e => {
-    if (e.target.parentElement !== this.dropdownAreaRef.current &&
+    if (this.state.opened &&
+        e.target.parentElement !== this.dropdownAreaRef.current &&
         e.target !== this.inputFieldRef.current)
       this.dropdownRef && this.dropdownRef.close()
   }
