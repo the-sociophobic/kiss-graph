@@ -20,7 +20,7 @@ class store {
     this.metaData_prev = metaParser(this.data_prev).nodes
   }
 
-  get = (props) => {
+  get = props => {
     if (typeof props === "undefined")
       return {
         nodes: this.metaData,
@@ -55,7 +55,7 @@ class store {
     if (typeof name !== "undefined") {
       const index = metaData.map(node => node.name).indexOf(name)
       if (index !== -1)
-        nodeInfo = metaData[index]
+        return metaData[index]
     }
 
     if (typeof nodeInfo.name !== "undefined")
@@ -75,6 +75,19 @@ class store {
       nodes: nodes,
       edges: edges,
     })
+  }
+
+  search = props => {
+    let filteredNodes = this.metaData.filter(node =>
+      Object.keys(props).map(key =>
+        node[key] && node[key]
+          .toLowerCase()
+          .includes(props[key].toLowerCase())
+      )
+      .reduce((a, b) => a || b)
+    )
+
+    return filteredNodes
   }
 }
 
