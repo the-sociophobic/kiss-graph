@@ -13,13 +13,17 @@ export default data => {
         )
         .reduce((a, b) => a + b)
       
-      if (data.nodes.length > 850)
-        edges += (meta.additionalConnections || 0)
+      edges += (meta.additionalConnections || 0)
+
+      const pos = position[index] || {x: 100, y: 100, z: 100}
 
       return {
+        id: index,
         name: node.nickName,
         posRaw: node.pos,
-        pos: position[index] || {x: 100, y: 100, z: 100},
+        pos: pos,
+        cameraPosition: [pos.x, pos.y, pos.z + 5],
+        cameraTarget: [pos.x, pos.y, pos.z],
         connections: edges,
         mentalDisorder: meta.mentalDisorder,
         iq: meta.iq,

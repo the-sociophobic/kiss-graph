@@ -111,19 +111,25 @@ $canvas-offset: 40px
   position: relative
   width: 100vw
   height: 100vh
-  .viever-container,
+  display: flex
+  flex-direction: row
+  flex-wrap: nowrap
+  @media (max-width: 1024px)
+    flex-direction: column
   .Viewer,
   .interface-container
     position: absolute
-  .viever-container,
+  .viewer-container,
+    width: 100%
+    // height: 100%
+    // bottom: 0
+    // right: 0
+    flex-grow: 1
+    overflow: hidden
+    position: relative
+  .Viewer
     width: 100%
     height: 100%
-    bottom: 0
-    right: 0
-    overflow: hidden
-  .Viewer
-    width: 100vw
-    height: 100vh
     bottom: 0
     right: 0
   .interface-container
@@ -223,3 +229,126 @@ $arrow-size: 7px
       border: 0
       left: 3px
       top: 3px
+
+
+
+
+
+
+
+
+
+
+.text-interface
+  // position: absolute
+  // top: 0
+  // right: 0
+  // flex-grow: 1
+  width: 300px
+  height: 100%
+  background-color: white
+  box-shadow: 0 0 15px rgba(0, 0, 0, .25)
+  padding: 10px
+  z-index: 10000
+  @media (max-width: 1024px)
+    width: 100%
+    height: 100px
+
+
+
+
+
+$red: #9a3323
+$light: white
+$dark: black
+$light-gray: #cccccc
+$secondary: #c3562b
+$box-shadow: 0px 5px 15px rgba(0, 0, 0, .35);
+$input-height: 28px
+
+.form-group
+  padding: 14px 10px 0
+  margin: 10px 0
+  position: relative
+  &__label
+    position: absolute
+    font-size: 12px
+    top: 0
+    left: 15px
+  &__input
+    position: relative
+    width: 100%
+    line-height: $input-height
+    padding: 0 10px
+    font-size: 16px
+    outline: none
+    border: 2px solid $light-gray
+    border-radius: 5px
+    &::placeholder
+      color: #b1b1b1
+
+    &--dropdown
+      cursor: pointer
+      color: $dark
+      line-height: 2
+      position: relative
+      user-select: none
+      background: white
+      z-index: 101
+      &::after
+        position: absolute
+        width: 8px
+        height: 8px
+        content: ""
+        top: 10px
+        right: 10px
+        border-bottom: 2px solid $secondary
+        border-right: 2px solid $secondary
+        transform: rotate(45deg)
+      &__options
+        position: absolute
+        display: table
+        overflow: hidden
+        border-radius: 3px
+        box-shadow: $box-shadow
+        width: 100%
+        top: 100%
+        left: 0
+        z-index: 100
+        user-select: none
+        &--default
+          top: calc(100% + 4px)
+        &__item
+          position: relative
+          z-index: 1000
+          min-width: 100%
+          background-color: $light
+          color: $dark
+          // font-weight: $font-weight-semibold
+          padding: .5rem .8rem
+          cursor: pointer
+          &:last-child
+            border-bottom-left-radius: 3px
+            border-bottom-right-radius: 3px
+          &:hover
+            background-color: $secondary
+
+$reset-size: 22px
+.reset
+  position: absolute
+  top: 2px
+  right: 2px
+  height: $input-height
+  width: $input-height
+  border: none
+  cursor: pointer
+  // background: #ffffff
+  outline:none
+  display: flex
+  align-items: center
+  justify-content: center
+  &:before
+    content: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%234a4a4a' width='#{$reset-size}' height='#{$reset-size}' viewBox='0 0 320 512'%3E%3Cpath d='M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z'/%3E%3C/svg%3E")
+    display: block
+    height: $reset-size
+    width: $reset-size

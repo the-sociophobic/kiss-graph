@@ -98,6 +98,13 @@ export default class GraphCloth extends PhysicalUnit {
           forces[index].sub(normal.clone().multiplyScalar(forceOverflow))
       }
     })
+    //UP FORCE
+    // nodes.forEach((node, index) => {
+    //   const force = new THREE.Vector3(0, (node.vector.y < 0 ? 3 : 1) / ((node.vector.y ** 1.55) + .05) * 555, 0)
+    //   forces[index]
+    //   .add(force)
+    //   .clampLength(0, maxVectorLength)
+    // })
     
     //RECALCULATE VELOCITIES
     velocities.forEach((velocity, index) => {

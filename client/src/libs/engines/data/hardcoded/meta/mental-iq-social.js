@@ -6,7 +6,7 @@ export default [
   {
     nickName: "David%20Zharnitsky",
     mentalDisorder: 6,
-    iq: "180",
+    iq: "\"180\"",
     social: {
       vk: "",
       inst: "",
@@ -313,6 +313,6 @@ export default [
   },
   {
     nickName: "Polina%20Mishago",
-    additionalConnections: 20,
+    // additionalConnections: 20,
   },
 ]

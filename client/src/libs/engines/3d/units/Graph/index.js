@@ -40,12 +40,14 @@ export default class Graph extends Unit {
         maxFontSize: 64,
         texture: {
           fontFamily: 'Arial, Helvetica, sans-serif',
-          text: node.name.replace(' ', '\n') + " " + this.nodes[index].weight,
+          text: node.name.replace(' ', '\n'),
         },  
       })
 
       sprite.position.set(node.pos.x, node.pos.y, node.pos.z)
       scene.add(sprite)
+      sprite.cursor = 'pointer'
+      sprite.on('click', () => props.setNode(node.id))
     })
   }
   animate() {}

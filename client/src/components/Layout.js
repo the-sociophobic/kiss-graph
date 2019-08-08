@@ -7,6 +7,8 @@ import StoreContext from 'libs/engines/data/store/StoreContext'
 
 import axios from 'axios'
 
+import TextInterface from 'components/interface/TextInterface'
+
 export default class Layout extends Component {
   constructor(props) {
     super(props)
@@ -14,7 +16,13 @@ export default class Layout extends Component {
       W: 0,
       H: 0,
       retrievedData: "",
+      // camera: {
+      //   position: new THREE.Vector3(0, 0, 5),
+      //   target: new THREE.Vector3(0, 0, 0),
+      // }
+      nodeToShow: undefined,
     }
+    this.threeSceneRef = new React.createRef()
   }
 
   updateDimensions = () => this.setState({
@@ -41,13 +49,23 @@ export default class Layout extends Component {
     const props = {
       W: this.state.W,
       H: this.state.H,
+      // cameraData: this.state.camera,
       data: this.context,
       sendData: data => this.setState({retrievedData: data}),
+      setNode: id => {
+        const node = this.context.store.get({id: id})
+
+        this.setState({nodeToShow: node})
+        if (typeof node !== 'undefined' && this.threeSceneRef.current)
+          this.threeSceneRef.current.setCamera(node.cameraPosition, node.cameraTarget)
+      }
     }
     return (
       <div className="page-container">
-        <div className="viever-container" >
+        <TextInterface node={this.state.nodeToShow} />
+        <div className="viewer-container" >
           <ThreeScene
+            ref={this.threeSceneRef}
             myScene={myScene}
             {...props}
           />

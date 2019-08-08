@@ -68,7 +68,7 @@ export default class GraphPosCalculator extends Unit {
       this.verticesBuffer.array = vertices
       this.verticesBuffer.needsUpdate = true
 
-      if (this.frameNumber === 3500)
+      if (this.frameNumber === 1300)
         this.props.sendData(
           JSON.stringify(positions.map(pos => ({
             x: pos[0],
@@ -81,7 +81,7 @@ export default class GraphPosCalculator extends Unit {
         console.log(this.frameNumber)
 
 
-    }, 120)
+    }, 200)
 
     var material = new THREE.MeshBasicMaterial( { color: 0x0000ff } );
     this.line = new THREE.LineSegments( this.geometry, material );
