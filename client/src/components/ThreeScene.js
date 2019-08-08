@@ -58,6 +58,7 @@ export default class ThreeScene extends Component{
     )
     this.controls = new LevControls( this.camera, ViewerDiv )
     this.controls.panSpeed = 1.5
+    this.controls.enableKeys = false
     this.camera.position.z = 5
     this.controls.update()
 

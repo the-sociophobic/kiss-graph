@@ -50,12 +50,17 @@ export default class extends Component {
     this.props.updateOptions && this.props.updateOptions(value)
   }
 
+  setValue = value => {
+    // this.setState({typedValue: value})
+    this.props.onChange(value)
+  }
+
   renderOptions = () => this.props.options && this.props.options
     .map((option, index) =>
       <div
         key={index}
         className="form-group__input--dropdown__options__item"
-        onClick={() => this.props.onChange(option)}
+        onClick={() => this.setValue(option)}
       >
         {option}
       </div>
