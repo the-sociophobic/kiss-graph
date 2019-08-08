@@ -26,6 +26,7 @@ export default class Graph extends Unit {
     })
 
     scene.add( HeatGraph(this.nodes, this.edges, scene) )
+    // scene.add( LineGraph(this.nodes, this.edges, scene) )
       
     nodes.forEach((node, index) => {
       // let sprite = new TextSprite({
@@ -48,6 +49,23 @@ export default class Graph extends Unit {
       scene.add(sprite)
       sprite.cursor = 'pointer'
       sprite.on('click', () => props.setNode(node.id))
+      
+      var timer, touchStarted = false
+      const registerTapHandler = () => {
+        timer = setTimeout(() => unregisterTapHandler(), 400)
+        touchStarted = true
+      }
+      const unregisterTapHandler = () => {
+        touchStarted = false
+        clearTimeout(timer)
+      }
+      const tapHandler = () => {
+        if (touchStarted)
+          props.setNode(node.id)
+        unregisterTapHandler()
+      }
+      sprite.on('touchstart', registerTapHandler)
+      sprite.on('touchend', tapHandler)
     })
   }
   animate() {}

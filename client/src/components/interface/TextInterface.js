@@ -9,6 +9,11 @@ export default class TextInterface extends Component {
     this.state = {
       currentOptions: [],
     }
+    this.interfaceRef = new React.createRef()
+  }
+
+  componentDidMount() {
+    this.interfaceRef.current.addEventListener( 'wheel', e => e.preventDefault(), { passive: false } )
   }
 
   setNode = nodeName => {
@@ -32,7 +37,10 @@ export default class TextInterface extends Component {
   render = () => {
     const { node } = this.props
     return (
-      <div className="text-interface">
+      <div
+        ref={this.interfaceRef}
+        className="text-interface"
+      >
         <div className="text-interface__search-bar">
           {/* <Input */}
           <Dropdown
