@@ -70,7 +70,8 @@ export default class extends Component {
     <Fragment>
       <Input
         inputFieldRef={this.props.inputFieldRef}
-        className={"form-group__input--dropdown " + (this.props.opened ? "active" : '')}
+        //somehow it blurs input on iOS
+        // className={"form-group__input--dropdown " + (this.props.opened ? "active" : '')}
         placeholder={this.props.placeholder}
         required={this.props.required}
         value={(this.state.neverTypedFlag && this.props.value) || this.state.typedValue}
