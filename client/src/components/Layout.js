@@ -58,11 +58,15 @@ export default class Layout extends Component {
         this.setState({nodeToShow: node})
         if (typeof node !== 'undefined' && this.threeSceneRef.current)
           this.threeSceneRef.current.setCamera(node.cameraPosition, node.cameraTarget)
-      }
+      },
+      nodeToShow: this.state.nodeToShow,
     }
     return (
       <div className="page-container">
-        <TextInterface node={this.state.nodeToShow} />
+        <TextInterface
+          node={this.state.nodeToShow}
+          {...props}
+        />
         <div className="viewer-container" >
           <ThreeScene
             ref={this.threeSceneRef}

@@ -128,7 +128,8 @@ export default [
     social: {
       vk: "",
       inst: "",
-    }
+    },
+    userName: "the_sociophobic"
   },
   {
     nickName: "Mark%20Kozharskiy",
