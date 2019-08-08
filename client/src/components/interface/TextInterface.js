@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 
-import Input from 'components/Form/Input'
 import Dropdown from 'components/Form/Dropdown'
+
+import { registerListeners, unregisterListeners } from 'libs/utils/preventMobileScrolling'
+
 
 export default class TextInterface extends Component {
   constructor(props) {
@@ -13,7 +15,10 @@ export default class TextInterface extends Component {
   }
 
   componentDidMount() {
-    this.interfaceRef.current.addEventListener( 'wheel', e => e.preventDefault(), { passive: false } )
+    registerListeners(this.interfaceRef.current)
+  }
+  componentWillUnmount() {
+    unregisterListeners(this.interfaceRef.current)
   }
 
   setNode = nodeName => {
@@ -42,7 +47,6 @@ export default class TextInterface extends Component {
         className="text-interface"
       >
         <div className="text-interface__search-bar">
-          {/* <Input */}
           <Dropdown
             input
             value={(this.props.nodeToShow && this.props.nodeToShow.name) || ""}
@@ -54,7 +58,7 @@ export default class TextInterface extends Component {
           />
         </div>
         {typeof node !== "undefined" &&
-          <div>
+          <div className="node-info">
             {Object.keys(node)
               .filter(key =>
                 ["gender", "connections", "homosexuality", "mentalDisorder", "iq"]
@@ -62,7 +66,13 @@ export default class TextInterface extends Component {
                 &&
                 typeof node[key] !== "undefined"
               )
-              .map(key => <div key={key}>{key}: {node[key]}</div>)
+              .map(key =>
+                <div
+                  key={key}
+                  className="node-info__item"
+                >
+                  {key}: {node[key]}
+                </div>)
             }
           </div>
         }

@@ -51,13 +51,12 @@ textarea
   width: 100%
 
 .App
-  min-height: 100vh
+  max-height: 100vh
   display: flex
   flex-direction: column
   align-items: stretch
   .content
     flex-grow: 1
-    overflow-y: auto
     flex-shrink: 0
     display: flex
     flex-direction: column
@@ -253,6 +252,12 @@ $arrow-size: 7px
   @media (max-width: 1024px)
     width: 100%
     height: auto
+  .node-info
+    padding: 0 0 5px
+    &__item
+      width: 100%
+      line-height: 22px
+      padding: 0 11px
 
 
 
@@ -262,14 +267,16 @@ $red: #9a3323
 $light: white
 $dark: black
 $light-gray: #cccccc
+// $light-light-gray: #f6f6f6
+$light-light-gray: #f3f6f7
 // $secondary: #c3562b
 $secondary: #aaff09
 $box-shadow: 0px 5px 15px rgba(0, 0, 0, .35);
-$input-height: 28px
+$input-height: 32px
 
 .form-group
   // padding: 14px 10px 0
-  margin: 10px 0
+  margin: 2px 0 10px
   position: relative
   &__label
     position: absolute
@@ -283,7 +290,9 @@ $input-height: 28px
     padding: 0 10px
     font-size: 16px
     outline: none
-    border: 2px solid $light-gray
+    border: 1px solid $light-gray
+    background: $light-light-gray
+    -webkit-appearance: none
     border-radius: 5px
     &::placeholder
       color: #b1b1b1

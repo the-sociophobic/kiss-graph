@@ -6,6 +6,10 @@ import LevControls from 'libs/engines/3d/units/LevControls'
 
 import { Interaction } from 'three.interaction'
 
+import ResizeObserver from 'resize-observer-polyfill'
+
+
+
 export default class ThreeScene extends Component{
   constructor(props) {
     super(props)
@@ -22,14 +26,15 @@ export default class ThreeScene extends Component{
     this.renderer.setSize(ViewerDiv.clientWidth, ViewerDiv.clientHeight)
     this.controls.update()
 
-    // if (ViewerDiv.clientWidth < 900 || ViewerDiv.clientHeight < 900)
-    //   this.renderer.setPixelRatio(2)
-    // else
-    //   this.renderer.setPixelRatio(1)
+    if (ViewerDiv.clientWidth < 500 || ViewerDiv.clientHeight < 500)
+      this.renderer.setPixelRatio(2)
+    else
+      this.renderer.setPixelRatio(1)
   }
 
   componentDidMount() {
-    window.addEventListener('resize', this.updateDimensions.bind(this))
+    this.resizeObs = new ResizeObserver(this.updateDimensions.bind(this)).observe(this.viewerRef.current)
+    // window.addEventListener('resize', this.updateDimensions.bind(this))
 
     const ViewerDiv = this.viewerRef.current
     const width = ViewerDiv.clientWidth
@@ -41,8 +46,8 @@ export default class ThreeScene extends Component{
     this.renderer.setClearColor('#f6f6f6')
     // this.renderer.setClearColor('#555555')
     this.renderer.setSize(width, height)
-    // if (width < 900 || height < 900)
-      // this.renderer.setPixelRatio(2)
+    if (width < 500 || height < 500)
+      this.renderer.setPixelRatio(2)
     // this.renderer.sortObjects = false
     ViewerDiv.appendChild(this.renderer.domElement)
 
@@ -122,6 +127,9 @@ export default class ThreeScene extends Component{
     // this.camera.position.fromArray(position)
     // this.controls.target.fromArray(target)
     // const newPosition = new THREE.Vector3(...position)
+    // console.log(target)
+    if (typeof target === "undefined")
+      return
     const newTarget = new THREE.Vector3(...target)
     const newPosition = newTarget.clone()
       .add(this.camera.position.clone().sub(this.controls.target))
