@@ -68,7 +68,7 @@ export default class GraphPosCalculator extends Unit {
       this.verticesBuffer.array = vertices
       this.verticesBuffer.needsUpdate = true
 
-      if (this.frameNumber === 1300)
+      if (this.frameNumber === 2500)
         this.props.sendData(
           JSON.stringify(positions.map(pos => ({
             x: pos[0],

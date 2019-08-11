@@ -1,5 +1,5 @@
 import psychic from './mental-iq-social'
-import position from 'libs/engines/data/hardcoded/position/03.08.19.json'
+import position from 'libs/engines/data/hardcoded/position/11.08.19.json'
 
 export default data => {
   return {
