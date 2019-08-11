@@ -2,7 +2,7 @@ export default (element, fn, ms) => {
   var timer, touchStarted = false
 
   const registerTapHandler = () => {
-    timer = setTimeout(() => unregisterTapHandler(), ms || 400)
+    timer = setTimeout(() => unregisterTapHandler(), ms || 300)
     touchStarted = true
   }
 
