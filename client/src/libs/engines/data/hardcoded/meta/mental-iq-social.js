@@ -126,8 +126,8 @@ export default [
     // iq: 123,
     additionalConnections: 1,
     social: {
-      vk: "",
-      inst: "",
+      vk: "11879299",
+      inst: "404465085", //https://i.instagram.com/api/v1/users/{user_id}/info/
     },
     userName: "the_sociophobic"
   },
@@ -315,5 +315,11 @@ export default [
   {
     nickName: "Polina%20Mishago",
     // additionalConnections: 20,
+  },
+  {
+    nickName: "Darya%20Alexandrovna",
+    social: {
+      vk: "13745913",
+    },
   },
 ]
