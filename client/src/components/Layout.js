@@ -5,62 +5,64 @@ import myScene from 'libs/myScene'
 
 import StoreContext from 'libs/engines/data/store/StoreContext'
 
-import axios from 'axios'
-
 import TextInterface from 'components/interface/TextInterface'
 
-export default class Layout extends Component {
+import iOS from 'libs/utils/iOS'
+import { nameToPath, pathToName } from 'libs/utils/stringTransforms'
+
+class Layout extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      W: 0,
-      H: 0,
       retrievedData: "",
-      // camera: {
-      //   position: new THREE.Vector3(0, 0, 5),
-      //   target: new THREE.Vector3(0, 0, 0),
-      // }
       nodeToShow: undefined,
     }
     this.threeSceneRef = new React.createRef()
   }
 
-  updateDimensions = () => this.setState({
-    W: window.innerWidth,
-    H: window.innerHeight,
-  })
-
   componentDidMount() {
-    if (typeof Window.minimize === "function")
-      Window.minimize() //will it work ???
-    this.updateDimensions()
-    window.addEventListener('resize', this.updateDimensions)
-
-    axios.get('http://localhost:1335/node').then(a => console.log(a))
+    if (iOS())
+      window.scrollTo(0, 0)
+    
+    const { location } = this.props
+    const path = location.pathname.slice(1)
+    if (path.length > 0) {
+      const node = this.context.store.get({name: pathToName(path)})
+      this.setNode(node.id, false)
+    }
   }
 
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateDimensions)
+  setNode = (id, transition = true) => {
+    const node = this.context.store.get({id: id})
+
+    if (typeof node === 'undefined')
+      return
+
+    this.setState({nodeToShow: node})
+    const { history, location } = this.props
+    if (location.pathname.slice(1) !== nameToPath(node.name)) {
+      history.push(nameToPath(node.name))
+      document.title = node.name
+    }
+
+    if (this.threeSceneRef.current)
+      this.threeSceneRef.current.setCamera(
+        node.cameraPosition,
+        node.cameraTarget,
+        transition
+      )
   }
 
   static contextType = StoreContext
 
   render = () => {
     const props = {
-      W: this.state.W,
-      H: this.state.H,
-      // cameraData: this.state.camera,
       data: this.context,
       sendData: data => this.setState({retrievedData: data}),
-      setNode: id => {
-        const node = this.context.store.get({id: id})
-
-        this.setState({nodeToShow: node})
-        if (typeof node !== 'undefined' && this.threeSceneRef.current)
-          this.threeSceneRef.current.setCamera(node.cameraPosition, node.cameraTarget)
-      },
+      setNode: this.setNode.bind(this),
       nodeToShow: this.state.nodeToShow,
     }
+
     return (
       <div className="page-container">
         <TextInterface
@@ -88,3 +90,5 @@ export default class Layout extends Component {
     )
   }
 }
+
+export default Layout

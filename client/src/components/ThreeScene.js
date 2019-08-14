@@ -33,8 +33,8 @@ export default class ThreeScene extends Component{
   }
 
   componentDidMount() {
-    this.resizeObs = new ResizeObserver(this.updateDimensions.bind(this)).observe(this.viewerRef.current)
-    // window.addEventListener('resize', this.updateDimensions.bind(this))
+    this.resizeObs = new ResizeObserver(this.updateDimensions.bind(this))
+      .observe(this.viewerRef.current)
 
     const ViewerDiv = this.viewerRef.current
     const width = ViewerDiv.clientWidth
@@ -42,9 +42,7 @@ export default class ThreeScene extends Component{
 
     //ADD RENDERER
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
-    // this.renderer.setClearColor('#0')
     this.renderer.setClearColor('#f6f6f6')
-    // this.renderer.setClearColor('#555555')
     this.renderer.setSize(width, height)
     if (width < 500 || height < 500)
       this.renderer.setPixelRatio(2)
@@ -67,6 +65,16 @@ export default class ThreeScene extends Component{
     this.camera.position.z = 5
     this.controls.update()
 
+    if (this.props.nodeToShow && this.props.setNode) {
+      this.props.setNode(this.props.nodeToShow.id, false)
+      //setCamera() doesn't fire in setNode...
+      this.setCamera(
+        this.props.nodeToShow.cameraPosition,
+        this.props.nodeToShow.cameraTarget,
+        false
+      )
+    }
+
     this.interaction = new Interaction(this.renderer, this.scene, this.camera)
 
     this.units = []
@@ -82,25 +90,22 @@ export default class ThreeScene extends Component{
     }
 
     this.props.myScene.units.forEach(unit => this.units.push(new unit(props)))
-    this.start()
 
+    if (!this.frameId)
+      this.frameId = requestAnimationFrame(this.animate)
   }
 
   componentWillUnmount(){
     this.units.forEach(unit => unit.dispose())
-    this.stop()
+    cancelAnimationFrame(this.frameId)
     // this.viewerRef.removeChild(this.renderer.domElement)
   }
-
-  start = () => {
-    if (!this.frameId)
-      this.frameId = requestAnimationFrame(this.animate)
-  }
-  stop = () => cancelAnimationFrame(this.frameId)
 
   animate = () => {
     this.units.forEach(unit => unit.animate())
 
+
+    //VECTOR TRANSITIONS
     let unregisteredTransitions = []
     this.transitions.forEach((transition, index) => {
       if (transition.currentFrame === transition.numberOfFrames)
@@ -118,12 +123,13 @@ export default class ThreeScene extends Component{
       ]
     )
 
+
     this.renderer.render(this.scene, this.camera)
     this.frameId = window.requestAnimationFrame(this.animate)
     this.controls.update()
   }
 
-  setCamera = (position, target) => {
+  setCamera = (position, target, transition = true) => {
     // this.camera.position.fromArray(position)
     // this.controls.target.fromArray(target)
     // const newPosition = new THREE.Vector3(...position)
@@ -133,14 +139,21 @@ export default class ThreeScene extends Component{
     const newTarget = new THREE.Vector3(...target)
     const newPosition = newTarget.clone()
       .add(this.camera.position.clone().sub(this.controls.target))
-    let numberOfFrames = new THREE.Vector3()
-      .subVectors(newPosition, this.camera.position)
-      .lengthSq() ** .25 * 3
-    numberOfFrames = Math.ceil(numberOfFrames)
 
-    
-    this.registerTransition(this.camera.position, newPosition, numberOfFrames)
-    this.registerTransition(this.controls.target, newTarget, numberOfFrames)
+    if (transition) {
+      let numberOfFrames = new THREE.Vector3()
+        .subVectors(newPosition, this.camera.position)
+        .lengthSq() ** .25 * 3
+      numberOfFrames = Math.ceil(numberOfFrames)
+ 
+      this.registerTransition(this.camera.position, newPosition, numberOfFrames)
+      this.registerTransition(this.controls.target, newTarget, numberOfFrames)
+    }
+    else {
+      this.camera.position.copy(newPosition)
+      this.controls.target.copy(newTarget)
+    }
+
     this.controls.update()
   }
 
