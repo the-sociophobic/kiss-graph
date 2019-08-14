@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import axios from 'axios'
-// import Block from 'components/interface/Block'
+import Block from 'components/interface/Block'
 import StockExchange from 'components/intermediate/StockExchange'
+import { withRouter } from 'react-router'
 
 class Home extends Component {
   constructor(props) {
@@ -30,10 +31,11 @@ class Home extends Component {
         <Block>
           <Link to="/about">О проекте</Link><br />
         </Block> */}
-        {/* <StockExchange /> */}
+        <StockExchange />
       </div>
     );
   }
 }
 
-export default Home;
+// export default withRouter(Home)
+export default Home

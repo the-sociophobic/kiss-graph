@@ -53,7 +53,9 @@ class store {
     }
 
     if (typeof name !== "undefined") {
-      const index = metaData.map(node => node.name).indexOf(name)
+      const index = metaData
+        .map(node => node.name.toLowerCase())
+        .indexOf(name.toLowerCase())
       if (index !== -1)
         return metaData[index]
     }

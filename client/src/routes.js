@@ -1,14 +1,15 @@
 import Home from 'pages/Home'
 import About from 'pages/About'
+import Layout from 'components/Layout'
 
 export default [
   {
-    path: '/',
+    path: '/*',
     exact: true,
-    component: Home,
+    component: Layout,
   },
-  {
-    path: '/about',
-    component: About,
-  },
+  // {
+  //   path: '/about',
+  //   component: About,
+  // },
 ]

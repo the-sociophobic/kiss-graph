@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import routes from './routes'
-import Layout from 'components/Layout'
 
 import store from 'libs/engines/data/store'
 import StoreContext from 'libs/engines/data/store/StoreContext'
@@ -14,13 +13,11 @@ class App extends Component {
     return (
       <Router>
         <StoreContext.Provider value={{store: new store()}}>
-          <Layout>
-            <Switch>
-              {routes.map(route =>
-                <Route {...route} key={route.path} />
-              )}
-            </Switch>
-          </Layout>
+          <Switch>
+            {routes.map(route =>
+              <Route {...route} key={route.path} />
+            )}
+          </Switch>
         </StoreContext.Provider>
       </Router>
     );
