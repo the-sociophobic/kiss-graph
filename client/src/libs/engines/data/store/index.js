@@ -96,10 +96,30 @@ class store {
       Object.keys(props).map(key =>
         node[key] && node[key]
           .toLowerCase()
-          .includes(props[key].toLowerCase())
+          .split(/_| |-|\./gm)
+          .map(word => word.startsWith(props[key].toLowerCase()))
+          .reduce((a, b) => a || b)
       )
       .reduce((a, b) => a || b)
     )
+
+    if (filteredNodes.length < 5) {
+      let badlyFilteredNodes = this.metaData.filter(node =>
+        !filteredNodes
+          .map(node => node.id)
+          .includes(node.id) &&
+        Object.keys(props).map(key =>
+          node[key] && node[key]
+            .toLowerCase()
+            .includes(props[key].toLowerCase())
+        )
+        .reduce((a, b) => a || b)
+      )
+      filteredNodes = [
+        ...filteredNodes,
+        ...badlyFilteredNodes.slice(0, 5 - filteredNodes.length)
+      ]
+    }
 
     return filteredNodes
   }

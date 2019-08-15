@@ -27,7 +27,7 @@ export default data => {
         connections: edges,
         mentalDisorder: meta.mentalDisorder,
         iq: meta.iq,
-        userName: meta.userName,
+        userName: meta.userName || (meta.social && (meta.social.inst || meta.social.vk)) || undefined,
       }
     }),
     // .sort((a, b) => b.connections - a.connections),
