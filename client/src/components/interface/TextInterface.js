@@ -22,13 +22,19 @@ export default class TextInterface extends Component {
   }
 
   setNode = nodeName => {
-    this.updateOptions(nodeName)
+    if (nodeName.length > 0)
+      this.updateOptions(nodeName)
     const node = this.props.data.store.get({name: nodeName})
-    this.props.setNode(node.id)
+
+    if (node === null)
+      this.props.setNode()
+    else
+      this.props.setNode(node.id)
   }
 
   updateOptions = value => {
-    if (value.length === 0)
+    console.log("upd: " + value)
+    if (typeof value === "undefined" || value.length === 0)
       this.setState({currentOptions: []})
     else {
       const options = this.props.data.store.search({name: value, userName: value})

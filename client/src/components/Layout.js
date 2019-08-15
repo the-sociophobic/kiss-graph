@@ -35,6 +35,11 @@ class Layout extends Component {
   }
 
   setNode = (id, transition = true) => {
+    if (typeof id === "undefined" || id === -1 || (id.length && id.length === 0)) {
+      this.setState({nodeToShow: undefined})
+      return
+    }
+
     const node = this.context.store.get({id: id})
 
     if (typeof node === 'undefined')
