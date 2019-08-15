@@ -16,7 +16,10 @@ export default class extends Component {
     if (state.oldPropValue !== props.value) {
       state.oldPropValue = props.value
 
-      if (props.value !== state.typedValue) {
+      if (props.value !== state.typedValue &&
+          props.value !== null &&
+          props.value !== "" &&
+          typeof props.value !== "undefined") {
         state.typedValue = props.value
         state.neverTypedFlag = false
 
@@ -48,6 +51,7 @@ export default class extends Component {
     this.setState({neverTypedFlag: false})
     this.setState({typedValue: value})
     this.props.updateOptions && this.props.updateOptions(value)
+    this.props.onChange("")
   }
 
   setValue = value => {
