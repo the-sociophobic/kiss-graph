@@ -27,7 +27,7 @@ class store {
         edges: this.data.edges,
       }
 
-    const { id, name, version } = props
+    const { id, name, userName, version } = props
 
     let data = {}, metaData = {}
     if (typeof version === "undefined") {
@@ -38,7 +38,7 @@ class store {
       metaData = this.metaData_prev
     }
 
-    if (typeof id === "undefined" && typeof name === "undefined")
+    if (typeof id === "undefined" && typeof name === "undefined" && typeof userName === "undefined")
       return data
 
     let nodeInfo = {}
@@ -46,10 +46,21 @@ class store {
     let edges = []
 
     if (typeof id !== "undefined") {
-      const index = this.metaData.map(node => node.id).indexOf(id)
+      const index = metaData
+        .map(node => node.id)
+        .indexOf(id)
       if (index !== -1)
-        return this.metaData[index]
-      return {}
+        return metaData[index]
+      return null
+    }
+
+    if (typeof userName !== "undefined") {
+      const index = metaData
+        .map(node => node.userName)
+        .indexOf(userName)
+      if (index !== -1)
+        return metaData[index]
+      return null
     }
 
     if (typeof name !== "undefined") {
@@ -58,6 +69,7 @@ class store {
         .indexOf(name.toLowerCase())
       if (index !== -1)
         return metaData[index]
+      return null
     }
 
     if (typeof nodeInfo.name !== "undefined")
