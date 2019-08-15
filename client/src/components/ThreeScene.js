@@ -8,7 +8,7 @@ import { Interaction } from 'three.interaction'
 
 import ResizeObserver from 'resize-observer-polyfill'
 
-
+const targetToCamera = 5
 
 export default class ThreeScene extends Component{
   constructor(props) {
@@ -62,7 +62,7 @@ export default class ThreeScene extends Component{
     this.controls = new LevControls( this.camera, ViewerDiv )
     this.controls.panSpeed = 1.5
     this.controls.enableKeys = false
-    this.camera.position.z = 5
+    this.camera.position.z = targetToCamera
     this.controls.update()
 
     if (this.props.nodeToShow && this.props.setNode) {
@@ -138,7 +138,11 @@ export default class ThreeScene extends Component{
       return
     const newTarget = new THREE.Vector3(...target)
     const newPosition = newTarget.clone()
-      .add(this.camera.position.clone().sub(this.controls.target))
+      .add(this.camera.position.clone()
+        .sub(this.controls.target)
+        .normalize()
+        .multiplyScalar(targetToCamera)
+      )
 
     if (transition) {
       let numberOfFrames = new THREE.Vector3()

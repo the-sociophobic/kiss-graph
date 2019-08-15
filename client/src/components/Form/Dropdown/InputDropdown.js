@@ -64,9 +64,9 @@ export default class extends Component {
       <div
         key={index}
         className="form-group__input--dropdown__options__item"
-        onClick={() => this.setValue(option)}
+        onClick={() => this.setValue(typeof option === "string" ? option : option.value)}
       >
-        {option}
+        {typeof option === "string" ? option : option.render}
       </div>
     )
 

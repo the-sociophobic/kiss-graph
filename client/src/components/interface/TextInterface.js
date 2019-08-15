@@ -33,14 +33,17 @@ export default class TextInterface extends Component {
   }
 
   updateOptions = value => {
-    console.log("upd: " + value)
     if (typeof value === "undefined" || value.length === 0)
       this.setState({currentOptions: []})
     else {
       const options = this.props.data.store.search({name: value, userName: value})
         .slice(0, 5)
         // .map(option => option.name + (option.userName ? ` (@${option.userName})` : ""))
-        .map(option => option.name)
+        .map(option => ({
+          value: option.name,
+          // render: option.name + (option.userName ? ` (@${option.userName})` : "")
+          render: <p>{option.name} <em>{option.userName ? ` (@${option.userName})` : ""}</em></p>
+        }))
       this.setState({currentOptions: options})
     }
   }

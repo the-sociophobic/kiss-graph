@@ -38,7 +38,7 @@ Alexey%20Nevsky E @-0.065,-0.076
 Alexey%20PavlovRyzhyi E @-0.028,1.268
 Alexey%20Potokin E @0.223,0.375
 Alexey%20Shilnikov E @0.637,-0.449
-Alica%20Balabekyan E @0.869,0.320
+Alice%20Balabekyan E @0.869,0.320
 Alina%20Bazanova E @0.383,0.560
 Alina%20Bliznyuk E @-0.016,0.502
 Alina%20Dynay E @0.626,0.835
@@ -130,7 +130,7 @@ Anya%20Smirnova E @-0.008,0.138
 Anya%20Usacheva E @0.293,0.994
 Anya%20Vinogradova E @0.247,0.399
 Anya%20Zinevich E @-0.042,0.920
-Anzhela%20Balabekyan E @0.493,1.090
+Anzhelika%20Balabekyan E @0.493,1.090
 Anzhela%20Groznova E @0.276,1.074
 Artur%20Kuratnikov E @0.317,1.369
 Arina%20Gavrilova E @-0.008,0.889
@@ -876,7 +876,7 @@ Alexey%20Dmitriev Kira%20Kastaneda
 Alexey%20Hudozhnik Kira%20Kastaneda
 Alexey%20Kriger Kira%20Kastaneda
 Alexey%20Potokin Anya%20Vinogradova
-Alica%20Balabekyan Anton%20Ivaschenko Vova%20Kuznetsov
+Alice%20Balabekyan Anton%20Ivaschenko Vova%20Kuznetsov
 Alina%20Bazanova Natasha%20Kozhevnikova Tikhon%20Timanov
 Alina%20Bliznyuk Nikita%20Danilchenko
 Alina%20Dynay Nastya%20IvanovaMonro
@@ -932,7 +932,7 @@ Anya%20Novik Alexander%20Lebedev
 Anya%20Smirnova Alexander%20Lazarev Kira%20Kastaneda
 Anya%20Usacheva Danya%20Skibin
 Anya%20Vinogradova Vlad%20Guriev
-Anzhela%20Balabekyan Artyom%20Tomilov David%20Zharnitsky Elina%20Kulikova Kira%20Kastaneda Lev%20Vasilyev
+Anzhelika%20Balabekyan Artyom%20Tomilov David%20Zharnitsky Elina%20Kulikova Kira%20Kastaneda Lev%20Vasilyev
 Artur%20Kuratnikov Alisa%20Verhovskaya Angelina%20Ryabchenko Boris%20Evdokimov Ekaterina%20Saprykina Elizaveta%20Horetzhkaya Elizaveta%20Pashkovskaya Mariya%20Semyonova Polina%20Makarova Svetlana%20Klyavlina Vika%20Nikolaeva
 Arina%20Nachinova Katrin%20Tublina
 Arina%20Nevzorova Denchik

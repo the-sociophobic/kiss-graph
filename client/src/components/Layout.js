@@ -30,7 +30,8 @@ class Layout extends Component {
       let node = this.context.store.get({name: pathToName(path)})
       if (node === null)
         node = this.context.store.get({userName: path})
-      this.setNode(node.id, false)
+      if (node !== null)
+        this.setNode(node.id, false)
     }
   }
 
@@ -49,7 +50,7 @@ class Layout extends Component {
     const { history, location } = this.props
     if (location.pathname.slice(1) !== nameToPath(node.name) &&
         location.pathname.slice(1) !== node.userName)
-      history.push(nameToPath(node.name))
+      history.push(nameToPath(node.userName || node.name))
     document.title = "Граф Транзитивных Поцелуев: " + node.name
 
     if (this.threeSceneRef.current)
