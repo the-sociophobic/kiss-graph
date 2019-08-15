@@ -27,7 +27,9 @@ class Layout extends Component {
     const { location } = this.props
     const path = location.pathname.slice(1)
     if (path.length > 0) {
-      const node = this.context.store.get({name: pathToName(path)})
+      let node = this.context.store.get({name: pathToName(path)})
+      if (node === null)
+        node = this.context.store.get({userName: path})
       this.setNode(node.id, false)
     }
   }
@@ -40,10 +42,10 @@ class Layout extends Component {
 
     this.setState({nodeToShow: node})
     const { history, location } = this.props
-    if (location.pathname.slice(1) !== nameToPath(node.name)) {
+    if (location.pathname.slice(1) !== nameToPath(node.name) &&
+        location.pathname.slice(1) !== node.userName)
       history.push(nameToPath(node.name))
-      document.title = node.name
-    }
+    document.title = "Граф Транзитивных Поцелуев: " + node.name
 
     if (this.threeSceneRef.current)
       this.threeSceneRef.current.setCamera(
