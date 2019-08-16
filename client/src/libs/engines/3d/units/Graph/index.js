@@ -50,9 +50,10 @@ export default class Graph extends Unit {
       sprite.position.set(node.pos.x, node.pos.y, node.pos.z)
       scene.add(sprite)
       sprite.cursor = 'pointer'
-      sprite.on('click', () => props.setNode(node.id))
+      // sprite.on('mousedown', e => console.log(e))
       
       tapEvent(sprite, () => props.setNode(node.id))
+      tapEvent(sprite, () => props.setNode(node.id), 'mousedown', 'mouseup')
     })
   }
   animate() {}

@@ -134,7 +134,7 @@ export default class ThreeScene extends Component{
     // this.controls.target.fromArray(target)
     // const newPosition = new THREE.Vector3(...position)
     // console.log(target)
-    if (typeof target === "undefined")
+    if (typeof target === "undefined" || this.transitions.length > 0)
       return
     const newTarget = new THREE.Vector3(...target)
     const newPosition = newTarget.clone()
