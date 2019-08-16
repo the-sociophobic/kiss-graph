@@ -1,8 +1,10 @@
-export default (element, fn, ms) => {
-  var timer, touchStarted = false
+export default (element, fn, startEvent = 'touchstart', endEvent = 'touchend', ms = 200) => {
+  var timer, touchStarted = false, spriteUUID, vector
 
-  const registerTapHandler = () => {
-    timer = setTimeout(() => unregisterTapHandler(), ms || 300)
+  const registerTapHandler = e => {
+    spriteUUID = e.intersects[0].object.uuid
+    vector = e.data.global.clone()
+    timer = setTimeout(() => unregisterTapHandler(), ms)
     touchStarted = true
   }
 
@@ -11,12 +13,13 @@ export default (element, fn, ms) => {
     clearTimeout(timer)
   }
 
-  const tapHandler = () => {
-    if (touchStarted)
+  const tapHandler = e => {
+    if (touchStarted && vector && (vector.sub(e.data.global).length() < 0.001)) {
       fn()
+    }
     unregisterTapHandler()
   }
 
-  element.on('touchstart', registerTapHandler)
-  element.on('touchend', tapHandler)
+  element.on(startEvent, registerTapHandler)
+  element.on(endEvent, tapHandler)
 }
