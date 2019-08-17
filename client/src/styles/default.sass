@@ -239,19 +239,15 @@ $arrow-size: 7px
 
 
 .text-interface
-  // position: absolute
-  // top: 0
-  // right: 0
-  // flex-grow: 1
   width: 400px
   height: 100%
   background-color: white
-  box-shadow: 0 0 15px rgba(0, 0, 0, .25)
-  padding: 10px
   z-index: 10000
   @media (max-width: 1024px)
     width: 100%
     height: auto
+  &__search-bar
+    padding: 10px
   .node-info
     padding: 0 0 5px
     &__item
@@ -277,7 +273,7 @@ $input-height: 32px
 
 .form-group
   // padding: 14px 10px 0
-  margin: 2px 0 10px
+  // margin: 2px 0 10px
   position: relative
   &__label
     position: absolute
@@ -352,8 +348,8 @@ $input-height: 32px
 $reset-size: 22px
 .reset
   position: absolute
-  top: 2px
-  right: 2px
+  top: 1px
+  right: 1px
   height: $input-height
   width: $input-height
   border: none
@@ -368,3 +364,80 @@ $reset-size: 22px
     display: block
     height: $reset-size
     width: $reset-size
+
+
+
+$mobile-expander-area-height: 26px
+$mobile-expander-button-width: 40px
+$mobile-expander-button-height: 5px
+
+.mobile-expander
+  width: 100%
+  height: $mobile-expander-area-height
+  position: relative
+  z-index: 99
+  &__abs-container
+    width: 100%
+    position: absolute
+    top: 0
+    left: 0
+    display: flex
+    flex-direction: column
+    align-items: stretch
+    box-shadow: 0 10px 12px rgba(0, 0, 0, .15)
+  &__static-content-container
+    width: 100%
+    display: table
+  &__expanding-content-container
+    width: 100%
+    background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, .88 ))
+    -webkit-backdrop-filter: blur(20px) //weeeeell
+    transition: height .15s
+    &.closed
+      height: 0
+      overflow: hidden
+    &.opened
+      height: 70vw
+      // overflow: auto
+    &.moving
+      overflow: hidden
+      transition: height 0s
+  &__draggable-arrow
+    position: relative
+    height: $mobile-expander-area-height
+    width: 100%
+    background-color: $light
+    cursor: pointer
+    &::after, &::before
+      position: absolute
+      bottom: calc((#{$mobile-expander-area-height} - #{$mobile-expander-button-height}) / 2)
+      content: ""
+      border-radius: $mobile-expander-button-height * 2
+      background-color: $dark-gray
+      width: $mobile-expander-button-width / 2 + $mobile-expander-button-height / 1.1
+      height: $mobile-expander-button-height
+      transition: transform .08s
+    &::before
+      left: calc((100% - #{$mobile-expander-button-width} - #{$mobile-expander-button-height}) / 2)
+      transform-origin: center right
+    &::after
+      right: calc((100% - #{$mobile-expander-button-width} - #{$mobile-expander-button-height}) / 2)
+      transform-origin: center left
+    
+    &.opened
+      &::before
+        transform: rotate(-15deg) translate(0, -$mobile-expander-button-height / 2)
+      &::after
+        transform: rotate(15deg) translate(0, -$mobile-expander-button-height / 2)
+      
+    &.closed
+      &::before
+        transform: rotate(15deg) translate(0, $mobile-expander-button-height / 2)
+      &::after
+        transform: rotate(-15deg) translate(0, $mobile-expander-button-height / 2)
+
+    &.moving
+      &::before
+        transform: rotate(0deg) translate(0, 0)
+      &::after
+        transform: rotate(0deg) translate(0, 0)
