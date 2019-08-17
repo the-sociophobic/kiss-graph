@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 
 import ExternalLink from 'components/ExternalLink'
 
@@ -48,7 +47,7 @@ class About extends Component {
           {this.state.siteDateString} с публикации сайта<br />
           948 человек на графе<br />
           1092 связей<br />
-          91 коммит<br />
+          92 коммита<br />
           4 человека заявило об оскорблении чувств<br /><br />
         </p>
         {articles.map(article => (

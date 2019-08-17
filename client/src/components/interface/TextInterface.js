@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 import About from 'pages/About'
 import Dropdown from 'components/Form/Dropdown'
@@ -68,7 +68,7 @@ export default class TextInterface extends Component {
     return (
       <div
         ref={this.interfaceRef}
-        className="text-interface"
+        className={"text-interface " + (this.state.deviceWidth > 1024 && "flex-container")}
       >
         <div className="text-interface__search-bar">
           <Dropdown
@@ -81,8 +81,27 @@ export default class TextInterface extends Component {
             showReset
           />
         </div>
-        {this.state.deviceWidth <= 1024 && <MobileExpander>
-          <div className="flex-container">
+        {this.state.deviceWidth <= 1024 ?
+          <MobileExpander>
+            <div className="flex-container">
+              <div className="flex-column">
+                {this.state.showAbout ?
+                  <About />
+                  :
+                  <User node={node} />}
+              </div>
+              <div className="footer">
+                <p
+                  className="link"
+                  onClick={() => this.setState({showAbout: !this.state.showAbout})}
+                >
+                  {this.state.showAbout ? "Back" : "About"}
+                </p>
+              </div>
+            </div>
+          </MobileExpander>
+          :
+          <Fragment>
             <div className="flex-column">
               {this.state.showAbout ?
                 <About />
@@ -97,8 +116,8 @@ export default class TextInterface extends Component {
                 {this.state.showAbout ? "Back" : "About"}
               </p>
             </div>
-          </div>
-        </MobileExpander>}
+          </Fragment>
+        }
       </div>
     )
   }
