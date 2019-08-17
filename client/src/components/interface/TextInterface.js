@@ -4,21 +4,34 @@ import Dropdown from 'components/Form/Dropdown'
 
 import { registerListeners, unregisterListeners } from 'libs/utils/preventMobileScrolling'
 
+import User from 'components/interface/User'
+import MobileExpander from 'components/interface/MobileExpander'
+
 
 export default class TextInterface extends Component {
   constructor(props) {
     super(props)
     this.state = {
       currentOptions: [],
+      deviceWidth: 0
     }
     this.interfaceRef = new React.createRef()
   }
 
+  updateDeviceWidth = () => this.setState({deviceWidth: window.innerWidth})
+
   componentDidMount() {
     registerListeners(this.interfaceRef.current)
+
+    window.addEventListener('resize', this.updateDeviceWidth.bind(this))
+    window.addEventListener('orientationchange', this.updateDeviceWidth.bind(this))
+    this.updateDeviceWidth()
   }
   componentWillUnmount() {
     unregisterListeners(this.interfaceRef.current)
+
+    window.removeEventListener('resize', this.updateDeviceWidth.bind(this))
+    window.removeEventListener('orientationchange', this.updateDeviceWidth.bind(this))
   }
 
   setNode = nodeName => {
@@ -66,25 +79,9 @@ export default class TextInterface extends Component {
             showReset
           />
         </div>
-        {typeof node !== "undefined" &&
-          <div className="node-info">
-            {Object.keys(node)
-              .filter(key =>
-                ["gender", "connections", "homosexuality", "mentalDisorder", "iq"]
-                .includes(key)
-                &&
-                typeof node[key] !== "undefined"
-              )
-              .map(key =>
-                <div
-                  key={key}
-                  className="node-info__item"
-                >
-                  {key}: {node[key]}
-                </div>)
-            }
-          </div>
-        }
+        {this.state.deviceWidth <= 1024 && <MobileExpander>
+          <User node={node} />
+        </MobileExpander>}
       </div>
     )
   }
