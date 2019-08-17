@@ -123,7 +123,10 @@ export default class MobileEpander extends Component {
             className={"mobile-expander__expanding-content-container " + this.state.state}
             style={heightStyle}
           >
-            <div className={"mobile-expander__static-content-container"}>
+            <div
+              className={"mobile-expander__static-content-container"}
+              style={{height: this.state.maxHeight + "px"}}
+            >
               {this.props.children}
             </div>
           </div>

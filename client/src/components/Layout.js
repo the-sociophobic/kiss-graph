@@ -24,12 +24,11 @@ class Layout extends Component {
     if (iOS())
       window.scrollTo(0, 0)
     
-    const { location } = this.props
-    const path = location.pathname.slice(1)
-    if (path.length > 0) {
-      let node = this.context.store.get({name: pathToName(path)})
+    const nodeId = this.props.match.params[0]
+    if (nodeId) {
+      let node = this.context.store.get({name: pathToName(nodeId)})
       if (node === null)
-        node = this.context.store.get({userName: path})
+        node = this.context.store.get({userName: nodeId})
       if (node !== null)
         this.setNode(node.id, false)
     }
@@ -47,10 +46,12 @@ class Layout extends Component {
       return
 
     this.setState({nodeToShow: node})
-    const { history, location } = this.props
-    if (location.pathname.slice(1) !== nameToPath(node.name) &&
-        location.pathname.slice(1) !== node.userName)
-      history.push(nameToPath(node.userName || node.name))
+    const { history } = this.props
+    const nodeId = this.props.match.params.nodeId || ""
+
+    if (nodeId !== nameToPath(node.name) &&
+        nodeId !== node.userName)
+      history.push("/node/" + nameToPath(node.userName || node.name))
     document.title = "Граф Транзитивных Поцелуев: " + node.name
 
     if (this.threeSceneRef.current)
