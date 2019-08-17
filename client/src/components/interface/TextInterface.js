@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+import About from 'pages/About'
 import Dropdown from 'components/Form/Dropdown'
 
 import { registerListeners, unregisterListeners } from 'libs/utils/preventMobileScrolling'
@@ -13,7 +14,8 @@ export default class TextInterface extends Component {
     super(props)
     this.state = {
       currentOptions: [],
-      deviceWidth: 0
+      deviceWidth: 0,
+      showAbout: false,
     }
     this.interfaceRef = new React.createRef()
   }
@@ -21,14 +23,14 @@ export default class TextInterface extends Component {
   updateDeviceWidth = () => this.setState({deviceWidth: window.innerWidth})
 
   componentDidMount() {
-    registerListeners(this.interfaceRef.current)
+    // registerListeners(this.interfaceRef.current)
 
     window.addEventListener('resize', this.updateDeviceWidth.bind(this))
     window.addEventListener('orientationchange', this.updateDeviceWidth.bind(this))
     this.updateDeviceWidth()
   }
   componentWillUnmount() {
-    unregisterListeners(this.interfaceRef.current)
+    // unregisterListeners(this.interfaceRef.current)
 
     window.removeEventListener('resize', this.updateDeviceWidth.bind(this))
     window.removeEventListener('orientationchange', this.updateDeviceWidth.bind(this))
@@ -80,7 +82,22 @@ export default class TextInterface extends Component {
           />
         </div>
         {this.state.deviceWidth <= 1024 && <MobileExpander>
-          <User node={node} />
+          <div className="flex-container">
+            <div className="flex-column">
+              {this.state.showAbout ?
+                <About />
+                :
+                <User node={node} />}
+            </div>
+            <div className="footer">
+              <p
+                className="link"
+                onClick={() => this.setState({showAbout: !this.state.showAbout})}
+              >
+                {this.state.showAbout ? "Back" : "About"}
+              </p>
+            </div>
+          </div>
         </MobileExpander>}
       </div>
     )

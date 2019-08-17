@@ -12,7 +12,7 @@ export default class User extends Component {
     const { node } = this.props
 
     if (typeof node === "undefined")
-      return <div>a</div>
+      return <div></div>
 
     return (
       <div className="node-info">

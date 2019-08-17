@@ -14,6 +14,9 @@ export default class Graph extends Unit {
     const { THREE, scene } = props
     const { nodes, edges } = this.props.store.get()
 
+    console.log(nodes.length)
+    console.log(edges.length)
+
     this.edges = edges.map(edge => ({
       node0: nodes.map(node => node.name).indexOf(edge.node0),
       node1: nodes.map(node => node.name).indexOf(edge.node1),
