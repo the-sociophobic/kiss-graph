@@ -98,7 +98,7 @@ export default class GraphCloth extends PhysicalUnit {
           forces[index].sub(normal.clone().multiplyScalar(forceOverflow))
       }
     })
-    //UP FORCE
+    //UP FORCE FOR Nihilisst_R4VE cover3
     // nodes.forEach((node, index) => {
     //   const force = new THREE.Vector3(0, (node.vector.y < 0 ? 3 : 1) / ((node.vector.y ** 1.55) + .05) * 555, 0)
     //   forces[index]

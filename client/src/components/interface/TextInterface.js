@@ -89,6 +89,8 @@ export default class TextInterface extends Component {
                   <About />
                   :
                   <User node={node} />}
+
+                {this.props.children}
               </div>
               <div className="footer">
                 <p
