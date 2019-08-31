@@ -23,6 +23,7 @@ export default class Graph extends Unit {
       return ({
         vector: new THREE.Vector3(node.pos.x, node.pos.y, node.pos.z),
         weight: node.connections,
+        uv: node.uv,
       })
     })
 

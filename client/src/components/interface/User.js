@@ -54,7 +54,12 @@ export default class User extends Component {
                   to={nameToPath(connection.userName || connection.name)}
                   onClick={() => this.props.setNode(connection.name)}
                 >
-                  {connection.connections} {connection.name}
+                  <span
+                    style={{color: connection.color}}
+                  >
+                    {connection.connections + (connection.connections < 10 ? " \xa0 " : " ")}
+                  {/* </span> {connection.name} */}
+                   {connection.name}</span>
                 </Link>
               </div>
           ))}

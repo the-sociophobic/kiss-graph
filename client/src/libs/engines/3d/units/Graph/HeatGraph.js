@@ -2,21 +2,10 @@ import THREE from 'libs/engines/3d/three'
 import heatMap from 'img/heat2.png'
 
 export default (nodesInput, edges, scene) => {
-  let distribution = Array.from(
-    new Set(
-      nodesInput.map(node => node.weight)))
-  .sort((a, b) => a - b)
-  const positionInArray = (array, value) => {
-    let i
-    for (i = 0; value > array[i]; i++)
-      ;
-    return i
-  }
-  const nodeUV = weight => positionInArray(distribution, weight) / distribution.length
 
   let nodes = nodesInput.map(node => ({
     ...node,
-    uv: nodeUV(node.weight)
+    // uv: nodeUV(node.weight)
   }))
 
   var finalMesh
