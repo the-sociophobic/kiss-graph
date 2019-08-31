@@ -12,7 +12,7 @@ export default class GraphPosCalculator extends Unit {
       node1: nodes.map(node => node.name).indexOf(edge.node1),
     }))
     this.nodes = nodes
-    // .filter(node => node.connections > 0)
+    .filter(node => node.connections > 0) //TODO TOFIX
     .map(node => ({
       vector: //node.pos ? 
       // new THREE.Vector3(node.pos.x, node.pos.y, node.pos.z)
@@ -22,7 +22,7 @@ export default class GraphPosCalculator extends Unit {
         node.posRaw.y * 2.15,
         Math.random() * (60 - node.connections) / 15
       ),
-      weight: node.connections > 0 ? node.connections : 1,
+      weight: node.connections > 0 ? node.connections : 1, //TODO
     }))
 
     this.GraphCloth = new GraphCloth({
@@ -81,7 +81,7 @@ export default class GraphPosCalculator extends Unit {
         console.log(this.frameNumber)
 
 
-    }, 200)
+    }, 250)
 
     var material = new THREE.MeshBasicMaterial( { color: 0x0000ff } );
     this.line = new THREE.LineSegments( this.geometry, material );

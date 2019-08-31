@@ -1,22 +1,21 @@
-import psychic from './mental-iq-social-bojack'
-// import position from 'libs/engines/data/hardcoded/position/11.08.19.json'
-import position from 'libs/engines/data/hardcoded/position/bojack.json'
-import { Material } from 'three';
+import psychic from './mental-iq-social'
+import position from 'libs/engines/data/hardcoded/position/29.08.19.json'
+// import position from 'libs/engines/data/hardcoded/position/bojack.json'
 
 export default data => {
   return {
     nodes: data.nodes.map((node, index) => {
       const psychoIndex = psychic.map(psycho => psycho.nickName.replace(/%20/g, ' ')).indexOf(node.nickName)
       const meta = psychoIndex !== -1 ? psychic[psychoIndex] : {}
-      let edges = data.edges
-        .map(edge =>
-          edge.node0 === node.nickName ||
-          edge.node1 === node.nickName ? 1 : 0
-        )
-        .reduce((a, b) => a + b)
+      let mates = []
+      data.edges
+        .forEach(edge => {
+          if (edge.node0 === node.nickName)
+            mates.push(edge.node1) 
+          if (edge.node1 === node.nickName)
+            mates.push(edge.node0) 
+        })
       
-      edges += (meta.additionalConnections || 0)
-
       const pos = position[index] || {x: 0, y: 0, z: 0}
 
       return {
@@ -26,7 +25,9 @@ export default data => {
         pos: pos,
         cameraPosition: [pos.x, pos.y, pos.z + 5],
         cameraTarget: [pos.x, pos.y, pos.z],
-        connections: edges,
+        connections: mates.length + (meta.additionalConnections || 0),
+        hiddenConnections: meta.additionalConnections,
+        mates: mates,
         mentalDisorder: meta.mentalDisorder,
         iq: meta.iq,
         userName: meta.userName || (meta.social && (meta.social.inst || meta.social.vk)) || undefined,
