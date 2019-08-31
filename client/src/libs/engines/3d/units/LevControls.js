@@ -390,47 +390,47 @@ import * as THREE from 'three'
 
     }();
 
-    function dollyIn( dollyScale ) {
+    // function dollyIn( dollyScale ) {
 
-      if ( scope.object.isPerspectiveCamera ) {
+    //   if ( scope.object.isPerspectiveCamera ) {
 
-        scale /= dollyScale;
+    //     scale /= dollyScale;
 
-      } else if ( scope.object.isOrthographicCamera ) {
+    //   } else if ( scope.object.isOrthographicCamera ) {
 
-        scope.object.zoom = Math.max( scope.minZoom, Math.min( scope.maxZoom, scope.object.zoom * dollyScale ) );
-        scope.object.updateProjectionMatrix();
-        zoomChanged = true;
+    //     scope.object.zoom = Math.max( scope.minZoom, Math.min( scope.maxZoom, scope.object.zoom * dollyScale ) );
+    //     scope.object.updateProjectionMatrix();
+    //     zoomChanged = true;
 
-      } else {
+    //   } else {
 
-        console.warn( 'WARNING: LevControls.js encountered an unknown camera type - dolly/zoom disabled.' );
-        scope.enableZoom = false;
+    //     console.warn( 'WARNING: LevControls.js encountered an unknown camera type - dolly/zoom disabled.' );
+    //     scope.enableZoom = false;
 
-      }
+    //   }
 
-    }
+    // }
 
-    function dollyOut( dollyScale ) {
+    // function dollyOut( dollyScale ) {
 
-      if ( scope.object.isPerspectiveCamera ) {
+    //   if ( scope.object.isPerspectiveCamera ) {
 
-        scale *= dollyScale;
+    //     scale *= dollyScale;
 
-      } else if ( scope.object.isOrthographicCamera ) {
+    //   } else if ( scope.object.isOrthographicCamera ) {
 
-        scope.object.zoom = Math.max( scope.minZoom, Math.min( scope.maxZoom, scope.object.zoom / dollyScale ) );
-        scope.object.updateProjectionMatrix();
-        zoomChanged = true;
+    //     scope.object.zoom = Math.max( scope.minZoom, Math.min( scope.maxZoom, scope.object.zoom / dollyScale ) );
+    //     scope.object.updateProjectionMatrix();
+    //     zoomChanged = true;
 
-      } else {
+    //   } else {
 
-        console.warn( 'WARNING: LevControls.js encountered an unknown camera type - dolly/zoom disabled.' );
-        scope.enableZoom = false;
+    //     console.warn( 'WARNING: LevControls.js encountered an unknown camera type - dolly/zoom disabled.' );
+    //     scope.enableZoom = false;
 
-      }
+    //   }
 
-    }
+    // }
 
     function translateZ ( delta ) {
       // const delta = typeof e.deltaY !== "undefined" ? -e.deltaY : (1 - e.scale)
@@ -587,6 +587,9 @@ import * as THREE from 'three'
           pan( - scope.keyPanSpeed, 0 );
           needsUpdate = true;
           break;
+
+        default:
+          ;
 
       }
 
@@ -768,6 +771,10 @@ import * as THREE from 'three'
 
           break;
 
+        default:
+            ;
+    
+
       }
 
       if ( state !== STATE.NONE ) {
@@ -812,6 +819,10 @@ import * as THREE from 'three'
           handleMouseMovePan( event );
 
           break;
+
+        default:
+            ;
+    
 
       }
 

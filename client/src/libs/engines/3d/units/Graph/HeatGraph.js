@@ -20,7 +20,8 @@ export default (nodesInput, edges, scene) => {
   }))
 
   var finalMesh
-  let textureLoader = new THREE.TextureLoader()
+  // let textureLoader = new THREE.TextureLoader()
+  new THREE.TextureLoader()
     .load(heatMap, texture => {
       let material = new THREE.MeshBasicMaterial( { map: texture } )
       let bufferGeometry = new THREE.BufferGeometry()

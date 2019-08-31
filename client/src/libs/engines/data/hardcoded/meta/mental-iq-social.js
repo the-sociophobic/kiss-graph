@@ -60,7 +60,7 @@ export default [
     mentalDisorder: 5,
     social: {
       vk: "",
-      inst: "",
+      inst: "autumn__solstice",
     }
   },
   {
@@ -82,13 +82,16 @@ export default [
   {
     nickName: "Dmitry%20Larin",
     mentalDisorder: 4,
+    social: {
+      inst: "zloilarin",
+    }
   },
   {
     nickName: "Elina%20Kulikova",
     mentalDisorder: 3,
     social: {
       vk: "",
-      inst: "",
+      inst: "_elinakulikova",
     }
   },
   {
@@ -112,7 +115,7 @@ export default [
     mentalDisorder: 1,
     social: {
       vk: "",
-      inst: "",
+      inst: "lolomka",
     }
   },
   {
@@ -146,6 +149,7 @@ export default [
   {
     nickName: "Mark%20Kozharskiy",
     mentalDisorder: 3,
+    iq: 119,
     social: {
       vk: "",
       inst: "mark__analniitsiklop",
@@ -201,6 +205,9 @@ export default [
   {
     nickName: "Egor%20Vysberg",
     mentalDisorder: 3,
+    social: {
+      inst: "vaisbegor"
+    }
   },
   {
     nickName: "Pyotr%20Grachev",
@@ -233,7 +240,8 @@ export default [
     mentalDisorder: 3,
     iq: 115,
     social: {
-      inst: "qeomn",
+      inst: "morkorov",
+      vk: "6morkov9"
     },
   },
   {
@@ -261,7 +269,7 @@ export default [
   {
     nickName: "Anton%20Plevako",
     mentalDisorder: 2,
-    iq: 119,
+    iq: 124,
     social: {
       inst: "etozheanton__",
     },
@@ -359,6 +367,9 @@ export default [
   {
     nickName: "Polina%20Mishago",
     // additionalConnections: 20,
+    social: {
+      inst: "lowpolis",
+    }
   },
   {
     nickName: "Darya%20Alexandrovna",
@@ -370,12 +381,6 @@ export default [
     nickName: "Sasha%20Zemlyanova",
     social: {
       inst: "yanesasha",
-    },
-  },
-  {
-    nickName: "Leonid%20Dmitriev",
-    social: {
-      inst: "eee_girls",
     },
   },
   {
@@ -408,6 +413,13 @@ export default [
     social: {
       inst: "fedlud",
     },
+    aka: [
+      "батон",
+      {
+        name: "Евгений Кость",
+        url: "https://vk.com/evgenykost"
+      }
+    ]
   },
   {
     nickName: "Ilya%20Roschin",
@@ -494,5 +506,24 @@ export default [
       inst: "turkishjoe1",
       tg: "firstgambit",
     },
+  },
+  {
+    nickName: "Leonid%20Braverman",
+    iq: 121,
+    social: {
+      inst: "braver__man",
+      vk: "braver__man",
+    },
+  },
+  {
+    nickName: "Daria%20Shevchenko",
+    social: {
+      inst: "sdaria_andreevna",
+      vk: "sdaria_andreevna",
+    },
+  },
+  {
+    nickName: "Yaroslav%20Valdens",
+    iq: 119,
   },
 ]

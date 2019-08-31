@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react'
 import About from 'pages/About'
 import Dropdown from 'components/Form/Dropdown'
 
-import { registerListeners, unregisterListeners } from 'libs/utils/preventMobileScrolling'
+// import { registerListeners, unregisterListeners } from 'libs/utils/preventMobileScrolling'
 
 import User from 'components/interface/User'
 import MobileExpander from 'components/interface/MobileExpander'
@@ -65,6 +65,8 @@ export default class TextInterface extends Component {
 
   render = () => {
     const { node } = this.props
+    const nodeElem = <User node={node} setNode={this.setNode.bind(this)} />
+
     return (
       <div
         ref={this.interfaceRef}
@@ -88,7 +90,7 @@ export default class TextInterface extends Component {
                 {this.state.showAbout ?
                   <About />
                   :
-                  <User node={node} />}
+                  nodeElem}
 
                 {this.props.children}
               </div>
@@ -108,7 +110,7 @@ export default class TextInterface extends Component {
               {this.state.showAbout ?
                 <About />
                 :
-                <User node={node} />}
+                nodeElem}
             </div>
             <div className="footer">
               <p

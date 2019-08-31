@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
 
+import { Link } from 'react-router-dom'
+
+import { nameToPath } from 'libs/utils/stringTransforms'
+
+import StoreContext from 'libs/engines/data/store/StoreContext'
 
 export default class User extends Component {
   constructor(props) {
@@ -7,6 +12,8 @@ export default class User extends Component {
     this.state = {
     }
   }
+
+  static contextType = StoreContext
 
   render = () => {
     const { node } = this.props
@@ -18,7 +25,7 @@ export default class User extends Component {
       <div className="node-info">
         {Object.keys(node)
           .filter(key =>
-            ["gender", "connections", "homosexuality", "mentalDisorder", "iq"]
+            ["gender", "homosexuality", "mentalDisorder", "iq"]
             .includes(key)
             &&
             typeof node[key] !== "undefined"
@@ -31,6 +38,27 @@ export default class User extends Component {
               {key}: {node[key]}
             </div>)
         }
+        <div className="node-info__item">
+          {node.connections} connections{node.hiddenConnections ? (" (" + node.hiddenConnections + " hidden)") : ""}:
+        </div>
+        <div className="node-info__connections">
+          {node.mates
+            .map(connection => this.context.store.get({name: connection}))
+            .sort((a, b) => b.connections - a.connections)
+            .map(connection => (
+              <div
+                className="node-info__connections__item"
+                key={connection.name}
+              >
+                <Link
+                  to={nameToPath(connection.userName || connection.name)}
+                  onClick={() => this.props.setNode(connection.name)}
+                >
+                  {connection.connections} {connection.name}
+                </Link>
+              </div>
+          ))}
+        </div>
       </div>
     )
   }

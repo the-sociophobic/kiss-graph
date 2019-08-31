@@ -1,13 +1,11 @@
-import TextSprite from 'three.textsprite'
+// import TextSprite from 'three.textsprite'
 import UserSprite from 'libs/engines/3d/units/UserSprite'
 
 import Unit from 'libs/engines/3d/Unit'
-import LineGraph from './LineGraph'
+// import LineGraph from './LineGraph'
 import HeatGraph from './HeatGraph'
 
 import tapEvent from 'libs/utils/tapEvent'
-
-import myImage from 'img/defaultPhoto.png'
 
 export default class Graph extends Unit {
   constructor(props) {
@@ -53,7 +51,8 @@ export default class Graph extends Unit {
           },  
         })
 
-        sprite.position.set(node.pos.x, node.pos.y, node.pos.z + .5)
+        // sprite.position.set(node.pos.x, node.pos.y, node.pos.z + .5)
+        sprite.position.set(node.pos.x, node.pos.y, node.pos.z)
         scene.add(sprite)
         sprite.cursor = 'pointer'      
         tapEvent(sprite, () => props.setNode(node.id))

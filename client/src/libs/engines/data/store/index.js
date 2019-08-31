@@ -1,6 +1,6 @@
 import parser from 'libs/engines/data/hardcoded/dagitty.net'
 import metaParser from 'libs/engines/data/hardcoded/meta'
-import data from 'libs/engines/data/hardcoded/dagitty.net/bojack'
+import data from 'libs/engines/data/hardcoded/dagitty.net/data.29.08.19'
 import data_prev from 'libs/engines/data/hardcoded/dagitty.net/data.03.06.19'
 
 //TODO
@@ -18,14 +18,30 @@ class store {
     this.metaData = metaParser(this.data).nodes
     this.data_prev = parser(data_prev)
     this.metaData_prev = metaParser(this.data_prev).nodes
+
+    this.weightSet = Array.from(
+      new Set(
+        this.metaData.map(node => node.weight)))
+    .sort((a, b) => a - b)
+
+    this.maxWeight = this.weightSet[0]
   }
 
   get = props => {
     if (typeof props === "undefined")
-      return {
-        nodes: this.metaData,
-        edges: this.data.edges,
-      }
+      // return {
+      //   nodes: this.metaData,
+      //   edges: this.data.edges,
+      // }
+    //RETURN META INFO
+    return {
+      nodesTotalLength: this.metaData.length,
+      edgesTotalLength: this.data.length,
+      weightSet: this.weightSet,
+      maxWeigth: this.maxWeight,
+      nodes: this.metaData,
+      edges: this.data.edges,
+    }
 
     const { id, name, userName, version } = props
 
