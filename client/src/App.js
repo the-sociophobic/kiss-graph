@@ -8,6 +8,8 @@ import StoreContext from 'libs/engines/data/store/StoreContext'
 import 'styles/default.sass'
 import 'styles/modificators.sass'
 
+import './config'
+
 class App extends Component {
   render() {
     return (

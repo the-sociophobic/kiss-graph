@@ -308,7 +308,7 @@ export default class myDate {
       return this.countable(this.pastMonths(), (this.lang === "RU" ? ["месяц", "месяца", "месяцев"] : "month"));
     return this.countable(this.pastYears(), (this.lang === "RU" ? ["год", "года", "лет"] : "year"));
   }
-  past() {
+  pastCounter() {
     let result = ""
     let clippedDate = new myDate(this)
 
@@ -338,6 +338,39 @@ export default class myDate {
       clippedDate = clippedDate.addMinute(clippedDate.pastMinutes())
     }
     result += clippedDate.countable(clippedDate.pastSeconds(), (clippedDate.lang === "RU" ? ["секунду", "секунды", "секунд"] : "second"));
+
+    return result
+  }
+  pastCounterShort() {
+    let result = ""
+    let clippedDate = new myDate(this)
+
+    if (clippedDate.pastYears() > 0) {
+      result += clippedDate.countable(clippedDate.pastYears(), (clippedDate.lang === "RU" ? ["год", "года", "лет"] : "year"));
+      result += " "
+      clippedDate = clippedDate.addYear(clippedDate.pastYears())
+    }
+    if (clippedDate.pastMonths() > 0) {
+      result += clippedDate.countable(clippedDate.pastMonths(), (clippedDate.lang === "RU" ? ["месяц", "месяца", "месяцев"] : "month"));
+      result += " "
+      clippedDate = clippedDate.addMonth(clippedDate.pastMonths())
+    }
+    if (clippedDate.pastDays() > 0) {
+      result += clippedDate.countable(clippedDate.pastDays(), (clippedDate.lang === "RU" ? ["день", "дня", "дней"] : "day"));
+      result += " "
+      clippedDate = clippedDate.addDay(clippedDate.pastDays())
+    }
+    if (clippedDate.pastHours() > 0) {
+      result += clippedDate.pastHours()
+      result += ":"
+      clippedDate = clippedDate.addHour(clippedDate.pastHours())
+    }
+    if (clippedDate.pastMinutes() > 0) {
+      result += clippedDate.pastMinutes()
+      result += ":"
+      clippedDate = clippedDate.addMinute(clippedDate.pastMinutes())
+    }
+    result += clippedDate.pastSeconds()
 
     return result
   }

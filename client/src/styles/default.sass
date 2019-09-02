@@ -257,11 +257,13 @@ $arrow-size: 7px
   height: 100%
   background-color: white
   z-index: 10000
-  box-shadow: 0 5px 30px rgba(0, 0, 0, .45)
-  // box-shadow: 0 10px 12px rgba(0, 0, 0, .15)
+  @media (min-width: 1025px)
+    box-shadow: 0 5px 30px rgba(0, 0, 0, .35)
+    overflow: hidden
   @media (max-width: 1024px)
     width: 100%
     height: auto
+    // box-shadow: 0 10px 12px rgba(0, 0, 0, .15)
   &__search-bar
     padding: 10px
   .node-info
@@ -458,6 +460,7 @@ $mobile-expander-button-height: 5px
 
 .about-container
   padding: 10px
+  margin-bottom: 40px
   article.article
   h3.h3
     line-height: 2
@@ -470,20 +473,44 @@ $mobile-expander-button-height: 5px
 
 
 .flex-container
+  height: 100%
   display: flex
   flex-direction: column
   align-items: stretch
-  height: 100%
+  flex-wrap: no-wrap
 .flex-column
   flex-grow: 1
   flex-shrink: 0
+.scroll-column
+  width: 100%
+  height: 100%
+  overflow: scroll
+.abs-container
+  width: 100%
+  height: 100%
+  position: absolute
+  top: 0
+  left: 0
+
+
 
 .footer
   width: 100%
-  padding: 10px
+  padding: 4px 10px 10px
   display: table
   text-align: right
+  background-color: white
+  position: relative
+  &::after
+    position: absolute
+    top: -50px
+    left: 0
+    width: 100%
+    height: 50px
+    background-image: linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .5) 30%, rgba(255, 255, 255, 1) 100%)
+    content: ""
   p.link
+    display: inline-block
     font-size: 16px
     cursor: pointer
     color: blue
