@@ -49,18 +49,19 @@ export default class User extends Component {
               <div
                 className="node-info__connections__item"
                 key={connection.name}
+                style={{color: connection.color}}
               >
-                <Link
-                  to={nameToPath(connection.userName || connection.name)}
-                  onClick={() => this.props.setNode(connection.name)}
-                >
-                  <span
-                    style={{color: connection.color}}
+                <div className="node-info__connections__item__number">
+                  {connection.connections}
+                </div>
+                <div className="node-info__connections__item__name">
+                  <Link
+                    to={nameToPath(connection.userName || connection.name)}
+                    onClick={() => this.props.setNode(connection.name)}
                   >
-                    {connection.connections + (connection.connections < 10 ? " \xa0 " : " ")}
-                  {/* </span> {connection.name} */}
-                   {connection.name}</span>
-                </Link>
+                    {connection.name}
+                  </Link>
+                </div>
               </div>
           ))}
         </div>
