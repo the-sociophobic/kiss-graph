@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react'
 import About from 'pages/About'
 import Dropdown from 'components/Form/Dropdown'
 
-// import { registerListeners, unregisterListeners } from 'libs/utils/preventMobileScrolling'
+import { registerListeners, unregisterListeners } from 'libs/utils/preventMobileScrolling'
 
 import User from 'components/interface/User'
 import MobileExpander from 'components/interface/MobileExpander'
@@ -18,19 +18,20 @@ export default class TextInterface extends Component {
       showAbout: false,
     }
     this.interfaceRef = new React.createRef()
+    this.searchBarRef = new React.createRef()
   }
 
   updateDeviceWidth = () => this.setState({deviceWidth: window.innerWidth})
 
   componentDidMount() {
-    // registerListeners(this.interfaceRef.current)
+    registerListeners(this.searchBarRef.current)
 
     window.addEventListener('resize', this.updateDeviceWidth.bind(this))
     window.addEventListener('orientationchange', this.updateDeviceWidth.bind(this))
     this.updateDeviceWidth()
   }
   componentWillUnmount() {
-    // unregisterListeners(this.interfaceRef.current)
+    unregisterListeners(this.searchBarRef.current)
 
     window.removeEventListener('resize', this.updateDeviceWidth.bind(this))
     window.removeEventListener('orientationchange', this.updateDeviceWidth.bind(this))
@@ -53,10 +54,8 @@ export default class TextInterface extends Component {
     else {
       const options = this.props.data.store.search({name: value, userName: value})
         .slice(0, 5)
-        // .map(option => option.name + (option.userName ? ` (@${option.userName})` : ""))
         .map(option => ({
           value: option.name,
-          // render: option.name + (option.userName ? ` (@${option.userName})` : "")
           render: <p>{option.name} <em>{option.userName ? ` (@${option.userName})` : ""}</em></p>
         }))
       this.setState({currentOptions: options})
@@ -93,7 +92,9 @@ export default class TextInterface extends Component {
           <div className="abs-container">
             <div className="scroll-column">
               <div className="flex-container">
-                {content}
+                <div className="text-interface__content">
+                  {content}
+                </div>
               </div>
             </div>
           </div>
@@ -108,7 +109,10 @@ export default class TextInterface extends Component {
         className="text-interface"
       >
         <div className="flex-container">
-          <div className="text-interface__search-bar">
+          <div
+            ref={this.searchBarRef}
+            className="text-interface__search-bar"
+          >
             <Dropdown
               input
               value={(this.props.nodeToShow && this.props.nodeToShow.name) || ""}
@@ -127,7 +131,6 @@ export default class TextInterface extends Component {
               </div>
             </MobileExpander>
             :
-            // <Fragment>
             <div className="flex-column relative">
               <div className="abs-container">
                 <div className="scroll-column">
@@ -137,7 +140,6 @@ export default class TextInterface extends Component {
                 </div>
               </div>
             </div>
-            // </Fragment>
           }
         </div>
       </div>
