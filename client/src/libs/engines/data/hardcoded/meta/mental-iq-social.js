@@ -10,7 +10,8 @@ export default [
     social: {
       vk: "",
       inst: "david_taubman",
-    }
+    },
+    offended: true,
   },
   {
     nickName: "Kirill%20Ermakov",
@@ -45,7 +46,8 @@ export default [
     social: {
       vk: "",
       inst: "kristinaboyar",
-    }
+    },
+    offended: true,
   },
   {
     nickName: "Nastya%20Pavlova",
@@ -363,13 +365,15 @@ export default [
   {
     nickName: "Viktor%20Tsoy",
     additionalConnections: 3,
+    deceased: true,
   },
   {
     nickName: "Polina%20Mishago",
     // additionalConnections: 20,
     social: {
       inst: "lowpolis",
-    }
+    },
+    offended: true,
   },
   {
     nickName: "Darya%20Alexandrovna",
@@ -525,5 +529,17 @@ export default [
   {
     nickName: "Yaroslav%20Valdens",
     iq: 119,
+  },
+  {
+    nickName: "Roma%20Anglichanin",
+    deceased: true,
+  },
+  {
+    nickName: "Timofey%20Sherstenyov",
+    deceased: true,
+  },
+  {
+    nickName: "Roofina%20Kapkan",
+    deceased: true,
   },
 ]

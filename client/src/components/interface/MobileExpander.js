@@ -28,9 +28,9 @@ export default class MobileEpander extends Component {
     element.addEventListener( 'mouseup', this.onTouchEnd.bind(this), { passive: false } )
     window.addEventListener( 'mousemove', this.onTouchMove.bind(this), { passive: false } )
 
-    window.addEventListener('resize', this.updateMaxxHeight.bind(this))
-    window.addEventListener('orientationchange', this.updateMaxxHeight.bind(this))
-    this.updateMaxxHeight()
+    window.addEventListener('resize', this.updateMaxHeight.bind(this))
+    window.addEventListener('orientationchange', this.updateMaxHeight.bind(this))
+    this.updateMaxHeight()
   }
   componentWillUnmount() {
     const element = this.draggableArrowRef.current
@@ -43,11 +43,11 @@ export default class MobileEpander extends Component {
     window.addEventListener( 'mouseup', this.onTouchEnd.bind(this), { passive: false } )
     window.addEventListener( 'mousemove', this.onTouchMove.bind(this), { passive: false } )
 
-    window.removeEventListener('resize', this.updateMaxxHeight.bind(this))
-    window.removeEventListener('orientationchange', this.updateMaxxHeight.bind(this))
+    window.removeEventListener('resize', this.updateMaxHeight.bind(this))
+    window.removeEventListener('orientationchange', this.updateMaxHeight.bind(this))
   }
 
-  updateMaxxHeight = () => this.setState({maxHeight: (window.innerHeight - 80) * .7})
+  updateMaxHeight = () => this.setState({maxHeight: Math.floor((window.innerHeight - 80) * .7)})
 
   onTouchStart = event => {
     event.preventDefault()

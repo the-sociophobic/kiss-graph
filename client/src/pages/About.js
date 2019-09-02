@@ -3,6 +3,9 @@ import React, { Component } from 'react'
 import ExternalLink from 'components/ExternalLink'
 
 import myDate from 'libs/utils/myDate'
+import countable from 'libs/utils/countable'
+
+import StoreContext from 'libs/engines/data/store/StoreContext'
 
 class About extends Component {
   constructor(props) {
@@ -12,15 +15,17 @@ class About extends Component {
     this.siteDate = new myDate(new Date('2019-07-13T01:21:24'), "RU")
 
     this.state = {
-      memeDateString: this.memeDate.past(),
-      siteDateString: this.siteDate.past(),
+      memeDateString: this.memeDate.pastCounterShort(),
+      siteDateString: this.siteDate.pastCounterShort(),
     }
 
     setInterval(() => this.setState({
-      memeDateString: this.memeDate.past(),
-      siteDateString: this.siteDate.past(),
+      memeDateString: this.memeDate.pastCounterShort(),
+      siteDateString: this.siteDate.pastCounterShort(),
     }), 1000)
   }
+
+  static contextType = StoreContext
 
   render() {
     const articles = [
@@ -39,16 +44,18 @@ class About extends Component {
         Иными словами, все действия и слова, которые не наносят вред чужой жизни и имуществу — не являются плохими. Любые отступления от данного правила оправдывают цензуры и репресивные законы об оскорблении чувств. Данный сайт — всего лишь сборник непроверенной информации: он не угрожает ничьей жизни и не ворует чужие деньги, т.е. в нём нет ничего аморального. Если вы, тем не менее, обеспокоены свободой слова, можете воспользоваться <ExternalLink newWindow to="https://forms.gle/i8NxcaSA94SvJXhr9">формой обратной связи</ExternalLink>.</p>,
       },
     ]
+
+    const {nodes, edges} = this.context.store.get()
     
     return (
       <div className="about-container">
         <p className="p">
           {this.state.memeDateString} с первой публикации мема<br />
           {this.state.siteDateString} с публикации сайта<br />
-          948 человек на графе<br />
-          1092 связей<br />
-          92 коммита<br />
-          4 человека заявило об оскорблении чувств<br /><br />
+          {countable(nodes.length, ["человек", "человека", "человек"])} на графе<br />
+          {countable(edges.length, ["связь", "связи", "связей"])}<br />
+          {countable(nodes.filter(node => node.offended).length, ["человек", "человека", "человек"])} заявило об оскорблении чувств<br />
+          {countable(nodes.filter(node => node.deceased).length, ["человек", "человека", "человек"])} умерло<br /><br />
         </p>
         {articles.map(article => (
           <article className="article">

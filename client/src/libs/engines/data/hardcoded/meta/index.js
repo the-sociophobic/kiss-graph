@@ -32,7 +32,9 @@ export default data => {
       mentalDisorder: meta.mentalDisorder,
       iq: meta.iq,
       userName: meta.userName || (meta.social && (meta.social.inst || meta.social.vk)) || undefined,
-      avatar: meta.avatar 
+      avatar: meta.avatar,
+      offended: meta.offended,
+      deceased: meta.deceased,
     }
   })
   const edges = data.edges

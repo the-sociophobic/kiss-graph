@@ -65,63 +65,81 @@ export default class TextInterface extends Component {
 
   render = () => {
     const { node } = this.props
-    const nodeElem = <User node={node} setNode={this.setNode.bind(this)} />
+    const footer = (
+      <div className="footer">
+        <p
+          className="link"
+          onClick={() => this.setState({showAbout: !this.state.showAbout})}
+        >
+          {this.state.showAbout ? "Back" : "About"}
+        </p>
+      </div>
+    )
+
+    const nodeElem = (
+      <User
+        node={node}
+        setNode={this.setNode.bind(this)}
+      />)
+
+    const content = this.state.showAbout ?
+      <About />
+      :
+      nodeElem
+
+    const contentWithFooter = (
+      <Fragment>
+        <div className="flex-column relative">
+          <div className="abs-container">
+            <div className="scroll-column">
+              <div className="flex-container">
+                {content}
+              </div>
+            </div>
+          </div>
+        </div>
+        {footer}
+      </Fragment>
+    )
 
     return (
       <div
         ref={this.interfaceRef}
-        className={"text-interface " + (this.state.deviceWidth > 1024 && "flex-container")}
+        className="text-interface"
       >
-        <div className="text-interface__search-bar">
-          <Dropdown
-            input
-            value={(this.props.nodeToShow && this.props.nodeToShow.name) || ""}
-            options={this.state.currentOptions}
-            updateOptions={value => this.updateOptions(value)}
-            onChange={value => this.setNode(value)}
-            placeholder="Search..."
-            showReset
-          />
+        <div className="flex-container">
+          <div className="text-interface__search-bar">
+            <Dropdown
+              input
+              value={(this.props.nodeToShow && this.props.nodeToShow.name) || ""}
+              options={this.state.currentOptions}
+              updateOptions={value => this.updateOptions(value)}
+              onChange={value => this.setNode(value)}
+              placeholder="Search..."
+              showReset
+            />
+          </div>
+          
+          {this.state.deviceWidth <= 1024 ?
+            <MobileExpander>
+              <div className="flex-container">
+                {contentWithFooter}
+              </div>
+            </MobileExpander>
+            :
+            // <Fragment>
+            <div className="flex-column relative">
+              <div className="abs-container">
+                <div className="scroll-column">
+                  <div className="flex-container">
+                    {contentWithFooter}
+                  </div>
+                </div>
+              </div>
+            </div>
+            // </Fragment>
+          }
         </div>
-        {this.state.deviceWidth <= 1024 ?
-          <MobileExpander>
-            <div className="flex-container">
-              <div className="flex-column">
-                {this.state.showAbout ?
-                  <About />
-                  :
-                  nodeElem}
-
-                {this.props.children}
-              </div>
-              <div className="footer">
-                <p
-                  className="link"
-                  onClick={() => this.setState({showAbout: !this.state.showAbout})}
-                >
-                  {this.state.showAbout ? "Back" : "About"}
-                </p>
-              </div>
-            </div>
-          </MobileExpander>
-          :
-          <Fragment>
-            <div className="flex-column">
-              {this.state.showAbout ?
-                <About />
-                :
-                nodeElem}
-            </div>
-            <div className="footer">
-              <p
-                className="link"
-                onClick={() => this.setState({showAbout: !this.state.showAbout})}
-              >
-                {this.state.showAbout ? "Back" : "About"}
-              </p>
-            </div>
-          </Fragment>
-        }
       </div>
     )
   }
