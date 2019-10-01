@@ -485,6 +485,7 @@ export default [
     social: {
       inst: "hornestos",
     },
+    iq: 102,
   },
   {
     nickName: "Lena%20Zhukova",
@@ -510,6 +511,7 @@ export default [
       inst: "turkishjoe1",
       tg: "firstgambit",
     },
+    iq: "го в тг"
   },
   {
     nickName: "Leonid%20Braverman",
@@ -541,5 +543,12 @@ export default [
   {
     nickName: "Roofina%20Kapkan",
     deceased: true,
+  },
+  {
+    nickName: "Nastya%20Vladimirova",
+    social: {
+      vk: "amantes_amento",
+      inst: "jewesschrist",
+    },
   },
 ]

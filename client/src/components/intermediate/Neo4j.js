@@ -1,62 +1,67 @@
 import React, { Component } from 'react'
-import Block from 'components/interface/Block'
-
-import parser from 'libs/engines/data/hardcoded/dagitty.net'
-import data from 'libs/engines/data/hardcoded/dagitty.net/data.30.06.19'
-
+import StoreContext from 'libs/engines/data/store/StoreContext'
 import axios from 'axios'
+
+
 export default class Parser extends Component {
   constructor(props) {
     super(props)
-    this.copytextRef = React.createRef()
+    this.state = {}
   }
 
-  componentDidMount() {
-    this.copytextRef.current.select()
-    document.execCommand("copy")
-  }
+  post = async statements => axios
+    .post("http://31.184.252.37:7474/db/data/transaction/commit",
+    // .post("http://localhost:7474/db/data/transaction/commit",
+      {statements: statements},
+      {auth: {
+        username: "neo4j",
+        password: "k21t23a11h12o22e"
+        // password: "dermo123"
+      }}
+    )
 
-  render() {
-    const nodes = parser(data).nodes.map(node => ({
-      nickName: node.nickName,
-      firstName: node.firstName,
-      lastName: node.lastName,
+  addCurrentData = async () => {
+    await this.post([{statement: "MATCH (n); DETACH DELETE n"}])
+
+    const data = this.context.store.get()
+
+    const nodes = data.nodes.map(node => ({
+      name: node.name,
+      userName: node.userName,
+      mentalDisorder: node.mentalDisorder,
+      iq: node.iq,
+      avatar: node.avatar,
+      offended: node.offended,
+      deceased: node.deceased,
+      // TODO pos as p3d
     }))
     const nodeString = "UNWIND " + JSON.stringify(nodes).replace(/\"([^(\")"]+)\":/g,"$1:") +
       " AS properties\nCREATE (n:Person)\nSET n = properties\nRETURN n"
+    await this.post([{statement: nodeString}])
+    // console.log(nodeString)
+    console.log("nodes added")
 
-    const edges = parser(data).edges
+    const edges = data.edges
     const edgeString = edges.map(edge => `
       MATCH (a:Person)
-      WHERE a.nickName = '${edge.node0}'
+      WHERE a.name = '${edge.node0}'
       MATCH (b:Person)
-      WHERE b.nickName = '${edge.node1}'
+      WHERE b.name = '${edge.node1}'
       CREATE (a)-[r:KISS]->(b)
     `)
       .map(statement => ({statement: statement}))
+    await this.post(edgeString)
+    console.log("edges added")
+  }
+  
+  static contextType = StoreContext
 
-    // axios.post("http://localhost:7474/db/data/transaction/commit", {statements: edgeString}, {
-    //   auth: {
-    //     username: "neo4j",
-    //     password: "dermo123"
-    //   }
-    // })
-    //   .then(res => console.log("aaa " + res))
-    //   .catch(err => console.log("bbb " + err))
-
-    // console.log(metaParser(parser(data)))
-
+  render() {
     return(
       <div>
-        <Block>
-          <textarea
-            // value={edgeString}
-            value={nodeString}
-            rows={40}
-            cols={40}
-            ref={this.copytextRef}
-          />
-        </Block>
+        <button onClick={() => this.addCurrentData()}>
+          Добавить
+        </button>
       </div>
     )
   }

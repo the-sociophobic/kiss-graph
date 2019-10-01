@@ -1,4 +1,5 @@
 import psychic from './mental-iq-social'
+import edgesDates from './edgesDates'
 import position from 'libs/engines/data/hardcoded/position/29.08.19.json'
 // import position from 'libs/engines/data/hardcoded/position/bojack.json'
 
@@ -37,7 +38,21 @@ export default data => {
       deceased: meta.deceased,
     }
   })
-  const edges = data.edges
+  const edges = data.edges.map(edge => {
+    let foundEdgeData = edgesDates.filter(edgeData =>
+      (edgeData.names[0] === edge.node0 && edgeData.names[1] === edge.node1) ||
+      (edgeData.names[0] === edge.node1 && edgeData.names[1] === edge.node0)
+    )
+    if (foundEdgeData.length > 0)
+      return {
+        ...edge,
+        date: foundEdgeData[0].date,
+        added: foundEdgeData[0].added,
+        submitter: foundEdgeData[0].submitter,
+      }
+    return edge
+  })
+
   const distribution = Array.from(
     new Set(
       nodes.map(node => node.connections)))
