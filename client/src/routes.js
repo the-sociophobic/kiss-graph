@@ -3,6 +3,7 @@ import React from 'react'
 import About from 'pages/About'
 import Donations from 'pages/Donations'
 import Bitcoins from 'pages/Bitcoins'
+import Kontrol from 'pages/Kontrol'
 import Layout from 'components/Layout'
 import { Redirect } from 'react-router-dom'
 
@@ -31,5 +32,9 @@ export default [
   {
     path: '/btc',
     component: Bitcoins,
+  },
+  {
+    path: '/kontrol',
+    component: Kontrol,
   },
 ]

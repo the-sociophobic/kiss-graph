@@ -101,7 +101,7 @@ const cylinderGraphGeometry = (nodes, edges, segments) => {
   })
   
   let mergedGeometry = new THREE.Geometry()
-  cylinderMeshes.forEach((mesh, index) =>
+  cylinderMeshes.forEach(mesh =>
     mergedGeometry.mergeMesh(mesh)
   )
 
