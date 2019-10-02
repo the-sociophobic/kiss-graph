@@ -14,8 +14,8 @@ export default class Parser extends Component {
     // .post("http://localhost:7474/db/data/transaction/commit",
       {statements: statements},
       {auth: {
-        username: "neo4j",
-        password: "k21t23a11h12o22e"
+        username: process.env.REACT_APP_DB_LOGIN,
+        password: process.env.REACT_APP_DB_PASSWORD,
         // password: "dermo123"
       }}
     )

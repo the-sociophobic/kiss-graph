@@ -537,7 +537,7 @@ export default [
     deceased: true,
   },
   {
-    nickName: "Timofey%20Sherstenyov",
+    nickName: "Timofey%20Shesternyov",
     deceased: true,
   },
   {

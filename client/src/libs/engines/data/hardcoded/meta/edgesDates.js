@@ -1,5 +1,25 @@
 export default [
   {
+    names: ["Lev Vasilyev", "Anya Grin"],
+    date: 1409472000,
+    added: 1522593271,
+  },
+  {
+    names: ["Lev Vasilyev", "Nastya IvanovaMonroa"],
+    date: 1471575600,
+    added: 1522593271,
+  },
+  {
+    names: ["Lev Vasilyev", "Vita Polovinkina"],
+    date: 1509307200,
+    added: 1522670400,
+  },
+  {
+    names: ["Lev Vasilyev", "Dasha Moskvina"],
+    date: 1532464200,
+  },
+
+  {
     names: ["Lev Vasilyev", "Kristina Boyarkina"],
     date: 1540057200,
   },
@@ -106,7 +126,7 @@ export default [
 
 
   {
-    names: ["Timofey Sherstenyov", "Kseniya Belaya"],
+    names: ["Timofey Shesternyov", "Kseniya Belaya"],
     added: 1576878660,
     submitter: "Kristina Boyarkina"
   },
@@ -192,10 +212,6 @@ export default [
     date: 1556841773,
   },
   {
-    names: ["Lev Vasilyev", "Denchik"],
-    date: 1556841773,
-  },
-  {
     names: ["Anton Plevako", "Denchik"],
     added: 1556841773,
   },
@@ -245,7 +261,7 @@ export default [
   },
 
   {
-    names: ["Natasha Kozhevnikova", "Timofey Sherstenyov"],
+    names: ["Natasha Kozhevnikova", "Timofey Shesternyov"],
     added: 1557677355,
   },
 
@@ -406,9 +422,170 @@ export default [
     added: 1561266693,
   },
 
+  {
+    names: ["Serafima Schedrina", "Andrey Potashev"],
+    added: 1561667846,
+  },
+  {
+    names: ["Serafima Schedrina", "Liza Lepaslen"],
+    added: 1561667846,
+  },
+  {
+    names: ["Serafima Schedrina", "Sergey Sokolov"],
+    added: 1561667846,
+  },
+  {
+    names: ["Serafima Schedrina", "Stas Goldar"],
+    added: 1561667846,
+  },
+
+  {
+    names: ["Tikhon Timanov", "Maxim Kolpino"],
+    added: 1559515358,
+  },
+  {
+    names: ["Tikhon Timanov", "Alina Bazanova"],
+    added: 1559515358,
+  },
+  {
+    names: ["Tikhon Timanov", "Vadim Ashder"],
+    added: 1559515358,
+  },
+  {
+    names: ["Tikhon Timanov", "Sofia Mityaeva"],
+    added: 1559515358,
+  },
+  
+  {
+    names: ["Artyom Arsenyan", "Anna Razumova"],
+    date: 1563236217,
+  },
+
+  {
+    names: ["Igor Prostakov", "Polina Kabanova"],
+    added: 1562382875,
+  },
+  {
+    names: ["Igor Prostakov", "Karina Mullayanova"],
+    added: 1562382875,
+  },
+  {
+    names: ["Igor Prostakov", "Liza Nikolaenko"],
+    added: 1562382875,
+  },
+
+  {
+    names: ["Sasha Kozlov", "Pasha Sokolov"],
+    added: 1563059920,
+  },
+  {
+    names: ["Sasha Kozlov", "Vlada Zayats"],
+    added: 1563059920,
+  },
+  {
+    names: ["Sasha Kozlov", "Alyona ColdMary"],
+    added: 1563059920,
+  },
+  {
+    names: ["Vlada Zayats", "Pasha Sokolov"],
+    added: 1563059920,
+  },
+  {
+    names: ["Vlada Zayats", "Roma Glazunov"],
+    added: 1563059920,
+  },
+  {
+    names: ["Pasha Sokolov", "Anfisa Dobrokhodova"],
+    added: 1563059920,
+  },
+  {
+    names: ["Lev Vasilyev", "Viktor Sikret"],
+    date: 1563059920,
+  },
+  {
+    names: ["Pasha Sokolov", "Tanya Skazka"],
+    added: 1405300666,
+  },
+  {
+    names: ["Pasha Sokolov", "Katya Markova"],
+    added: 1405300666,
+  },
+  {
+    names: ["Pasha Sokolov", "Lev Vasilyev"],
+    date: 1563069449,
+  },
+  {
+    names: ["Anfisa Dobrokhodova", "Lev Vasilyev"],
+    date: 1563069449,
+  },
+
+  {
+    names: ["Dmitry Renansky", "Kseniya Volkova"],
+    added: 1563574889,
+  },
+  {
+    names: ["Eve Wilkinson", "Anastasiya Nadezhdina"],
+    added: 1563584000,
+  },
+
+  {
+    names: ["Alexandr Mashanov", "Maria Seledets"],
+    date: 1564942134,
+  },
+  {
+    names: ["Alexandr Mashanov", "Maria Rein"],
+    added: 1569598230,
+  },
+
+  {
+    names: ["Dasha Solovyova", "Mark Kozharskiy"],
+    date: 1569708000,
+    added: 1569765120,
+  },
+  {
+    names: ["Yana Moiseeva", "Viktor Syropyatov"],
+    date: 1569708000,
+    added: 1569766800,
+  },
+  {
+    names: ["Nikita Kravchenko", "Zhenya Parcenyak"],
+    date: 1569708000,
+    added: 1569766800,
+  },
+
+  {
+    names: ["Natasha Kozhevnikova", "Alina Livshits"],
+    date: 1429747200,
+    added: 1569810649,
+  },
+
+  {
+    names: ["Ilya Roschin", "Katya Gorbunova"],
+    added: 1569875700,
+  },
+  {
+    names: ["Ilya Roschin", "Nastya Murza"],
+    added: 1569875700,
+  },
+  {
+    names: ["Ilya Roschin", "Katya Baykalova Trifonova"],
+    added: 1569875700,
+  },
+  {
+    names: ["Ilya Roschin", "Ksenia Neroba"],
+    added: 1569875700,
+  },
+  {
+    names: ["Ilya Roschin", "Nastya Uhimenko"],
+    added: 1569875700,
+  },
+  {
+    names: ["Anton Plevako", "Sofia Lupian"],
+    added: 1569875700,
+  },
+
   // {
   //   names: ["", ""],
-  //   date: ,
+  //   added: ,
   // },
-
 ]
