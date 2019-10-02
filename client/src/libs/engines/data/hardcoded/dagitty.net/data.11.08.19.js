@@ -817,7 +817,7 @@ Tatyana%20Svirid E @-0.082,-0.323
 Tikhon%20Timanov E @0.457,0.474
 Timofey%20Belkin E @0.768,1.379
 Timofey%20Kulyarin E @0.386,0.912
-Timofey%20Sherstenyov E @0.460,0.188
+Timofey%20Shesternyov E @0.460,0.188
 Timur%20Finov E @0.132,0.338
 Timur%20Ivashkevich E @0.763,1.270
 Timur%20Selyutin E @0.719,0.250
@@ -1498,7 +1498,7 @@ Tatyana%20Surkina Vadim%20Zimin
 Tatyana%20Svirid Antonina%20Dorogova
 Tikhon%20Timanov David%20Zharnitsky Kseniya%20Belaya Lev%20Vasilyev Sofia%20Mityaeva Vadim%20Ashder
 Timofey%20Belkin Valeriya%20Lapina
-Timofey%20Sherstenyov Kseniya%20Belaya Natasha%20Kozhevnikova
+Timofey%20Shesternyov Kseniya%20Belaya Natasha%20Kozhevnikova
 Timur%20Ivashkevich Anya%20Litomina
 Timur%20Selyutin Kira%20Kastaneda
 Tomasina%20Moskalenko Lev%20Vasilyev
