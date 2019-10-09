@@ -93,7 +93,7 @@ $secondary: #aaff09
 $link-color: #0000ee
 $box-shadow: 0 5px 15px rgba(0, 0, 0, .35)
 $input-height: 32px
-
+$default-border-radius: 5px
 
 
 
@@ -111,7 +111,7 @@ $interface-block-padding: 8px
     width: 100%
     height: 100%
     background-color: rgba(255, 255, 255, .75)
-    border-radius: 5px
+    border-radius: $default-border-radius
   &__content
     padding: $interface-block-padding
     position: relative
@@ -257,7 +257,7 @@ $arrow-size: 7px
 
 
 .text-interface
-  width: 400px
+  width: 500px
   height: 100%
   background-color: white
   z-index: 10000
@@ -277,36 +277,46 @@ $arrow-size: 7px
       margin-bottom: 3px
     &__connections
       padding-left: 5px
-      &__item
-        width: 100%
-        line-height: 20px
-        font-size: 14px
-        display: flex
-        flex-direction: row
-        &__number
-          width: 26px
-          text-align: right
-          padding-right: 7px
-          color: inherit
-          line-height: inherit
-          font-size: inherit
-        &__name
-          flex-grow: 1
-          font-size: inherit
-          line-height: inherit
-          color: inherit
-          a
-            font-size: inherit
-            line-height: inherit
-            // color: $link-color
-            color: inherit
-            text-decoration: underline
+
 
   &__content
     padding: 10px 11px 50px
 
 
+.username-link
+  width: 100%
+  line-height: 20px
+  font-size: 14px
+  display: flex
+  flex-direction: row
+  &__number
+    width: 26px
+    text-align: right
+    padding-right: 7px
+    color: inherit
+    line-height: inherit
+    font-size: inherit
+  &__name
+    flex-grow: 1
+    font-size: inherit
+    line-height: inherit
+    color: inherit
+    a
+      font-size: inherit
+      line-height: inherit
+      // color: $link-color
+      color: inherit
+      text-decoration: underline
+  &--simple
+    display: inline
+    line-height: 1.6
+    a
+      font-size: 14px
+      color: $dark-gray
+      // color: inherit
+      text-decoration: underline
 
+      
 
 .form-group
   // padding: 14px 10px 0
@@ -327,7 +337,7 @@ $arrow-size: 7px
     border: 1px solid $light-gray
     background: $light-light-gray
     -webkit-appearance: none
-    border-radius: 5px
+    border-radius: $default-border-radius
     &::placeholder
       color: #b1b1b1
 
@@ -536,3 +546,30 @@ $mobile-expander-button-height: 5px
     font-size: 16px
     cursor: pointer
     color: blue
+
+
+
+.radio-header
+  &__container
+    margin-bottom: 20px
+    width: 100%
+    display: flex
+    border: 1px solid $light-gray
+    border-radius: $default-border-radius
+  &__option
+    text-align: center
+    font-size: 14px
+    line-height: $input-height - 4px
+    flex-grow: 1
+    border-right: 1px solid $light-gray
+    background-color: white
+    cursor: pointer
+    &:first-of-type
+      border-top-left-radius: $default-border-radius - 1px
+      border-bottom-left-radius: $default-border-radius - 1px
+    &:last-of-type
+      border-right: none
+      border-top-right-radius: $default-border-radius - 1px
+      border-bottom-right-radius: $default-border-radius - 1px
+    &--selected
+      background-color: $light-light-gray

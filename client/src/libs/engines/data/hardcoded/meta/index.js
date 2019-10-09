@@ -1,9 +1,10 @@
 import psychic from './mental-iq-social'
 import edgesDates from './edgesDates'
-import position from 'libs/engines/data/hardcoded/position/29.08.19.json'
+import position from 'libs/engines/data/hardcoded/position/09.10.19.json'
 // import position from 'libs/engines/data/hardcoded/position/bojack.json'
 
 import colorFromWeight from 'libs/utils/colorFromWeight'
+import { nameToPath } from 'libs/utils/stringTransforms'
 
 export default data => {
   let nodes = data.nodes.map((node, index) => {
@@ -19,6 +20,7 @@ export default data => {
       })
     
     const pos = position[index] || {x: 0, y: 0, z: 0}
+    const userName = meta.userName || (meta.social && (meta.social.inst || meta.social.vk)) || undefined
 
     return {
       id: index,
@@ -32,7 +34,8 @@ export default data => {
       mates: mates,
       mentalDisorder: meta.mentalDisorder,
       iq: meta.iq,
-      userName: meta.userName || (meta.social && (meta.social.inst || meta.social.vk)) || undefined,
+      userName: userName,
+      link: nameToPath(userName || node.nickName),
       avatar: meta.avatar,
       offended: meta.offended,
       deceased: meta.deceased,
@@ -46,8 +49,9 @@ export default data => {
     if (foundEdgeData.length > 0)
       return {
         ...edge,
-        date: foundEdgeData[0].date,
-        added: foundEdgeData[0].added,
+        commited: foundEdgeData[0].commited,
+        published: foundEdgeData[0].published,
+        told: foundEdgeData[0].told,
         submitter: foundEdgeData[0].submitter,
       }
     return edge

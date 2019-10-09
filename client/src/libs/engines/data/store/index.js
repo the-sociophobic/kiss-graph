@@ -1,6 +1,6 @@
 import parser from 'libs/engines/data/hardcoded/dagitty.net'
 import metaParser from 'libs/engines/data/hardcoded/meta'
-import data from 'libs/engines/data/hardcoded/dagitty.net/data.29.08.19'
+import data from 'libs/engines/data/hardcoded/dagitty.net/data.09.10.19'
 import data_prev from 'libs/engines/data/hardcoded/dagitty.net/data.03.06.19'
 
 //TODO
@@ -11,17 +11,25 @@ import data_prev from 'libs/engines/data/hardcoded/dagitty.net/data.03.06.19'
 //   edges = () => {}
 // }
 
+const filterSingleNodes = (nodes, edges) => nodes
+.filter(node => edges
+  .map(edge => (edge.node0 === node.nickName || edge.node1 === node.nickName))
+  .reduce((a, b) => a || b)
+)
+
 class store {
   constructor(props) {
     this.props = props
     this.data = parser(data)
-    this.metaData = metaParser(this.data).nodes
+    this.data.nodes = filterSingleNodes(this.data.nodes, this.data.edges)
+    this.metaData = metaParser(this.data)
     this.data_prev = parser(data_prev)
-    this.metaData_prev = metaParser(this.data_prev).nodes
+    this.data_prev.nodes = filterSingleNodes(this.data_prev.nodes, this.data_prev.edges)
+    this.metaData_prev = metaParser(this.data_prev)
 
     this.weightSet = Array.from(
       new Set(
-        this.metaData.map(node => node.weight)))
+        this.metaData.nodes.map(node => node.weight)))
     .sort((a, b) => a - b)
 
     this.maxWeight = this.weightSet[0]
@@ -30,17 +38,17 @@ class store {
   get = props => {
     if (typeof props === "undefined")
       // return {
-      //   nodes: this.metaData,
-      //   edges: this.data.edges,
+      //   nodes: this.metaData.nodes,
+      //   edges: this.metaData.edges,
       // }
     //RETURN META INFO
     return {
-      nodesTotalLength: this.metaData.length,
-      edgesTotalLength: this.data.length,
+      nodesTotalLength: this.metaData.nodes.length,
+      edgesTotalLength: this.metaData.edges.length,
       weightSet: this.weightSet,
       maxWeigth: this.maxWeight,
-      nodes: this.metaData,
-      edges: this.data.edges,
+      nodes: this.metaData.nodes,
+      edges: this.metaData.edges,
     }
 
     const { id, name, userName, version } = props
@@ -62,29 +70,29 @@ class store {
     let edges = []
 
     if (typeof id !== "undefined") {
-      const index = metaData
+      const index = metaData.nodes
         .map(node => node.id)
         .indexOf(id)
       if (index !== -1)
-        return metaData[index]
+        return metaData.nodes[index]
       return null
     }
 
     if (typeof userName !== "undefined") {
-      const index = metaData
+      const index = metaData.nodes
         .map(node => node.userName)
         .indexOf(userName)
       if (index !== -1)
-        return metaData[index]
+        return metaData.nodes[index]
       return null
     }
 
     if (typeof name !== "undefined") {
-      const index = metaData
+      const index = metaData.nodes
         .map(node => node.name.toLowerCase())
         .indexOf(name.toLowerCase())
       if (index !== -1)
-        return metaData[index]
+        return metaData.nodes[index]
       return null
     }
 
@@ -108,7 +116,7 @@ class store {
   }
 
   search = props => {
-    let filteredNodes = this.metaData.filter(node =>
+    let filteredNodes = this.metaData.nodes.filter(node =>
       Object.keys(props).map(key =>
         node[key] && node[key]
           .toLowerCase()
@@ -120,7 +128,7 @@ class store {
     )
 
     if (filteredNodes.length < 5) {
-      let badlyFilteredNodes = this.metaData.filter(node =>
+      let badlyFilteredNodes = this.metaData.nodes.filter(node =>
         !filteredNodes
           .map(node => node.id)
           .includes(node.id) &&
