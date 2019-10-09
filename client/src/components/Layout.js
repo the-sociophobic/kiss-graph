@@ -35,8 +35,11 @@ class Layout extends Component {
   }
 
   setNode = (id, transition = true) => {
+    const { history } = this.props
+
     if (typeof id === "undefined" || id === -1 || (id.length && id.length === 0)) {
       this.setState({nodeToShow: undefined})
+      history.push("/node/")
       return
     }
 
@@ -46,7 +49,6 @@ class Layout extends Component {
       return
 
     this.setState({nodeToShow: node})
-    const { history } = this.props
     const nodeId = this.props.match.params.nodeId || ""
 
     if (nodeId !== nameToPath(node.name) &&

@@ -7,6 +7,7 @@ import { registerListeners, unregisterListeners } from 'libs/utils/preventMobile
 
 import User from 'components/interface/User'
 import MobileExpander from 'components/interface/MobileExpander'
+import Feed from 'components/interface/Feed'
 
 
 export default class TextInterface extends Component {
@@ -84,7 +85,7 @@ export default class TextInterface extends Component {
     const content = this.state.showAbout ?
       <About />
       :
-      nodeElem
+      (node ? nodeElem : <Feed setNode={this.setNode.bind(this)} />)
 
     const contentWithFooter = (
       <Fragment>
@@ -93,6 +94,7 @@ export default class TextInterface extends Component {
             <div className="scroll-column">
               <div className="flex-container">
                 <div className="text-interface__content">
+                  {this.props.children}
                   {content}
                 </div>
               </div>

@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
-
-import { Link } from 'react-router-dom'
-
-import { nameToPath } from 'libs/utils/stringTransforms'
-
 import StoreContext from 'libs/engines/data/store/StoreContext'
+import UserNameLink from 'components/interface/UserNameLink'
+
 
 export default class User extends Component {
   constructor(props) {
@@ -45,25 +42,8 @@ export default class User extends Component {
           {node.mates
             .map(connection => this.context.store.get({name: connection}))
             .sort((a, b) => b.connections - a.connections)
-            .map(connection => (
-              <div
-                className="node-info__connections__item"
-                key={connection.name}
-                style={{color: connection.color}}
-              >
-                <div className="node-info__connections__item__number">
-                  {connection.connections}
-                </div>
-                <div className="node-info__connections__item__name">
-                  <Link
-                    to={nameToPath(connection.userName || connection.name)}
-                    onClick={() => this.props.setNode(connection.name)}
-                  >
-                    {connection.name}
-                  </Link>
-                </div>
-              </div>
-          ))}
+            .map(connection => <UserNameLink user={connection} setNode={this.props.setNode} />
+          )}
         </div>
       </div>
     )
