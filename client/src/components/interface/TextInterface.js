@@ -71,7 +71,7 @@ export default class TextInterface extends Component {
           className="link"
           onClick={() => this.setState({showAbout: !this.state.showAbout})}
         >
-          {this.state.showAbout ? "Back" : "About"}
+          {this.state.showAbout ? "back" : "about"}
         </p>
       </div>
     )
