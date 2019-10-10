@@ -10,6 +10,10 @@ import TextInterface from 'components/interface/TextInterface'
 import iOS from 'libs/utils/iOS'
 import { nameToPath, pathToName } from 'libs/utils/stringTransforms'
 
+import HeatMap from 'components/interface/HeatMap'
+import ControlsHelp from 'components/interface/ControlsHelp'
+
+
 class Layout extends Component {
   constructor(props) {
     super(props)
@@ -99,6 +103,8 @@ class Layout extends Component {
             myScene={myScene}
             {...props}
           />
+          <HeatMap />
+          <ControlsHelp />
         </div>
       </div>
     )

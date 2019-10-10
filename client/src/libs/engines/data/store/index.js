@@ -29,9 +29,8 @@ class store {
 
     this.weightSet = Array.from(
       new Set(
-        this.metaData.nodes.map(node => node.weight)))
+        this.metaData.nodes.map(node => node.connections)))
     .sort((a, b) => a - b)
-
     this.maxWeight = this.weightSet[0]
   }
 
