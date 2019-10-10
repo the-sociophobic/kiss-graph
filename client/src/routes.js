@@ -37,4 +37,8 @@ export default [
     path: '/kontrol',
     component: Kontrol,
   },
+  {
+    path: '/feed',
+    component: () => <Redirect to={{pathname: '/node/', state: { from: '/feed' }}} />,
+  },
 ]

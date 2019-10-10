@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { clamp } from 'libs/utils/math'
 
 
-export default class MobileEpander extends Component {
+export default class MobileExpander extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -31,6 +31,10 @@ export default class MobileEpander extends Component {
     window.addEventListener('resize', this.updateMaxHeight.bind(this))
     window.addEventListener('orientationchange', this.updateMaxHeight.bind(this))
     this.updateMaxHeight()
+    
+    const { prevLocation } = this.props
+    if (prevLocation === "/feed")
+      this.setState({state: "opened"})
   }
   componentWillUnmount() {
     const element = this.draggableArrowRef.current
