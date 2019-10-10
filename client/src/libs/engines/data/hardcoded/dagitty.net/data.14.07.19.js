@@ -707,7 +707,7 @@ Sasha%20Bashmakov E @0.821,-0.479
 Sasha%20Baybarzov E @0.769,0.941
 Sasha%20Boyarinov E @0.317,0.236
 Sasha%20Chernyshov E @0.562,0.530
-Sasha%20Glutshetskiy E @0.417,-0.126
+Sasha%20Glushkov E @0.417,-0.126
 Sasha%20Grey E @0.418,-0.486
 Sasha%20Korotkova E @0.220,0.745
 Sasha%20Kovanova E @0.115,0.248
@@ -1342,7 +1342,7 @@ Polina%20Nikolaeva Margarita%20Chernyshevskaya Oleg%20Kalinin
 Polina%20Ovsyannikova Vlad%20Guriev
 Polina%20Savosina Stepan%20Nesmiyan
 Polina%20Tammi Nikita%20Skripnik
-Polina%20Tavturina Kamilla%20Kadyrova Radik%20Kadyrov Ruslan%20Kudanko Sasha%20Glutshetskiy Sofiya%20Mihalchenko Yana%20Dubovitskaya
+Polina%20Tavturina Kamilla%20Kadyrova Radik%20Kadyrov Ruslan%20Kudanko Sasha%20Glushkov Sofiya%20Mihalchenko Yana%20Dubovitskaya
 Polina%20Vingorodova Maxim%20Chugunov Rita%20Svintsova
 Polina%20Zolotukhina Alexander%20Gromov Dmitry%20Em Kseniya%20Sviridova
 Pyotr%20Grachev Nastya%20Pavlova

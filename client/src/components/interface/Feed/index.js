@@ -4,7 +4,6 @@ import StoreContext from 'libs/engines/data/store/StoreContext'
 import UserNameLink from 'components/interface/UserNameLink'
 import KissEmoji from 'components/KissEmoji'
 import myDate from 'libs/utils/myDate'
-import { differenceInDays } from 'date-fns'
 
 
 export default class Feed extends Component {

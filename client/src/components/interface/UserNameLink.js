@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import myDate from 'libs/utils/myDate'
 
 
 export default props => props.simple ?
@@ -34,5 +35,9 @@ export default props => props.simple ?
           {props.user.userName ? ("@" + props.user.userName) : props.user.name}
         </Link>
       </div>
+      {props.date &&
+        <div className="username-link__date">
+          {new myDate(props.date).toStringDot()}
+        </div>}
     </div>
   )

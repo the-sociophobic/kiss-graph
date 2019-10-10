@@ -7,23 +7,44 @@ import colorFromWeight from 'libs/utils/colorFromWeight'
 import { nameToPath } from 'libs/utils/stringTransforms'
 
 export default data => {
+  const edges = data.edges.map(edge => {
+    let foundEdgeData = edgesDates.filter(edgeData =>
+      (edgeData.names[0] === edge.node0 && edgeData.names[1] === edge.node1) ||
+      (edgeData.names[0] === edge.node1 && edgeData.names[1] === edge.node0)
+    )
+    if (foundEdgeData.length > 0)
+      return {
+        ...edge,
+        commited: foundEdgeData[0].commited,
+        published: foundEdgeData[0].published,
+        told: foundEdgeData[0].told,
+        submitter: foundEdgeData[0].submitter,
+      }
+    return edge
+  })
+
   let nodes = data.nodes.map((node, index) => {
     const psychoIndex = psychic.map(psycho => psycho.nickName.replace(/%20/g, ' ')).indexOf(node.nickName)
     const meta = psychoIndex !== -1 ? psychic[psychoIndex] : {}
     let mates = []
-    data.edges
+
+    edges
       .forEach(edge => {
         if (edge.node0 === node.nickName)
-          mates.push(edge.node1) 
+          mates.push({
+            name: edge.node1,
+            date: edge.commited,
+          }) 
         if (edge.node1 === node.nickName)
-          mates.push(edge.node0) 
+          mates.push({
+            name: edge.node0,
+            date: edge.commited,
+          }) 
       })
     
     const pos = position[index] || {x: 0, y: 0, z: 0}
     const userName = meta.userName || (meta.social && (meta.social.inst || meta.social.vk)) || undefined
 
-    if (node.nickName === "Timofey Shesternyov")
-      console.log(meta)
     return {
       id: index,
       name: node.nickName,
@@ -42,21 +63,6 @@ export default data => {
       offended: meta.offended,
       deceased: meta.deceased,
     }
-  })
-  const edges = data.edges.map(edge => {
-    let foundEdgeData = edgesDates.filter(edgeData =>
-      (edgeData.names[0] === edge.node0 && edgeData.names[1] === edge.node1) ||
-      (edgeData.names[0] === edge.node1 && edgeData.names[1] === edge.node0)
-    )
-    if (foundEdgeData.length > 0)
-      return {
-        ...edge,
-        commited: foundEdgeData[0].commited,
-        published: foundEdgeData[0].published,
-        told: foundEdgeData[0].told,
-        submitter: foundEdgeData[0].submitter,
-      }
-    return edge
   })
 
   const distribution = Array.from(

@@ -40,9 +40,17 @@ export default class User extends Component {
         </div>
         <div className="node-info__connections">
           {node.mates
-            .map(connection => this.context.store.get({name: connection}))
+            .map(connection => ({
+              ...this.context.store.get({name: connection.name}),
+              date: connection.date,
+            }))
             .sort((a, b) => b.connections - a.connections)
-            .map(connection => <UserNameLink user={connection} setNode={this.props.setNode} />
+            .map(connection =>
+              <UserNameLink
+                user={connection}
+                setNode={this.props.setNode}
+                date={connection.date}
+              />
           )}
         </div>
       </div>
