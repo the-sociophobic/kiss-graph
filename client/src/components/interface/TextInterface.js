@@ -127,7 +127,10 @@ export default class TextInterface extends Component {
           </div>
           
           {this.state.deviceWidth <= 1024 ?
-            <MobileExpander>
+            <MobileExpander
+              history={this.props.history}
+              prevLocation={this.props.prevLocation}
+            >
               <div className="flex-container">
                 {contentWithFooter}
               </div>

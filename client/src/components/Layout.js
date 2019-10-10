@@ -74,14 +74,16 @@ class Layout extends Component {
     const props = {
       data: this.context,
       sendData: data => this.setState({retrievedData: data}),
+      node: this.state.nodeToShow,
       setNode: this.setNode.bind(this),
       nodeToShow: this.state.nodeToShow,
+      history: this.props.history,
+      prevLocation: this.props.location && this.props.location.state && this.props.location.state.from,
     }
 
     return (
       <div className="page-container">
         <TextInterface
-          node={this.state.nodeToShow}
           {...props}
         >
           {this.state.retrievedData &&
