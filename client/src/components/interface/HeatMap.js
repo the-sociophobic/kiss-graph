@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import StoreContext from 'libs/engines/data/store/StoreContext'
 import heatMap from 'img/heat4.png'
 import KissEmoji from 'components/KissEmoji'
+import isTouchDevice from 'libs/utils/isTouchDevice'
+
 
 export default class HeatMap extends Component {
   constructor(props) {
@@ -22,9 +24,11 @@ export default class HeatMap extends Component {
         <div className="heat-map__2">{weightSet[Math.round((weightSet.length - 1) / 2)]}</div>
         <div className="heat-map__3">{weightSet[Math.round((weightSet.length - 1) / 4)]}</div>
         <div className="heat-map__4">{weightSet[0]}</div>
-        <div className="heat-map__description">
-          number of<KissEmoji />
-        </div>
+        {/* {!isTouchDevice() &&
+          <div className="heat-map__description">
+            number of<KissEmoji />
+          </div>
+        } */}
       </div>
     )
   }

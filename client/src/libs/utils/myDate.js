@@ -36,7 +36,7 @@ export default class myDate {
         this.dateJS = new Date(Date.parse(newString));
         break;
       case "number":
-        this.dateJS = new Date(string);
+        this.dateJS = new Date(string * 1000);
         break;
       case "object":
         this.dateJS = new Date(string.dateJS || string);

@@ -22,6 +22,8 @@ export default data => {
     const pos = position[index] || {x: 0, y: 0, z: 0}
     const userName = meta.userName || (meta.social && (meta.social.inst || meta.social.vk)) || undefined
 
+    if (node.nickName === "Timofey Shesternyov")
+      console.log(meta)
     return {
       id: index,
       name: node.nickName,

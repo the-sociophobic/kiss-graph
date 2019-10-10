@@ -3,6 +3,9 @@ import RadioHeader from 'components/interface/RadioHeader'
 import StoreContext from 'libs/engines/data/store/StoreContext'
 import UserNameLink from 'components/interface/UserNameLink'
 import KissEmoji from 'components/KissEmoji'
+import myDate from 'libs/utils/myDate'
+import { differenceInDays } from 'date-fns'
+
 
 export default class Feed extends Component {
   constructor(props) {
@@ -11,7 +14,7 @@ export default class Feed extends Component {
     this.state = {
       type: "commited"
     }
-    this.options = ["commited", "published", "told"]
+    this.options = ["commited", "told", "published"]
   }
 
   static contextType = StoreContext
@@ -19,6 +22,7 @@ export default class Feed extends Component {
   componentDidMount() {
     const filterEdgesByProperty = (edges, prop) => edges
       .filter(edge => edge[prop])
+    
     const mapNodesToEdges = edges => edges
       .map(edge => {
         const node0 = this.context.store.get({name: edge.node0})
@@ -43,31 +47,63 @@ export default class Feed extends Component {
         }
       })
 
+    const groupByDays = (edges, prop) => {
+      const sortedEdges = edges
+        .sort((a, b) => b[prop] - a[prop])
+
+      let days = []
+
+      sortedEdges.forEach(edge => {
+        const date = new myDate(edge[prop]).toStringDot()
+        let dayIndex = days.map(day => day.date).indexOf(date)
+
+        if (dayIndex === -1) {
+          days.push({
+            date: date,
+            entries: [],
+          })
+          dayIndex = days.length - 1
+        }
+
+        days[dayIndex].entries.push(edge)
+      })
+
+      return days
+    }
+
     const {edges} = this.context.store.get()
 
     this.options.forEach(option => {
-      this[option] = mapNodesToEdges(filterEdgesByProperty(edges, option))
+      this.setState({[option]: groupByDays(mapNodesToEdges(filterEdgesByProperty(edges, option)), option)})
     })
   }
 
-  renderKisses = () => this[this.state.type] && this[this.state.type]
-    .sort((a, b) => b[this.state.type] - a[this.state.type])
-    .map(edge => (
-      <div
-        key={edge.id}
-        className=""
-      >
-        <UserNameLink
-          simple
-          user={edge.node0}
-          setNode={this.props.setNode}
-        />
-        <KissEmoji />
-        <UserNameLink
-          simple
-          user={edge.node1}
-          setNode={this.props.setNode}
-        />
+  renderKisses = () => this.state[this.state.type] && this.state[this.state.type]
+    .map(day => (
+      <div className="kiss-day">
+        <div className="kiss-day__date">
+          {day.date}
+        </div>
+        <div className="kiss-day__entries">
+          {day.entries.map(entry => (
+            <div
+              key={entry.id}
+              className="kiss-day__entries__item"
+            >
+              <UserNameLink
+                simple
+                user={entry.node0}
+                setNode={this.props.setNode}
+              />
+              <KissEmoji />
+              <UserNameLink
+                simple
+                user={entry.node1}
+                setNode={this.props.setNode}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     ))
 

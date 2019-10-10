@@ -378,7 +378,7 @@ Karolina%20Kalinina E @0.798,-0.081
 Kassy%20Kiasyd E @0.266,0.104
 Katalina%20Hassanova E @0.277,0.633
 Kate%20Alexandrova E @0.797,0.823
-Kate%20Bulgakova E @0.684,1.146
+Katya%20Bulgakova E @0.684,1.146
 Kate%20Goman E @0.790,-0.027
 Kate%20Kozyreva E @0.845,1.441
 Kate%20Mironovich E @0.121,0.560
@@ -1093,14 +1093,14 @@ Grigor%20Hovsepyan Kate%20Alexandrova
 Grisha%20Baranov Kira%20Kastaneda
 Grisha%20Vykhnovich Nastya%20Zhelavskaya
 Hama%20May Dasha%20Solovyova
-Igor%20Grabuzov David%20Zharnitsky Dmitriy%20Belysh Kate%20Bulgakova Lev%20Vasilyev
+Igor%20Grabuzov David%20Zharnitsky Dmitriy%20Belysh Katya%20Bulgakova Lev%20Vasilyev
 Igor%20Prostakov Liza%20Nikolaenko
 Igor%20Shkuratov Luda%20Syagina
 Igor%20Sky Kedr%20Livansky Kira%20Kastaneda Masha%20Chukalskaya
 Igor%20Zhidkov Alexander%20Lebedev Nastya%20Uhimenko Nikita%20Danilchenko Sergay%20Nikitin
 Ildar%20Dzharahov Uriy%20Hovansky
 Ilnar%20Arslanov Kate%20Shevyakova
-Ilya%20Del Kate%20Bulgakova
+Ilya%20Del Katya%20Bulgakova
 Ilya%20Dorkhanov Ilyachan1 Ilyachan2 Valeria%20Lavrentyeva
 Ilya%20Ivanov Anya%20Khmeleva
 Ilya%20Roschin Ksusha%20Morozova
@@ -1130,7 +1130,7 @@ Karina%20Mullayanova Igor%20Prostakov
 Karolina%20Kalinina Turik%20Mordovtsev
 Kassy%20Kiasyd Andrey%20Gabriel
 Kate%20Alexandrova Polina%20Zolotukhina Sasha%20Baybarzov
-Kate%20Bulgakova David%20Zharnitsky Dmitriy%20Belysh Misha%20Kasapov Nata%20Naumova
+Katya%20Bulgakova David%20Zharnitsky Dmitriy%20Belysh Misha%20Kasapov Nata%20Naumova
 Kate%20Kozyreva Danya%20Dost
 Kate%20Mironovich Alexander%20Kuzyakin Dima%20Lutsenko Vladislav%20Degtyar
 Kate%20Rusetskaya Alexandr%20Tankaev Anya%20Novik Nastya%20Uhimenko Ronya%20Shurze
@@ -1147,7 +1147,7 @@ Katya%20Ustinova Agarkova%20Nastya Sasha%20Chernyshov Sofia%20Mityaeva
 Keren%20Karieva Kira%20Kastaneda
 Kira%20Green Sacha%20Czarnecki
 Kira%20Kastaneda Bali Eduard Ispanofrancuz Ksusha%20Kozhevnikova Lev%20Vasilyev Roman%20Makarychev Sofiya%20Mihalchenko Vitaly%20Konovod
-Kirill%20Ermakov Anya%20Aveesoimova Kate%20Bulgakova Kate%20Sulina Yana%20Moiseeva unknown1
+Kirill%20Ermakov Anya%20Aveesoimova Katya%20Bulgakova Kate%20Sulina Yana%20Moiseeva unknown1
 Kirill%20Koranov Lev%20Vasilyev
 Kirill%20Maev Kate%20Alexandrova
 Kirill%20Samodelov Anya%20Khmeleva Arina%20Nevzorova Katya%20Kornetova Nastya%20Bagrina Tatyana%20Dengova%20minusssss Vera%20Karaseva
@@ -1300,7 +1300,7 @@ Paksutova%20Tatyana Seraphima%20Pantykina
 Pasha%20Klimachov Nastya%20Klimacheva
 Pasha%20Nosov Yasha%20Karaev
 Pavel%20Burachenkov Dasha%20Solovyova
-Pavel%20Nosov%202 Kate%20Bulgakova
+Pavel%20Nosov%202 Katya%20Bulgakova
 Petr%20Kostenko Nastya%20Shushkova
 Petr%20Sverdlov Kira%20Kastaneda Vadim%20Zimin
 Polina%20Bobinsky Turik%20Mordovtsev
