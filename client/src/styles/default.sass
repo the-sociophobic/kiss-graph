@@ -86,6 +86,7 @@ $light: white
 $dark: black
 $light-gray: #cccccc
 $dark-gray: #999999
+$dark-dark-gray: #555555
 // $light-light-gray: #f6f6f6
 $light-light-gray: #f3f6f7
 // $secondary: #c3562b
@@ -257,7 +258,7 @@ $arrow-size: 7px
 
 
 .text-interface
-  width: 500px
+  width: 400px
   height: 100%
   background-color: white
   z-index: 10000
@@ -573,3 +574,93 @@ $mobile-expander-button-height: 5px
       border-bottom-right-radius: $default-border-radius - 1px
     &--selected
       background-color: $light-light-gray
+
+
+
+
+.controls-help
+  position: absolute
+  bottom: 0
+  right: 0
+  width: 100%
+  &__desktop
+    margin: auto
+    display: flex
+    padding: 10px 0
+    width: 460px
+  &__item
+    flex-grow: 1
+    border-right: 1px solid $light-gray
+    padding: 0 0 0 12px
+    &__transparent-area
+      opacity: .65
+      transition: opacity .12s
+      &--active
+        opacity: 1
+    &:last-of-type
+      border-right: none
+    &__text
+      color: $dark-dark-gray
+      padding-right: 5px
+    &__button
+      display: inline
+      line-height: 1.2
+      padding: 2px 6px
+      border-radius: 4px
+      background-color: rgba(210, 210, 210, 0)
+      transition: background-color .1s
+      &--slow-transition
+        transition: background-color .5s
+      &--active
+        transition: background-color .1s
+        background-color: rgba(210, 210, 210, .75)
+
+
+
+$heat-map-font-size: 14px
+.heat-map
+  position: absolute
+  right: 10px
+  top: 37.5%
+  height: 25%
+  width: 40px
+  @media (max-width: 1024px)
+    top: 32.5%
+    height: 35%
+  img
+    height: calc(100% - #{$heat-map-font-size})
+    width: 22%
+    position: absolute
+    top: calc(#{$heat-map-font-size} / 2)
+    right: 30%
+    image-rendering: pixelated
+  &__0, &__1, &__2, &__3, &__4
+    position: absolute
+    font-size: $heat-map-font-size
+    line-height: 1
+    color: $dark-dark-gray
+    transform: rotate(90deg) translateY(-15px)
+    transform-origin: top left
+  &__0
+    top: 0
+  &__1
+    top: calc((100% - #{$heat-map-font-size}) / 4)
+  &__2
+    top: calc((100% - #{$heat-map-font-size}) / 2)
+  &__3
+    top: calc((100% - #{$heat-map-font-size}) / 4 * 3)
+  &__4
+    bottom: 0
+  &__description
+    font-size: $heat-map-font-size
+    display: block
+    width: 150px
+    transform: translate(-35px, 85px) rotate(90deg)
+    color: $dark-dark-gray
+
+
+span.kiss-emoji
+  font-size: 14px
+  padding-left: 5px
+  display: inline-block
+  transform: translateY(2px)
