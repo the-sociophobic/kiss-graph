@@ -2,93 +2,114 @@ export default [
   {
     names: ["Lev Vasilyev", "Anya Grin"],
     commited: 1409472000,
-    told: 1522593271,
+    told: 1409472000,
+    published: 1522593271,
   },
   {
     names: ["Lev Vasilyev", "Nastya IvanovaMonroa"],
     commited: 1471575600,
-    told: 1522593271,
+    told: 1471575600,
+    published: 1522593271,
   },
   {
     names: ["Lev Vasilyev", "Vita Polovinkina"],
     commited: 1509307200,
-    told: 1522670400,
+    told: 1509307200,
+    published: 1522670400,
   },
   {
     names: ["Lev Vasilyev", "Dasha Moskvina"],
     commited: 1532464200,
+    told: 1532464200,
   },
 
   {
     names: ["Lev Vasilyev", "Kristina Boyarkina"],
     commited: 1540057200,
+    told: 1540057200,
   },
   {
     names: ["Lev Vasilyev", "Polina Mishago"],
     commited: 1540065000,
+    told: 1540065000,
   },
   {
     names: ["Lev Vasilyev", "Natasha Kozhevnikova"],
     commited: 1540065000,
+    told: 1540065000,
   },
   {
     names: ["Lev Vasilyev", "Tikhon Timanov"],
     commited: 1540065000,
+    told: 1540065000,
   },
   {
     names: ["Lev Vasilyev", "Sasha Chernyshov"],
     commited: 1540065000,
+    told: 1540065000,
   },
   {
     names: ["Lev Vasilyev", "Natalia Lebedeva"],
     commited: 1540065000,
+    told: 1540065000,
   },
 
   {
     names: ["David Zharnitsky", "Polina Mishago"],
     commited: 1540065000,
+    told: 1540065000,
   },
   {
     names: ["David Zharnitsky", "Natasha Kozhevnikova"],
     commited: 1540065000,
+    told: 1540065000,
   },
   {
     names: ["David Zharnitsky", "Tikhon Timanov"],
     commited: 1540065000,
+    told: 1540065000,
   },
   {
     names: ["David Zharnitsky", "Natalia Lebedeva"],
     commited: 1540065000,
+    told: 1540065000,
   },
 
   {
     names: ["Polina Mishago", "Kristina Boyarkina"],
     commited: 1540065000,
+    told: 1540065000,
   },
   {
     names: ["Polina Mishago", "Natasha Kozhevnikova"],
     commited: 1540065000,
+    told: 1540065000,
   },
   {
     names: ["Polina Mishago", "Tikhon Timanov"],
     commited: 1540065000,
+    told: 1540065000,
   },
   {
     names: ["Polina Mishago", "Sasha Chernyshov"],
     commited: 1540065000,
+    told: 1540065000,
   },
   {
     names: ["Polina Mishago", "Natalia Lebedeva"],
     commited: 1540065000,
+    told: 1540065000,
   },
 
   {
     names: ["Tikhon Timanov", "Natalia Lebedeva"],
     commited: 1540065000,
+    told: 1540065000,
   },
   {
     names: ["Natalia Lebedeva", "Natalia Lebedeva"],
     commited: 1540065000,
+    told: 1540065000,
   },
 
   {
@@ -127,7 +148,7 @@ export default [
 
   {
     names: ["Timofey Shesternyov", "Kseniya Belaya"],
-    told: 1576878660,
+    told: 1545342660,
     submitter: "Kristina Boyarkina"
   },
 
@@ -150,10 +171,10 @@ export default [
     commited: 1548560791,
   },
 
-  {
-    names: ["David Zharnitsky", "Serafima Babloyan"],
-    commited: 1546300800,
-  },
+  // {
+  //   names: ["David Zharnitsky", "Serafima Babloyan"],
+  //   commited: 1546300800,
+  // },
 
   {
     names: ["Ivan Makarov", "Dasha Solovyova"],
@@ -403,6 +424,7 @@ export default [
   {
     names: ["Natasha Kozhevnikova", "Misha Nfny"],
     commited: 1561266258,
+    told: 1561266258,
   },
 
   {
@@ -501,22 +523,25 @@ export default [
   {
     names: ["Lev Vasilyev", "Viktor Sikret"],
     commited: 1563059920,
+    told: 1563059920,
   },
   {
     names: ["Pasha Sokolov", "Tanya Skazka"],
-    told: 1405300666,
+    told: 1563067020,
   },
   {
     names: ["Pasha Sokolov", "Katya Markova"],
-    told: 1405300666,
+    told: 1563067020,
   },
   {
     names: ["Pasha Sokolov", "Lev Vasilyev"],
     commited: 1563069449,
+    told: 1563069449,
   },
   {
     names: ["Anfisa Dobrokhodova", "Lev Vasilyev"],
     commited: 1563069449,
+    told: 1563069449,
   },
 
   {
@@ -530,60 +555,143 @@ export default [
 
   {
     names: ["Alexandr Mashanov", "Maria Seledets"],
+    published: 1570680000,
     commited: 1564942134,
+    told: 1569598230,
   },
   {
     names: ["Alexandr Mashanov", "Maria Rein"],
+    published: 1570680000,
     told: 1569598230,
   },
 
   {
     names: ["Dasha Solovyova", "Mark Kozharskiy"],
+    published: 1570680000,
     commited: 1569708000,
     told: 1569765120,
   },
   {
-    names: ["Yana Moiseeva", "Viktor Syropyatov"],
+    names: ["Yana Moiseeva", "Vitya Syropyatov"],
+    published: 1570680000,
     commited: 1569708000,
     told: 1569766800,
   },
   {
-    names: ["Nikita Kravchenko", "Zhenya Parcenyak"],
+    names: ["Nikita Kravchenko", "Evgenia Partsenyak"],
+    published: 1570680000,
     commited: 1569708000,
     told: 1569766800,
   },
 
   {
     names: ["Natasha Kozhevnikova", "Alina Livshits"],
+    published: 1570680000,
     commited: 1429747200,
     told: 1569810649,
   },
 
   {
     names: ["Ilya Roschin", "Katya Gorbunova"],
+    published: 1570680000,
     told: 1569875700,
   },
   {
     names: ["Ilya Roschin", "Nastya Murza"],
+    published: 1570680000,
     told: 1569875700,
   },
   {
     names: ["Ilya Roschin", "Katya Baykalova Trifonova"],
+    published: 1570680000,
     told: 1569875700,
   },
   {
     names: ["Ilya Roschin", "Ksenia Neroba"],
+    published: 1570680000,
     told: 1569875700,
   },
   {
     names: ["Ilya Roschin", "Nastya Uhimenko"],
+    published: 1570680000,
     told: 1569875700,
   },
   {
     names: ["Anton Plevako", "Sofia Lupian"],
+    published: 1570680000,
     told: 1569875700,
   },
+  {
+    names: ["Nastya Pavlova", "Sasha Kovanova"],
+    commited: 1400968800,
+    told: 1400968800,
+    published: 1522593271,
+  },
+  {
+    names: ["Anya Grin", "Evgeny Fomenko"],
+    commited: 1413554400,
+    told: 1413554400,
+    published: 1538629440,
+  },
+  {
+    names: ["Evgeny Fomenko", "Lev Vasilyev"],
+    commited: 1412900640,
+    told: 1412900640,
+    published: 1538629440,
+  },
+  {
+    names: ["Nastya Pavlova", "Fydor Bilef"],
+    commited: 1392422400,
+    told: 1392422400,
+    published: 1522593271,
+  },
+  {
+    names: ["Nastya Pavlova", "Veronika Litvinova"],
+    commited: 1392422400,
+    told: 1392422400,
+  },
 
+  {
+    names: ["Nastya Pavlova", "Ivan Kachmar"],
+    commited: 1381608000,
+    told: 1381608000,
+    published: 1522593271,
+  },
+  {
+    names: ["Mks Astro", "Nastya Pavlova"],
+    commited: 1505602800,
+    told: 1505602800,
+    published: 1522593271,
+  },
+  {
+    names: ["Anya Khmeleva", "Artyom Arsenyan"],
+    told: 1387220400,
+    published: 1522593271,
+  },
+  {
+    names: ["Anya Khmeleva", "Fyodor Ludinov"],
+    told: 1387220400,
+    published: 1522593271,
+  },
+  {
+    names: ["Artyom Arsenyan", "Nastya Zhelavskaya"],
+    told: 1386964800,
+    published: 1522593271,
+  },
+  {
+    names: ["Alina Nesmiyan", "Stepan Nesmiyan"],
+    commited: 1500854400,
+    told: 1501108920,
+    published: 1538629440,
+  },
+  // {
+  //   names: ["", ""],
+  //   told: ,
+  // },
+  // {
+  //   names: ["", ""],
+  //   told: ,
+  // },
   // {
   //   names: ["", ""],
   //   told: ,

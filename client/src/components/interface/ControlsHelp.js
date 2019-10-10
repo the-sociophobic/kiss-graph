@@ -18,8 +18,8 @@ export default class ControlsHelp extends Component {
   componentDidMount() {
     window.addEventListener( 'mousedown', () => this.setState({click: true}), { passive: false } )
     window.addEventListener( 'mouseup', () => this.setState({click: false}), { passive: false } )
-    window.onkeydown = e => e.shiftKey && this.setState({shift: true})
-    window.onkeyup = e => !e.shiftKey && this.setState({shift: false})  
+    window.addEventListener( 'keydown', e => e.shiftKey && this.setState({shift: true}))
+    window.addEventListener( 'keyup', e => !e.shiftKey && this.setState({shift: false})  )
 
     let threeElem = document.getElementsByClassName("Viewer")
     threeElem = threeElem && threeElem[0]
