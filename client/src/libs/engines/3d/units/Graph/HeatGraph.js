@@ -1,5 +1,12 @@
 import THREE from 'libs/engines/3d/three'
-import heatMap from 'img/heat2.png'
+import heatMap from 'img/heat32.png'
+
+const heatMapOffset = {
+  uOffset: [0, 6 / 32],
+  vOffset: [1 / 4, 1 / 4],
+}
+const interpolateUOffset = u => u * (1 - heatMapOffset.uOffset[0] - heatMapOffset.uOffset[1]) + heatMapOffset.uOffset[0]
+const interpolateVOffset = v => v * (1 - heatMapOffset.vOffset[0] - heatMapOffset.vOffset[1]) + heatMapOffset.vOffset[0]
 
 export default (nodesInput, edges, scene) => {
 
@@ -12,7 +19,9 @@ export default (nodesInput, edges, scene) => {
   // let textureLoader = new THREE.TextureLoader()
   new THREE.TextureLoader()
     .load(heatMap, texture => {
-      let material = new THREE.MeshBasicMaterial( { map: texture } )
+      texture.magFilter = THREE.NearestFilter;
+      texture.minFilter = THREE.LinearMipMapLinearFilter;
+      let material = new THREE.MeshBasicMaterial( { map: texture } )      
       let bufferGeometry = new THREE.BufferGeometry()
         .fromGeometry(cylinderGraphGeometry(nodes, edges, 3))
       finalMesh = new THREE.Mesh(bufferGeometry, material)
@@ -27,7 +36,7 @@ export default (nodesInput, edges, scene) => {
   // return finalMesh
 }
 
-const cylinderVertices = (R, length, segments, weight0, weight1) => {
+const cylinderVertices = (R, length, segments, weight0, weight1, disabled) => {
   var vertices = [segments * 2 * 3]
   var uvs = [segments * 2 * 2]
 
@@ -44,10 +53,10 @@ const cylinderVertices = (R, length, segments, weight0, weight1) => {
     vertices[i * 6 + 4] = y
     vertices[i * 6 + 5] = z
 
-    uvs[i * 4]     = weight0
-    uvs[i * 4 + 1] = 0
-    uvs[i * 4 + 2] = weight1
-    uvs[i * 4 + 3] = 0
+    uvs[i * 4]     = interpolateUOffset(weight0)
+    uvs[i * 4 + 1] = interpolateVOffset(disabled ? 1 : 0)
+    uvs[i * 4 + 2] = interpolateUOffset(weight1)
+    uvs[i * 4 + 3] = interpolateVOffset(disabled ? 1 : 0)
   }
 
   return {

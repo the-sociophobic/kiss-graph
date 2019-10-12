@@ -89,7 +89,7 @@ class Layout extends Component {
           {this.state.retrievedData &&
             <div className="interface-container">
               <div className="interface">
-                {this.props.children}
+                {/* {this.props.children} */}
                 <textarea
                   value={this.state.retrievedData}
                   rows={40}

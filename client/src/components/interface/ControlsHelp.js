@@ -64,17 +64,22 @@ export default class ControlsHelp extends Component {
           !(control.antiFlags && control.antiFlags.map(flag => this.state[flag]).reduce((a, b) => a || b))
 
         return (
-          <div className="controls-help__item">
+          <div
+            key={control.text}
+            className="controls-help__item"
+          >
             <div className={
               "controls-help__item__transparent-area " +
               (active && "controls-help__item__transparent-area--active")
             }>
               <span className="controls-help__item__text">{control.text}:</span>
               {control.flags.map(flag =>
-                <div className={
-                  "controls-help__item__button " +
-                  (flag === "scroll" && "controls-help__item__button--slow-transition ") +
-                  (this.state[flag] && " controls-help__item__button--active ")
+                <div
+                  key={control.text + flag}
+                  className={
+                    "controls-help__item__button " +
+                    (flag === "scroll" && "controls-help__item__button--slow-transition ") +
+                    (this.state[flag] && " controls-help__item__button--active ")
                 }>
                   {flag}
                 </div>

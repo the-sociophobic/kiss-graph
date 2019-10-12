@@ -1,10 +1,10 @@
 export default [
   {
-    nickName: "Sasha%20Bashmakov",
+    nickName: "Sasha Bashmakov",
     mentalDisorder: 10,
   },
   {
-    nickName: "David%20Zharnitsky",
+    nickName: "David Zharnitsky",
     mentalDisorder: 6,
     iq: "\"180\"",
     social: {
@@ -23,7 +23,7 @@ export default [
     }
   },
   {
-    nickName: "Nikita%20Baklazhenko",
+    nickName: "Nikita Baklazhenko",
     mentalDisorder: 5,
     iq: 126,
     social: {
@@ -32,7 +32,7 @@ export default [
     }
   },
   {
-    nickName: "Tikhon%20Timanov",
+    nickName: "Tikhon Timanov",
     mentalDisorder: 6.5,
     social: {
       vk: "",
@@ -40,7 +40,7 @@ export default [
     }
   },
   {
-    nickName: "Kristina%20Boyarkina",
+    nickName: "Kristina Boyarkina",
     mentalDisorder: 4,
     additionalConnections: 26,
     social: {
@@ -50,7 +50,7 @@ export default [
     offended: true,
   },
   {
-    nickName: "Nastya%20Pavlova",
+    nickName: "Nastya Pavlova",
     mentalDisorder: 5,
     social: {
       vk: "ambercinnamonsantonica",
@@ -58,7 +58,7 @@ export default [
     }
   },
   {
-    nickName: "Nastya%20IvanovaMonro",
+    nickName: "Nastya IvanovaMonro",
     mentalDisorder: 5,
     social: {
       vk: "",
@@ -66,7 +66,7 @@ export default [
     }
   },
   {
-    nickName: "Anya%20Grin",
+    nickName: "Anya Grin",
     mentalDisorder: 7,
     social: {
       vk: "",
@@ -74,7 +74,7 @@ export default [
     }
   },
   {
-    nickName: "Natalia%20Lebedeva",
+    nickName: "Natalia Lebedeva",
     mentalDisorder: 7,
     social: {
       vk: "",
@@ -82,14 +82,14 @@ export default [
     }
   },
   {
-    nickName: "Dmitry%20Larin",
+    nickName: "Dmitry Larin",
     mentalDisorder: 4,
     social: {
       inst: "zloilarin",
     }
   },
   {
-    nickName: "Elina%20Kulikova",
+    nickName: "Elina Kulikova",
     mentalDisorder: 3,
     social: {
       vk: "",
@@ -97,7 +97,7 @@ export default [
     }
   },
   {
-    nickName: "Rita%20Popova",
+    nickName: "Rita Popova",
     mentalDisorder: 3,
     social: {
       vk: "",
@@ -105,7 +105,7 @@ export default [
     }
   },
   {
-    nickName: "Alina%20Nesmiyan",
+    nickName: "Alina Nesmiyan",
     mentalDisorder: 3,
     social: {
       vk: "",
@@ -113,7 +113,7 @@ export default [
     }
   },
   {
-    nickName: "Arishka%20Bolshakova",
+    nickName: "Arishka Bolshakova",
     mentalDisorder: 1,
     social: {
       vk: "",
@@ -121,15 +121,15 @@ export default [
     }
   },
   {
-    nickName: "Varya%20Tuchkova",
+    nickName: "Varya Tuchkova",
     mentalDisorder: 6,
   },
   {
-    nickName: "Rita%20Svintsova",
+    nickName: "Rita Svintsova",
     mentalDisorder: 7,
   },
   {
-    nickName: "Lubof%20Safonova",
+    nickName: "Lubof Safonova",
     mentalDisorder: 7,
     social: {
       vk: "",
@@ -137,7 +137,7 @@ export default [
     }
   },
   {
-    nickName: "Lev%20Vasilyev",
+    nickName: "Lev Vasilyev",
     mentalDisorder: 3,
     iq: 131,
     // iq: 123,
@@ -149,7 +149,7 @@ export default [
     userName: "the_sociophobic"
   },
   {
-    nickName: "Mark%20Kozharskiy",
+    nickName: "Mark Kozharskiy",
     mentalDisorder: 3,
     iq: 119,
     social: {
@@ -158,7 +158,7 @@ export default [
     }
   },
   {
-    nickName: "Mks%20Astro",
+    nickName: "Mks Astro",
     mentalDisorder: 2.5,
     iq: 133,
     additionalConnections: 7,
@@ -167,7 +167,7 @@ export default [
     }
   },
   {
-    nickName: "Yana%20Moiseeva",
+    nickName: "Yana Moiseeva",
     mentalDisorder: 2,
     iq: 126,
     social: {
@@ -183,7 +183,7 @@ export default [
     },
   },
   {
-    nickName: "Andrey%20Potashev",
+    nickName: "Andrey Potashev",
     mentalDisorder: 4,
     iq: 121,
     social: {
@@ -192,11 +192,11 @@ export default [
     }
   },
   {
-    nickName: "Kate%20Sulina",
+    nickName: "Kate Sulina",
     mentalDisorder: 2,
   },
   {
-    nickName: "Yuliya%20Gracheva",
+    nickName: "Yuliya Gracheva",
     mentalDisorder: 2,
     social: {
       vk: "",
@@ -204,40 +204,40 @@ export default [
     }
   },
   {
-    nickName: "Egor%20Vysberg",
+    nickName: "Egor Vysberg",
     mentalDisorder: 3,
     social: {
       inst: "vaisbegor"
     }
   },
   {
-    nickName: "Pyotr%20Grachev",
+    nickName: "Pyotr Grachev",
     mentalDisorder: 5,
   },
   {
-    nickName: "Artyom%20Povalyaev",
+    nickName: "Artyom Povalyaev",
     mentalDisorder: 3,
     social: {
       inst: "gevernus2.0",
     },
   },
   {
-    nickName: "Varya%20Vodova",
+    nickName: "Varya Vodova",
     mentalDisorder: 2,
     social: {
       inst: "slowpoke.news",
     },
   },
   {
-    nickName: "Artyom%20Sverbaev",
+    nickName: "Artyom Sverbaev",
     mentalDisorder: 3,
   },
   {
-    nickName: "Sobaka%20Ilya",
+    nickName: "Sobaka Ilya",
     mentalDisorder: 5,
   },
   {
-    nickName: "Vadim%20Zimin",
+    nickName: "Vadim Zimin",
     mentalDisorder: 3,
     iq: 115,
     social: {
@@ -246,7 +246,7 @@ export default [
     },
   },
   {
-    nickName: "Kate%20Alexandrova",
+    nickName: "Kate Alexandrova",
     mentalDisorder: 1,
     iq: 121,
     social: {
@@ -254,21 +254,21 @@ export default [
     },
   },
   {
-    nickName: "Nata%20Naumova",
+    nickName: "Nata Naumova",
     mentalDisorder: 3,
     social: {
       inst: "_natanaumova",
     },
   },
   {
-    nickName: "Sasha%20Chernyshov",
+    nickName: "Sasha Chernyshov",
     mentalDisorder: 1.5,
     social: {
       inst: "alexilgi",
     },
   },
   {
-    nickName: "Anton%20Plevako",
+    nickName: "Anton Plevako",
     mentalDisorder: 2,
     iq: 124,
     social: {
@@ -276,7 +276,7 @@ export default [
     },
   },
   {
-    nickName: "Sergay%20Nikitin",
+    nickName: "Sergay Nikitin",
     mentalDisorder: 2,
     iq: 119,
     social: {
@@ -285,7 +285,7 @@ export default [
     },
   },
   {
-    nickName: "Artyom%20Arsenyan",
+    nickName: "Artyom Arsenyan",
     mentalDisorder: 2,
     iq: 105,
     social: {
@@ -294,7 +294,7 @@ export default [
     },
   },
   {
-    nickName: "Kira%20Kastaneda",
+    nickName: "Kira Kastaneda",
     mentalDisorder: 2.5,
     iq: 123,
     social: {
@@ -304,31 +304,32 @@ export default [
     additionalConnections: 1,
   },
   {
-    nickName: "Natasha%20Kozhevnikova",
-    mentalDisorder: 1.5,
+    nickName: "Natasha Kozhevnikova",
+    mentalDisorder: 2.5,
+    iq: 115,
     social: {
       vk: "natalytears",
       inst: "natalytears",
     }
   },
   {
-    nickName: "Nikita%20Danilchenko",
+    nickName: "Nikita Danilchenko",
     mentalDisorder: 2.5,
     social: {
-      vk: "",
+      vk: "nickdanilch",
       inst: "nickdanilch",
     }
   },
   {
-    nickName: "Kate%20Rusetskaya",
+    nickName: "Kate Rusetskaya",
     mentalDisorder: 1.5,
     social: {
-      vk: "",
+      vk: "kate_capcakes",
       inst: "kate_cupcake_",
     }
   },
   {
-    nickName: "Dasha%20Solovyova",
+    nickName: "Dasha Solovyova",
     iq: 118,
     social: {
       vk: "",
@@ -336,7 +337,7 @@ export default [
     }
   },
   {
-    nickName: "Sasha%20Kovanova",
+    nickName: "Sasha Kovanova",
     iq: 123,
     social: {
       vk: "",
@@ -344,30 +345,30 @@ export default [
     }
   },
   {
-    nickName: "Liza%20Lepaslen",
+    nickName: "Liza Lepaslen",
     social: {
       inst: "lepaslen",
     }
   },
   {
-    nickName: "Stefan%20Pushkov",
+    nickName: "Stefan Pushkov",
     social: {
       inst: "stefan_pushkov",
     }
   },
   {
-    nickName: "Kirill%20Vselensky",
+    nickName: "Kirill Vselensky",
     social: {
       inst: "krbsbeauty",
     }
   },
   {
-    nickName: "Viktor%20Tsoy",
+    nickName: "Viktor Tsoy",
     additionalConnections: 3,
     deceased: true,
   },
   {
-    nickName: "Polina%20Mishago",
+    nickName: "Polina Mishago",
     // additionalConnections: 20,
     social: {
       inst: "lowpolis",
@@ -375,43 +376,43 @@ export default [
     offended: true,
   },
   {
-    nickName: "Darya%20Alexandrovna",
+    nickName: "Darya Alexandrovna",
     social: {
       vk: "13745913",
     },
   },
   {
-    nickName: "Sasha%20Zemlyanova",
+    nickName: "Sasha Zemlyanova",
     social: {
       inst: "yanesasha",
     },
   },
   {
-    nickName: "Leonid%20Dmitriev",
+    nickName: "Leonid Dmitriev",
     social: {
       inst: "eee_girls",
     },
   },
   {
-    nickName: "Azamat%20Vishenin",
+    nickName: "Azamat Vishenin",
     social: {
       inst: "azamatvishenin",
     },
   },
   {
-    nickName: "Artyom%20Borovets",
+    nickName: "Artyom Borovets",
     social: {
       inst: "aeborovets",
     },
   },
   {
-    nickName: "Nikita%20Pilevich",
+    nickName: "Nikita Pilevich",
     social: {
       inst: "nikita_pilevich",
     },
   },
   {
-    nickName: "Fyodor%20Ludinov",
+    nickName: "Fyodor Ludinov",
     mentalDisorder: 2.5,
     social: {
       inst: "fedlud",
@@ -425,87 +426,87 @@ export default [
     ]
   },
   {
-    nickName: "Ilya%20Roschin",
+    nickName: "Ilya Roschin",
     mentalDisorder: 2.5,
     social: {
       inst: "mafakkafox",
     },
   },
   {
-    nickName: "Ksusha%20Morozova",
+    nickName: "Ksusha Morozova",
     social: {
       inst: "_desvergonzado_",
     },
   },
   {
-    nickName: "Vladimir%20Suzdaltsev",
+    nickName: "Vladimir Suzdaltsev",
     social: {
       inst: "vladimirsuzdaltsev",
     },
   },
   {
-    nickName: "Danya%20Baklazhenko",
+    nickName: "Danya Baklazhenko",
     social: {
       vk: "danny_99",
     },
   },
   {
-    nickName: "Daniil%20Belikov",
+    nickName: "Daniil Belikov",
     social: {
       inst: "menyazovutdanya",
     },
   },
   {
-    nickName: "Alek%20Kaplun",
+    nickName: "Alek Kaplun",
     social: {
       inst: "al_kaplun",
     },
   },
   {
-    nickName: "Vlad%20Guriev",
+    nickName: "Vlad Guriev",
     social: {
       inst: "vladguriev",
     },
   },
   {
-    nickName: "Ksusha%20Kozhevnikova",
+    nickName: "Ksusha Kozhevnikova",
     social: {
       inst: "kseny_wall",
     },
   },
   {
-    nickName: "Polina%20Nazarova",
+    nickName: "Polina Nazarova",
     social: {
       inst: "polinanazar",
     },
   },
   {
-    nickName: "Igor%20Prostakov",
+    nickName: "Igor Prostakov",
     social: {
       inst: "hornestos",
     },
     iq: 102,
   },
   {
-    nickName: "Lena%20Zhukova",
+    nickName: "Lena Zhukova",
     social: {
       inst: "lena_zhukova0206",
     },
   },
   {
-    nickName: "Alice%20Balabekyan",
+    nickName: "Alice Balabekyan",
     social: {
       inst: "alice_eko",
     },
   },
   {
-    nickName: "Anzhelika%20Balabekyan",
+    nickName: "Anzhelika Balabekyan",
     social: {
       inst: "bala_land_",
     },
   },
   {
-    nickName: "Andrey%20Nikulin",
+    nickName: "Andrey Nikulin",
     social: {
       inst: "turkishjoe1",
       tg: "firstgambit",
@@ -521,33 +522,33 @@ export default [
     },
   },
   {
-    nickName: "Daria%20Shevchenko",
+    nickName: "Daria Shevchenko",
     social: {
       inst: "sdaria_andreevna",
       vk: "sdaria_andreevna",
     },
   },
   {
-    nickName: "Yaroslav%20Valdens",
+    nickName: "Yaroslav Valdens",
     iq: 119,
   },
   {
-    nickName: "Roma%20Anglichanin",
+    nickName: "Roma Anglichanin",
     deceased: true,
   },
   {
-    nickName: "Timofey%20Shesternyov",
+    nickName: "Timofey Shesternyov",
     deceased: true,
     social: {
       inst: "tima_rab",
     },
   },
   {
-    nickName: "Roofina%20Kapkan",
+    nickName: "Roofina Kapkan",
     deceased: true,
   },
   {
-    nickName: "Nastya%20Vladimirova",
+    nickName: "Nastya Vladimirova",
     social: {
       vk: "amantes_amento",
       inst: "jewesschrist",
@@ -560,13 +561,13 @@ export default [
     },
   },
   {
-    nickName: "Dasha%20Moskvina",
+    nickName: "Dasha Moskvina",
     social: {
       inst: "bezlestipredan",
     },
   },
   {
-    nickName: "Maria%20Seledets",
+    nickName: "Maria Seledets",
     social: {
       inst: "m_seledets",
     },
@@ -845,6 +846,7 @@ export default [
     nickName: "Vitya Syropyatov",
     social: {
       inst: "mongolskiiii",
+      vk: "iggiepop",
     },
   },
   {
@@ -935,12 +937,14 @@ export default [
     nickName: "Kristina Kukushkina",
     social: {
       inst: "kriisku",
+      vk: "id137258122",
     },
   },
   {
     nickName: "Igor Zhidkov",
     social: {
       inst: "markus_yel",
+      vk: "it_is_a_little_time"
     },
   },
   {
@@ -1065,9 +1069,10 @@ export default [
     },
   },
   {
-    nickName: "Pasha Zhuravlev", //TODO
+    nickName: "Pasha Zhuravlev",
     social: {
       inst: "playboiidirty",
+      vk: "rekepaul",
     },
   },
   {
@@ -1503,6 +1508,26 @@ export default [
     nickName: "Sergey Vakhnin",
     social: {
       inst: "e0068",
+    },
+  },
+  {
+    nickName: "Alexander Lazarev",
+    social: {
+      inst: "mirumirpirupir",
+    },
+  },
+  {
+    nickName: "Katya Abramova",
+    social: {
+      inst: "crazykat2756",
+      vk: "id84152591",
+    },
+  },
+  {
+    nickName: "Nastya Smirnova",
+    social: {
+      inst: "_smrn_",
+      vk: "smirenny",
     },
   },
   

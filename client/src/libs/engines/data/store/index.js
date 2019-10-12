@@ -27,11 +27,14 @@ class store {
     this.data_prev.nodes = filterSingleNodes(this.data_prev.nodes, this.data_prev.edges)
     this.metaData_prev = metaParser(this.data_prev)
 
-    this.weightSet = Array.from(
-      new Set(
-        this.metaData.nodes.map(node => node.connections)))
-    .sort((a, b) => a - b)
-    this.maxWeight = this.weightSet[0]
+    const createSortedSet = (objectsArray, property) =>
+      Array.from(
+        new Set(objectsArray.map(object => object[property]))
+      ).sort((a, b) => a - b)
+
+    this.weightSet = createSortedSet(this.metaData.nodes, "connections")
+    this.iqSet = createSortedSet(this.metaData.nodes, "iq")
+    this.mentalDisorderSet = createSortedSet(this.metaData.nodes, "mentalDisorder")
   }
 
   get = props => {
