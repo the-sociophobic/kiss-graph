@@ -1157,7 +1157,7 @@ Dasha%20Solovyova Ekaterina%20Kirimova Mark%20Kozharskiy
 Dasha%20Sorokina Alexander%20Lazarev
 Dasha%20Ustenko Sasha%20Chernyshov
 Dasha%20Yagudina Alexander%20Lazarev
-David%20Zharnitsky AnnaMaria%20Chernigovskaya Belova%20Darya Dasha%20Proskuryakova Elina%20Kulikova Kate%20Alexandrova Kira%20Kastaneda Lena%20Muradymova Lev%20Vasilyev Liza%20Kalmykova Lubof%20Safonova Maria%20Manylova Masha%20Tublina Nata%20Naumova Natalia%20Uchitel Polina%20Nikolaeva Sonya%20Krasnobaeva Sveta%20Strugatskaya
+David%20Zharnitsky AnnaMaria%20Chernigovskaya Belova%20Darya Dasha%20Proskuryakova Elina%20Kulikova Kate%20Alexandrova Kira%20Kastaneda Lena%20Muradymova Lev%20Vasilyev Liza%20Kalmykova Lubof%20Safonova Maria%20Manylova Masha%20Tublina Natalia%20Uchitel Polina%20Nikolaeva Sonya%20Krasnobaeva Sveta%20Strugatskaya
 Dayan Kira%20Kastaneda
 Denchik Anton%20Plevako Lev%20Vasilyev
 Denis%20Denisov Kira%20Kastaneda
