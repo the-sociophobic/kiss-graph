@@ -407,23 +407,30 @@ export default [
   {
     names: ["Darina Li", "Lev Vasilyev"],
     commited: 1559680517,
+    told: 1559680517,
+    published: 1562985000,
   },
+
 
   {
     names: ["Turik Mordovtsev", "Kira Kastaneda"],
     told: 1559672955,
+    published: 1562985000,
   },
   {
     names: ["Turik Mordovtsev", "Chekulaeva Yuliya"],
     told: 1559672955,
+    published: 1562985000,
   },
   {
     names: ["Turik Mordovtsev", "Karolina Kalinina"],
     told: 1559672955,
+    published: 1562985000,
   },
   {
     names: ["Turik Mordovtsev", "Polina Bobinsky"],
     told: 1559672955,
+    published: 1562985000,
   },
 
   {
@@ -929,6 +936,12 @@ export default [
     commited: 1548554336,
     told: 1548554336,
     published: 1548819540,
+  },
+  {
+    names: ["Varvara Britina", "Kate Mironovich"],
+    commited: 1570818900,
+    told: 1570858500,
+    published: 1570858500,
   },
   // {
   //   names: ["", ""],
