@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import StoreContext from 'libs/engines/data/store/StoreContext'
-import heatMap from 'img/heat4.png'
+import heatMap from 'img/heat2h.png'
 import KissEmoji from 'components/KissEmoji'
 import isTouchDevice from 'libs/utils/isTouchDevice'
 

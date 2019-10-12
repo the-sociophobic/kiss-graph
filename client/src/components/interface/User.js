@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import StoreContext from 'libs/engines/data/store/StoreContext'
 import UserNameLink from 'components/interface/UserNameLink'
+import { connect } from 'net'
 
 
 export default class User extends Component {
@@ -47,6 +48,7 @@ export default class User extends Component {
             .sort((a, b) => b.connections - a.connections)
             .map(connection =>
               <UserNameLink
+                key={connection.userName || connection.name}
                 user={connection}
                 setNode={this.props.setNode}
                 date={connection.date}
