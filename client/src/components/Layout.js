@@ -8,7 +8,7 @@ import StoreContext from 'libs/engines/data/store/StoreContext'
 import TextInterface from 'components/interface/TextInterface'
 
 import iOS from 'libs/utils/iOS'
-import { nameToPath, pathToName } from 'libs/utils/stringTransforms'
+import { pathToName } from 'libs/utils/stringTransforms'
 
 import HeatMap from 'components/interface/HeatMap'
 import ControlsHelp from 'components/interface/ControlsHelp'
@@ -34,11 +34,21 @@ class Layout extends Component {
       if (node === null)
         node = this.context.store.get({userName: nodeId})
       if (node !== null)
-        this.setNode(node.id, false)
+        this.setNode(node.id, false, false)
     }
+
+    window.onpopstate = this.handleBrowserHistoryButtons.bind(this)
+    window.onpushstate = this.handleBrowserHistoryButtons.bind(this)
   }
 
-  setNode = (id, transition = true) => {
+  handleBrowserHistoryButtons = e => {
+    const nodeLink = this.props.location.pathname.slice("/node/".length)
+    const node = this.context.store.search({link: nodeLink})[0]
+
+    this.setNode(node.id, true, false)
+  }
+
+  setNode = (id, transition = true, pushHistory = true) => {
     const { history } = this.props
 
     if (typeof id === "undefined" || id === -1 || (id.length && id.length === 0)) {
@@ -53,11 +63,10 @@ class Layout extends Component {
       return
 
     this.setState({nodeToShow: node})
-    const nodeId = this.props.match.params.nodeId || ""
+    const currentNodeId = this.props.match.params.nodeId || ""
 
-    if (nodeId !== nameToPath(node.name) &&
-        nodeId !== node.userName)
-      history.push("/node/" + nameToPath(node.userName || node.name))
+    if (currentNodeId !== node.link && pushHistory)
+      history.push("/node/" + node.link)
     document.title = "Граф Транзитивных Поцелуев: " + node.name
 
     if (this.threeSceneRef.current)

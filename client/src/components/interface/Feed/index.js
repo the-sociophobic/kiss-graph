@@ -11,9 +11,9 @@ export default class Feed extends Component {
     super(props)
 
     this.state = {
-      type: "commited"
+      type: "told"
     }
-    this.options = ["commited", "told", "published"]
+    this.options = ["told", "published", "commited"]
   }
 
   static contextType = StoreContext
@@ -79,7 +79,10 @@ export default class Feed extends Component {
 
   renderKisses = () => this.state[this.state.type] && this.state[this.state.type]
     .map(day => (
-      <div className="kiss-day">
+      <div
+        key={day.date}
+        className="kiss-day"
+      >
         <div className="kiss-day__date">
           {day.date}
         </div>

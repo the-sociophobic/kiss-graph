@@ -943,6 +943,31 @@ export default [
     told: 1570858500,
     published: 1570858500,
   },
+  {
+    names: ["Igor Prostakov", "Alexandra Gurkova"],
+    told: 1571295480,
+    published: 1571345400,
+  },
+  {
+    names: ["Igor Prostakov", "Alisa Lisina"],
+    told: 1571295480,
+    published: 1571345400,
+  },
+  {
+    names: ["Igor Prostakov", "Elizaveta Mikhaylova"],
+    told: 1571295480,
+    published: 1571345400,
+  },
+  {
+    names: ["Ksusha Morozova", "Kirill Glumov"],
+    told: 1571341260,
+    published: 1571345400,
+  },
+  {
+    names: ["Milana CGSG", "Marta Maa"],
+    told: 1571328060,
+    published: 1571345400,
+  },
   // {
   //   names: ["", ""],
   //   commited: ,

@@ -118,16 +118,25 @@ class store {
   }
 
   search = props => {
-    let filteredNodes = this.metaData.nodes.filter(node =>
-      Object.keys(props).map(key =>
-        node[key] && node[key]
-          .toLowerCase()
-          .split(/_| |-|\./gm)
-          .map(word => word.startsWith(props[key].toLowerCase()))
-          .reduce((a, b) => a || b)
+    let filteredNodes
+    if (props.link) {
+      const index = this.metaData.nodes
+        .map(node => node.link)
+        .indexOf(props.link)
+      if (index !== -1)
+        return [this.metaData.nodes[index]]
+    } else {
+      filteredNodes = this.metaData.nodes.filter(node =>
+        Object.keys(props).map(key =>
+          node[key] && node[key]
+            .toLowerCase()
+            .split(/_| |-|\./gm)
+            .map(word => word.startsWith(props[key].toLowerCase()))
+            .reduce((a, b) => a || b)
+        )
+        .reduce((a, b) => a || b)
       )
-      .reduce((a, b) => a || b)
-    )
+    }
 
     if (filteredNodes.length < 5) {
       let badlyFilteredNodes = this.metaData.nodes.filter(node =>

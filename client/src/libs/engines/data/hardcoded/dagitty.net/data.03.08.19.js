@@ -552,7 +552,7 @@ Maxim%20Kayp E @0.284,-0.439
 Maxim%20Kolpino E @0.497,0.384
 Maxim%20Kovalevsky E @0.851,-0.069
 Maxim%20Lebedev E @0.386,1.211
-Maxim%20ObmanBasquiat E @0.460,0.664
+Maxim%20Romanov E @0.460,0.664
 Maxim%20Reife E @0.719,-0.150
 Maxim%20Sedov E @0.432,1.123
 Maya%20Liberman E @0.837,0.703
@@ -1294,7 +1294,7 @@ Misha%20Repin Dasha%20Solovyova
 Mks%20Astro Jerry Nastya%20Pavlova
 Mrasov%20Artyom Liza%20Gotsdiner
 Nastya%20Bazyka Alexander%20Lebedev Ivan%20Chukalsky
-Nastya%20IvanovaMonro Arishka%20Bolshakova David%20Zharnitsky Denis%20Drozdov Egor%20Frolov Igor%20Prostakov Lesha%20Briliantov Lyosha%20Loginov Maxim%20ObmanBasquiat Misha%20Nfnyu Nastya%20Pavlova Nata%20Naumova
+Nastya%20IvanovaMonro Arishka%20Bolshakova David%20Zharnitsky Denis%20Drozdov Egor%20Frolov Igor%20Prostakov Lesha%20Briliantov Lyosha%20Loginov Maxim%20Romanov Misha%20Nfnyu Nastya%20Pavlova Nata%20Naumova
 Nastya%20Klimacheva Ustya%20Zhulanova
 Nastya%20Leschik Fyodor%20Ludinov
 Nastya%20Luneva Oleg%20Razumikhin
