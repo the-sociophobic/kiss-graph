@@ -810,6 +810,7 @@ export default [
     nickName: "Maria Porockaya",
     social: {
       inst: "porotskayaa",
+      vk: "mporockaya",
     },
   },
   {
@@ -898,9 +899,10 @@ export default [
     },
   },
   {
-    nickName: "Maxim ObmanBasquiat",
+    nickName: "Maxim Romanov",
     social: {
       inst: "rmnvm",
+      vk: "obmanbasquiat",
     },
   },
   {
@@ -1528,6 +1530,161 @@ export default [
     social: {
       inst: "_smrn_",
       vk: "smirenny",
+    },
+  },
+  {
+    nickName: "Tatyana Surkina",
+    social: {
+      vk: "dumal_i_v_sup_popal",
+    },
+  },
+  {
+    nickName: "Yana Kurilovich",
+    social: {
+      inst: "kurilovich",
+    },
+  },
+  {
+    nickName: "Roman Mikhashchuk",
+    social: {
+      inst: "fursoike",
+    },
+  },
+  {
+    nickName: "Sasha Boyarinov",
+    social: {
+      inst: "a.boiarinov",
+    },
+  },
+  {
+    nickName: "Sasha Ash",
+    social: {
+      inst: "sasha_ash",
+      vk: "em_babushek",
+    },
+    male: false,
+  },
+  {
+    nickName: "Vova Kuznetsov",
+    social: {
+      vk: "kuznetsowladimir",
+      inst: "kuznetsowladimir",
+    },
+  },
+  {
+    nickName: "Anton Alexandrovich",
+    social: {
+      vk: "blastoize",
+    },
+  },
+  {
+    nickName: "Vika Solovyova",
+    social: {
+      vk: "id231665960",
+    },
+  },
+  {
+    nickName: "Anya Litomina",
+    social: {
+      vk: "litomina",
+    },
+  },
+  {
+    nickName: "Timur Ivashkevich",
+    social: {
+      vk: "mf_funky",
+    },
+  },
+  {
+    nickName: "Ilya Del",
+    social: {
+      vk: "delilya",
+      inst: "raspizdel",
+    },
+  },
+  {
+    nickName: "Daria Del",
+    social: {
+      vk: "raspizdelka",
+      inst: "raspizdelka",
+    },
+  },
+  {
+    nickName: "Pyotr Grachev",
+    social: {
+      vk: "pgrachev",
+    },
+  },
+  {
+    nickName: "Rolan Alexeev",
+    social: {
+      vk: "rolla_bros",
+    },
+  },
+  {
+    nickName: "Evgeny Schekunov",
+    social: {
+      vk: "stonedanimal",
+    },
+  },
+  {
+    nickName: "Ronya Shurze",
+    social: {
+      vk: "rja93",
+    },
+  },
+  {
+    nickName: "Konstantin Alexandrov",
+    social: {
+      vk: "snusmumrik42",
+    },
+  },
+  {
+    nickName: "Natasha Medvedeva",
+    social: {
+      inst: "rezh.medvedeva",
+    },
+  },
+  {
+    nickName: "Kirill Glumov",
+    social: {
+      inst: "glumchik_228",
+    },
+  },
+  {
+    nickName: "Milana CGSG",
+    social: {
+      inst: "pertoisin",
+    },
+  },
+  {
+    nickName: "Arina Nevzorova",
+    social: {
+      inst: "arisha_nevzorova",
+    },
+  },
+  {
+    nickName: "Sasha Grey",
+    social: {
+      inst: "sashagrey",
+    },
+  },
+  {
+    nickName: "Minasyan Viktoria",
+    social: {
+      inst: "vekacorp",
+    },
+  },
+  {
+    nickName: "Roman Kozharsky",
+    social: {
+      inst: "kozharskii666",
+    },
+  },
+  {
+    nickName: "Veronika Melnik",
+    social: {
+      inst: "veronikaeyrons",
     },
   },
   

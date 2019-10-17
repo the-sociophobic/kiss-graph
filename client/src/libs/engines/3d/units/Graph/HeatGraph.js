@@ -19,8 +19,8 @@ export default (nodesInput, edges, scene) => {
   // let textureLoader = new THREE.TextureLoader()
   new THREE.TextureLoader()
     .load(heatMap, texture => {
-      texture.magFilter = THREE.NearestFilter;
-      texture.minFilter = THREE.LinearMipMapLinearFilter;
+      // texture.magFilter = THREE.NearestFilter;
+      // texture.minFilter = THREE.LinearMipMapLinearFilter;
       let material = new THREE.MeshBasicMaterial( { map: texture } )      
       let bufferGeometry = new THREE.BufferGeometry()
         .fromGeometry(cylinderGraphGeometry(nodes, edges, 3))
