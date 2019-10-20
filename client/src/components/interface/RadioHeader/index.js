@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import './index.sass'
 
-export default class Feed extends Component {
+export default class RadioHeader extends Component {
   render = () => (
     <div className="radio-header__container">
       {this.props.options.map(option => {
-        const label = typeof option === "string" ? option : option.label
+        const label = typeof option === "string" ? option : option.label()
         const key = typeof option === "string" ? option : option.key
         return (
           <div

@@ -118,6 +118,7 @@ class store {
   }
 
   search = props => {
+    const limit = 7
     let filteredNodes
     if (props.link) {
       const index = this.metaData.nodes
@@ -138,7 +139,7 @@ class store {
       )
     }
 
-    if (filteredNodes.length < 5) {
+    if (filteredNodes.length < limit) {
       let badlyFilteredNodes = this.metaData.nodes.filter(node =>
         !filteredNodes
           .map(node => node.id)
@@ -152,7 +153,7 @@ class store {
       )
       filteredNodes = [
         ...filteredNodes,
-        ...badlyFilteredNodes.slice(0, 5 - filteredNodes.length)
+        ...badlyFilteredNodes.slice(0, limit - filteredNodes.length)
       ]
     }
 
