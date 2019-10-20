@@ -10,6 +10,7 @@ import TextInterface from 'components/interface/TextInterface'
 import iOS from 'libs/utils/iOS'
 import { pathToName } from 'libs/utils/stringTransforms'
 
+import HeatType from 'components/interface/HeatType'
 import HeatMap from 'components/interface/HeatMap'
 import ControlsHelp from 'components/interface/ControlsHelp'
 
@@ -20,6 +21,7 @@ class Layout extends Component {
     this.state = {
       retrievedData: undefined,
       nodeToShow: undefined,
+      heatType: this.props.location.search.replace("?", "").split("&")[0],
     }
     this.threeSceneRef = new React.createRef()
   }
@@ -53,7 +55,7 @@ class Layout extends Component {
 
     if (typeof id === "undefined" || id === -1 || (id.length && id.length === 0)) {
       this.setState({nodeToShow: undefined})
-      history.push("/node/")
+      history.push(`/node/?${this.state.heatType}`)
       return
     }
 
@@ -66,7 +68,7 @@ class Layout extends Component {
     const currentNodeId = this.props.match.params.nodeId || ""
 
     if (currentNodeId !== node.link && pushHistory)
-      history.push("/node/" + node.link)
+      history.push(`/node/${node.link}?${this.state.heatType}`)
     document.title = "Граф Транзитивных Поцелуев: " + node.name
 
     if (this.threeSceneRef.current)
@@ -75,6 +77,11 @@ class Layout extends Component {
         node.cameraTarget,
         transition
       )
+  }
+
+  setHeatType = type => {
+    this.props.history.push(`${this.props.location.pathname}?${type}`)
+    this.setState({heatType: type})
   }
 
   static contextType = StoreContext
@@ -114,6 +121,10 @@ class Layout extends Component {
             myScene={myScene}
             {...props}
           />
+          {/* <HeatType
+            type={this.state.heatType}
+            setType={type => this.setHeatType(type)}
+          /> */}
           <HeatMap />
           <ControlsHelp />
         </div>

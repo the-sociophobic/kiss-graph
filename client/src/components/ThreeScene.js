@@ -15,6 +15,13 @@ export default class ThreeScene extends Component{
     super(props)
     this.viewerRef = new React.createRef()
     this.transitions = []
+    
+
+    //camera idle vars NEEDS OPTIMISATION
+    // this.lastIdle = new Date().getTime()
+    // this.prevCameraPos = new THREE.Vector3()
+    // this.prevCameraTarget = new THREE.Vector3()
+    // this.idleRotation = 0
   }
 
   updateDimensions() {
@@ -127,6 +134,27 @@ export default class ThreeScene extends Component{
 
     this.renderer.render(this.scene, this.camera)
     this.frameId = window.requestAnimationFrame(this.animate)
+
+    
+    // rot += .024
+    // console.log(rot)
+    // if (rot >= 3.1415 * 2) {
+    //   rot = 0
+    //   this.props.setNode(Math.round(Math.random() * 1000))
+    // }
+    // // this.camera.position.set(camVec.x + 5 * Math.cos(rot), camVec.y + 5 * Math.sin(rot), camVec.z)
+    // this.camera.position.set(this.controls.target.x + 5 * Math.cos(rot), this.controls.target.y, this.controls.target.z + 5 * Math.sin(rot))
+    // const idleTime = 5
+    // if (this.prevCameraPos.clone().sub(this.camera.position).lengthSq > .001 &&
+    //     this.prevCameraTarget.clone().sub(this.controls.target).lengthSq > .001) {
+    //   this.lastIdle = new Date().getTime()
+    // } else {
+    //   const 
+    //   if (new Date().getTime() - this.lastIdle >= idleTime) {
+
+    //   }
+    // }
+
     this.controls.update()
   }
 

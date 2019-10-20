@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import RadioHeader from 'components/interface/RadioHeader'
 import StoreContext from 'libs/engines/data/store/StoreContext'
 import UserNameLink from 'components/interface/UserNameLink'
-import KissEmoji from 'components/KissEmoji'
+import Emoji from 'components/Emoji'
 import myDate from 'libs/utils/myDate'
 
 
@@ -97,7 +97,7 @@ export default class Feed extends Component {
                 user={entry.node0}
                 setNode={this.props.setNode}
               />
-              <KissEmoji />
+              <Emoji.kiss />
               <UserNameLink
                 simple
                 user={entry.node1}

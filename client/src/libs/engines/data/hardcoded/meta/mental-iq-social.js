@@ -1236,6 +1236,7 @@ export default [
   {
     nickName: "Nikita Zhatin",
     social: {
+      vk: "nikita348",
       inst: "nikitazhatin",
     },
   },
@@ -1685,6 +1686,12 @@ export default [
     nickName: "Veronika Melnik",
     social: {
       inst: "veronikaeyrons",
+    },
+  },
+  {
+    nickName: "jyurank",
+    social: {
+      inst: "jyurank",
     },
   },
   

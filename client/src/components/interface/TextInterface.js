@@ -131,7 +131,7 @@ export default class TextInterface extends Component {
               history={this.props.history}
               prevLocation={this.props.prevLocation}
             >
-              <div className="flex-container">
+              <div className="flex-container relative">
                 {contentWithFooter}
               </div>
             </MobileExpander>
