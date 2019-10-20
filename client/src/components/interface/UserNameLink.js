@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+
 import myDate from 'libs/utils/myDate'
 
 
@@ -9,12 +9,12 @@ export default props => props.simple ?
       className="username-link--simple"
       // style={{color: props.user.color}}
     >
-      <Link
-        to={props.user.link}
+      <span
+        className="link"
         onClick={() => props.setNode(props.user.name)}
       >
         {props.user.userName ? ("@" + props.user.userName) : props.user.name}
-      </Link>
+      </span>
     </div>
   )
   :
@@ -28,12 +28,12 @@ export default props => props.simple ?
         {props.user.connections}
       </div>
       <div className="username-link__name">
-        <Link
-          to={props.user.link}
+        <span
+          className="link"
           onClick={() => props.setNode(props.user.name)}
         >
           {props.user.userName ? ("@" + props.user.userName) : props.user.name}
-        </Link>
+        </span>
       </div>
       {props.date &&
         <div className="username-link__date">

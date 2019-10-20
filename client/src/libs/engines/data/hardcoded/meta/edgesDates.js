@@ -968,6 +968,72 @@ export default [
     told: 1571328060,
     published: 1571345400,
   },
+  {
+    names: ["Igor Prostakov", "Masha Safronova"],
+    commited: 1498867200,
+    told: 1531024290,
+  },
+  {
+    names: ["Dasha Solovyova", "Evgenia Partsenyak"],
+    commited: 1571532180,
+    told: 1571532180,
+    published: 1571547601,
+  },
+  {
+    names: ["Tatyana Raskalova", "Tikhon Timanov"],
+    told: 1571438640,
+    published: 1571547600,
+  },
+  {
+    names: ["Tatyana Raskalova", "Kseniya Belaya"],
+    told: 1571438640,
+    published: 1571547600,
+  },
+  {
+    names: ["Tatyana Raskalova", "Artyom Paliy"],
+    told: 1571438640,
+    published: 1571547600,
+  },
+  {
+    names: ["Tatyana Raskalova", "Dmitry Sysoev"],
+    told: 1571438640,
+    published: 1571547600,
+  },
+  {
+    names: ["Tatyana Raskalova", "Givi Yegutiya"],
+    told: 1571438640,
+    published: 1571547600,
+  },
+  {
+    names: ["Tatyana Raskalova", "Pavel Sukach"],
+    told: 1571438640,
+    published: 1571547600,
+  },
+  {
+    names: ["Tatyana Raskalova", "Serafim Shorokhov"],
+    told: 1571438640,
+    published: 1571547600,
+  },
+  {
+    names: ["Tatyana Raskalova", "Sergey Frolov"],
+    told: 1571438640,
+    published: 1571547600,
+  },
+  {
+    names: ["Tatyana Raskalova", "Konstantin Shirshov"],
+    told: 1571438640,
+    published: 1571547600,
+  },
+  {
+    names: ["Tatyana Raskalova", "Yura Ksenofontov"],
+    told: 1571438640,
+    published: 1571547600,
+  },
+  {
+    names: ["Tatyana Raskalova", "jyurank"],
+    told: 1571438640,
+    published: 1571547600,
+  },
   // {
   //   names: ["", ""],
   //   commited: ,
