@@ -1694,6 +1694,13 @@ export default [
       inst: "jyurank",
     },
   },
+  {
+    nickName: "Mark Belov",
+    social: {
+      inst: "ididntgetmuchsleep",
+      vk: "ididntgetmuchsleep",
+    },
+  },
   
   // {
   //   nickName: "",

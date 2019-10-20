@@ -253,8 +253,9 @@ export default [
   },
   {
     names: ["Andrey Nikulin", "Darya Alexandrovna"],
-    published: 1556664660,
+    published: 1565790960,
     commited: 1555538280,
+    told: 1555538280,
   },
 
   {
@@ -1034,6 +1035,28 @@ export default [
     told: 1571438640,
     published: 1571547600,
   },
+  {
+    names: ["Mark Belov", "Dasha Moskvina"],
+    told: 1568592000,
+    published: 1570680000,
+  },
+  {
+    names: ["Arina Nachinova", "Andrey Gladilkin"],
+    told: 1565559900,
+    published: 1565790960,
+  },
+  {
+    names: ["Arina Nachinova", "Oliver Noyan"],
+    told: 1565559900,
+    published: 1565790960,
+  },
+  {
+    names: ["Vita Polovinkina", "Vadim Zimin"],
+    told: 1547340300,
+    commited: 1547340300,
+    published: 1548819540,
+  },
+  
   // {
   //   names: ["", ""],
   //   commited: ,

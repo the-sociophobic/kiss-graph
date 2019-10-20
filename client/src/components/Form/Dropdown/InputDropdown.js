@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from 'react'
+import Radium from 'radium'
 
 import Input from 'components/Form/Input'
 
-export default class extends Component {
+
+class InputDropdown extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -60,15 +62,20 @@ export default class extends Component {
   }
 
   renderOptions = () => this.props.options && this.props.options
-    .map((option, index) =>
-      <div
-        key={index}
-        className="form-group__input--dropdown__options__item"
-        onClick={() => this.setValue(typeof option === "string" ? option : option.value)}
-      >
-        {typeof option === "string" ? option : option.render}
-      </div>
-    )
+    .map((option, index) => {
+      const style = option.style || {}
+
+      return (
+        <div
+          key={index}
+          style={style}
+          className="form-group__input--dropdown__options__item"
+          onClick={() => this.setValue(typeof option === "string" ? option : option.value)}
+        >
+          {typeof option === "string" ? option : option.render}
+        </div>
+      )
+    })
 
   render = () => (
     <Fragment>
@@ -90,3 +97,5 @@ export default class extends Component {
     </Fragment>
   )
 }
+
+export default Radium(InputDropdown)

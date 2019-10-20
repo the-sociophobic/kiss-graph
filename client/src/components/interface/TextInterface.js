@@ -4,6 +4,7 @@ import About from 'pages/About'
 import Dropdown from 'components/Form/Dropdown'
 
 import { registerListeners, unregisterListeners } from 'libs/utils/preventMobileScrolling'
+import colorFromWeight from 'libs/utils/colorFromWeight'
 
 import User from 'components/interface/User'
 import MobileExpander from 'components/interface/MobileExpander'
@@ -54,9 +55,13 @@ export default class TextInterface extends Component {
       this.setState({currentOptions: []})
     else {
       const options = this.props.data.store.search({name: value, userName: value})
-        .slice(0, 5)
+        .slice(0, 7)
         .map(option => ({
           value: option.name,
+          style: {':hover': {
+            // background: `linear-gradient(90deg, white 30%, ${colorFromWeight(option.uv)})`,
+            backgroundColor: colorFromWeight(option.uv, "light"),
+          }},
           render: <p>{option.name} <em>{option.userName ? ` (@${option.userName})` : ""}</em></p>
         }))
       this.setState({currentOptions: options})

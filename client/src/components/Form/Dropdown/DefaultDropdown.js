@@ -1,21 +1,28 @@
 import React, { Component } from 'react'
+import Radium from 'radium'
 
-export default class extends Component {
+
+class DefaultDropdown extends Component {
   close = () => this.props.setOpened(false)
 
   renderOptions = () => this.props.options
-    .map((option, index) =>
-      <div
-        key={index}
-        className="form-group__input--dropdown__options__item"
-        onClick={() => {
-          this.props.setValue(option)
-          this.setState({opened: false})
-        }}
-      >
-        {(this.props.valueRender && this.props.valueRender(option)) || option}
-      </div>
-    )
+    .map((option, index) => {
+      const style = option.style || {}
+      
+      return (
+        <div
+          key={index}
+          className="form-group__input--dropdown__options__item"
+          style={style}
+          onClick={() => {
+            this.props.setValue(option)
+            this.setState({opened: false})
+          }}
+        >
+          {(this.props.valueRender && this.props.valueRender(option)) || option}
+        </div>
+      )
+    })
 
   render = () => (
     <div
@@ -30,3 +37,5 @@ export default class extends Component {
     </div>
   )
 }
+
+export default Radium(DefaultDropdown)

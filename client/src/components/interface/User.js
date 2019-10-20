@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+
 import StoreContext from 'libs/engines/data/store/StoreContext'
 import UserNameLink from 'components/interface/UserNameLink'
-import { connect } from 'net'
+import Emoji from 'components/Emoji'
 
 
 export default class User extends Component {
@@ -33,11 +34,17 @@ export default class User extends Component {
               key={key}
               className="node-info__item"
             >
-              {key}: {node[key]}
+              {({
+                  mentalDisorder: () => <Emoji.mentalDisorder />,
+                  iq: () => <Emoji.IQ />,
+                })[key]()
+              } {node[key]}
+              {key === "mentalDisorder" && "/10 mentalDisorder"}
+              {key === "iq" && " IQ"}
             </div>)
         }
         <div className="node-info__item">
-          {node.connections} connections{node.hiddenConnections ? (" (" + node.hiddenConnections + " hidden)") : ""}:
+          <Emoji.kiss /> {node.connections}{node.hiddenConnections ? <> ({node.hiddenConnections}<Emoji.hidden />)</> : ""}:
         </div>
         <div className="node-info__connections">
           {node.mates

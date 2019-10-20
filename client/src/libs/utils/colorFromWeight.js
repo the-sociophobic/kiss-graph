@@ -14,7 +14,7 @@ const colors = hexColors.map(color => ({
   b: parseInt(color.slice(4, 6), 16),
 }))
 
-export default weight => {
+export default (weight, tone) => {
   const length = colors.length - 1
   const start = Math.floor(weight * length)
   const end = Math.ceil(weight * length)
@@ -25,6 +25,19 @@ export default weight => {
     g: colors[start].g * (1 - alpha) + colors[end].g * alpha,
     b: colors[start].b * (1 - alpha) + colors[end].b * alpha,
   }
+  //add tone
+  if (tone === "light")
+    newColor = {
+      r: 127 + newColor.r / 2,
+      g: 127 + newColor.g / 2,
+      b: 127 + newColor.b / 2,
+    }
+  if (tone === "dark")
+    newColor = {
+      r: newColor.r * .9,
+      g: newColor.g * .9,
+      b: newColor.b * .9,
+    }
   newColor = {
     r: Math.round(newColor.r).toString(16),
     g: Math.round(newColor.g).toString(16),

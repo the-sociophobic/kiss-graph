@@ -112,7 +112,20 @@ export default class Feed extends Component {
   render = () => (
     <Fragment>
       <RadioHeader
-        options={this.options}
+        options={[
+          {
+            key: "told",
+            label: () => <>told<Emoji.told /></>
+          },
+          {
+            key: "published",
+            label: () => <>published<Emoji.world /></>
+          },
+          {
+            key: "commited",
+            label: () => <>commited<Emoji.kiss /></>
+          },
+        ]}
         value={this.state.type}
         onChange={value => this.setState({type: value})}
       />
