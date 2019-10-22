@@ -1,8 +1,8 @@
 export default [
   {
     names: ["Lev Vasilyev", "Anya Grin"],
-    commited: 1409472000,
-    told: 1409472000,
+    commited: 1409478120,
+    told: 1409478120,
     published: 1522593271,
   },
   {
@@ -119,6 +119,24 @@ export default [
 
   {
     names: ["Tikhon Timanov", "Natalia Lebedeva"],
+    commited: 1540065000,
+    told: 1540065000,
+    published: 1540086180,
+  },
+  {
+    names: ["Kristina Boyarkina", "Natalia Lebedeva"],
+    commited: 1540065000,
+    told: 1540065000,
+    published: 1540086180,
+  },
+  {
+    names: ["Natasha Kozhevnikova", "Natalia Lebedeva"],
+    commited: 1540065000,
+    told: 1540065000,
+    published: 1540086180,
+  },
+  {
+    names: ["Sasha Chernyshov", "Natalia Lebedeva"],
     commited: 1540065000,
     told: 1540065000,
     published: 1540086180,
@@ -1044,17 +1062,31 @@ export default [
     names: ["Arina Nachinova", "Andrey Gladilkin"],
     told: 1565559900,
     published: 1565790960,
+    commited: 1565639400,
   },
   {
     names: ["Arina Nachinova", "Oliver Noyan"],
     told: 1565559900,
     published: 1565790960,
+    commited: 1564704061,
   },
   {
     names: ["Vita Polovinkina", "Vadim Zimin"],
     told: 1547340300,
     commited: 1547340300,
     published: 1548819540,
+  },
+  {
+    names: ["Vita Polovinkina", "Vadim Zimin"],
+    told: 1547340300,
+    commited: 1547340300,
+    published: 1548819540,
+  },
+  {
+    names: ["Artyom Povalyaev", "Natalia Lebedeva"],
+    told: 1571760840,
+    commited: 1563667200,
+    published: 1571772600,
   },
   
   // {

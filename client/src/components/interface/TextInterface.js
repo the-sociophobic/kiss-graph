@@ -55,7 +55,7 @@ export default class TextInterface extends Component {
       this.setState({currentOptions: []})
     else {
       const options = this.props.data.store.search({name: value, userName: value})
-        .slice(0, 7)
+        .slice(0, window.innerHeight > 736 ? 7 : 5)
         .map(option => ({
           value: option.name,
           style: {':hover': {
