@@ -216,7 +216,8 @@ export default [
   },
   {
     nickName: "Artyom Povalyaev",
-    mentalDisorder: 3,
+    // mentalDisorder: 3,
+    iq: 135,
     social: {
       inst: "gevernus2.0",
     },
@@ -1699,6 +1700,26 @@ export default [
     social: {
       inst: "ididntgetmuchsleep",
       vk: "ididntgetmuchsleep",
+    },
+  },
+  {
+    nickName: "Andrey Gladilkin",
+    social: {
+      inst: "andreadventure_",
+    },
+  },
+  {
+    nickName: "Lera Stepanova",
+    social: {
+      vk: "lera.stepanova99",
+      inst: "_._.valencia._._",
+    },
+  },
+  {
+    nickName: "Anya Smirnova",
+    social: {
+      vk: "smrnvnn",
+      inst: "bonus.pidr",
     },
   },
   

@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import RadioHeader from 'components/interface/RadioHeader'
 import StoreContext from 'libs/engines/data/store/StoreContext'
 import UserNameLink from 'components/interface/UserNameLink'
+import KissTime from 'components/interface/Feed/KissTime'
 import Emoji from 'components/Emoji'
 import myDate from 'libs/utils/myDate'
 
@@ -92,6 +93,10 @@ export default class Feed extends Component {
               key={entry.id}
               className="kiss-day__entries__item"
             >
+              <KissTime
+                date={entry[this.state.type]}
+                className="kiss-day__entries__item__time"
+              />
               <UserNameLink
                 simple
                 user={entry.node0}

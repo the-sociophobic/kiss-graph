@@ -89,6 +89,7 @@ $dark-gray: #999999
 $dark-dark-gray: #555555
 // $light-light-gray: #f6f6f6
 $light-light-gray: #f3f6f7
+$apple-item-gray: rgba(118, 120, 119, .075)
 // $secondary: #c3562b
 $secondary: #aaff09
 $link-color: #0000ee
@@ -294,6 +295,9 @@ $arrow-size: 7px
   font-size: 14px
   display: flex
   flex-direction: row
+  &:nth-child(odd)
+    background-color: $apple-item-gray
+
   &__number
     width: 26px
     text-align: right
@@ -322,7 +326,7 @@ $arrow-size: 7px
     line-height: 1.6
     .link
       font-size: 14px
-      color: $dark-gray
+      color: $dark-dark-gray
       // color: inherit
       text-decoration: underline
       cursor: pointer
@@ -396,7 +400,7 @@ $arrow-size: 7px
             border-bottom-left-radius: 3px
             border-bottom-right-radius: 3px
           &:hover
-            background-color: $secondary
+            // background-color: $secondary
           p
             line-height: 1.35
             font-size: 16px
@@ -755,4 +759,14 @@ span.emoji
     width: 100%
     &__item
       width: 100%
+      // font-size: 14px
+      &:nth-child(odd)
+        background-color: $apple-item-gray
+      &__time
+        font-size: 14px
+        display: inline-block
+        width: 50px
+        padding-left: 5px
+        color: $dark-gray
+
 

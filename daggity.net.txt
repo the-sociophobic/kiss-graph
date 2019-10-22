@@ -175,6 +175,7 @@ Artyom%20Gutko E @0.854,1.432
 Artyom%20Lakhtionov E @0.348,0.562
 Artyom%20Likhoshvay E @0.856,0.539
 Artyom%20Makarov E @0.104,1.421
+Artyom%20Paliy E @0.535,0.698
 Artyom%20Povalyaev E @0.591,0.637
 Artyom%20RedCross E @0.217,-0.108
 Artyom%20Sverbaev E @0.141,0.498
@@ -182,7 +183,6 @@ Artyom%20Tomilov E @0.464,1.130
 Artyom%20Ugryumov E @0.685,-0.187
 Artyom%20Utesov E @0.045,0.469
 Artyom%20Yakobson E @-0.073,0.308
-Artyom%20Paliy E @0.535,0.698
 Artyomka%20Dotrakiyskiy E @-0.060,1.414
 Asya%20Dobina E @0.793,0.303
 Avvakum%20Redkin E @0.127,-0.266
@@ -828,6 +828,7 @@ Seraphima%20Pantykina E @0.822,1.198
 Sergay%20Nikitin E @0.204,1.117
 Sergey%20Ch E @0.915,1.142
 Sergey%20Dvoryanchikov E @0.413,1.408
+Sergey%20Frolov E @0.592,0.713
 Sergey%20Kochin E @0.142,0.734
 Sergey%20Malyshev E @0.860,1.296
 Sergey%20Married E @0.310,-0.482
@@ -835,7 +836,6 @@ Sergey%20Sinitsyn E @0.781,0.720
 Sergey%20Sokolov E @0.171,-0.308
 Sergey%20Vakhnin E @0.186,-0.458
 Sergey%20Zubierov E @0.911,1.262
-Sergey%20Frolov E @0.592,0.713
 Sestra%20Peti E @0.352,-0.343
 Sima%20Radnaeva E @0.411,0.357
 Slava%20Bazaliy E @0.841,-0.146
@@ -1013,8 +1013,8 @@ Yulya%20Meller E @-0.089,0.942
 Yulya%20Shilnokova E @0.910,0.553
 Yulya%20Tasenko E @-0.028,0.260
 Yura%20Evstigneev E @0.015,1.005
-Yura%20Kuperman E @0.850,0.421
 Yura%20Ksenofontov E @0.515,0.730
+Yura%20Kuperman E @0.850,0.421
 Zhanna%20Kamleva E @0.123,0.980
 Zhenya E @0.395,0.178
 Zhenya%20Afro E @0.671,0.024
@@ -1135,12 +1135,12 @@ Artyom%20Cherepanov Lera%20N
 Artyom%20Golubev Ksusha%20Malysheva Lera%20Snitsar Liza%20Stolyar
 Artyom%20Gutko Nastya%20Redkina
 Artyom%20Likhoshvay Lubof%20Safonova
-Artyom%20Povalyaev Kristina%20Boyarkina Polina%20Vingorodova Tikhon%20Timanov
+Artyom%20Paliy Tatyana%20Raskalova
+Artyom%20Povalyaev Kristina%20Boyarkina Natalia%20Lebedeva Polina%20Vingorodova Tikhon%20Timanov
 Artyom%20Sverbaev Elya%20Novopashennaya
 Artyom%20Tomilov Ksusha%20Kozhevnikova
 Artyom%20Ugryumov Kira%20Kastaneda Masha%20Chukalskaya
 Artyom%20Yakobson Liza%20Gotsdiner
-Artyom%20Paliy Tatyana%20Raskalova
 Avvakum%20Redkin Anya%20Maxutova
 Azamat%20Vishenin Alexandra%20Polosukhina
 Azat%20Unknown Sima%20Radnaeva
@@ -1569,11 +1569,11 @@ Serafima%20Schedrina Andrey%20Potashev Liza%20Lepaslen Sergey%20Sokolov
 Sergay%20Nikitin Anton%20Plevako Ilya%20Roschin Kristina%20Kukushkina Lev%20Vasilyev Nastya%20Uhimenko Nastya%20Vladimirova Sofya%20Namestnikova
 Sergey%20Ch Alisa%20Grebenschikova Elena%20Vaenga Emilia%20Spivak
 Sergey%20Dvoryanchikov Dasha%20Solovyova
+Sergey%20Frolov Tatyana%20Raskalova
 Sergey%20Kochin Daria%20Shevchenko
 Sergey%20Malyshev Evgenia%20Gorozhantseva
 Sergey%20Vakhnin Elena%20Gerasimova
 Sergey%20Zubierov Evgenia%20Gorozhantseva
-Sergey%20Frolov Tatyana%20Raskalova
 Slava%20Bazaliy Anya%20Shendrikovskaya
 Slava%20Golubev Elizaveta%20Marova
 Slava%20KPSS Elina%20Kulikova
@@ -1689,8 +1689,8 @@ Yuliya%20Gracheva Eduard%20Chaika
 Yulya%20Alexandrova Fill
 Yulya%20Shilnokova Elina%20Kulikova Natasha%20Kulikovskaya
 Yulya%20Tasenko Misha%20Taranov
-Yura%20Kuperman Lubof%20Safonova
 Yura%20Ksenofontov Tatyana%20Raskalova
+Yura%20Kuperman Lubof%20Safonova
 Zhenya%20Afro Nikita%20Kiyanov
 Zhenya%20Ivonin Liza%20Nikolaenko
 Zhenya%20Selicheva Dasha%20Solovyova
