@@ -740,7 +740,7 @@ export default [
   },
   {
     names: ["Alina Nesmiyan", "Stepan Nesmiyan"],
-    commited: 1500854400,
+    commited: 1500692401,
     told: 1501108920,
     published: 1538629440,
   },
@@ -1087,6 +1087,48 @@ export default [
     told: 1571760840,
     commited: 1563667200,
     published: 1571772600,
+  },
+
+  {
+    names: ["Alina Nesmiyan", "Igor Petrov"],
+    told: 1571842500,
+    published: 1571862600,
+  },
+  {
+    names: ["Alina Nesmiyan", "Pavel Teacher"],
+    told: 1571842500,
+    published: 1571862600,
+  },
+  {
+    names: ["Alina Nesmiyan", "Irina Untold"],
+    told: 1571842500,
+    published: 1571862600,
+  },
+  {
+    names: ["Alina Nesmiyan", "Nastya Bykova"],
+    told: 1571842740,
+    published: 1571862600,
+  },
+  {
+    names: ["Alina Nesmiyan", "Vanya Skorobogatov"],
+    told: 1571842740,
+    published: 1571862600,
+  },
+
+  {
+    names: ["Dmitry Fedorov", "Dmitry Tunikov"],
+    told: 1571859300,
+    published: 1571862600,
+  },
+  {
+    names: ["Dmitry Fedorov", "Ksusha Ivanova"],
+    told: 1571859300,
+    published: 1571862600,
+  },
+  {
+    names: ["Dmitry Tunikov", "Albina Gumerova"],
+    told: 1571859300,
+    published: 1571862600,
   },
   
   // {

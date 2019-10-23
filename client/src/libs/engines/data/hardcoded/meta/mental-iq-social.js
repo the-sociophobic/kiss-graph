@@ -1722,6 +1722,35 @@ export default [
       inst: "bonus.pidr",
     },
   },
+
+  {
+    nickName: "Dmitry Tunikov",
+    social: {
+      vk: "id8495937",
+      inst: "dimanshaman",
+    },
+  },
+  {
+    nickName: "Dmitry Fedorov",
+    social: {
+      vk: "id33603479",
+      inst: "dimaaa_fed",
+    },
+  },
+  {
+    nickName: "Albina Gumerova",
+    social: {
+      vk: "dear_albina",
+      inst: "",
+    },
+  },
+  {
+    nickName: "Ksusha Ivanova",
+    social: {
+      vk: "ksu_8",
+      inst: "kseniaa_ev",
+    },
+  },
   
   // {
   //   nickName: "",
