@@ -645,7 +645,7 @@ export default [
   },
 
   {
-    names: ["Natasha Kozhevnikova", "Alina Livshits"],
+    names: ["Natasha Kozhevnikova", "Alina Bazanova"],
     published: 1570680000,
     commited: 1429747200,
     told: 1569810649,
@@ -1130,6 +1130,62 @@ export default [
     told: 1571859300,
     published: 1571862600,
   },
+
+  {
+    names: ["Nastya Uhimenko", "Alina Nesmiyan"],
+    told: 1572119280,
+    published: 1572137700,
+  },
+  {
+    names: ["Nastya Uhimenko", "Anya Novik"],
+    told: 1572119280,
+    published: 1572137700,
+  },
+  {
+    names: ["Nastya Uhimenko", "Ronya Shurze"],
+    told: 1572119280,
+    published: 1572137700,
+  },
+  {
+    names: ["Nastya Uhimenko", "Alexander Lebedev"],
+    told: 1572119280,
+    published: 1572137700,
+  },
+
+  {
+    names: ["Kirill Gerasimenko", "Svetlana Savina"],
+    told: 1572108300,
+    published: 1572137700,
+  },
+
+  {
+    names: ["Lesha Briliantov", "Kirill Koranov"],
+    told: 1572040800,
+    published: 1572137700,
+  },
+  {
+    names: ["Lesha Briliantov", "Fedya Veselov"],
+    told: 1572040800,
+    published: 1572137700,
+  },
+  {
+    names: ["Lesha Briliantov", "Lev Vasilyev"],
+    commited: 1572040800,
+    told: 1572040800,
+    published: 1572137700,
+  },
+
+  {
+    names: ["Grigory Schastlivy", "Anna Karzina"],
+    told: 1572019860,
+    published: 1572137700,
+  },
+  {
+    names: ["Grigory Schastlivy", "Tatyana Levina"],
+    told: 1572019860,
+    published: 1572137700,
+  },
+
   
   // {
   //   names: ["", ""],

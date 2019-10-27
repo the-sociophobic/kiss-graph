@@ -1,6 +1,6 @@
 import psychic from './mental-iq-social'
 import edgesDates from './edgesDates'
-import position from 'libs/engines/data/hardcoded/position/12.10.19.json'
+import position from 'libs/engines/data/hardcoded/position/27.10.19.json'
 // import position from 'libs/engines/data/hardcoded/position/bojack.json'
 
 import colorFromWeight from 'libs/utils/colorFromWeight'

@@ -580,7 +580,7 @@ export default [
     },
   },
   {
-    nickName: "Alina Livshits",
+    nickName: "Alina Bazanova",
     social: {
       inst: "alinalivshits",
     },
