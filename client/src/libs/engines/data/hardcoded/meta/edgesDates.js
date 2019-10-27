@@ -718,7 +718,7 @@ export default [
     published: 1522593271,
   },
   {
-    names: ["Mks Astro", "Nastya Pavlova"],
+    names: ["Bek Sultan", "Nastya Pavlova"],
     commited: 1505602800,
     told: 1505602800,
     published: 1522593271,
@@ -1153,25 +1153,25 @@ export default [
   },
 
   {
-    names: ["Kirill Gerasimenko", "Svetlana Savina"],
+    names: ["Kirill Gerasimenko", "Svetlana Savinova"],
     told: 1572108300,
     published: 1572137700,
   },
 
   {
     names: ["Lesha Briliantov", "Kirill Koranov"],
-    told: 1572040800,
+    told: 1572040801,
     published: 1572137700,
   },
   {
     names: ["Lesha Briliantov", "Fedya Veselov"],
-    told: 1572040800,
+    told: 1572040801,
     published: 1572137700,
   },
   {
     names: ["Lesha Briliantov", "Lev Vasilyev"],
-    commited: 1572040800,
-    told: 1572040800,
+    commited: 1572040801,
+    told: 1572040801,
     published: 1572137700,
   },
 
@@ -1184,6 +1184,62 @@ export default [
     names: ["Grigory Schastlivy", "Tatyana Levina"],
     told: 1572019860,
     published: 1572137700,
+  },
+
+  {
+    names: ["Polina Nazarova", "Dekhiar Gusev"],
+    told: 1572214140,
+    published: 1572218820,
+  },
+  {
+    names: ["Evgenia Partsenyak", "Georgy Mamontov"],
+    told: 1572204780,
+    published: 1572218820,
+  },
+  {
+    names: ["Evgenia Partsenyak", "Alexandr Radich"],
+    told: 1572204780,
+    published: 1572218820,
+  },
+  {
+    names: ["Evgenia Partsenyak", "Alexey Karpov"],
+    told: 1572204780,
+    published: 1572218820,
+  },
+  {
+    names: ["Evgenia Partsenyak", "Arseny Tsuman"],
+    told: 1572204780,
+    published: 1572218820,
+  },
+  {
+    names: ["Evgenia Partsenyak", "Alexandra Shutova"],
+    told: 1572204780,
+    published: 1572218820,
+  },
+  {
+    names: ["Evgenia Partsenyak", "Anna Dodonova"],
+    told: 1572204780,
+    published: 1572218820,
+  },
+  {
+    names: ["Evgenia Partsenyak", "Natalya Naumushkova"],
+    told: 1572204780,
+    published: 1572218820,
+  },
+  {
+    names: ["Evgenia Partsenyak", "Leonid Rudnik"],
+    told: 1572204780,
+    published: 1572218820,
+  },
+  {
+    names: ["Evgenia Partsenyak", "Semyon Sharov"],
+    told: 1572204780,
+    published: 1572218820,
+  },
+  {
+    names: ["Dasha Solovyova", "dimashtile"],
+    told: 1572089760,
+    published: 1572218820,
   },
 
   

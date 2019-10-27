@@ -224,6 +224,9 @@ export default class myDate {
   minute() {
     return this.dateJS.getMinutes();
   }
+  second() {
+    return this.dateJS.getSeconds();
+  }
 
   isToday() {
     var today = new myDate();

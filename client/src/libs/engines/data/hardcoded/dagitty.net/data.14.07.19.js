@@ -563,7 +563,7 @@ Misha%20Nfnyu E @0.521,0.705
 Misha%20Repin E @0.486,1.287
 Misha%20Taranov E @-0.074,0.264
 Misha%20Tychinin E @0.275,-0.242
-Mks%20Astro E @0.184,-0.122
+Bek%20Sultan E @0.184,-0.122
 Mrasov%20Artyom E @0.129,-0.399
 Nadezhda%20Novikova E @0.392,1.063
 Nastya%20Bagrina E @0.342,-0.036
@@ -1268,7 +1268,7 @@ Misha%20Belykh Kate%20Alexandrova
 Misha%20Kasapov Ksusha%20Usha
 Misha%20Nfny Natasha%20Kozhevnikova
 Misha%20Repin Dasha%20Solovyova
-Mks%20Astro Jerry Nastya%20Pavlova
+Bek%20Sultan Jerry Nastya%20Pavlova
 Mrasov%20Artyom Liza%20Gotsdiner
 Nastya%20Bazyka Alexander%20Lebedev Ivan%20Chukalsky
 Nastya%20IvanovaMonro Arishka%20Bolshakova David%20Zharnitsky Denis%20Drozdov Egor%20Frolov Igor%20Prostakov Lesha%20Briliantov Lyosha%20Loginov Maxim%20Romanov Misha%20Nfnyu Nastya%20Pavlova Nata%20Naumova
