@@ -10,6 +10,9 @@ import ResizeObserver from 'resize-observer-polyfill'
 
 const targetToCamera = 5
 
+// var rot = 0
+
+
 export default class ThreeScene extends Component{
   constructor(props) {
     super(props)
@@ -18,10 +21,10 @@ export default class ThreeScene extends Component{
     
 
     //camera idle vars NEEDS OPTIMISATION
-    // this.lastIdle = new Date().getTime()
-    // this.prevCameraPos = new THREE.Vector3()
-    // this.prevCameraTarget = new THREE.Vector3()
-    // this.idleRotation = 0
+    this.lastIdle = new Date().getTime()
+    this.prevCameraPos = new THREE.Vector3()
+    this.prevCameraTarget = new THREE.Vector3()
+    this.idleRotation = 0
   }
 
   updateDimensions() {
@@ -148,12 +151,7 @@ export default class ThreeScene extends Component{
     // if (this.prevCameraPos.clone().sub(this.camera.position).lengthSq > .001 &&
     //     this.prevCameraTarget.clone().sub(this.controls.target).lengthSq > .001) {
     //   this.lastIdle = new Date().getTime()
-    // } else {
-    //   const 
-    //   if (new Date().getTime() - this.lastIdle >= idleTime) {
-
-    //   }
-    // }
+    // } 
 
     this.controls.update()
   }
