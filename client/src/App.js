@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import routes from './routes'
 
+import Helmet from 'components/Helmet'
+
 import store from 'libs/engines/data/store'
 import StoreContext from 'libs/engines/data/store/StoreContext'
 
@@ -17,6 +19,7 @@ class App extends Component {
   render() {
     return (
       <Router>
+        <Helmet />
         <StoreContext.Provider value={{store: new store()}}>
         <Store2Context.Provider value={{store2: new store2()}}>
           <Switch>

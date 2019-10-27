@@ -158,13 +158,14 @@ export default [
     }
   },
   {
-    nickName: "Mks Astro",
+    nickName: "Bek Sultan",
     mentalDisorder: 2.5,
     iq: 133,
     additionalConnections: 7,
     social: {
-      vk: "",
-    }
+      vk: "id265379551",
+    },
+    userName: "lev-is-lie"
   },
   {
     nickName: "Yana Moiseeva",
@@ -1413,7 +1414,9 @@ export default [
   {
     nickName: "Georgy Mamontov",
     social: {
-      vk: "georgemamontovspb",
+      vk: "mamntv",
+      inst: "mamntv",
+      vk2: "georgemamontovspb",
     },
   },
   {
@@ -1749,6 +1752,60 @@ export default [
     social: {
       vk: "ksu_8",
       inst: "kseniaa_ev",
+    },
+  },
+  {
+    nickName: "Alexandr Radich",
+    social: {
+      inst: "derdoggy",
+    },
+  },
+  {
+    nickName: "Arseny Tsuman",
+    social: {
+      inst: "outfit_brand_sneakers",
+    },
+  },
+  {
+    nickName: "Semyon Sharov",
+    social: {
+      inst: "truedoc",
+    },
+  },
+  {
+    nickName: "Leonid Rudnik",
+    social: {
+      inst: "leo1144",
+    },
+  },
+  {
+    nickName: "Natalya Naumushkova",
+    social: {
+      inst: "nmshkva",
+    },
+  },
+  {
+    nickName: "Alexandra Shutova",
+    social: {
+      inst: "sashashu1",
+    },
+  },
+  {
+    nickName: "Alexey Karpov",
+    social: {
+      inst: "alexey.laki",
+    },
+  },
+  {
+    nickName: "Anna Dodonova",
+    social: {
+      inst: "anya_dodonova",
+    },
+  },
+  {
+    nickName: "dimashtile",
+    social: {
+      inst: "dimashtile",
     },
   },
   
