@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "concurrently \"yarn run server \" \"yarn run client\"",
-    "server": "cd server && sails lift --port=1335",
+    "server": "cd rust",
     "client": "cd client && PORT=3005 yarn start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
