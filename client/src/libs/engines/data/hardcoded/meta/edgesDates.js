@@ -1241,6 +1241,85 @@ export default [
     told: 1572089760,
     published: 1572218820,
   },
+  {
+    names: ["Dasha Solovyova", "troy6oy"],
+    commited: 1572458400,
+    told: 1572464400,
+    published: 1572706200,
+  },
+
+  {
+    names: ["Sasha Shtaryov", "Anna Simanovskaya"],
+    told: 1572464400,
+    published: 1572706200,
+  },
+  {
+    names: ["Sasha Shtaryov", "Anya Kolotkevich"],
+    told: 1572464400,
+    published: 1572706200,
+  },
+  {
+    names: ["Sasha Shtaryov", "Elizaveta Unknown"],
+    told: 1572464400,
+    published: 1572706200,
+  },
+  {
+    names: ["Sasha Shtaryov", "Evgenia Bakastova"],
+    told: 1572464400,
+    published: 1572706200,
+  },
+  {
+    names: ["Sasha Shtaryov", "Ksusha Kostromina"],
+    told: 1572464400,
+    published: 1572706200,
+  },
+  {
+    names: ["Sasha Shtaryov", "Lada Tkach"],
+    told: 1572464400,
+    published: 1572706200,
+  },
+  {
+    names: ["Sasha Shtaryov", "Lolita Zaporozhets"],
+    told: 1572464400,
+    published: 1572706200,
+  },
+  {
+    names: ["Sasha Shtaryov", "Maria Burkova"],
+    told: 1572464400,
+    published: 1572706200,
+  },
+  {
+    names: ["Sasha Shtaryov", "Nastya Ivanova 3"],
+    told: 1572464400,
+    published: 1572706200,
+  },
+  {
+    names: ["Sasha Shtaryov", "Nastya Romanuta"],
+    told: 1572464400,
+    published: 1572706200,
+  },
+  {
+    names: ["Sasha Shtaryov", "Sofya Partyanskaya"],
+    told: 1572464400,
+    published: 1572706200,
+  },
+
+  {
+    names: ["Maxim Kayp", "Masha Unknown"],
+    told: 1572685740,
+    published: 1572706200,
+  },
+  {
+    names: ["Anton Plevako", "Maria Melvil"],
+    told: 1572681660,
+    published: 1572706200,
+  },
+  {
+    names: ["Kira Kastaneda", "DJ Viktor Tsoy"],
+    told: 1572633360,
+    published: 1572706200,
+    by: "Sasha Chernyshov"
+  },
 
   
   // {

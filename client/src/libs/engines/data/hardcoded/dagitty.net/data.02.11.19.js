@@ -1,3 +1,4 @@
+export default `
 Aelitta%20Ezugbaya E @0.038,1.039
 Agarkova%20Nastya E @0.487,-0.009
 Aglaya%20Lobantseva E @0.807,1.252
@@ -1760,3 +1761,4 @@ jyurank Tatyana%20Raskalova
 troy6oy Dasha%20Solovyova
 unknown1 Kostya%20Solovyov
 yvesai Lana%20Banana
+`

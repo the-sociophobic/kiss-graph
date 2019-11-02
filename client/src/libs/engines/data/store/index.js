@@ -1,6 +1,6 @@
 import parser from 'libs/engines/data/hardcoded/dagitty.net'
 import metaParser from 'libs/engines/data/hardcoded/meta'
-import data from 'libs/engines/data/hardcoded/dagitty.net/data.27.10.19'
+import data from 'libs/engines/data/hardcoded/dagitty.net/data.02.11.19'
 import data_prev from 'libs/engines/data/hardcoded/dagitty.net/data.03.06.19'
 
 //TODO
