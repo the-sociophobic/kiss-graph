@@ -19,9 +19,9 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Helmet />
         <StoreContext.Provider value={{store: new store()}}>
         <Store2Context.Provider value={{store2: new store2()}}>
+          <Helmet />
           <Switch>
             {routes.map(route =>
               <Route {...route} key={route.path} />

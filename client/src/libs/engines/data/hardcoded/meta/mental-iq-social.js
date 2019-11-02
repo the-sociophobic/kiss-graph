@@ -152,6 +152,7 @@ export default [
     nickName: "Mark Kozharskiy",
     mentalDisorder: 3,
     iq: 119,
+    iq2: 123,
     social: {
       vk: "",
       inst: "mark__analniitsiklop",
@@ -1806,6 +1807,36 @@ export default [
     nickName: "dimashtile",
     social: {
       inst: "dimashtile",
+    },
+  },
+  {
+    nickName: "Rita Zelenskaya",
+    social: {
+      vk: "ritiksha",
+    },
+  },
+  {
+    nickName: "Maria Melvil",
+    social: {
+      vk: "masha12cru",
+    },
+  },
+  {
+    nickName: "troy6oy",
+    social: {
+      inst: "troy6oy",
+    },
+  },
+  {
+    nickName: "Ksusha Kostromina",
+    social: {
+      vk: "kseniakostrom",
+    },
+  },
+  {
+    nickName: "Evgenia Bakastova",
+    social: {
+      vk: "id_janlol",
     },
   },
   
