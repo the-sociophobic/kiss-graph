@@ -1249,58 +1249,63 @@ export default [
   },
 
   {
-    names: ["Sasha Shtaryov", "Anna Simanovskaya"],
-    told: 1572464400,
-    published: 1572706200,
-  },
-  {
     names: ["Sasha Shtaryov", "Anya Kolotkevich"],
-    told: 1572464400,
-    published: 1572706200,
-  },
-  {
-    names: ["Sasha Shtaryov", "Elizaveta Unknown"],
-    told: 1572464400,
-    published: 1572706200,
-  },
-  {
-    names: ["Sasha Shtaryov", "Evgenia Bakastova"],
-    told: 1572464400,
-    published: 1572706200,
-  },
-  {
-    names: ["Sasha Shtaryov", "Ksusha Kostromina"],
-    told: 1572464400,
-    published: 1572706200,
-  },
-  {
-    names: ["Sasha Shtaryov", "Lada Tkach"],
-    told: 1572464400,
-    published: 1572706200,
-  },
-  {
-    names: ["Sasha Shtaryov", "Lolita Zaporozhets"],
-    told: 1572464400,
-    published: 1572706200,
-  },
-  {
-    names: ["Sasha Shtaryov", "Maria Burkova"],
-    told: 1572464400,
-    published: 1572706200,
-  },
-  {
-    names: ["Sasha Shtaryov", "Nastya Ivanova 3"],
-    told: 1572464400,
+    told: 1572615240,
     published: 1572706200,
   },
   {
     names: ["Sasha Shtaryov", "Nastya Romanuta"],
-    told: 1572464400,
+    told: 1572615240,
+    published: 1572706200,
+  },
+  {
+    names: ["Sasha Shtaryov", "Nikita Baklazhenko"],
+    told: 1572615240,
     published: 1572706200,
   },
   {
     names: ["Sasha Shtaryov", "Sofya Partyanskaya"],
-    told: 1572464400,
+    told: 1572615240,
+    published: 1572706200,
+  },
+  {
+    names: ["Sasha Shtaryov", "Lolita Zaporozhets"],
+    told: 1572615300,
+    published: 1572706200,
+  },
+  {
+    names: ["Sasha Shtaryov", "Anna Simanovskaya"],
+    told: 1572615300,
+    published: 1572706200,
+  },
+  {
+    names: ["Sasha Shtaryov", "Lada Tkach"],
+    told: 1572615360,
+    published: 1572706200,
+  },
+  {
+    names: ["Sasha Shtaryov", "Maria Burkova"],
+    told: 1572615420,
+    published: 1572706200,
+  },
+  {
+    names: ["Sasha Shtaryov", "Evgenia Bakastova"],
+    told: 1572615420,
+    published: 1572706200,
+  },
+  {
+    names: ["Sasha Shtaryov", "Elizaveta Unknown"],
+    told: 1572615420,
+    published: 1572706200,
+  },
+  {
+    names: ["Sasha Shtaryov", "Ksusha Kostromina"],
+    told: 1572626280,
+    published: 1572706200,
+  },
+  {
+    names: ["Sasha Shtaryov", "Nastya Ivanova 3"],
+    told: 1572626340,
     published: 1572706200,
   },
 
@@ -1319,6 +1324,27 @@ export default [
     told: 1572633360,
     published: 1572706200,
     by: "Sasha Chernyshov"
+  },
+
+  {
+    names: ["Igor Prostakov", "Katya Zakharchenko"],
+    told: 1572733920,
+    published: 1572706200,
+  },
+  {
+    names: ["Igor Prostakov", "Polina Drebot"],
+    told: 1572733920,
+    published: 1572706200,
+  },
+  {
+    names: ["Igor Prostakov", "Kristina Vysotskaya"],
+    told: 1572733920,
+    published: 1572706200,
+  },
+  {
+    names: ["Kirill Koranov", "Kristina Vysotskaya"],
+    told: 1572733920,
+    published: 1572706200,
   },
 
   

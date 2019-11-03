@@ -1819,6 +1819,7 @@ export default [
     nickName: "Maria Melvil",
     social: {
       vk: "masha12cru",
+      inst: "ot.bi.ta.ya",
     },
   },
   {
@@ -1837,6 +1838,18 @@ export default [
     nickName: "Evgenia Bakastova",
     social: {
       vk: "id_janlol",
+    },
+  },
+  {
+    nickName: "Polina Drebot",
+    social: {
+      inst: "polza11",
+    },
+  },
+  {
+    nickName: "Kristina Vysotskaya",
+    social: {
+      vk: "kristinazlobina96",
     },
   },
   
