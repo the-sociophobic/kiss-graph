@@ -54,6 +54,7 @@ export default class ThreeScene extends Component{
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
     // this.renderer.setClearColor('#f6f6f6')
     this.renderer.setClearColor('#fafafa')
+    // this.renderer.setClearColor('#000')
     this.renderer.setSize(width, height)
     if (width < 500 || height < 500)
       this.renderer.setPixelRatio(2)
