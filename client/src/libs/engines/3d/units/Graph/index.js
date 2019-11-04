@@ -38,6 +38,7 @@ export default class Graph extends Unit {
         sprite = new UserSprite({
           material: {
             color: 0x000000,
+            // color: 0xffffff,
             fog: false,
           },
           redrawInterval: 500,
