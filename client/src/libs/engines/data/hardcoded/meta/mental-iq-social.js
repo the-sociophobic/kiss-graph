@@ -107,6 +107,7 @@ export default [
   {
     nickName: "Alina Nesmiyan",
     mentalDisorder: 3,
+    iq: 116,
     social: {
       vk: "",
       inst: "linanesmiyan",
@@ -805,6 +806,7 @@ export default [
   },
   {
     nickName: "Stepan Nesmiyan",
+    iq: 113,
     social: {
       inst: "supremus",
     },
@@ -1850,6 +1852,13 @@ export default [
     nickName: "Kristina Vysotskaya",
     social: {
       vk: "kristinazlobina96",
+    },
+  },
+  {
+    nickName: "Asiko Msk",
+    social: {
+      inst: "vio.lonny",
+      vk: "rebenokgor",
     },
   },
   

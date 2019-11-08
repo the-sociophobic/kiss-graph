@@ -1347,6 +1347,70 @@ export default [
     published: 1572706200,
   },
 
+  {
+    names: ["Evgenia Partsenyak", "Evgenia Shilets"],
+    told: 1572822360,
+    published: 1573236900,
+  },
+  {
+    names: ["Vitya Syropyatov", "Sabrina Gabitova"],
+    told: 1572822000,
+    published: 1573236900,
+  },
+  {
+    names: ["Vitya Syropyatov", "Anna Nekrasova"],
+    told: 1572822000,
+    published: 1573236900,
+  },
+  {
+    names: ["Vitya Syropyatov", "Anna Konstantinova"],
+    told: 1572822000,
+    published: 1573236900,
+  },
+
+  {
+    names: ["Sasha Derevyanko", "Natasha Kozhevnikova"],
+    told: 1572825960,
+    published: 1573236900,
+  },
+  {
+    names: ["Sasha Derevyanko", "Kristina Kukushkina"],
+    told: 1572825960,
+    published: 1573236900,
+  },
+  {
+    names: ["Sasha Derevyanko", "Evgenia Partsenyak"],
+    told: 1572825960,
+    published: 1573236900,
+  },
+  {
+    names: ["Sasha Derevyanko", "Karina Shadrina"],
+    told: 1572825960,
+    published: 1573236900,
+  },
+  {
+    names: ["Sasha Derevyanko", "Georgy Mamontov"],
+    told: 1572825960,
+    published: 1573236900,
+  },
+
+  {
+    names: ["Nikita Kravchenko", "Vitya Syropyatov"],
+    told: 1572826920,
+    published: 1573236900,
+  },
+  {
+    names: ["Nikita Kravchenko", "Nastya Uhimenko"],
+    commited: 1572830340,
+    told: 1573127400,
+    published: 1573236900,
+  },
+  {
+    names: ["Ilya Roschin", "Asiko Msk"],
+    told: 1572832140,
+    published: 1573236900,
+  },
+
   
   // {
   //   names: ["", ""],
