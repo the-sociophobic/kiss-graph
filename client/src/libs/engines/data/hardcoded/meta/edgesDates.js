@@ -1411,6 +1411,30 @@ export default [
     published: 1573236900,
   },
 
+  {
+    names: ["Anna Daktil", "Vitaly Raskalov"],
+    told: 1572832140,
+    published: 1573813800,
+    by: "Sasha Chernyshov",
+  },
+  {
+    names: ["Vadim Ashder", "Anna Karpetyan"],
+    told: 1573576320,
+    published: 1573813800,
+    by: "Sima Radnaeva",
+  },
+  {
+    names: ["Natalia Lebedeva", "Roman Vershinin"],
+    commited: 1398978002,
+    by: "Natalia Lebedeva",
+  },
+  {
+    names: ["Ivan Gilman", "Vera Kachinskaya"],
+    told: 1573767000,
+    published: 1573813800,
+    by: "Natasha Kozhevnikova",
+  },
+
   
   // {
   //   names: ["", ""],

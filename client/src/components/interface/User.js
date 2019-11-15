@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import StoreContext from 'libs/engines/data/store/StoreContext'
 import UserNameLink from 'components/interface/UserNameLink'
+import List from 'components/interface/List'
 import Emoji from 'components/Emoji'
 
 
@@ -47,20 +48,21 @@ export default class User extends Component {
           <Emoji.kiss /> {node.connections}{node.hiddenConnections ? <> ({node.hiddenConnections}<Emoji.hidden />)</> : ""}:
         </div>
         <div className="node-info__connections">
-          {node.mates
+          <List items={node.mates
             .map(connection => ({
               ...this.context.store.get({name: connection.name}),
               date: connection.date,
             }))
             .sort((a, b) => b.connections - a.connections)
             .map(connection =>
-              <UserNameLink
+              [<UserNameLink
                 key={connection.userName || connection.name}
                 user={connection}
                 setNode={this.props.setNode}
                 date={connection.date}
-              />
-          )}
+              />]
+            )}
+          />
         </div>
       </div>
     )

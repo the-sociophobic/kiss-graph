@@ -51,7 +51,7 @@ export default class MobileExpander extends Component {
     window.removeEventListener('orientationchange', this.updateMaxHeight.bind(this))
   }
 
-  updateMaxHeight = () => this.setState({maxHeight: Math.floor((window.innerHeight - 80) * .7)})
+  updateMaxHeight = () => this.setState({maxHeight: Math.floor((window.innerHeight - 80) * .8)})
 
   onTouchStart = event => {
     event.preventDefault()

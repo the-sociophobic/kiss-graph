@@ -34,6 +34,7 @@ export default [
   {
     nickName: "Tikhon Timanov",
     mentalDisorder: 6.5,
+    iq: 102,
     social: {
       vk: "",
       inst: "tikhontmnv",
@@ -76,6 +77,7 @@ export default [
   {
     nickName: "Natalia Lebedeva",
     mentalDisorder: 7,
+    iq: 107,
     social: {
       vk: "",
       inst: "tallyswan",
@@ -1431,7 +1433,7 @@ export default [
   {
     nickName: "Sasha Derevyanko",
     social: {
-      vk: "alexandradem",
+      // vk: "alexandradem",
     },
   },
   {
@@ -1859,6 +1861,21 @@ export default [
     social: {
       inst: "vio.lonny",
       vk: "rebenokgor",
+    },
+  },
+  {
+    nickName: "Aziz Moldokulov",
+    social: {
+      vk: "eternalwaiting",
+      inst: "la.vida.cuesta",
+    },
+    iq: 117,
+  },
+  {
+    nickName: "Sasha Shtaryov",
+    social: {
+      vk: "shtaryv",
+      inst: "wtrapon",
     },
   },
   
