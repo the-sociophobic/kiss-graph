@@ -1,3 +1,5 @@
+@import '~bootstrap/scss/bootstrap.scss'
+  
 *
   font-family: -apple-system, system-ui, Roboto, "Open Sans", "Helvetica Neue", sans-serif
   font-weight: normal
@@ -15,7 +17,9 @@ body, html
 
 a
   text-decoration: none
-
+p
+  margin-bottom: 0
+  
 button
   border: none
   background-color: rgba(255, 255, 255, 0)
@@ -296,10 +300,10 @@ $arrow-size: 7px
   display: flex
   flex-direction: row
   &:nth-child(odd)
-    background-color: $apple-item-gray
+    // background-color: $apple-item-gray
 
   &__number
-    width: 26px
+    width: 55px
     text-align: right
     padding-right: 7px
     color: inherit
@@ -401,9 +405,10 @@ $arrow-size: 7px
             border-bottom-right-radius: 3px
           &:hover
             // background-color: $secondary
-          p
+          p.p
             line-height: 1.35
             font-size: 16px
+            margin-bottom: 0
             em
               color: $dark-gray
               font-style: normal
@@ -770,3 +775,11 @@ span.emoji
         color: $dark-gray
 
 
+.List
+  width: 100%
+  &__Item
+    width: 100%
+    // @extend .d-flex
+    // @extend .justify-content-between
+    &:nth-child(odd)
+      background-color: $apple-item-gray

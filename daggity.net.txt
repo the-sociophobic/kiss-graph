@@ -113,6 +113,7 @@ Anna%20Dodonova E @0.110,0.820
 Anna%20Gorbunova E @-0.105,0.497
 Anna%20Karzina E @-0.003,-0.356
 Anna%20Konstantinova E @-0.034,0.644
+Anna%20Nekrasova E @0.720,1.392
 Anna%20Pashkevich E @0.080,-0.051
 Anna%20Pylneva E @0.655,0.595
 Anna%20Razumova E @0.409,0.901
@@ -122,7 +123,7 @@ Anna%20Vasilyeva E @0.872,-0.037
 Anna%20Vikhoreva E @0.004,0.428
 Anna%20Vilpon E @-0.098,0.627
 AnnaMaria%20Chernigovskaya E @0.804,0.374
-Anna%20Nekrasova E @0.720,1.392
+Anna%20Karpetyan E @0.438,0.423
 Anton%20Alexandrovich E @0.722,1.315
 Anton%20Alexeev E @0.536,1.188
 Anton%20Artanov E @0.625,1.350
@@ -447,6 +448,7 @@ Ivan%20Makarov E @0.459,1.221
 Ivan%20Matvienko E @0.911,1.032
 Ivan%20Scherbakov E @0.427,0.786
 Ivan%20Shipitsyn E @0.201,0.213
+Ivan%20Gilman E @0.381,0.285
 Jack E @0.238,-0.309
 Jeremy%20Walker E @0.200,0.666
 Jerry E @0.157,-0.188
@@ -956,7 +958,7 @@ Uriy%20Galtsev E @0.716,-0.474
 Uriy%20Hovansky E @0.830,1.063
 Ustina%20Zhulanova E @0.642,-0.226
 Ustya%20Zhulanova E @0.343,0.894
-Vadim%20Ashder E @0.435,0.345
+Vadim%20Ashder E @0.437,0.351
 Vadim%20Zimin E @0.555,0.946
 Valera%20Tsifirov E @0.134,-0.163
 Valeria%20Lavrentyeva E @0.552,-0.420
@@ -985,6 +987,7 @@ Vera%20Karaseva E @0.477,-0.214
 Vera%20Nesterova E @0.287,1.205
 Vera%20Tsygankova E @-0.090,1.261
 Vera%20Zubenko E @0.260,1.265
+Vera%20Kachinskaya E @0.381,0.216
 Veronika%20Froneva E @0.293,0.946
 Veronika%20Litvinova E @0.148,-0.056
 Veronika%20Melnik E @0.375,1.035
@@ -1012,6 +1015,7 @@ Vita%20Polovinkina E @0.480,0.922
 Vitaliy%20Memes E @-0.066,-0.001
 Vitaly%20Grachev E @0.885,1.238
 Vitaly%20Konovod E @0.681,0.156
+Vitaly%20Raskalov E @0.786,1.151
 Vitaly%20Saxophone E @0.734,0.345
 Vitya%20Anorak E @0.499,0.506
 Vitya%20Kazpirovich E @0.329,0.947
@@ -1367,6 +1371,7 @@ Ivan%20Makarov Dasha%20Solovyova Maxim%20Lebedev Nata%20Naumova Nikita%20Azelits
 Ivan%20Matvienko Elena%20Vaenga
 Ivan%20Scherbakov Nastya%20IvanovaMonro
 Ivan%20Shipitsyn Anya%20Grin Egor%20Bystritsky Nastya%20Pavlova
+Ivan%20Gilman Vera%20Kachinskaya
 Jack Linda%20Berg
 Jeremy%20Walker Dasha%20Moskvina
 Julia%20Resh Ildar%20Dzharahov
@@ -1687,7 +1692,7 @@ Ura%20Eroshkin Alexandr%20Leonidov Ira%20Khanakhbeeva
 Uriy%20Hovansky Ilya%20Meddison
 Ustina%20Zhulanova Pasha%20Klimachov
 Ustya%20Zhulanova Denchik
-Vadim%20Ashder Kristina%20Boyarkina Natasha%20Gnida%20Tikhomirova Sima%20Radnaeva Sofia%20Mityaeva
+Vadim%20Ashder Anna%20Karpetyan Kristina%20Boyarkina Natasha%20Gnida%20Tikhomirova Sima%20Radnaeva Sofia%20Mityaeva
 Vadim%20Zimin Alina%20Dynay Anastasiya%20Nemilova David%20Zharnitsky Ilya%20Kalmyk Nastya%20IvanovaMonro Nata%20Naumova Sasha%20Chernyshov Sasha%20Kovanova Taisiya%20Razumovskaya Vita%20Polovinkina
 Valera%20Tsifirov Olga%20Maltseva
 Valeriya%20Lapina Kirill%20Ermakov
@@ -1723,6 +1728,7 @@ Viktoriya%20Begaeva Egor%20Sedykh
 Vita%20Polovinkina Lev%20Vasilyev Rougedelutin
 Vitaly%20Grachev Evgenia%20Gorozhantseva
 Vitaly%20Konovod Marta%20Shilova
+Vitaly%20Raskalov Anna%20Daktil
 Vitaly%20Saxophone Kira%20Kastaneda
 Vitya%20Anorak Arishka%20Bolshakova Nastya%20IvanovaMonro
 Vitya%20Kazpirovich Ustya%20Zhulanova

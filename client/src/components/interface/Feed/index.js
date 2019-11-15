@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
+
 import RadioHeader from 'components/interface/RadioHeader'
 import StoreContext from 'libs/engines/data/store/StoreContext'
 import UserNameLink from 'components/interface/UserNameLink'
@@ -11,9 +12,8 @@ export default class Feed extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      type: "told"
-    }
+    this.state = {}
+
     this.options = ["told", "published", "commited"]
   }
 
@@ -78,7 +78,7 @@ export default class Feed extends Component {
     })
   }
 
-  renderKisses = () => this.state[this.state.type] && this.state[this.state.type]
+  renderKisses = type => this.state[type] && this.state[type]
     .map(day => (
       <div
         key={day.date}
@@ -94,7 +94,7 @@ export default class Feed extends Component {
               className="kiss-day__entries__item"
             >
               <KissTime
-                date={entry[this.state.type]}
+                date={entry[type]}
                 className="kiss-day__entries__item__time"
               />
               <UserNameLink
@@ -115,26 +115,21 @@ export default class Feed extends Component {
     ))
 
   render = () => (
-    <Fragment>
-      <RadioHeader
-        options={[
-          {
-            key: "told",
-            label: () => <>told<Emoji.told /></>
-          },
-          {
-            key: "published",
-            label: () => <>published<Emoji.world /></>
-          },
-          {
-            key: "commited",
-            label: () => <>commited<Emoji.kiss /></>
-          },
-        ]}
-        value={this.state.type}
-        onChange={value => this.setState({type: value})}
-      />
-      {this.renderKisses()}
-    </Fragment>
+    <RadioHeader
+      options={{
+        told: {
+          label: () => <>told<Emoji.told /></>,
+          content: () => this.renderKisses("told"),
+        },
+        published: {
+          label: () => <>published<Emoji.world /></>,
+          content: () => this.renderKisses("published"),
+        },
+        commited: {
+          label: () => <>commited<Emoji.kiss /></>,
+          content: () => this.renderKisses("commited"),
+        },
+      }}
+    />
   )
 }

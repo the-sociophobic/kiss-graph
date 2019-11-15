@@ -8,7 +8,7 @@ import colorFromWeight from 'libs/utils/colorFromWeight'
 
 import User from 'components/interface/User'
 import MobileExpander from 'components/interface/MobileExpander'
-import Feed from 'components/interface/Feed'
+import Menu from 'components/interface/Menu'
 
 
 export default class TextInterface extends Component {
@@ -59,10 +59,11 @@ export default class TextInterface extends Component {
         .map(option => ({
           value: option.name,
           style: {':hover': {
-            // background: `linear-gradient(90deg, white 30%, ${colorFromWeight(option.uv)})`,
             backgroundColor: colorFromWeight(option.uv, "light"),
           }},
-          render: <p>{option.name} <em>{option.userName ? ` (@${option.userName})` : ""}</em></p>
+          render: <p className="p">
+              {option.name} <em>{option.userName ? ` (@${option.userName})` : ""}</em>
+            </p>
         }))
       this.setState({currentOptions: options})
     }
@@ -90,7 +91,7 @@ export default class TextInterface extends Component {
     const content = this.state.showAbout ?
       <About />
       :
-      (node ? nodeElem : <Feed setNode={this.setNode.bind(this)} />)
+      (node ? nodeElem : <Menu setNode={this.setNode.bind(this)} />)
 
     const contentWithFooter = (
       <Fragment>
