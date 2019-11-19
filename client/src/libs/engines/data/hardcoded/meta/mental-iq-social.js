@@ -52,6 +52,7 @@ export default [
       vk: "krsbr",
       inst: "kristinaboyar",
       twit: "kristinaboyar",
+      yt: "channel/UCHw94IYNLYHoPuiFpEg386w",
     },
     offended: true,
   },
@@ -95,6 +96,7 @@ export default [
     mentalDisorder: 4,
     social: {
       inst: "zloilarin",
+      yt: "user/larinshow"
     }
   },
   {
@@ -166,7 +168,7 @@ export default [
       vk: "the_sociophobic",
       inst: "the_sociophobic",
       twit: "the_sociophobic",
-      yt: "UCZo157ZsqdblSHBVHRmrgsw",
+      yt: "channel/UCZo157ZsqdblSHBVHRmrgsw",
     },
     userName: "the_sociophobic"
   },
@@ -631,6 +633,7 @@ export default [
   {
     nickName: "Maria Seledets",
     social: {
+      vk: "id51686",
       inst: "m_seledets",
     },
   },
@@ -827,7 +830,7 @@ export default [
   {
     nickName: "Vovan Konovalov",
     social: {
-      inst: "vov4uk_prchts_pn",
+      inst: "vov4uk_nn",
     },
   },
   {
@@ -930,6 +933,7 @@ export default [
   {
     nickName: "Foma Popov",
     social: {
+      vk: "kipag",
       inst: "makefomagreatagain",
     },
   },
@@ -1052,6 +1056,7 @@ export default [
   {
     nickName: "Sofya Namestnikova",
     social: {
+      vk: "sofinam",
       inst: "curcs",
     },
   },
@@ -1243,6 +1248,7 @@ export default [
   {
     nickName: "Tatyana Raskalova",
     social: {
+      vk: "raskaalova",
       inst: "raskaalova",
     },
   },
@@ -1442,6 +1448,7 @@ export default [
   {
     nickName: "Alexander Savin",
     social: {
+      vk: "xandersavin",
       inst: "xandersavin",
     },
   },
@@ -2048,7 +2055,7 @@ export default [
       vk: "annailinet",
       inst: "annailinet",
       twit: "Anna_ili_net",
-      yt: "UC0kcBnRLqDRu7nHkrTrefyA",
+      yt: "channel/UC0kcBnRLqDRu7nHkrTrefyA",
     },
   },
   {
@@ -2146,7 +2153,13 @@ export default [
     nickName: "Pavel Burachenkov",
     social: {
       vk: "keksualen",
-      twit: "keksualen",
+      inst: "keksualen",
+    },
+  },
+  {
+    nickName: "Katerina Kokokulina",
+    social: {
+      vk: "katushka_kokoulina",
     },
   },
   {
