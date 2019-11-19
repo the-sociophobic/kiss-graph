@@ -520,7 +520,7 @@ Kristina%20Sukhanova E @0.182,0.964
 Kristina%20Titova E @0.030,0.578
 Ksenia%20Bagmetova E @0.080,0.066
 Ksenia%20Neroba E @0.302,1.173
-Kseniya%20Belaya E @0.461,0.274
+Ksusha%20Vlasenko E @0.461,0.274
 Kseniya%20Kashirskaya E @0.247,0.352
 Kseniya%20Sobchak E @0.754,-0.372
 Kseniya%20Sviridova E @0.819,0.809
@@ -1126,7 +1126,7 @@ Andrey%20Minkinen Alexandra%20Medvedeva
 Andrey%20Natotsinsky Natasha%20Kozhevnikova
 Andrey%20Nikulin Darya%20Alexandrovna
 Andrey%20Rakov Natalia%20Lebedeva
-Andrey%20Savchenko Kseniya%20Belaya Natasha%20Kozhevnikova
+Andrey%20Savchenko Ksusha%20Vlasenko Natasha%20Kozhevnikova
 Anfisa%20Dobrokhodova Lev%20Vasilyev Pasha%20Sokolov
 Anisya%20Ebanisya Robert%20Shtabley
 Anjela%20Krasnova Artyom%20Utesov
@@ -1397,7 +1397,7 @@ Kristina%20Kukushkina Igor%20Zhidkov
 Kristina%20Prikhodko Vladislav%20Bokhan
 Kristina%20Titova Nikita%20Danilchenko
 Ksenia%20Bagmetova Alexander%20Lazarev
-Kseniya%20Belaya Kristina%20Boyarkina Petr%20Sverdlov Tatyana%20Raskalova
+Ksusha%20Vlasenko Kristina%20Boyarkina Petr%20Sverdlov Tatyana%20Raskalova
 Kseniya%20Kashirskaya Anya%20Khmeleva
 Kseniya%20Sviridova Dmitry%20Em Kate%20Alexandrova
 Kseniya%20Volkova Vova%20Kuznetsov
@@ -1652,9 +1652,9 @@ Tatyana%20Raskalova Konstantin%20Shirshov Kristina%20Boyarkina Sasha%20Chernysho
 Tatyana%20Ryzhova Nikita%20Danilchenko
 Tatyana%20Surkina Vadim%20Zimin
 Tatyana%20Svirid Antonina%20Dorogova
-Tikhon%20Timanov David%20Zharnitsky Kseniya%20Belaya Lev%20Vasilyev Sofia%20Mityaeva Tatyana%20Raskalova Vadim%20Ashder
+Tikhon%20Timanov David%20Zharnitsky Ksusha%20Vlasenko Lev%20Vasilyev Sofia%20Mityaeva Tatyana%20Raskalova Vadim%20Ashder
 Timofey%20Belkin Valeriya%20Lapina
-Timofey%20Shesternyov Kseniya%20Belaya Natasha%20Kozhevnikova
+Timofey%20Shesternyov Ksusha%20Vlasenko Natasha%20Kozhevnikova
 Timur%20Ivashkevich Anya%20Litomina
 Timur%20Selyutin Kira%20Kastaneda
 Tomasina%20Moskalenko Lev%20Vasilyev

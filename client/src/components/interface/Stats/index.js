@@ -17,7 +17,7 @@ class Menu extends Component {
   renderKisses = () => (
     <List
       items={this.context.store.get().nodes
-        .filter(node => node.connections > 5)
+        .filter(node => node.connections >= 3)
         .sort((a, b) => b.connections - a.connections)
         .map(node => [
           <UserNameLink
@@ -45,15 +45,35 @@ class Menu extends Component {
     />
   )
 
+  renderMentalDisorder = () => (
+    <List
+      items={this.context.store.get().nodes
+        .filter(node => node.mentalDisorder)
+        .sort((a, b) => (typeof b.mentalDisorder !== "number" ? 0 : b.mentalDisorder) - (typeof a.mentalDisorder !== "number" ? 0 : a.mentalDisorder))
+        .map(node => [
+          <UserNameLink
+            mentalDisorder
+            user={node}
+            setNode={this.props.setNode}
+          />
+        ])
+      }
+    />
+  )
+
   render = () => (
     <RadioHeader options={{
       kisses: {
-        label: () => <>kisses <Emoji.kiss /></>,
+        label: () => <>kisses<Emoji.kiss /></>,
         content: () => this.renderKisses()
       },
       stats: {
-        label: () => <>IQ <Emoji.IQ /></>,
+        label: () => <>IQ<Emoji.IQ /></>,
         content: () => this.renderIQ()
+      },
+      mentalDisorder: {
+        label: () => <>mentalDisorder<Emoji.mentalDisorder /></>,
+        content: () => this.renderMentalDisorder()
       },
     }} />
   )

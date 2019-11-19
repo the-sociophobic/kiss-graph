@@ -186,7 +186,7 @@ export default [
 
 
   {
-    names: ["Timofey Shesternyov", "Kseniya Belaya"],
+    names: ["Timofey Shesternyov", "Ksusha Vlasenko"],
     told: 1545342660,
     submitter: "Kristina Boyarkina"
   },
@@ -1004,7 +1004,7 @@ export default [
     published: 1571547600,
   },
   {
-    names: ["Tatyana Raskalova", "Kseniya Belaya"],
+    names: ["Tatyana Raskalova", "Ksusha Vlasenko"],
     told: 1571438640,
     published: 1571547600,
   },
@@ -1413,7 +1413,7 @@ export default [
 
   {
     names: ["Anna Daktil", "Vitaly Raskalov"],
-    told: 1572832140,
+    told: 1573238220,
     published: 1573813800,
     by: "Sasha Chernyshov",
   },
@@ -1433,6 +1433,12 @@ export default [
     told: 1573767000,
     published: 1573813800,
     by: "Natasha Kozhevnikova",
+  },
+  {
+    names: ["Lev Vasilyev", "Ilya Roschin"],
+    commited: 1573945200,
+    told: 1573945200,
+    published: 1574123340,
   },
 
   

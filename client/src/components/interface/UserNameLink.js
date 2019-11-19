@@ -18,7 +18,7 @@ export default props => {
         </span>
       </div>
     )
-  if (props.IQ)
+  if (props.IQ || props.mentalDisorder)
     return (
       <div
         className="username-link"
@@ -26,7 +26,8 @@ export default props => {
         style={{color: props.user.color}}
       >
         <div className="username-link__number">
-          {props.user.iq}
+          {props.IQ && props.user.iq}
+          {props.mentalDisorder && props.user.mentalDisorder}
         </div>
         <div className="username-link__name">
           <span

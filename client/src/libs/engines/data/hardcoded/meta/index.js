@@ -43,7 +43,7 @@ export default data => {
       })
     
     const pos = position[index] || {x: 0, y: 0, z: 0}
-    const userName = meta.userName || (meta.social && (meta.social.inst || meta.social.vk)) || undefined
+    const userName = meta.userName || (meta.social && (meta.social.inst || (!meta.social.vk.startsWith("id") && meta.social.vk))) || undefined
 
     return {
       id: index,
@@ -62,6 +62,7 @@ export default data => {
       avatar: meta.avatar,
       offended: meta.offended,
       deceased: meta.deceased,
+      social: meta.social,
     }
   })
 
