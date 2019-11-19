@@ -2,6 +2,10 @@ export default [
   {
     nickName: "Sasha Bashmakov",
     mentalDisorder: 10,
+    social: {
+      vk: "lolbashmak",
+      inst: "bashmak.lol",
+    },
   },
   {
     nickName: "David Zharnitsky",
@@ -10,6 +14,7 @@ export default [
     social: {
       vk: "davidza",
       inst: "david_taubman",
+      twit: "dav_dod",
     },
     offended: true,
   },
@@ -46,6 +51,7 @@ export default [
     social: {
       vk: "krsbr",
       inst: "kristinaboyar",
+      twit: "kristinaboyar",
     },
     offended: true,
   },
@@ -70,7 +76,9 @@ export default [
     mentalDisorder: 7,
     social: {
       vk: "anngrean",
+      vk2: "id19525558",
       inst: "francilization",
+      twit: "Francilization",
     }
   },
   {
@@ -120,6 +128,7 @@ export default [
     social: {
       vk: "lolomka",
       inst: "lolomka",
+      twit: "lolomkaa",
     }
   },
   {
@@ -156,6 +165,8 @@ export default [
       // inst: "404465085", //https://i.instagram.com/api/v1/users/{user_id}/info/
       vk: "the_sociophobic",
       inst: "the_sociophobic",
+      twit: "the_sociophobic",
+      yt: "UCZo157ZsqdblSHBVHRmrgsw",
     },
     userName: "the_sociophobic"
   },
@@ -170,7 +181,7 @@ export default [
     }
   },
   {
-    nickName: "Bek Sultan",
+    nickName: "Beksultan Maksatbek",
     mentalDisorder: 2.5,
     iq: 133,
     additionalConnections: 7,
@@ -229,6 +240,9 @@ export default [
   {
     nickName: "Pyotr Grachev",
     mentalDisorder: 5,
+    social: {
+      vk: "pgrachev",
+    }
   },
   {
     nickName: "Artyom Povalyaev",
@@ -296,6 +310,7 @@ export default [
     social: {
       vk: "alexilgi",
       inst: "alexilgi",
+      twit: "alexilgi",
     },
   },
   {
@@ -312,8 +327,10 @@ export default [
     mentalDisorder: 2,
     iq: 119,
     social: {
-      vk: "31666725",
+      // vk: "31666725",
+      vk: "id31666725",
       inst: "vsemoiphoto",
+      twit: "dobnbome",
     },
   },
   {
@@ -323,6 +340,7 @@ export default [
     social: {
       vk: "arsenyan_artyom",
       inst: "artefactpage",
+      twit: "artefactpage",
     },
   },
   {
@@ -350,6 +368,7 @@ export default [
     social: {
       vk: "nickdanilch",
       inst: "nickdanilch",
+      twit: "NickDanilch",
     }
   },
   {
@@ -448,7 +467,9 @@ export default [
     nickName: "Fyodor Ludinov",
     mentalDisorder: 2.5,
     social: {
+      vk: "fed_lud",
       inst: "fedlud",
+      twit: "fedorludinov"
     },
     aka: [
       "батон",
@@ -487,6 +508,7 @@ export default [
   {
     nickName: "Daniil Belikov",
     social: {
+      vk: "menyazovutdanya",
       inst: "menyazovutdanya",
     },
   },
@@ -530,12 +552,15 @@ export default [
   {
     nickName: "Alice Balabekyan",
     social: {
+      vk: "mad_sounds",
       inst: "alice_eko",
+      twit: "alice_eko_",
     },
   },
   {
     nickName: "Anzhelika Balabekyan",
     social: {
+      vk: "chistotadreves",
       inst: "bala_land_",
     },
   },
@@ -591,12 +616,15 @@ export default [
   {
     nickName: "Vita Polovinkina",
     social: {
+      vk: "njeprawda",
       inst: "njeprawda",
+      twit: "emillement",
     },
   },
   {
     nickName: "Dasha Moskvina",
     social: {
+      vk: "dariamoskvina",
       inst: "bezlestipredan",
     },
   },
@@ -615,6 +643,7 @@ export default [
   {
     nickName: "Alina Bazanova",
     social: {
+      vk: "alina.livshits",
       inst: "alinalivshits",
     },
   },
@@ -753,6 +782,7 @@ export default [
   {
     nickName: "Anzhela Groznova",
     social: {
+      vk: "gettika",
       inst: "groznooova",
     },
   },
@@ -771,7 +801,9 @@ export default [
   {
     nickName: "Katya Bulgakova",
     social: {
+      vk: "bulgakovaart",
       inst: "bulgakovaart",
+      twit: "bulgakovaaart",
     },
   },
   {
@@ -870,7 +902,9 @@ export default [
   {
     nickName: "Polina Nikolaeva",
     social: {
+      vk: "polina_ni",
       inst: "polina.nicky",
+      twit: "linlinlinlinaa",
     },
   },
   {
@@ -889,6 +923,7 @@ export default [
   {
     nickName: "Kate Mironovich",
     social: {
+      vk: "mironovich_kate",
       inst: "panda_hey",
     },
   },
@@ -913,7 +948,10 @@ export default [
   {
     nickName: "Anya Khmeleva",
     social: {
+      vk: "anyakhm",
+      vk2: "duraka_kusok",
       inst: "anichka_kh",
+      twit: "serafima_sova",
     },
   },
   {
@@ -1166,12 +1204,14 @@ export default [
   {
     nickName: "Igor Vasilyev",
     social: {
+      vk: "id1788605",
       inst: "vasilyev5018",
     },
   },
   {
     nickName: "Julia Sergeeva",
     social: {
+      vk: "id420073980",
       inst: "stepnoywolk",
     },
   },
@@ -1179,6 +1219,7 @@ export default [
     nickName: "Liza Gotsdiner",
     social: {
       inst: "wonk_lizard",
+      twit: "wonk_lizard",
     },
   },
   {
@@ -1287,13 +1328,14 @@ export default [
   {
     nickName: "Oleg Renev",
     social: {
+      vk: "oleg.renev",
       inst: "olegrenev",
     },
   },
   {
-    nickName: "Sasha Bashmakov",
+    nickName: "Yulia Renyova",
     social: {
-      inst: "bashmak.lol",
+      vk: "id3537748",
     },
   },
   {
@@ -1317,6 +1359,7 @@ export default [
   {
     nickName: "Viktoriya Begaeva",
     social: {
+      vk: "victoria1604",
       inst: "bodhisattva_vi",
     },
   },
@@ -1335,12 +1378,14 @@ export default [
   {
     nickName: "Daria Kazak",
     social: {
+      vk: "id327472307",
       inst: "ashadavokazak",
     },
   },
   {
     nickName: "Egor Sveshnikov",
     social: {
+      vk: "sveshka",
       inst: "sveshka_egor",
     },
   },
@@ -1354,6 +1399,7 @@ export default [
     nickName: "Arina Nachinova",
     social: {
       inst: "prostoarina24",
+      twit: "ArinaNachinova",
     },
   },
   {
@@ -1402,7 +1448,26 @@ export default [
   {
     nickName: "Egor Bystritsky",
     social: {
+      vk: "polling_clouds",
       inst: "jackdeviant",
+    },
+  },
+  {
+    nickName: "Dima Potekhin",
+    social: {
+      vk: "limblend",
+    },
+  },
+  {
+    nickName: "Ivan Shipitsyn",
+    social: {
+      vk: "dianathehunter",
+    },
+  },
+  {
+    nickName: "Slava Golubev",
+    social: {
+      vk: "muying",
     },
   },
   {
@@ -1595,10 +1660,9 @@ export default [
   {
     nickName: "Sasha Ash",
     social: {
-      inst: "sasha_ash",
       vk: "em_babushek",
+      inst: "sasha_ash",
     },
-    male: false,
   },
   {
     nickName: "Vova Kuznetsov",
@@ -1972,7 +2036,7 @@ export default [
     },
   },
   {
-    nickName: "Pasha Klimachov",
+    nickName: "Lesha Briliantov",
     social: {
       vk: "brilliantofff",
       inst: "brilliantofff",
@@ -1981,7 +2045,10 @@ export default [
   {
     nickName: "Anna Daktil",
     social: {
+      vk: "annailinet",
       inst: "annailinet",
+      twit: "Anna_ili_net",
+      yt: "UC0kcBnRLqDRu7nHkrTrefyA",
     },
   },
   {
@@ -2004,7 +2071,88 @@ export default [
       inst: "maks_c_",
     },
   },
-  
+  {
+    nickName: "Andrey Koshkin",
+    social: {
+      vk: "rswitsme",
+      inst: "andrewkoshkin",
+      twit: "AndrewKoshkin",
+    },
+  },
+  {
+    nickName: "Peter Vasilyev",
+    social: {
+      vk: "grendaiser",
+      inst: "grendaiser",
+      twit: "PeterVasilyev",
+    },
+  },
+  {
+    nickName: "Eduard Belov",
+    social: {
+      vk: "eduard.belov",
+    },
+  },
+  {
+    nickName: "Nastya Uhimenko",
+    social: {
+      vk: "id4953964",
+    },
+  },
+  {
+    nickName: "Nastya Leschik",
+    social: {
+      vk: "id101277291",
+    },
+  },
+  {
+    nickName: "Jeremy Walker",
+    social: {
+      vk: "jabberwocky",
+    },
+  },
+  {
+    nickName: "Kirill Karanov",
+    social: {
+      vk: "id417573484",
+    },
+  },
+  {
+    nickName: "Evgeny Fomenko",
+    social: {
+      vk: "uvazhaemyjchelovek",
+    },
+  },
+  {
+    nickName: "Dima Lutsenko",
+    social: {
+      vk: "dimaluts",
+    },
+  },
+  {
+    nickName: "Alexander Kuzyakin",
+    social: {
+      vk: "id86460131",
+    },
+  },
+  {
+    nickName: "Vladislav Degtyar",
+    social: {
+      vk: "eeprst",
+      twit: "hrom2312",
+    },
+  },
+  {
+    nickName: "Pavel Burachenkov",
+    social: {
+      vk: "keksualen",
+      twit: "keksualen",
+    },
+  },
+  {
+    nickName: "Irina Untold",
+    deceased: true,
+  }  
   // {
   //   nickName: "",
   //   social: {

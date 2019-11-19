@@ -718,7 +718,7 @@ export default [
     published: 1522593271,
   },
   {
-    names: ["Bek Sultan", "Nastya Pavlova"],
+    names: ["Beksultan Maksatbek", "Nastya Pavlova"],
     commited: 1505602800,
     told: 1505602800,
     published: 1522593271,
@@ -939,7 +939,7 @@ export default [
     published: 1522593271,
   },
   {
-    names: ["Lev Vasilyev", "Kirill Koranov"],
+    names: ["Lev Vasilyev", "Kirill Karanov"],
     commited: 1562382895,
     told: 1562382895,
     published: 1562985000,
@@ -1159,7 +1159,7 @@ export default [
   },
 
   {
-    names: ["Lesha Briliantov", "Kirill Koranov"],
+    names: ["Lesha Briliantov", "Kirill Karanov"],
     told: 1572040801,
     published: 1572137700,
   },
@@ -1342,7 +1342,7 @@ export default [
     published: 1572706200,
   },
   {
-    names: ["Kirill Koranov", "Kristina Vysotskaya"],
+    names: ["Kirill Karanov", "Kristina Vysotskaya"],
     told: 1572733920,
     published: 1572706200,
   },
