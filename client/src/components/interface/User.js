@@ -4,6 +4,7 @@ import StoreContext from 'libs/engines/data/store/StoreContext'
 import UserNameLink from 'components/interface/UserNameLink'
 import List from 'components/interface/List'
 import Emoji from 'components/Emoji'
+import ExternalLink from 'components/ExternalLink'
 
 
 export default class User extends Component {
@@ -17,12 +18,34 @@ export default class User extends Component {
 
   render = () => {
     const { node } = this.props
-
+    console.log(node)
     if (typeof node === "undefined")
       return <div></div>
 
     return (
       <div className="node-info">
+        <div className="secret">
+          {node.social && Object.keys(node.social)
+            .map(key => {
+              switch(key) {
+                case "vk":
+                  return "vk.com/" + node.social[key]
+                case "inst":
+                  return "instagram.com/" + node.social[key]
+                default:
+                  return ""
+              }
+            })
+            .map(link => link.length > 0 && (
+              <ExternalLink
+                to={"https://" + link}
+                newTab
+                className="secret__link"
+              >
+                рандомная ссылка
+              </ExternalLink>))
+          }
+        </div>
         {Object.keys(node)
           .filter(key =>
             ["gender", "homosexuality", "mentalDisorder", "iq"]

@@ -435,7 +435,7 @@ Kristina%20Kukushkina E @0.171,1.207
 Kristina%20Prikhodko E @0.339,1.235
 Kristina%20Titova E @0.030,0.578
 Ksenia%20Bagmetova E @0.080,0.066
-Kseniya%20Belaya E @0.459,0.275
+Ksusha%20Vlasenko E @0.459,0.275
 Kseniya%20Kashirskaya E @0.247,0.352
 Kseniya%20Sobchak E @0.764,-0.354
 Kseniya%20Sviridova E @0.819,0.809
@@ -933,7 +933,7 @@ Andrey%20Matveev Lev%20Vasilyev
 Andrey%20Minkinen Alexandra%20Medvedeva
 Andrey%20Natotsinsky Natasha%20Kozhevnikova
 Andrey%20Rakov Natalia%20Lebedeva
-Andrey%20Savchenko Kseniya%20Belaya Natasha%20Kozhevnikova
+Andrey%20Savchenko Ksusha%20Vlasenko Natasha%20Kozhevnikova
 Andrey%20Gorshkov Kate%20Alexandrova
 Anisya%20Ebanisya Robert%20Shtabley
 Anjela%20Krasnova Artyom%20Utesov
@@ -1169,7 +1169,7 @@ Kristina%20Kukushkina Igor%20Zhidkov
 Kristina%20Prikhodko Vladislav%20Bokhan
 Kristina%20Titova Nikita%20Danilchenko
 Ksenia%20Bagmetova Alexander%20Lazarev
-Kseniya%20Belaya Kristina%20Boyarkina Petr%20Sverdlov
+Ksusha%20Vlasenko Kristina%20Boyarkina Petr%20Sverdlov
 Kseniya%20Kashirskaya Anya%20Khmeleva
 Kseniya%20Sviridova Dmitry%20Em Kate%20Alexandrova
 Kseniya%20Volkova Vova%20Kuznetsov
@@ -1385,9 +1385,9 @@ Tatyana%20Raskalova Kristina%20Boyarkina Sasha%20Chernyshov
 Tatyana%20Ryzhova Nikita%20Danilchenko
 Tatyana%20Surkina Vadim%20Zimin
 Tatyana%20Svirid Antonina%20Dorogova
-Tikhon%20Timanov David%20Zharnitsky Kseniya%20Belaya Lev%20Vasilyev Sofia%20Mityaeva Vadim%20Ashder
+Tikhon%20Timanov David%20Zharnitsky Ksusha%20Vlasenko Lev%20Vasilyev Sofia%20Mityaeva Vadim%20Ashder
 Timofey%20Belkin Valeriya%20Lapina
-Timofey%20Shesternyov Kseniya%20Belaya
+Timofey%20Shesternyov Ksusha%20Vlasenko
 Timur%20Ivashkevich Anya%20Litomina
 Timur%20Selyutin Kira%20Kastaneda
 Tonya%20Evdokimova Alexander%20Ilyin Egor%20Tsygankov Kostya%20Unknown Lesha%20Pavlov Sergey%20Married
