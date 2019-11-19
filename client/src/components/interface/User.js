@@ -30,8 +30,14 @@ export default class User extends Component {
               switch(key) {
                 case "vk":
                   return "vk.com/" + node.social[key]
+                case "vk2":
+                  return "vk.com/" + node.social[key]
                 case "inst":
                   return "instagram.com/" + node.social[key]
+                case "twit":
+                  return "twitter.com/" + node.social[key]
+                case "yt":
+                  return "www.youtube.com/channel/" + node.social[key]
                 default:
                   return ""
               }
