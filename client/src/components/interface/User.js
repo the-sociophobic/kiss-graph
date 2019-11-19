@@ -37,7 +37,7 @@ export default class User extends Component {
                 case "twit":
                   return "twitter.com/" + node.social[key]
                 case "yt":
-                  return "www.youtube.com/channel/" + node.social[key]
+                  return "www.youtube.com/" + node.social[key]
                 default:
                   return ""
               }
