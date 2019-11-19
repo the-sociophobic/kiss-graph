@@ -18,7 +18,7 @@ export default class User extends Component {
 
   render = () => {
     const { node } = this.props
-    console.log(node)
+
     if (typeof node === "undefined")
       return <div></div>
 
@@ -38,6 +38,10 @@ export default class User extends Component {
                   return "twitter.com/" + node.social[key]
                 case "yt":
                   return "www.youtube.com/" + node.social[key]
+                case "fb":
+                  return "www.facebook.com/" + node.social[key]
+                case "tg":
+                  return "t.me/" + node.social[key]
                 default:
                   return ""
               }

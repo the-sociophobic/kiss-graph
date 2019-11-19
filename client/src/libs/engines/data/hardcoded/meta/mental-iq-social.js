@@ -13,6 +13,7 @@ export default [
     iq: "\"180\"",
     social: {
       vk: "davidza",
+      tg: "david_tubman",
       inst: "david_taubman",
       twit: "dav_dod",
     },
@@ -25,6 +26,7 @@ export default [
     social: {
       vk: "g1oryboxx",
       inst: "g1oryboxx",
+      yt: "channel/UCuz3O_lNn2OYHtHCUrSZ_8w",
     }
   },
   {
@@ -41,6 +43,7 @@ export default [
     mentalDisorder: 6.5,
     iq: 102,
     social: {
+      tg: "zamechatelno",
       inst: "tikhontmnv",
     }
   },
@@ -49,6 +52,7 @@ export default [
     mentalDisorder: 4,
     additionalConnections: 26,
     social: {
+      tg: "krsbr",
       vk: "krsbr",
       inst: "kristinaboyar",
       twit: "kristinaboyar",
@@ -113,6 +117,7 @@ export default [
     social: {
       vk: "vihreja",
       inst: "vihreja",
+      yt: "channel/UCQPqsHKzK-UpbHeNP3G0KfQ",
     }
   },
   {
@@ -165,10 +170,12 @@ export default [
     social: {
       // vk: "11879299",
       // inst: "404465085", //https://i.instagram.com/api/v1/users/{user_id}/info/
+      tg: "the_sociophobic",
       vk: "the_sociophobic",
       inst: "the_sociophobic",
       twit: "the_sociophobic",
       yt: "channel/UCZo157ZsqdblSHBVHRmrgsw",
+      fb: "the.sociophobic",
     },
     userName: "the_sociophobic"
   },
@@ -188,6 +195,7 @@ export default [
     iq: 133,
     additionalConnections: 7,
     social: {
+      tg: "whedon",
       vk: "id265379551",
     },
     userName: "lev-is-lie"
@@ -342,6 +350,7 @@ export default [
     social: {
       vk: "arsenyan_artyom",
       inst: "artefactpage",
+      tg: "teeema",
       twit: "artefactpage",
     },
   },
@@ -424,6 +433,7 @@ export default [
     nickName: "Polina Mishago",
     // additionalConnections: 20,
     social: {
+      vk: "apolinary",
       inst: "lowpolis",
     },
     offended: true,
@@ -431,12 +441,13 @@ export default [
   {
     nickName: "Darya Alexandrovna",
     social: {
-      vk: "13745913",
+      vk: "id13745913",
     },
   },
   {
     nickName: "Sasha Zemlyanova",
     social: {
+      vk: "idg0f",
       inst: "yanesasha",
     },
   },
@@ -450,12 +461,14 @@ export default [
   {
     nickName: "Azamat Vishenin",
     social: {
+      vk: "alphabett",
       inst: "azamatvishenin",
     },
   },
   {
     nickName: "Artyom Borovets",
     social: {
+      vk: "antiform",
       inst: "aeborovets",
     },
   },
@@ -471,6 +484,7 @@ export default [
     social: {
       vk: "fed_lud",
       inst: "fedlud",
+      tg: "fedlud",
       twit: "fedorludinov"
     },
     aka: [
@@ -523,12 +537,16 @@ export default [
   {
     nickName: "Vlad Guriev",
     social: {
+      vk: "vladguriev",
       inst: "vladguriev",
+      tg: "vladd_g",
     },
   },
   {
     nickName: "Ksusha Kozhevnikova",
     social: {
+      vk: "kseny_wall",
+      tg: "kseny_wall",
       inst: "kseny_wall",
     },
   },
@@ -614,6 +632,7 @@ export default [
       vk: "amantes_amento",
       inst: "jewesschrist",
     },
+    phone: "+79312332473",
   },
   {
     nickName: "Vita Polovinkina",
@@ -671,6 +690,7 @@ export default [
   {
     nickName: "Ivan Makarov",
     social: {
+      vk: "imakarrrov",
       inst: "castratinghorses",
     },
   },
@@ -749,12 +769,14 @@ export default [
   {
     nickName: "Fydor Bilef",
     social: {
+      vk: "bilevf",
       inst: "bilev.f",
     },
   },
   {
     nickName: "Veronika Litvinova",
     social: {
+      vk: "id48519978",
       inst: "nikalitvinova.g",
     },
   },
@@ -773,6 +795,8 @@ export default [
   {
     nickName: "Liza Sorokina",
     social: {
+      vk: "id30152702",
+      tg: "lizasorokina",
       inst: "gatto_bianco",
     },
   },
@@ -887,20 +911,25 @@ export default [
   {
     nickName: "Katrin Tublina",
     social: {
+      vk: "id22111090",
       inst: "katrintublin",
     },
   },
   {
     nickName: "Lyonya Tseytin",
     social: {
+      vk: "tseytlin",
       inst: "leotseytlin",
+      twit: "leotseytlin",
     },
   },
   {
     nickName: "Elena Savina",
     social: {
+      vk: "elkoesk",
       inst: "elko_esk",
     },
+    phone: "+7 950 227-11-95",
   },
   {
     nickName: "Polina Nikolaeva",
@@ -946,6 +975,7 @@ export default [
   {
     nickName: "Alina Mamina",
     social: {
+      vk: "alya_mamina",
       inst: "alyamamina",
     },
   },
@@ -968,8 +998,14 @@ export default [
   {
     nickName: "Andrey Gabriel",
     social: {
-      vk: "gabriel_andrey"
-      // inst: "black_star_gabr",
+      vk: "gabriel_andrey",
+      inst: "black_star_gabr",
+    },
+  },
+  {
+    nickName: "Nikolay Gabriel",
+    social: {
+      vk: "gabpe"
     },
   },
   {
@@ -1093,13 +1129,18 @@ export default [
   {
     nickName: "Maxim Karnaukhov",
     social: {
+      vk: "id7165344",
+      tg: "@id473035956",
       inst: "maximkarnauhov",
     },
+    phone: "+79216549538"
   },
   {
     nickName: "Roman Makarychev",
     social: {
+      vk: "dvdrw",
       inst: "roman_ugar",
+      tg: "dvdrw",
     },
   },
   {
@@ -1117,6 +1158,7 @@ export default [
   {
     nickName: "Polina Vingorodova",
     social: {
+      vk: "vingorodova",
       inst: "vingorodova",
     },
   },
@@ -1230,12 +1272,14 @@ export default [
   {
     nickName: "Artyom Tomilov",
     social: {
+      vk: "art_tomilov",
       inst: "arttomilov",
     },
   },
   {
     nickName: "Alexey Ershov",
     social: {
+      vk: "id324429",
       inst: "ersh0v",
     },
   },
@@ -1353,12 +1397,15 @@ export default [
   {
     nickName: "Tonya Evdokimova",
     social: {
+      vk: "sorryso",
       inst: "sorryso_kadabra",
     },
   },
   {
     nickName: "Daniil Vachegin",
     social: {
+      tg: "Vachegin",
+      vk: "vachegin_danil",
       inst: "vachega",
     },
   },
@@ -1372,12 +1419,15 @@ export default [
   {
     nickName: "Anya Maxutova",
     social: {
+      vk: "balsamicheskiuksus",
       inst: "annetmax1",
     },
+    phone: "89110123287",
   },
   {
     nickName: "Anya Vinogradova",
     social: {
+      vk: "id5478127",
       inst: "vinogradova90210",
     },
   },
@@ -1404,9 +1454,13 @@ export default [
   {
     nickName: "Arina Nachinova",
     social: {
+      vk: "muchadoaboutnothing19",
+      vk2: "arinanachinova",
+      tg: "arina_nachinova",
       inst: "prostoarina24",
       twit: "ArinaNachinova",
     },
+    phone: "+7 918 213-64-29"
   },
   {
     nickName: "Anton Artanov",
@@ -1430,12 +1484,15 @@ export default [
   {
     nickName: "Masha Tublina",
     social: {
+      vk: "mtublina",
       inst: "2blin_a",
     },
   },
   {
     nickName: "Arseniy Uteshkaliev",
     social: {
+      vk: "r.seny",
+      vk2: "id345451628",
       inst: "r.seny",
     },
   },
@@ -1785,12 +1842,14 @@ export default [
   {
     nickName: "Roman Kozharsky",
     social: {
+      vk: "idididididididididid333",
       inst: "kozharskii666",
     },
   },
   {
     nickName: "Veronika Melnik",
     social: {
+      vk: "veronikahamster",
       inst: "veronikaeyrons",
     },
   },
@@ -1914,6 +1973,7 @@ export default [
     social: {
       vk: "ritiksha",
     },
+    phone: "89110272855",
   },
   {
     nickName: "Maria Melvil",
@@ -2163,9 +2223,125 @@ export default [
     },
   },
   {
+    nickName: "Robert Shtabley",
+    social: {
+      inst: "bob_lubvi",
+    },
+  },
+  {
     nickName: "Irina Untold",
     deceased: true,
-  }  
+  },
+  {
+    nickName: "Sergey Ch",
+    social: {
+      vk: "id519932432",
+      fb: "sergey.chetverukhin",
+    },
+  },
+  {
+    nickName: "Emilia Spivak",
+    social: {
+      inst: "emilya_spivak_",
+      twit: "emiliya_spivak_"
+    },
+  },
+  {
+    nickName: "Alisa Grebenschikova",
+    social: {
+      fb: "alisa.grebenshchikova",
+    },
+  },
+  {
+    nickName: "Elena Vaenga",
+    social: {
+      vk: "vaengaofficial",
+      fb: "vaengaofficialpage",
+      yt: "channel/UCyAcXWJxwjraTlzckEbgMfQ",
+      twit: "vaengaofficial",
+      inst: "vaengaofficial",
+    },
+  },
+  {
+    nickName: "Elizaveta Shedrina",
+    social: {
+      vk: "schedra_schedra",
+    },
+  },
+  {
+    nickName: "Leonid Ivanov",
+    social: {
+      vk: "id6082698",
+    },
+  },
+  {
+    nickName: "Arina Ponomareva",
+    social: {
+      vk: "arina.ponomareva",
+    },
+  },
+  {
+    nickName: "Vadim Ashder",
+    social: {
+      tg: "FilthyMedved",
+    },
+  },
+  {
+    nickName: "Sima Radnaeva",
+    social: {
+      tg: "bstlch",
+      inst: "bstlchh",
+    },
+  },
+  {
+    nickName: "Mikhail Chuley",
+    social: {
+      vk: "id36754085",
+    },
+  },
+  {
+    nickName: "Sofia Vesnina",
+    social: {
+      vk: "amano_sena",
+    },
+  },
+  {
+    nickName: "Serafima Babloyan",
+    social: {
+      vk: "seraphimababloyan",
+    },
+  },
+  {
+    nickName: "Dasha Kaminskaya",
+    social: {
+      vk: "daryakaminskaya",
+    },
+  },
+  {
+    nickName: "Alina Shklyarskaya",
+    social: {
+      vk: "shklyarskaya",
+    },
+  },
+  {
+    nickName: "Darya Vinogradova",
+    social: {
+      vk: "id154249060",
+      inst: "prettypinknose",
+    },
+  },
+  {
+    nickName: "Kirill Gerasimenko",
+    social: {
+      vk: "gerasimenkokirusha",
+    },
+  },
+  {
+    nickName: "Petr Kostenko",
+    social: {
+      vk: "id4313019",
+    },
+  },
   // {
   //   nickName: "",
   //   social: {

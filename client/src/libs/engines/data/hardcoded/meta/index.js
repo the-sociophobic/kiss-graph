@@ -43,7 +43,15 @@ export default data => {
       })
     
     const pos = position[index] || {x: 0, y: 0, z: 0}
-    const userName = meta.userName || (meta.social && (meta.social.inst || (!meta.social.vk.startsWith("id") && meta.social.vk))) || undefined
+    const userName = meta.userName ||
+      (meta.social && (
+        meta.social.inst ||
+        (meta.social.vk && !meta.social.vk.startsWith("id") && meta.social.vk) ||
+        meta.social.tg ||
+        meta.social.fb ||
+        meta.social.twit ||
+        (meta.social.yt && meta.social.yt.startsWith("user/") && meta.social.yt.slice(5))
+      )) || undefined
 
     return {
       id: index,
