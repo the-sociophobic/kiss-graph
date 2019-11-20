@@ -11,6 +11,7 @@ export default class Menu extends Component {
     this.state = {
 
     }
+    console.log(window.localStorage.getItem('theme'))
   }
 
   render = () => (

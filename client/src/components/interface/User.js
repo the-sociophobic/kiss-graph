@@ -48,6 +48,7 @@ export default class User extends Component {
             })
             .map(link => link.length > 0 && (
               <ExternalLink
+                key={link}
                 to={"https://" + link}
                 newTab
                 className="secret__link"

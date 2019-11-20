@@ -282,23 +282,23 @@ export default [
   },
 
   {
-    names: ["Lev Vasilyev", "Denchik"],
+    names: ["Lev Vasilyev", "Denis%20Gerasimov"],
     commited: 1556841773,
   },
   {
-    names: ["Anton Plevako", "Denchik"],
+    names: ["Anton Plevako", "Denis%20Gerasimov"],
     told: 1556841773,
   },
   {
-    names: ["Ustya Zhulanova", "Denchik"],
+    names: ["Ustya Zhulanova", "Denis%20Gerasimov"],
     told: 1556841773,
   },
   {
-    names: ["Katya Razvarina", "Denchik"],
+    names: ["Katya Razvarina", "Denis%20Gerasimov"],
     told: 1556841773,
   },
   {
-    names: ["Arina Nevzorova", "Denchik"],
+    names: ["Arina Nevzorova", "Denis%20Gerasimov"],
     told: 1556841773,
   },
   {
@@ -875,7 +875,7 @@ export default [
     published: 1522593271,
   },
   {
-    names: ["Ildar Dzharahov", "Uriy Hovansky"],
+    names: ["Ildar Dzharahov", "Yuriy Khovansky"],
     published: 1522593271,
   },
   {

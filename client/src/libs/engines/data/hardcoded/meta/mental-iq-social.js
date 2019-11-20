@@ -186,6 +186,7 @@ export default [
     iq2: 123,
     social: {
       vk: "markuvelir",
+      vk2: "id60703188",
       inst: "mark__analniitsiklop",
     }
   },
@@ -619,6 +620,7 @@ export default [
     nickName: "Timofey Shesternyov",
     deceased: true,
     social: {
+      vk: "id137041777",
       inst: "tima_rab",
     },
   },
@@ -715,6 +717,7 @@ export default [
   {
     nickName: "Anfisa Dobrokhodova",
     social: {
+      vk: "anfidobroh",
       inst: "slyozki",
     },
   },
@@ -727,18 +730,21 @@ export default [
   {
     nickName: "Sasha Kozlov",
     social: {
+      vk: "alkolover",
       inst: "wasfoi",
     },
   },
   {
-    nickName: "Denchik",
+    nickName: "Denis Gerasimov",
     social: {
+      vk: "denzcek",
       inst: "denzcek",
     },
   },
   {
     nickName: "Igor Grabuzov",
     social: {
+      vk: "grabuzov",
       inst: "igor_grabuzov",
     },
   },
@@ -1499,6 +1505,7 @@ export default [
   {
     nickName: "Polina Savosina",
     social: {
+      vk: "poinasavosina",
       inst: "polinasavosina",
     },
   },
@@ -1606,6 +1613,7 @@ export default [
   {
     nickName: "Sergey Sokolov",
     social: {
+      vk: "journeythroughthepast",
       inst: "otkydacmex",
     },
   },
@@ -2340,6 +2348,112 @@ export default [
     nickName: "Petr Kostenko",
     social: {
       vk: "id4313019",
+    },
+  },
+  {
+    nickName: "Volodya Blinov",
+    social: {
+      vk: "vladimir_blinov",
+      inst: "__musichead",
+    },
+  },
+  {
+    nickName: "Milana CGSG",
+    social: {
+      tg: "es_table",
+    },
+    phone: "+7 960 236-30-70"
+  },
+  {
+    nickName: "Timofey Belkin",
+    social: {
+      vk: "idtimka_belka",
+    },
+  },
+  {
+    nickName: "Valeriya Lapina",
+    social: {
+      vk: "valerie_lapina",
+    },
+  },
+  {
+    nickName: "Vasiliy Cheptsov",
+    social: {
+      vk: "vasya3006",
+    },
+  },
+  {
+    nickName: "Misha Kasapov",
+    social: {
+      vk: "id159632",
+    },
+  },
+  {
+    nickName: "Ksusha Usha",
+    social: {
+      vk: "ksushayusha",
+      inst: "ksushayusha",
+    },
+  },
+  {
+    nickName: "Julia Resh",
+    social: {
+      vk: "julie_resh",
+      inst: "julieresh",
+      yt: "user/TheJulieresh"
+    },
+  },
+  {
+    nickName: "Ildar Dzharahov",
+    social: {
+      vk: "dzharakhov",
+      inst: "dlgreez",
+      twit: "dlgreez",
+      yt: "channel/UCjDwvpIhyfBGz4bbH8bcvUg"
+    },
+  },
+  {
+    nickName: "Yuriy Khovansky",
+    social: {
+      vk: "hovan",
+      inst: "yurykhovansky",
+      twit: "russianstandup",
+      fb: "khovansky",
+      yt: "channel/UCnQBjLBbZ6TXMwM_D_iaXjQ"
+    },
+  },
+  {
+    nickName: "Ilya Maddyson",
+    social: {
+      twit: "madgostream",
+      yt: "user/MaddysonShow"
+    },
+  },
+  {
+    nickName: "Vladimir Eldzhin",
+    social: {
+      vk: "ellgin",
+      yt: "MrEllgin"
+    },
+  },
+  {
+    nickName: "Andrey Natotsinsky",
+    social: {
+      inst: "natots",
+    },
+  },
+  {
+    nickName: "Anya Leontyeva",
+    social: {
+      vk: "id180946131",
+      inst: "besitstreet",
+    },
+  },
+  {
+    nickName: "Anya Leontyeva",
+    social: {
+      vk: "id180946131",
+      inst: "besitstreet",
     },
   },
   // {

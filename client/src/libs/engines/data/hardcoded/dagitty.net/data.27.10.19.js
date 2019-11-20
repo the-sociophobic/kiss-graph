@@ -263,7 +263,7 @@ David%20Zharnitsky E @0.795,0.572
 Dayan E @0.778,0.072
 Dayana%20Avvakumova E @0.130,1.337
 Dekhiar%20Gusev E @0.748,1.126
-Denchik E @0.309,0.914
+Denis%20Gerasimov E @0.309,0.914
 Denis%20Denisov E @0.763,0.072
 Denis%20Drozdov E @0.445,0.719
 Denis%20Durov E @0.706,-0.223
@@ -406,7 +406,7 @@ Ilya%20Dorkhanov E @0.585,-0.465
 Ilya%20Ivanov E @0.251,0.302
 Ilya%20Kalmyk E @0.532,1.057
 Ilya%20Kotkin E @0.847,-0.001
-Ilya%20Meddison E @0.802,1.122
+Ilya%20Maddyson E @0.802,1.122
 Ilya%20Roschin E @0.282,1.144
 Ilya%20Yaroshenko E @0.487,-0.409
 Ilyachan1 E @0.618,-0.456
@@ -933,7 +933,7 @@ Uliya%20Ushakova E @0.803,1.057
 Uliya%20Zakharova E @0.164,0.672
 Ura%20Eroshkin E @0.812,0.305
 Uriy%20Galtsev E @0.716,-0.474
-Uriy%20Hovansky E @0.830,1.063
+Yuriy%20Khovansky E @0.830,1.063
 Ustina%20Zhulanova E @0.642,-0.226
 Ustya%20Zhulanova E @0.343,0.894
 Vadim%20Ashder E @0.435,0.345
@@ -1015,7 +1015,7 @@ Vladislav%20Degtyar E @0.091,0.424
 Vladislav%20Lebedev E @0.214,-0.223
 Voronchikhin%20Artyom E @0.802,0.712
 Vova%20Andrianova E @0.844,0.453
-Vova%20Blinov E @0.647,1.438
+Volodya%20Blinov E @0.647,1.438
 Vova%20Kuznetsov E @0.907,0.305
 Vovan%20Konovalov E @0.583,-0.375
 Vsevolod%20Mitrophanov E @0.873,0.492
@@ -1156,7 +1156,7 @@ Anya%20Usacheva Danya%20Skibin
 Anya%20Vinogradova Vlad%20Guriev
 Anzhelika%20Balabekyan Artyom%20Tomilov David%20Zharnitsky Elina%20Kulikova Kira%20Kastaneda Lev%20Vasilyev
 Arina%20Nachinova Katrin%20Tublina
-Arina%20Nevzorova Denchik
+Arina%20Nevzorova Denis%20Gerasimov
 Arina%20Ponomareva Leonid%20Ivanov
 Arishka%20Bolshakova Arseniy%20Uteshkaliev David%20Zharnitsky Edik%20Denisov Kate%20Alexandrova Kira%20Kastaneda Nata%20Naumova Sofia%20Mityaeva Sofiya%20Mihalchenko
 Arseniy%20Gruzdev Anya%20Korkina
@@ -1222,7 +1222,7 @@ Dasha%20Yagudina Alexander%20Lazarev
 David%20Zharnitsky Alexandra%20Sokolova AnnaMaria%20Chernigovskaya Darya%20Belova Dasha%20Proskuryakova Elina%20Kulikova Kate%20Alexandrova Kira%20Kastaneda Lena%20Muradymova Lev%20Vasilyev Liza%20Kalmykova Lubof%20Safonova Maria%20Manylova Masha%20Tublina Natalia%20Uchitel Polina%20Nikolaeva Sonya%20Krasnobaeva Sveta%20Strugatskaya
 Dayan Kira%20Kastaneda
 Dekhiar%20Gusev Polina%20Nazarova
-Denchik Anton%20Plevako Lev%20Vasilyev
+Denis%20Gerasimov Anton%20Plevako Lev%20Vasilyev
 Denis%20Denisov Kira%20Kastaneda
 Denis%20Durov Lera%20Stepanova
 Denis%20Nevolin Liza%20Gotsdiner
@@ -1319,7 +1319,7 @@ Igor%20Shkuratov Luda%20Syagina
 Igor%20Sky Kedr%20Livansky Kira%20Kastaneda Masha%20Chukalskaya
 Igor%20Vasilyev Julia%20Sergeeva Tatyana%20Bronnikova
 Igor%20Zhidkov Alexander%20Lebedev Nastya%20Uhimenko Nikita%20Danilchenko Sergay%20Nikitin
-Ildar%20Dzharahov Uriy%20Hovansky
+Ildar%20Dzharahov Yuriy%20Khovansky
 Ilnar%20Arslanov Kate%20Shevyakova
 Ilya%20Del Katya%20Bulgakova
 Ilya%20Dorkhanov Ilyachan1 Ilyachan2 Valeria%20Lavrentyeva
@@ -1367,7 +1367,7 @@ Katya%20Goldfarb Kira%20Kastaneda
 Katya%20Kudryavtseva Danil%20Ivanov%20Arakcheev
 Katya%20Lutay Dekhiar%20Gusev
 Katya%20Markova Pasha%20Sokolov
-Katya%20Razvarina Denchik Kirill%20Samodelov
+Katya%20Razvarina Denis%20Gerasimov Kirill%20Samodelov
 Katya%20Ryabovol Nikita%20Danilchenko
 Katya%20Ustinova Agarkova%20Nastya Sasha%20Chernyshov Sofia%20Mityaeva
 Keren%20Karieva Kira%20Kastaneda
@@ -1583,7 +1583,7 @@ Roman%20Makarychev Arishka%20Bolshakova Nata%20Naumova Sofiya%20Mihalchenko Svet
 Roman%20Murmanovich Lubof%20Safonova
 Roman%20Sadyrbaev Elena%20Vaenga
 Roman%20Vershinin Kristina%20Boyarkina Natalia%20Lebedeva
-Ruslan%20Usachev Ildar%20Dzharahov Uriy%20Hovansky
+Ruslan%20Usachev Ildar%20Dzharahov Yuriy%20Khovansky
 Sabri%20ben%20Hasen Evgenia%20Gorozhantseva
 Sacha%20Czarnecki Vitya%20Livshits
 Sam%20Mehran Alexander%20Khudyakov
@@ -1661,9 +1661,9 @@ Tomasina%20Moskalenko Lev%20Vasilyev
 Tonya%20Evdokimova Alexander%20Ilyin Egor%20Tsygankov Kostya%20Unknown Lesha%20Pavlov Sergey%20Married
 Turik%20Mordovtsev Kira%20Kastaneda
 Ura%20Eroshkin Alexandr%20Leonidov Ira%20Khanakhbeeva
-Uriy%20Hovansky Ilya%20Meddison
+Yuriy%20Khovansky Ilya%20Maddyson
 Ustina%20Zhulanova Pasha%20Klimachov
-Ustya%20Zhulanova Denchik
+Ustya%20Zhulanova Denis%20Gerasimov
 Vadim%20Ashder Kristina%20Boyarkina Natasha%20Gnida%20Tikhomirova Sima%20Radnaeva Sofia%20Mityaeva
 Vadim%20Zimin Alina%20Dynay Anastasiya%20Nemilova David%20Zharnitsky Ilya%20Kalmyk Nastya%20IvanovaMonro Nata%20Naumova Sasha%20Chernyshov Sasha%20Kovanova Taisiya%20Razumovskaya Vita%20Polovinkina
 Valera%20Tsifirov Olga%20Maltseva
@@ -1720,7 +1720,7 @@ Vladislav%20Chernyshov Sacha%20Czarnecki
 Vladislav%20Lebedev Nastya%20Pavlova
 Voronchikhin%20Artyom Kate%20Alexandrova
 Vova%20Andrianova Lubof%20Safonova
-Vova%20Blinov Kirill%20Ermakov
+Volodya%20Blinov Kirill%20Ermakov
 Vovan%20Konovalov Ira%20Bibisheva Katya%20Abramova Ksusha%20Nesterova
 Vsevolod%20Mitrophanov Elina%20Kulikova
 Yan%20Fisher Lubof%20Safonova
