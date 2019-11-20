@@ -4,7 +4,7 @@ import Skybox from 'libs/engines/3d/units/Skybox'
 
 export default {
   units: [
-    Skybox,
+    // Skybox,
     Graph,
     // GraphPosCalculator,
   ]

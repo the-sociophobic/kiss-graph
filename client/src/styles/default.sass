@@ -1,8 +1,29 @@
 @import '~bootstrap/scss/bootstrap.scss'
-  
+@import './theme.css'
+
+$red: var(--red)
+$light: var(--main-background)
+$dark: var(--default-font-color)
+$light-gray: var(--light-gray)
+$dark-gray: var(--dark-gray)
+$dark-dark-gray: var(--dark-dark-gray)
+$light-light-gray: var(--light-light-gray)
+$apple-item-gray: var(--apple-item-gray)
+$secondary: var(--secondary)
+$link-color: var(--link-color)
+$box-shadow-color: var(--box-shadow-color)
+$box-shadow: 0 5px 15px $box-shadow-color
+$onscreen-button-color: var(--onscreen-button-color)
+$mobile-expander-gradient-color-0: var(--mobile-expander-gradient-color-0)
+$mobile-expander-gradient-color-1: var(--mobile-expander-gradient-color-1)
+$mobile-expander-gradient: linear-gradient($mobile-expander-gradient-color-0, $mobile-expander-gradient-color-1)
+$input-height: 32px
+$default-border-radius: 5px
+
 *
   font-family: -apple-system, system-ui, Roboto, "Open Sans", "Helvetica Neue", sans-serif
   font-weight: normal
+  color: $dark
   outline: none
   box-sizing: border-box
   margin: 0
@@ -10,13 +31,16 @@
   line-height: 1
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
+  transition: color 1s, background-color 1s, border-color 1s //OPTIMISE
 
 body, html
 //   font-size: 16px
   // font-size: 1em
+  
 
 a
   text-decoration: none
+  color: $link-color
 p
   margin-bottom: 0
   
@@ -83,26 +107,6 @@ body, html
   bottom: 0
 
 
-
-
-$red: #9a3323
-$light: white
-$dark: black
-$light-gray: #cccccc
-$dark-gray: #999999
-$dark-dark-gray: #555555
-// $light-light-gray: #f6f6f6
-$light-light-gray: #f3f6f7
-$apple-item-gray: rgba(118, 120, 119, .075)
-// $secondary: #c3562b
-$secondary: #aaff09
-$link-color: #0000ee
-$box-shadow: 0 5px 15px rgba(0, 0, 0, .35)
-$input-height: 32px
-$default-border-radius: 5px
-$onscreen-button-color: rgba(210, 210, 210, .75)
-
-
 //ITERFACE BLOCK
 $interface-block-margin: 8px
 $interface-block-padding: 8px
@@ -138,6 +142,7 @@ $canvas-offset: 40px
   display: flex
   flex-direction: row
   flex-wrap: nowrap
+  background-color: $light
   @media (max-width: 1024px)
     flex-direction: column
   .Viewer,
@@ -268,10 +273,10 @@ $arrow-size: 7px
 .text-interface
   width: $text-interface-width
   height: 100%
-  background-color: white
+  background-color: $light
   z-index: 10000
   @media (min-width: 1025px)
-    box-shadow: -12px 0 35px rgba(0, 0, 0, .35)
+    box-shadow: -12px 0 35px $box-shadow-color
     overflow: hidden
   @media (max-width: 1024px)
     width: 100%
@@ -453,13 +458,13 @@ $mobile-expander-button-height: 5px
     display: flex
     flex-direction: column
     align-items: stretch
-    box-shadow: 0 10px 12px rgba(0, 0, 0, .15)
+    box-shadow: 0 10px 12px $box-shadow-color
   &__static-content-container
     width: 100%
     display: table
   &__expanding-content-container
     width: 100%
-    background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, .88 ))
+    background-image: $mobile-expander-gradient
     -webkit-backdrop-filter: blur(20px) //weeeeell
     transition: height .15s
     &.closed
@@ -516,9 +521,10 @@ $mobile-expander-button-height: 5px
   padding: 10px
   article.article
   h3.h3
-    line-height: 2
+    line-height: 1.5
     margin: 18px 0 8px
     font-weight: 800
+    font-size: 1.5em
   p.p
     line-height: 1.45
     margin: 0 0 10px
@@ -569,7 +575,7 @@ $mobile-expander-button-height: 5px
     display: inline-block
     font-size: 14px
     cursor: pointer
-    color: blue
+    color: $link-color
 
 
 
@@ -586,8 +592,9 @@ $mobile-expander-button-height: 5px
     line-height: $input-height - 4px
     flex-grow: 1
     border-right: 1px solid $light-gray
-    background-color: white
     cursor: pointer
+    background-color: $light
+    color: $dark-dark-gray
     &:first-of-type
       border-top-left-radius: $default-border-radius - 1px
       border-bottom-left-radius: $default-border-radius - 1px

@@ -46,7 +46,7 @@ export default data => {
     const userName = meta.userName ||
       (meta.social && (
         meta.social.inst ||
-        (meta.social.vk && !meta.social.vk.startsWith("id") && meta.social.vk) ||
+        (meta.social.vk && (!meta.social.vk.startsWith("id") || meta.social.vk.includes("_")) && meta.social.vk) ||
         meta.social.tg ||
         meta.social.fb ||
         meta.social.twit ||

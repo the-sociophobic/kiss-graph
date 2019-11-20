@@ -31,14 +31,13 @@ export default class Graph extends Unit {
     HeatGraph(this.nodes, this.edges, scene)
     // scene.add( LineGraph(this.nodes, this.edges, scene) )
       
-    nodes.forEach((node, index) => {
-      // let sprite = new TextSprite({
+    const createNodeSprite = (node, color) => {
       let sprite
       if (!node.avatar) {
         sprite = new UserSprite({
           material: {
-            color: 0x000000,
-            // color: 0xffffff,
+            // color: 0x000000,
+            color: color,
             fog: false,
           },
           redrawInterval: 500,
@@ -55,11 +54,12 @@ export default class Graph extends Unit {
 
         // sprite.position.set(node.pos.x, node.pos.y, node.pos.z + .5)
         sprite.position.set(node.pos.x, node.pos.y, node.pos.z)
-        scene.add(sprite)
+        // scene.add(sprite)
         sprite.cursor = 'pointer'      
         tapEvent(sprite, () => props.setNode(node.id))
         tapEvent(sprite, () => props.setNode(node.id), 'mousedown', 'mouseup')
-  
+
+        return sprite
       } else {
         new THREE.TextureLoader().load( node.avatar, spriteMap => {
           spriteMap.minFilter = THREE.LinearFilter //disable when power of 2 textures
@@ -74,12 +74,41 @@ export default class Graph extends Unit {
           sprite.cursor = 'pointer'      
           tapEvent(sprite, () => props.setNode(node.id))
           tapEvent(sprite, () => props.setNode(node.id), 'mousedown', 'mouseup')
-        } );
+        } )
       }
+    }
 
-      
+    var nodesLightTheme = new THREE.Group()
+    var nodesDarkTheme = new THREE.Group()
+    nodes.forEach(node => {
+      let lightNode = createNodeSprite(node, 0x000000)
+      let darkNode = createNodeSprite(node, 0xffffff)
+
+      nodesLightTheme.add(lightNode)
+      nodesDarkTheme.add(darkNode)
     })
+    scene.add(nodesLightTheme)
+    scene.add(nodesDarkTheme)
+    
+    this.nodesLightTheme = nodesLightTheme
+    this.nodesDarkTheme = nodesDarkTheme
   }
-  animate() {}
+
+  updateTheme = () => {
+    const theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light"
+
+    if (this.theme !== theme) {
+      if (theme === "light") {
+        this.nodesLightTheme.visible = true
+        this.nodesDarkTheme.visible = false
+      } else {
+        this.nodesLightTheme.visible = false
+        this.nodesDarkTheme.visible = true
+      }
+      this.theme = theme
+    }
+  }
+
+  animate = () => this.updateTheme()
   dispose() {}
 }

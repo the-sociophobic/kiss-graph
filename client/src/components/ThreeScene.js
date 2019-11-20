@@ -39,7 +39,7 @@ export default class ThreeScene extends Component{
     if (ViewerDiv.clientWidth < 500 || ViewerDiv.clientHeight < 500)
       this.renderer.setPixelRatio(2)
     else
-      this.renderer.setPixelRatio(1)
+      this.renderer.setPixelRatio(2)
   }
 
   componentDidMount() {
@@ -53,8 +53,9 @@ export default class ThreeScene extends Component{
     //ADD RENDERER
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
     // this.renderer.setClearColor('#f6f6f6')
-    this.renderer.setClearColor('#fafafa')
+    // this.renderer.setClearColor('#fafafa')
     // this.renderer.setClearColor('#000')
+    this.renderer.setClearColor(0x000000, 0)
     this.renderer.setSize(width, height)
     if (width < 500 || height < 500)
       this.renderer.setPixelRatio(2)
