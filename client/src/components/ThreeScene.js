@@ -39,7 +39,7 @@ export default class ThreeScene extends Component{
     if (ViewerDiv.clientWidth < 500 || ViewerDiv.clientHeight < 500)
       this.renderer.setPixelRatio(2)
     else
-      this.renderer.setPixelRatio(2)
+      this.renderer.setPixelRatio(1)
   }
 
   componentDidMount() {
