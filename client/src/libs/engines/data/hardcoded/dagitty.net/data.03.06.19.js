@@ -108,7 +108,7 @@ Anya%20Elovaya E @0.197,-0.478
 Anya%20Grin E @0.199,0.398
 Anya%20Ivanova E @0.116,1.151
 Anya%20Ivanova2 E @0.079,1.417
-Anya%20Ivitskaya E @0.684,-0.321
+Anna%20Ivizkaya E @0.684,-0.321
 Anya%20Khmeleva E @0.271,0.327
 Anya%20Korkina E @0.017,0.278
 Anya%20Kosti E @-0.111,0.698
@@ -866,7 +866,7 @@ Anton%20Palmov Egor%20Vysberg Kira%20Kastaneda Petr%20Sverdlov Sasha%20Chernysho
 Anton%20Plevako Anzhela%20Groznova Ilya%20Roschin Lev%20Vasilyev Masha%20Safronova
 Anya%20Danilova Kostya%20Solovyov Zhenya%20Shepunov
 Anya%20Grin Artyom%20Sverbaev Daniil%20Grinzhola Dima%20Lutsenko Grigoriy%20Fenyov Lev%20Vasilyev Maxim%20Ivanov Mikhail%20Chuley Timur%20Finov
-Anya%20Ivitskaya Foma%20Popov
+Anna%20Ivizkaya Foma%20Popov
 Anya%20Khmeleva Alisa%20Tamarchenko Artyom%20Arsenyan Daniil%20Merzon Emil%20Soldatkin Nastya%20Pavlova
 Anya%20Korkina Mila%20Emelyanova Vitya%20Lifshits
 Anya%20Leontyeva Lubof%20Safonova

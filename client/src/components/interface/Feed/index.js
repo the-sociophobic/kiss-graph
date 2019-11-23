@@ -35,14 +35,14 @@ export default class Feed extends Component {
             name: node0.name,
             userName: node0.userName,
             link: node0.link,
-            color: node0.color,
+            color: node0.color.light,
           },
           node1: {
             id: node1.id,
             name: node1.name,
             userName: node1.userName,
             link: node1.link,
-            color: node1.color,
+            color: node1.color.light,
           },
         }
       })

@@ -8,10 +8,7 @@ import Stats from 'components/interface/Stats'
 export default class Menu extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-
-    }
-    console.log(window.localStorage.getItem('theme'))
+    this.state = {}
   }
 
   render = () => (

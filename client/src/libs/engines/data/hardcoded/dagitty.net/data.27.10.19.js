@@ -142,7 +142,7 @@ Anya%20Elovaya E @0.203,-0.482
 Anya%20Grin E @0.199,0.398
 Anya%20Ivanova E @0.108,1.153
 Anya%20Ivanova2 E @0.079,1.417
-Anya%20Ivitskaya E @0.697,-0.336
+Anna%20Ivizkaya E @0.697,-0.336
 Anya%20Khmeleva E @0.268,0.288
 Anya%20Korkina E @0.017,0.278
 Anya%20Kosti E @-0.108,0.739
@@ -429,7 +429,7 @@ Ispanofrancuz E @0.736,-0.070
 Ivan E @-0.060,-0.150
 Ivan%20Chinarov E @0.811,0.750
 Ivan%20Chukalsky E @0.024,1.418
-Ivan%20Damnar E @0.334,0.274
+Ivan%20Domnar E @0.334,0.274
 Ivan%20Dementyev E @0.212,-0.382
 Ivan%20Kachmar E @0.182,0.019
 Ivan%20Kalinin E @0.595,1.397
@@ -1144,7 +1144,7 @@ Anton%20Palmov Egor%20Vysberg Kira%20Kastaneda Petr%20Sverdlov Sasha%20Chernysho
 Anton%20Plevako Anzhela%20Groznova Ilya%20Roschin Lev%20Vasilyev Masha%20Safronova Sofia%20Lupian
 Anya%20Danilova Kostya%20Solovyov Zhenya%20Shepunov
 Anya%20Grin Artyom%20Sverbaev Daniil%20Grinzhola Dima%20Lutsenko Grigoriy%20Fenyov Lev%20Vasilyev Maxim%20Ivanov Mikhail%20Chuley Timur%20Finov
-Anya%20Ivitskaya Foma%20Popov
+Anna%20Ivizkaya Foma%20Popov
 Anya%20Khmeleva Alisa%20Tamarchenko Artyom%20Arsenyan Daniil%20Merzon Emil%20Soldatkin Nastya%20Pavlova
 Anya%20Korkina Mila%20Emelyanova
 Anya%20Leontyeva Lubof%20Safonova
@@ -1334,7 +1334,7 @@ Irina%20Medel Nikita%20Danilchenko
 Irina%20Pligina Nikita%20Danilchenko
 Iski Kira%20Kastaneda
 Ivan%20Chinarov Kate%20Alexandrova
-Ivan%20Damnar Natasha%20Kozhevnikova
+Ivan%20Domnar Natasha%20Kozhevnikova
 Ivan%20Dementyev Anya%20Elovaya
 Ivan%20Kachmar Alina%20Mamina
 Ivan%20Kalinin Dasha%20Kalinina

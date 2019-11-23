@@ -156,6 +156,7 @@ export default [
   {
     names: ["Stepan Nesmiyan", "Natasha Kozhevnikova"],
     told: 1540076400,
+    commited: 1433336401,
     published: 1540086180,
   },
   {
@@ -188,6 +189,7 @@ export default [
   {
     names: ["Timofey Shesternyov", "Ksusha Vlasenko"],
     told: 1545342660,
+    commited: 1445700840,
     submitter: "Kristina Boyarkina"
   },
 
@@ -469,7 +471,7 @@ export default [
     told: 1560909611,
   },
   {
-    names: ["Natasha Kozhevnikova", "Ivan Damnar"],
+    names: ["Natasha Kozhevnikova", "Ivan Domnar"],
     told: 1560909611,
   },
   {
@@ -647,7 +649,7 @@ export default [
   {
     names: ["Natasha Kozhevnikova", "Alina Bazanova"],
     published: 1570680000,
-    commited: 1429747200,
+    commited: 1406649601,
     told: 1569810649,
   },
 
@@ -1439,6 +1441,37 @@ export default [
     commited: 1573945200,
     told: 1573945200,
     published: 1574123340,
+  },
+  {
+    names: ["Sasha Byankin", "Vera Paranicheva"],
+    told: 1574436720,
+    published: 1574467320,
+  },
+  {
+    names: ["Mark Mindubaev", "Natasha Kozhevnikova"],
+    commited: 1498867203,
+    told: 1574368200,
+    published: 1574467320,
+  },
+  {
+    names: ["Vlad Bystrov", "Anita Unknown"],
+    told: 1574368200,
+    published: 1574467320,
+  },
+  {
+    names: ["Artyom Nilov", "Natasha Kozhevnikova"],
+    told: 1574368200,
+    published: 1574467320,
+  },
+  {
+    names: ["Kirill Ermakov", "Kristina Nashakhalova"],
+    told: 1360166400,
+    published: 1574467320,
+  },
+  {
+    names: ["Foma Popov", "Anna Ivizkaya"],
+    told: 1574275380,
+    published: 1574467320,
   },
 
   
