@@ -23,7 +23,7 @@ export default props => {
       <div
         className="username-link"
         key={props.user.name}
-        style={{color: props.user.color}}
+        style={{color: props.user.color.light}}
       >
         <div className="username-link__number">
           {props.IQ && props.user.iq}
@@ -47,7 +47,7 @@ export default props => {
     <div
       className="username-link"
       key={props.user.name}
-      style={{color: props.user.color}}
+      style={{color: props.user.color.light}}
     >
       <div className="username-link__number">
         {props.user.connections}

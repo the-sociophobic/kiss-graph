@@ -90,7 +90,10 @@ export default data => {
   nodes = nodes.map(node => ({
     ...node,
     uv: nodeUV(node.connections),
-    color: colorFromWeight(nodeUV(node.connections), "dark")
+    color: {
+      dark: colorFromWeight(nodeUV(node.connections), "dark"),
+      light: colorFromWeight(nodeUV(node.connections), "light"),
+    }
   }))
 
   return {

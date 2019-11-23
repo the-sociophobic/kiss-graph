@@ -501,7 +501,9 @@ export default [
     mentalDisorder: 2.5,
     iq: 131,
     social: {
+      vk: "mafakkafox",
       inst: "mafakkafox",
+      twit: "molierry"
     },
   },
   {
@@ -2455,6 +2457,64 @@ export default [
       vk: "id180946131",
       inst: "besitstreet",
     },
+  },
+  {
+    nickName: "Artyom Urvantsev",
+    social: {
+      vk: "artiom_u",
+      inst: "artiom_u",
+    },
+  },
+  {
+    nickName: "Liza Grivenkova",
+    social: {
+      inst: "elisonradio",
+    },
+  },
+  {
+    nickName: "Vlad Bystrov",
+    social: {
+      inst: "dancingcarrot",
+    },
+  },
+  {
+    nickName: "Anna Ivizkaya",
+    social: {
+      inst: "ivi.anka",
+    },
+  },
+  {
+    nickName: "Mark Mindubaev",
+    social: {
+      inst: "markcandician",
+    },
+  },
+  {
+    nickName: "Kristina Nashakhalova",
+    social: {
+      vk: "id9423725",
+    },
+  },
+  {
+    nickName: "Sasha Byankin",
+    social: {
+      vk: "id14553934",
+      inst: "sashabyankin"
+    },
+  },
+  {
+    nickName: "Vera Paranicheva",
+    social: {
+      vk: "id15349934",
+      inst: "vera_paranicheva"
+    },
+  },
+  {
+    nickName: "Sergey Kochin",
+    social: {
+      vk: "id9423725",
+    },
+    iq: 112,
   },
   // {
   //   nickName: "",

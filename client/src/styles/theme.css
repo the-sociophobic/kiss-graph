@@ -30,7 +30,7 @@
     --secondary: #4400f6;
     --link-color: #ffff11;
     --box-shadow-color: rgba(255, 255, 255, .35);
-    --onscreen-button-color: rgba(15, 15, 15, .75);
+    --onscreen-button-color: rgba(255, 255, 255, .5);
     --mobile-expander-gradient-color-0: rgba(0, 0, 0, 1);
     --mobile-expander-gradient-color-1: rgba(0, 0, 0, .88);
   }
