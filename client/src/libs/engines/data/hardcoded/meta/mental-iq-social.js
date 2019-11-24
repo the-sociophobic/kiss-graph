@@ -204,7 +204,7 @@ export default [
   {
     nickName: "Yana Moiseeva",
     mentalDisorder: 2,
-    iq: 126,
+    iq: 128,
     social: {
       vk: "id6455999",
       inst: "yanaa_m",
@@ -971,6 +971,7 @@ export default [
     nickName: "Foma Popov",
     social: {
       vk: "kipag",
+      tg: "Kinve",
       inst: "makefomagreatagain",
     },
   },
@@ -2510,11 +2511,45 @@ export default [
     },
   },
   {
+    nickName: "Natalia Uchitel",
+    social: {
+      vk: "tatauchitel",
+      inst: "natalia_uchitel"
+    },
+  },
+  {
+    nickName: "Ivan Kroks",
+    social: {
+      vk: "kroks",
+      inst: "ivankroks"
+    },
+  },
+  {
+    nickName: "Ivan Grishin",
+    social: {
+      vk: "id9423725",
+      inst: "ivan_smetan",
+    },
+  },
+  {
+    nickName: "Anastasia Shostka",
+    social: {
+      inst: "shostkan",
+    },
+  },
+  {
     nickName: "Sergey Kochin",
     social: {
       vk: "id9423725",
     },
     iq: 112,
+  },
+  {
+    nickName: "Alina Valieva",
+    social: {
+      vk: "id309322443",
+      inst: "valieva.alina"
+    },
   },
   // {
   //   nickName: "",

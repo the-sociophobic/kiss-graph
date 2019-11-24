@@ -1473,6 +1473,21 @@ export default [
     told: 1574275380,
     published: 1574467320,
   },
+  {
+    names: ["Vitya Syropyatov", "Alina Valieva"],
+    told: 1574566140,
+    published: 1574611920,
+  },
+  {
+    names: ["Evgenia Partsenyak", "Anastasia Shostka"],
+    told: 1574563380,
+    published: 1574611920,
+  },
+  {
+    names: ["Ivan Kroks", "Ivan Grishin"],
+    told: 1574457420,
+    published: 1574611920,
+  },
 
   
   // {
