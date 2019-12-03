@@ -144,10 +144,8 @@ export default class TextInterface extends Component {
             :
             <div className="flex-column relative">
               <div className="abs-container">
-                <div className="scroll-column">
-                  <div className="flex-container">
-                    {contentWithFooter}
-                  </div>
+                <div className="flex-container">
+                  {contentWithFooter}
                 </div>
               </div>
             </div>

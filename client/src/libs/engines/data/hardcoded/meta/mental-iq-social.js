@@ -33,6 +33,10 @@ export default [
     nickName: "Nikita Baklazhenko",
     mentalDisorder: 5,
     iq: 126,
+    political: {
+      LR: 3.25,
+      LA: -4.97
+    },
     social: {
       vk: "nbaklazhenko",
       inst: "vikivikovik",
@@ -164,8 +168,17 @@ export default [
   {
     nickName: "Lev Vasilyev",
     mentalDisorder: 3,
-    iq: 131,
     // iq: 123,
+    // iq: 131,
+    iq: 127,
+    SHR: {
+      shoulder: 44,
+      hip: 30,
+    },
+    political: {
+      LR: 5,
+      LA: -2.1
+    },
     additionalConnections: 1,
     social: {
       // vk: "11879299",
@@ -177,13 +190,20 @@ export default [
       yt: "channel/UCZo157ZsqdblSHBVHRmrgsw",
       fb: "the.sociophobic",
     },
-    userName: "the_sociophobic"
   },
   {
     nickName: "Mark Kozharskiy",
     mentalDisorder: 3,
     iq: 119,
     iq2: 123,
+    SHR: {
+      shoulder: 48,
+      hip: 41,
+    },
+    political: {
+      LR: 0,
+      LA: -1.03
+    },
     social: {
       vk: "markuvelir",
       vk2: "id60703188",
@@ -194,6 +214,14 @@ export default [
     nickName: "Beksultan Maksatbek",
     mentalDisorder: 2.5,
     iq: 133,
+    SHR: {
+      shoulder: 43,
+      hip: 29,
+    },
+    political: {
+      LR: 2.13,
+      LA: -4.77
+    },
     additionalConnections: 7,
     social: {
       tg: "whedon",
@@ -204,7 +232,7 @@ export default [
   {
     nickName: "Yana Moiseeva",
     mentalDisorder: 2,
-    iq: 128,
+    iq: 126,
     social: {
       vk: "id6455999",
       inst: "yanaa_m",
@@ -347,7 +375,8 @@ export default [
   {
     nickName: "Artyom Arsenyan",
     mentalDisorder: 2,
-    iq: 105,
+    // iq: 105,
+    iq: 112,
     social: {
       vk: "arsenyan_artyom",
       inst: "artefactpage",
@@ -734,6 +763,7 @@ export default [
     social: {
       vk: "alkolover",
       inst: "wasfoi",
+      inst2: "alkolove",
     },
   },
   {
@@ -802,6 +832,7 @@ export default [
   },
   {
     nickName: "Liza Sorokina",
+    iq: 102,
     social: {
       vk: "id30152702",
       tg: "lizasorokina",
@@ -1131,8 +1162,11 @@ export default [
   },
   {
     nickName: "Vladislav Bokhan",
+    iq: 121,
     social: {
+      vk: "vladonchempion",
       inst: "mc_bokhan",
+      twit: "vladosnehuesos",
     },
   },
   {
@@ -2068,6 +2102,7 @@ export default [
   {
     nickName: "Ivan Gilman",
     social: {
+      vk: "id9877307",
       inst: "ivangilmanivangilman",
     },
   },
@@ -2080,6 +2115,7 @@ export default [
   {
     nickName: "Boris Evdokimov",
     social: {
+      vk: "theborya",
       inst: "theborya",
     },
   },
@@ -2159,6 +2195,7 @@ export default [
   },
   {
     nickName: "Peter Vasilyev",
+    iq: 130,
     social: {
       vk: "grendaiser",
       inst: "grendaiser",
@@ -2494,6 +2531,7 @@ export default [
     nickName: "Kristina Nashakhalova",
     social: {
       vk: "id9423725",
+      in: "kristina-nashakhalova",
     },
   },
   {
@@ -2549,6 +2587,81 @@ export default [
     social: {
       vk: "id309322443",
       inst: "valieva.alina"
+    },
+  },
+  {
+    nickName: "Lera Snitsar",
+    social: {
+      inst: "snitsarrevna"
+    },
+  },
+  {
+    nickName: "Tatyana Sankova",
+    social: {
+      inst: "sankot24",
+    },
+  },
+  {
+    nickName: "Masha Chukalskaya",
+    social: {
+      vk: "slakuch",
+    },
+  },
+  {
+    nickName: "Fedor Chukalsky",
+    social: {
+      vk: "fedya_chu",
+      inst: "zadrotchu",
+    },
+  },
+  {
+    nickName: "Ivan Naumov",
+    social: {
+      inst: "ivnmv_",
+    },
+  },
+  {
+    nickName: "Ekaterina Shirokikh",
+    social: {
+      inst: "shirokikhdesign",
+    },
+  },
+  {
+    nickName: "Masha Flex",
+    social: {
+      inst: "m_lensk",
+    },
+  },
+  {
+    nickName: "Stefan Tushkov",
+    social: {
+      inst: "shtephqn",
+    },
+  },
+  {
+    nickName: "Alesya Nikolaeva",
+    social: {
+      vk: "pustonegustogustonepusto",
+    },
+  },
+  {
+    nickName: "Karina Shadrina",
+    social: {
+      vk: "krin_s",
+      inst: "karinakrins",
+    },
+  },
+  {
+    nickName: "Yulia Sheremet",
+    social: {
+      vk: "sheremeow",
+      inst: "sheremeow",
+    },
+  },
+  {
+    nickName: "Veronika Petrukhina",
+    social: {
+      vk: "vspetrukhina",
     },
   },
   // {
