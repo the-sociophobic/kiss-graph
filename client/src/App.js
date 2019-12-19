@@ -4,34 +4,34 @@ import routes from './routes'
 
 import Helmet from 'components/Helmet'
 
-import store from 'libs/engines/data/store'
-import StoreContext from 'libs/engines/data/store/StoreContext'
+import { initialState, StoreContext } from 'libs/engines/data/store'
 
-import store2 from 'libs/engines/data/store2'
-import Store2Context from 'libs/engines/data/store2/Store2Context'
+import 'styles/index.sass'
 
-import 'styles/default.sass'
-import 'styles/modificators.sass'
-
-// import './config'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = initialState({
+      state: this.state,
+      setState: this.setState,
+    })
+  }
+  
   render() {
     return (
       <Router>
-        <StoreContext.Provider value={{store: new store()}}>
-        <Store2Context.Provider value={{store2: new store2()}}>
+        <StoreContext.Provider value={this.state}>
           <Helmet />
           <Switch>
             {routes.map(route =>
               <Route {...route} key={route.path} />
             )}
           </Switch>
-        </Store2Context.Provider>
         </StoreContext.Provider>
       </Router>
     );
   }
 }
 
-export default App;
+export default App

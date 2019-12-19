@@ -91,7 +91,7 @@ class InputDropdown extends Component {
         disabled={this.props.disabled}
         showReset={this.props.showReset}
       />
-      <div className={"form-group__input--dropdown__options " + (this.props.relativeOptionsList && "relative")}>
+      <div className={"form-group__input--dropdown__options " + (this.props.relativeOptionsList && "position-relative")}>
         {this.props.opened && this.renderOptions()}
       </div>
     </Fragment>

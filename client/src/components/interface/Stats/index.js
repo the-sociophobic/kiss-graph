@@ -17,7 +17,7 @@ class Menu extends Component {
   renderKisses = () => (
     <List
       items={this.context.store.get().nodes
-        .filter(node => node.connections >= 3)
+        .filter(node => node.connections >= 2)
         .sort((a, b) => b.connections - a.connections)
         .map(node => [
           <UserNameLink

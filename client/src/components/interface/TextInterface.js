@@ -95,7 +95,7 @@ export default class TextInterface extends Component {
 
     const contentWithFooter = (
       <Fragment>
-        <div className="flex-column relative">
+        <div className="flex-column position-relative">
           <div className="abs-container">
             <div className="scroll-column">
               <div className="flex-container">
@@ -137,12 +137,12 @@ export default class TextInterface extends Component {
               history={this.props.history}
               prevLocation={this.props.prevLocation}
             >
-              <div className="flex-container relative">
+              <div className="flex-container position-relative">
                 {contentWithFooter}
               </div>
             </MobileExpander>
             :
-            <div className="flex-column relative">
+            <div className="flex-column position-relative">
               <div className="abs-container">
                 <div className="flex-container">
                   {contentWithFooter}

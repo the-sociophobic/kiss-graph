@@ -9,7 +9,7 @@ export default [
   },
   {
     nickName: "David Zharnitsky",
-    mentalDisorder: 6,
+    mentalDisorder: 7,
     iq: "\"180\"",
     social: {
       vk: "davidza",
@@ -21,7 +21,7 @@ export default [
   },
   {
     nickName: "Kirill Ermakov",
-    mentalDisorder: 7,
+    mentalDisorder: 7.5,
     iq: 126,
     social: {
       vk: "g1oryboxx",
@@ -32,6 +32,7 @@ export default [
   {
     nickName: "Nikita Baklazhenko",
     mentalDisorder: 5,
+    additionalConnections: 3,
     iq: 126,
     political: {
       LR: 3.25,
@@ -55,6 +56,7 @@ export default [
     nickName: "Kristina Boyarkina",
     mentalDisorder: 4,
     additionalConnections: 26,
+    iq: "\"180\"",
     social: {
       tg: "krsbr",
       vk: "krsbr",
@@ -271,7 +273,7 @@ export default [
   },
   {
     nickName: "Egor Vysberg",
-    mentalDisorder: 3,
+    mentalDisorder: 4,
     social: {
       inst: "vaisbegor"
     }
@@ -319,7 +321,7 @@ export default [
   },
   {
     nickName: "Vadim Zimin",
-    mentalDisorder: 3,
+    mentalDisorder: 5,
     iq: 115,
     social: {
       vk: "6morkov9",
@@ -354,7 +356,7 @@ export default [
   },
   {
     nickName: "Anton Plevako",
-    mentalDisorder: 3.5,
+    mentalDisorder: 4.5,
     iq: 124,
     social: {
       vk: "id108750261",
@@ -386,7 +388,7 @@ export default [
   },
   {
     nickName: "Kira Kastaneda",
-    mentalDisorder: 2.5,
+    mentalDisorder: 4.20,
     iq: 123,
     social: {
       vk: "kastaneda1",
@@ -511,6 +513,7 @@ export default [
   {
     nickName: "Fyodor Ludinov",
     mentalDisorder: 2.5,
+    iq: 110,
     social: {
       vk: "fed_lud",
       inst: "fedlud",
@@ -1592,6 +1595,7 @@ export default [
   },
   {
     nickName: "Evgenia Partsenyak",
+    iq: 121,
     social: {
       inst: "partsernyak",
     },
@@ -2209,9 +2213,10 @@ export default [
     },
   },
   {
-    nickName: "Nastya Uhimenko",
+    nickName: "Nastya Ukhimenko",
     social: {
       vk: "id4953964",
+      inst: "nastyaukhimenko",
     },
   },
   {

@@ -31,7 +31,7 @@ export default class Dropdown extends Component {
 
     return (
       <div
-        className={"relative" + (this.props.disabled ? " universal-disabled": '')}
+        className={"position-relative" + (this.props.disabled ? " universal-disabled": '')}
         ref={this.dropdownAreaRef}
       >
         {this.props.label &&

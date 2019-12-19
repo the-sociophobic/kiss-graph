@@ -14,6 +14,8 @@ import HeatType from 'components/interface/HeatType'
 import HeatMap from 'components/interface/HeatMap'
 import ControlsHelp from 'components/interface/ControlsHelp'
 
+import PoweredByNGINX from 'components/easterEgg/PoweredByNGINX'
+
 
 class Layout extends Component {
   constructor(props) {
@@ -127,6 +129,7 @@ class Layout extends Component {
           /> */}
           <HeatMap />
           <ControlsHelp />
+          <PoweredByNGINX />
         </div>
       </div>
     )
