@@ -10,7 +10,7 @@ import ResizeObserver from 'resize-observer-polyfill'
 
 const targetToCamera = 5
 
-// var rot = 0
+var rot = 0
 
 
 export default class ThreeScene extends Component{

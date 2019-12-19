@@ -674,7 +674,7 @@ export default [
     told: 1569875700,
   },
   {
-    names: ["Ilya Roschin", "Nastya Uhimenko"],
+    names: ["Ilya Roschin", "Nastya Ukhimenko"],
     published: 1570680000,
     told: 1569875700,
   },
@@ -1134,22 +1134,22 @@ export default [
   },
 
   {
-    names: ["Nastya Uhimenko", "Alina Nesmiyan"],
+    names: ["Nastya Ukhimenko", "Alina Nesmiyan"],
     told: 1572119280,
     published: 1572137700,
   },
   {
-    names: ["Nastya Uhimenko", "Anya Novik"],
+    names: ["Nastya Ukhimenko", "Anya Novik"],
     told: 1572119280,
     published: 1572137700,
   },
   {
-    names: ["Nastya Uhimenko", "Ronya Shurze"],
+    names: ["Nastya Ukhimenko", "Ronya Shurze"],
     told: 1572119280,
     published: 1572137700,
   },
   {
-    names: ["Nastya Uhimenko", "Alexander Lebedev"],
+    names: ["Nastya Ukhimenko", "Alexander Lebedev"],
     told: 1572119280,
     published: 1572137700,
   },
@@ -1402,7 +1402,7 @@ export default [
     published: 1573236900,
   },
   {
-    names: ["Nikita Kravchenko", "Nastya Uhimenko"],
+    names: ["Nikita Kravchenko", "Nastya Ukhimenko"],
     commited: 1572830340,
     told: 1573127400,
     published: 1573236900,

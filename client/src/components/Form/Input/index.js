@@ -17,7 +17,7 @@ export default class Input extends Component {
         (this.props.errorMessage && "form-group--error")
       }
     >
-      <div className="relative">
+      <div className="position-relative">
         <input
           ref={this.inputFieldRef}
           type="text"
