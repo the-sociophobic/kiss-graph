@@ -46,7 +46,9 @@ export default [
   {
     nickName: "Tikhon Timanov",
     mentalDisorder: 6.5,
-    iq: 102,
+    // iq1: 102,
+    // iq2: 127,
+    iq: 114,
     social: {
       tg: "zamechatelno",
       inst: "tikhontmnv",
@@ -2334,10 +2336,20 @@ export default [
     },
   },
   {
-    nickName: "Vadim Ashder",
+    nickName: "Vadim Azhder",
     social: {
+      vk: "id172511789",
       tg: "FilthyMedved",
     },
+  },
+  {
+    nickName: "Natasha Tikhomirova",
+    social: {
+      vk: "gnidaichto",
+    },
+    aka: [
+      "Gnida"
+    ]
   },
   {
     nickName: "Sima Radnaeva",

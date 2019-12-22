@@ -1,5 +1,7 @@
 export default data => {
-  let nodes = [], edges = []
+  let nodes = [],
+      edges = []
+
   data
     .split('\n')
     .filter(line => line.length > 5)
@@ -28,13 +30,14 @@ export default data => {
   })
 
   const parsedEdges = edges
-    .map(edge => {
+    .map((edge, index) => {
       const edgeNodes = edge
         .split(' ')
         .map(node => node.replace(/%20/g, ' '))
       return edgeNodes.slice(1).map(node => ({
         node0: edgeNodes[0],
         node1: node,
+        id: index + edgeNodes[0] + node,
       }))
     })
     .reduce((a, b) => [...a, ...b])

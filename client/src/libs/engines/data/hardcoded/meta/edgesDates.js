@@ -532,7 +532,7 @@ export default [
     told: 1559515358,
   },
   {
-    names: ["Tikhon Timanov", "Vadim Ashder"],
+    names: ["Tikhon Timanov", "Vadim Azhder"],
     told: 1559515358,
   },
   {
@@ -1420,7 +1420,7 @@ export default [
     by: "Sasha Chernyshov",
   },
   {
-    names: ["Vadim Ashder", "Anna Karpetyan"],
+    names: ["Vadim Azhder", "Anna Karpetyan"],
     told: 1573576320,
     published: 1573813800,
     by: "Sima Radnaeva",

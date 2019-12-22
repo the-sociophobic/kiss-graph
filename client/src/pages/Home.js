@@ -22,7 +22,7 @@ class Home extends Component {
     return (
       <div className="Home">
         {/* <Helmet>
-          <title>Граф Транзитивных Поцелуев</title>
+          <title>Kiss Graph</title>
         </Helmet> */}
         {/* <Block>
           <p>Hello, {this.state.user ? this.state.user.firstName : '...'}</p>

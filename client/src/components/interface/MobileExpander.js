@@ -33,7 +33,7 @@ export default class MobileExpander extends Component {
     this.updateMaxHeight()
     
     const { prevLocation } = this.props
-    if (prevLocation === "/feed")
+    if (prevLocation === "/news")
       this.setState({state: "opened"})
   }
   componentWillUnmount() {

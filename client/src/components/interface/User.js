@@ -53,7 +53,7 @@ export default class User extends Component {
                 newTab
                 className="secret__link"
               >
-                рандомная ссылка
+                random link
               </ExternalLink>))
           }
         </div>

@@ -9,9 +9,11 @@ class Bitcoins extends Component {
 
   render() {
     return (
-      <b>
-        35KtQ9DUVFAjofZZDA9XRfbapsEV1RCbQ8
-      </b>
+      <div className="mt-5 mx-5">
+        <b className="text-dark">
+          35KtQ9DUVFAjofZZDA9XRfbapsEV1RCbQ8
+        </b>
+      </div>
     )
   }
 }

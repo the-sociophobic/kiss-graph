@@ -23,7 +23,7 @@ class Layout extends Component {
     this.state = {
       retrievedData: undefined,
       nodeToShow: undefined,
-      heatType: this.props.location.search.replace("?", "").split("&")[0],
+      storeConnected: false, //mounts TextInterface only after initial nnode os determined via URLs
     }
     this.threeSceneRef = new React.createRef()
   }
@@ -32,24 +32,31 @@ class Layout extends Component {
     if (iOS())
       window.scrollTo(0, 0)
     
-    const nodeId = this.props.match.params[0]
-    if (nodeId) {
-      let node = this.context.store.get({name: pathToName(nodeId)})
-      if (node === null)
-        node = this.context.store.get({userName: nodeId})
-      if (node !== null)
-        this.setNode(node.id, false, false)
+    if (this.props.location.pathname.includes("/node/")) {
+      const nodeId = this.props.location.pathname.slice("/node/".length)
+
+      if (nodeId) {
+        let node = this.context.store.get({name: pathToName(nodeId)})
+        if (node === null)
+          node = this.context.store.get({userName: nodeId})
+        if (node !== null)
+          this.setNode(node.id, false, false)
+      }
     }
 
+    this.setState({storeConnected: true})
     window.onpopstate = this.handleBrowserHistoryButtons.bind(this)
     window.onpushstate = this.handleBrowserHistoryButtons.bind(this)
   }
 
   handleBrowserHistoryButtons = e => {
-    const nodeLink = this.props.location.pathname.slice("/node/".length)
-    const node = this.context.store.search({link: nodeLink})[0]
-
-    this.setNode(node.id, true, false)
+    if (this.props.location.pathname.includes("/node/")) {
+      const nodeLink = this.props.location.pathname.slice("/node/".length)
+      const node = this.context.store.search({link: nodeLink})[0]
+  
+      this.setNode(node.id, true, false)  
+    }
+    //TODO ???
   }
 
   setNode = (id, transition = true, pushHistory = true) => {
@@ -57,7 +64,8 @@ class Layout extends Component {
 
     if (typeof id === "undefined" || id === -1 || (id.length && id.length === 0)) {
       this.setState({nodeToShow: undefined})
-      history.push(`/node/?${this.state.heatType}`)
+      history.push(`/news/told`)
+      document.title = "Kiss Graph: News / told"
       return
     }
 
@@ -67,11 +75,11 @@ class Layout extends Component {
       return
 
     this.setState({nodeToShow: node})
-    const currentNodeId = this.props.match.params.nodeId || ""
+    const currentNodeId = this.props.location.pathname.slice("/node/".length) || ""
 
     if (currentNodeId !== node.link && pushHistory)
-      history.push(`/node/${node.link}?${this.state.heatType}`)
-    document.title = "Граф Транзитивных Поцелуев: " + node.name
+      history.push(`/node/${node.link}`)
+    document.title = "Kiss Graph: " + node.name
 
     if (this.threeSceneRef.current)
       this.threeSceneRef.current.setCamera(
@@ -79,11 +87,6 @@ class Layout extends Component {
         node.cameraTarget,
         transition
       )
-  }
-
-  setHeatType = type => {
-    this.props.history.push(`${this.props.location.pathname}?${type}`)
-    this.setState({heatType: type})
   }
 
   static contextType = StoreContext
@@ -101,32 +104,30 @@ class Layout extends Component {
 
     return (
       <div className="page-container">
-        <TextInterface
-          {...props}
-        >
-          {this.state.retrievedData &&
-            <div className="interface-container">
-              <div className="interface">
-                {/* {this.props.children} */}
-                <textarea
-                  value={this.state.retrievedData}
-                  rows={40}
-                  cols={20}
-                />
+        {this.state.storeConnected &&
+          <TextInterface
+            {...props}
+          >
+            {this.state.retrievedData &&
+              <div className="interface-container">
+                <div className="interface">
+                  {/* {this.props.children} */}
+                  <textarea
+                    value={this.state.retrievedData}
+                    rows={40}
+                    cols={20}
+                  />
+                </div>
               </div>
-            </div>
-          }
-        </TextInterface>
+            }
+          </TextInterface>
+        }
         <div className="viewer-container" >
           <ThreeScene
             ref={this.threeSceneRef}
             myScene={myScene}
             {...props}
           />
-          {/* <HeatType
-            type={this.state.heatType}
-            setType={type => this.setHeatType(type)}
-          /> */}
           <HeatMap />
           <ControlsHelp />
           <PoweredByNGINX />

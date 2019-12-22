@@ -7,7 +7,7 @@ import UserNameLink from 'components/interface/UserNameLink'
 import List from 'components/interface/List'
 
 
-class Menu extends Component {
+class Stats extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -62,21 +62,29 @@ class Menu extends Component {
   )
 
   render = () => (
-    <RadioHeader options={{
-      kisses: {
-        label: () => <>kisses<Emoji.kiss /></>,
-        content: () => this.renderKisses()
-      },
-      stats: {
-        label: () => <>IQ<Emoji.IQ /></>,
-        content: () => this.renderIQ()
-      },
-      mentalDisorder: {
-        label: () => <>mentalDisorder<Emoji.mentalDisorder /></>,
-        content: () => this.renderMentalDisorder()
-      },
-    }} />
+    <RadioHeader
+      initialOptionFromURL
+      affectURL
+      prevURL="/stats/"
+      options={{
+        kisses: {
+          label: () => <>kisses<Emoji.kiss /></>,
+          content: () => this.renderKisses(),
+          title: "Kiss Graph: Stats / kisses",
+        },
+        iq: {
+          label: () => <>IQ<Emoji.IQ /></>,
+          content: () => this.renderIQ(),
+          title: "Kiss Graph: Stats / IQ",
+        },
+        mental: {
+          label: () => <>mentalDisorder<Emoji.mentalDisorder /></>,
+          content: () => this.renderMentalDisorder(),
+          title: "Kiss Graph: Stats / mental disorders",
+        },
+      }}
+    />
   )
 }
-Menu.contextType = StoreContext
-export default Menu
+Stats.contextType = StoreContext
+export default Stats
