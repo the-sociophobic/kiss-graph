@@ -45,6 +45,10 @@ export default [
     symbol: "🌎",
     name: "world",
   },
+  {
+    symbol: "💀",
+    name: "dead",
+  },
 ].map(emoji => ({
   [emoji.name]: () => (
     <span

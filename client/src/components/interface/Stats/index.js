@@ -61,6 +61,21 @@ class Stats extends Component {
     />
   )
 
+  renderDead = () => (
+    <List
+      items={this.context.store.get().nodes
+        .filter(node => node.dead)
+        .sort((a, b) => b.connections - a.connections)
+        .map(node => [
+          <UserNameLink
+            user={node}
+            setNode={this.props.setNode}
+          />
+        ])
+      }
+    />
+  )
+
   render = () => (
     <RadioHeader
       initialOptionFromURL
@@ -78,9 +93,14 @@ class Stats extends Component {
           title: "Kiss Graph: Stats / IQ",
         },
         mental: {
-          label: () => <>mentalDisorder<Emoji.mentalDisorder /></>,
+          label: () => <>MD<Emoji.mentalDisorder /></>,
           content: () => this.renderMentalDisorder(),
           title: "Kiss Graph: Stats / mental disorders",
+        },
+        dead: {
+          label: () => <>dead<Emoji.dead /></>,
+          content: () => this.renderDead(),
+          title: "Kiss Graph: Stats / dead",
         },
       }}
     />
