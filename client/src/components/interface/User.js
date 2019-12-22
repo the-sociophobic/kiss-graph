@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 
 import StoreContext from 'libs/engines/data/store/StoreContext'
 import UserNameLink from 'components/interface/UserNameLink'
@@ -7,7 +8,7 @@ import Emoji from 'components/Emoji'
 import ExternalLink from 'components/ExternalLink'
 
 
-export default class User extends Component {
+class User extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -69,19 +70,30 @@ export default class User extends Component {
               key={key}
               className="node-info__item"
             >
-              {({
-                  mentalDisorder: () => <Emoji.mentalDisorder />,
-                  iq: () => <Emoji.IQ />,
-                  dead: () => <Emoji.dead />,
-                })[key]()
-              } {node[key]}
-              {key === "mentalDisorder" && "/10 mentalDisorder"}
-              {key === "iq" && " IQ"}
-              {key === "dead" && " dead"}
-            </div>)
+              <button
+                className="button button--active"
+                onClick={() => this.props.history.push("/stats/" + (key === "mentalDisorder" ? "mental" : key))}
+              >
+                {({
+                    mentalDisorder: () => <Emoji.mentalDisorder />,
+                    iq: () => <Emoji.IQ />,
+                    dead: () => <Emoji.dead />,
+                  })[key]()
+                } {node[key]}
+                {key === "mentalDisorder" && "/10 mental disorder"}
+                {key === "iq" && " IQ"}
+                {key === "dead" && " dead"}
+              </button>
+            </div>
+          )
         }
         <div className="node-info__item">
-          <Emoji.kiss /> {node.connections}{node.hiddenConnections ? <> ({node.hiddenConnections}<Emoji.hidden />)</> : ""}:
+          <button
+            className="button button--active"
+            onClick={() => this.props.history.push("/stats/kisses")}
+          >
+            <Emoji.kiss /> {node.connections}{node.hiddenConnections ? <> ({node.hiddenConnections}<Emoji.hidden />)</> : ""}:
+          </button>
         </div>
         <div className="node-info__connections">
           <List items={node.mates
@@ -104,3 +116,5 @@ export default class User extends Component {
     )
   }
 }
+
+export default withRouter(User)
