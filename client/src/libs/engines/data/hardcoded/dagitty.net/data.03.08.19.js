@@ -805,7 +805,7 @@ Uriy%20Galtsev E @0.716,-0.474
 Yuriy%20Khovansky E @0.830,1.063
 Ustina%20Zhulanova E @0.642,-0.226
 Ustya%20Zhulanova E @0.343,0.894
-Vadim%20Ashder E @0.435,0.345
+Vadim%20Azhder E @0.435,0.345
 Vadim%20Zimin E @0.555,0.946
 Valera%20Tsifirov E @0.134,-0.163
 Valeria%20Lavrentyeva E @0.552,-0.420
@@ -1443,7 +1443,7 @@ Tatyana%20Raskalova Kristina%20Boyarkina Sasha%20Chernyshov
 Tatyana%20Ryzhova Nikita%20Danilchenko
 Tatyana%20Surkina Vadim%20Zimin
 Tatyana%20Svirid Antonina%20Dorogova
-Tikhon%20Timanov David%20Zharnitsky Ksusha%20Vlasenko Lev%20Vasilyev Sofia%20Mityaeva Vadim%20Ashder
+Tikhon%20Timanov David%20Zharnitsky Ksusha%20Vlasenko Lev%20Vasilyev Sofia%20Mityaeva Vadim%20Azhder
 Timofey%20Belkin Valeriya%20Lapina
 Timofey%20Shesternyov Ksusha%20Vlasenko Natasha%20Kozhevnikova
 Timur%20Ivashkevich Anya%20Litomina
@@ -1454,7 +1454,7 @@ Ura%20Eroshkin Alexandr%20Leonidov Ira%20Khanakhbeeva
 Yuriy%20Khovansky Ilya%20Maddyson
 Ustina%20Zhulanova Pasha%20Klimachov
 Ustya%20Zhulanova Denis%20Gerasimov
-Vadim%20Ashder Kristina%20Boyarkina Sima%20Radnaeva Sofia%20Mityaeva
+Vadim%20Azhder Kristina%20Boyarkina Sima%20Radnaeva Sofia%20Mityaeva
 Vadim%20Zimin Alina%20Dynay Anastasiya%20Nemilova David%20Zharnitsky Ilya%20Kalmyk Nastya%20IvanovaMonro Nata%20Naumova Sasha%20Chernyshov Sasha%20Kovanova Taisiya%20Razumovskaya Vita%20Polovinkina
 Valera%20Tsifirov Olga%20Maltseva
 Valeriya%20Lapina Kirill%20Ermakov

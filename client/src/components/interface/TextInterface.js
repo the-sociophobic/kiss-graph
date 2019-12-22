@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react'
+import { withRouter } from 'react-router-dom'
 
 import About from 'pages/About'
+import Kontrol from 'pages/Kontrol'
 import Dropdown from 'components/Form/Dropdown'
 
 import { registerListeners, unregisterListeners } from 'libs/utils/preventMobileScrolling'
@@ -11,13 +13,12 @@ import MobileExpander from 'components/interface/MobileExpander'
 import Menu from 'components/interface/Menu'
 
 
-export default class TextInterface extends Component {
+class TextInterface extends Component {
   constructor(props) {
     super(props)
     this.state = {
       currentOptions: [],
       deviceWidth: 0,
-      showAbout: false,
     }
     this.interfaceRef = new React.createRef()
     this.searchBarRef = new React.createRef()
@@ -71,14 +72,21 @@ export default class TextInterface extends Component {
 
   render = () => {
     const { node } = this.props
+    const isAboutPage = this.props.location.pathname === "/about"
+
     const footer = (
       <div className="footer">
-        <p
-          className="link"
-          onClick={() => this.setState({showAbout: !this.state.showAbout})}
-        >
-          {this.state.showAbout ? "back" : "about"}
-        </p>
+        {!isAboutPage &&
+          <p
+            className="link"
+            onClick={() => {
+              this.props.history.push("/about")
+              document.title = "Kiss Graph: About"
+            }}
+          >
+            about
+          </p>
+        }
       </div>
     )
 
@@ -88,10 +96,21 @@ export default class TextInterface extends Component {
         setNode={this.setNode.bind(this)}
       />)
 
-    const content = this.state.showAbout ?
-      <About />
-      :
-      (node ? nodeElem : <Menu setNode={this.setNode.bind(this)} />)
+    let content
+    
+    console.log(node)
+
+    if (isAboutPage) {
+      content = <About />
+      document.title = "Kiss Graph: About"
+    }
+    else if (node && this.props.location.pathname.includes("/node/"))
+      content = nodeElem
+    else if (this.props.location.pathname === "/kontrol")
+      content = <Kontrol />
+    else
+      content = <Menu setNode={this.setNode.bind(this)} />
+      
 
     const contentWithFooter = (
       <Fragment>
@@ -155,3 +174,5 @@ export default class TextInterface extends Component {
     )
   }
 }
+
+export default withRouter(TextInterface)

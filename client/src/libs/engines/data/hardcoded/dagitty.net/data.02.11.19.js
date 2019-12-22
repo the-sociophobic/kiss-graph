@@ -968,7 +968,7 @@ Ura%20Eroshkin E @0.812,0.305
 Uriy%20Galtsev E @0.716,-0.474
 Ustina%20Zhulanova E @0.642,-0.226
 Ustya%20Zhulanova E @0.343,0.894
-Vadim%20Ashder E @0.437,0.351
+Vadim%20Azhder E @0.437,0.351
 Vadim%20Zimin E @0.555,0.946
 Valera%20Tsifirov E @0.134,-0.163
 Valeria%20Lavrentyeva E @0.552,-0.420
@@ -1696,7 +1696,7 @@ Tatyana%20Raskalova Konstantin%20Shirshov Kristina%20Boyarkina Sasha%20Chernysho
 Tatyana%20Ryzhova Nikita%20Danilchenko
 Tatyana%20Surkina Vadim%20Zimin
 Tatyana%20Svirid Antonina%20Dorogova
-Tikhon%20Timanov David%20Zharnitsky Ksusha%20Vlasenko Lev%20Vasilyev Sofia%20Mityaeva Tatyana%20Raskalova Vadim%20Ashder
+Tikhon%20Timanov David%20Zharnitsky Ksusha%20Vlasenko Lev%20Vasilyev Sofia%20Mityaeva Tatyana%20Raskalova Vadim%20Azhder
 Timofey%20Belkin Valeriya%20Lapina
 Timofey%20Shesternyov Ksusha%20Vlasenko Natasha%20Kozhevnikova
 Timur%20Ivashkevich Anya%20Litomina
@@ -1707,7 +1707,7 @@ Turik%20Mordovtsev Kira%20Kastaneda
 Ura%20Eroshkin Alexandr%20Leonidov Ira%20Khanakhbeeva
 Ustina%20Zhulanova Pasha%20Klimachov
 Ustya%20Zhulanova Denis%20Gerasimov
-Vadim%20Ashder Anna%20Karpetyan Kristina%20Boyarkina Natasha%20Gnida%20Tikhomirova Sima%20Radnaeva Sofia%20Mityaeva
+Vadim%20Azhder Anna%20Karpetyan Kristina%20Boyarkina Natasha%20Gnida%20Tikhomirova Sima%20Radnaeva Sofia%20Mityaeva
 Vadim%20Zimin Alina%20Dynay Anastasiya%20Nemilova David%20Zharnitsky Ilya%20Kalmyk Nastya%20IvanovaMonro Nata%20Naumova Sasha%20Chernyshov Sasha%20Kovanova Taisiya%20Razumovskaya Vita%20Polovinkina
 Valera%20Tsifirov Olga%20Maltseva
 Valeriya%20Lapina Kirill%20Ermakov

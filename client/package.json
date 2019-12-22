@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "node-sass": "^4.13.0",
+    "query-string": "^6.9.0",
     "radium": "^0.26.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

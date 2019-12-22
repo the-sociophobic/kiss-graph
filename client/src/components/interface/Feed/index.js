@@ -71,7 +71,7 @@ export default class Feed extends Component {
       return days
     }
 
-    const {edges} = this.context.store.get()
+    const { edges } = this.context.store.get()
 
     this.options.forEach(option => {
       this.setState({[option]: groupByDays(mapNodesToEdges(filterEdgesByProperty(edges, option)), option)})
@@ -116,18 +116,24 @@ export default class Feed extends Component {
 
   render = () => (
     <RadioHeader
+      initialOptionFromURL
+      affectURL
+      prevURL="/news/"
       options={{
         told: {
           label: () => <>told<Emoji.told /></>,
           content: () => this.renderKisses("told"),
+          title: "Kiss Graph: News / told",
         },
         published: {
           label: () => <>published<Emoji.world /></>,
           content: () => this.renderKisses("published"),
+          title: "Kiss Graph: News / published",
         },
         commited: {
           label: () => <>commited<Emoji.kiss /></>,
           content: () => this.renderKisses("commited"),
+          title: "Kiss Graph: News / commited",
         },
       }}
     />
