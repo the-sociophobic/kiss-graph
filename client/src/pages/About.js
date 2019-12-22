@@ -55,7 +55,7 @@ class About extends Component {
           {countable(nodes.length, ["человек", "человека", "человек"])} на графе<br />
           {countable(edges.length, ["связь", "связи", "связей"])}<br />
           {countable(nodes.filter(node => node.offended).length, ["человек", "человека", "человек"])} заявило об оскорблении чувств<br />
-          {countable(nodes.filter(node => node.deceased).length, ["человек", "человека", "человек"])} умерло<br /><br />
+          {countable(nodes.filter(node => node.dead).length, ["человек", "человека", "человек"])} умерло<br /><br />
         </p>
         {articles.map(article => (
           <article className="article">

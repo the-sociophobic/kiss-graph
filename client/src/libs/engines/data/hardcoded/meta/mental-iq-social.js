@@ -394,7 +394,7 @@ export default [
     iq: 123,
     social: {
       vk: "kastaneda1",
-      inst: "moreohmore",
+      inst: "moreoxmore",
     },
     additionalConnections: 1,
   },
@@ -461,7 +461,7 @@ export default [
   {
     nickName: "Viktor Tsoy",
     additionalConnections: 3,
-    deceased: true,
+    dead: true,
   },
   {
     nickName: "Polina Mishago",
@@ -650,11 +650,11 @@ export default [
   },
   {
     nickName: "Roma Anglichanin",
-    deceased: true,
+    dead: true,
   },
   {
     nickName: "Timofey Shesternyov",
-    deceased: true,
+    dead: true,
     social: {
       vk: "id137041777",
       inst: "tima_rab",
@@ -662,7 +662,7 @@ export default [
   },
   {
     nickName: "Roofina Kapkan",
-    deceased: true,
+    dead: true,
   },
   {
     nickName: "Nastya Vladimirova",
@@ -2285,7 +2285,7 @@ export default [
   },
   {
     nickName: "Irina Untold",
-    deceased: true,
+    dead: true,
   },
   {
     nickName: "Sergey Ch",

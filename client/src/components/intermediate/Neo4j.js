@@ -33,7 +33,7 @@ export default class Parser extends Component {
       iq: node.iq,
       avatar: node.avatar,
       offended: node.offended,
-      deceased: node.deceased,
+      dead: node.dead,
       // TODO pos as p3d
       // pos: {
       //   x: node.cameraTarget[0],

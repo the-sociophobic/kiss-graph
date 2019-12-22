@@ -59,7 +59,7 @@ export default class User extends Component {
         </div>
         {Object.keys(node)
           .filter(key =>
-            ["gender", "homosexuality", "mentalDisorder", "iq"]
+            ["gender", "homosexuality", "mentalDisorder", "iq", "dead"]
             .includes(key)
             &&
             typeof node[key] !== "undefined"
@@ -72,10 +72,12 @@ export default class User extends Component {
               {({
                   mentalDisorder: () => <Emoji.mentalDisorder />,
                   iq: () => <Emoji.IQ />,
+                  dead: () => <Emoji.dead />,
                 })[key]()
               } {node[key]}
               {key === "mentalDisorder" && "/10 mentalDisorder"}
               {key === "iq" && " IQ"}
+              {key === "dead" && " dead"}
             </div>)
         }
         <div className="node-info__item">

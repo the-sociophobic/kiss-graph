@@ -69,7 +69,7 @@ export default data => {
       link: nameToPath(userName || node.nickName),
       avatar: meta.avatar,
       offended: meta.offended,
-      deceased: meta.deceased,
+      dead: meta.dead,
       social: meta.social,
     }
   })
