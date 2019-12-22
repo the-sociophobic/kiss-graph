@@ -34,9 +34,9 @@ export default (weight, theme) => {
     }
   if (theme === "dark")
     newColor = {
-      r: newColor.r * .9,
-      g: newColor.g * .9,
-      b: newColor.b * .9,
+      r: newColor.r * .88,
+      g: newColor.g * .88,
+      b: newColor.b * .88,
     }
   newColor = {
     r: Math.round(newColor.r).toString(16),

@@ -13,6 +13,7 @@ $secondary: var(--secondary)
 $link-color: var(--link-color)
 $box-shadow-color: var(--box-shadow-color)
 $box-shadow: 0 5px 15px $box-shadow-color
+$button-color: var(--button-color)
 $onscreen-button-color: var(--onscreen-button-color)
 $mobile-expander-gradient-color-0: var(--mobile-expander-gradient-color-0)
 $mobile-expander-gradient-color-1: var(--mobile-expander-gradient-color-1)
@@ -31,7 +32,7 @@ $default-border-radius: 5px
   line-height: 1
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
-  transition: color 1s, background-color 1s, border-color 1s //OPTIMISE
+  // transition: color 1s, background-color 1s, border-color 1s //OPTIMISE
 
 body, html
 //   font-size: 16px
@@ -48,6 +49,7 @@ button
   border: none
   background-color: rgba(255, 255, 255, 0)
   cursor: pointer
+  outline: none
 
 h1
   // font-size: 32px
@@ -141,7 +143,21 @@ $interface-block-padding: 8px
     padding: $interface-block-padding
     position: relative
 
-
+//REDO THIS SHIT
+.button
+  @extend .noselect
+  display: inline
+  line-height: 1.2
+  // padding: 2px 6px
+  padding: 5px 10px 5px 4px
+  border-radius: 6px
+  background-color: transparent
+  transition: background-color .1s
+  margin-bottom: 6px
+  margin-left: 5px
+  &--active
+    transition: background-color .1s
+    background-color: $button-color
 
 
 
@@ -421,6 +437,7 @@ $arrow-size: 7px
           // font-weight: $font-weight-semibold
           padding: .5rem .8rem
           cursor: pointer
+          transition: none
           &:last-child
             border-bottom-left-radius: 3px
             border-bottom-right-radius: 3px
