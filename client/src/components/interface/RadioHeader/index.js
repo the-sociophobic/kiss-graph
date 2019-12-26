@@ -36,6 +36,7 @@ class RadioHeader extends Component {
       if (matchingURLparams.length > 0)
         state.currentOption = matchingURLparams[0]
     }
+    return null
   }
 
   switchOption = option => {

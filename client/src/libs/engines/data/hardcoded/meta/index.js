@@ -58,7 +58,6 @@ export default data => {
       name: node.nickName,
       posRaw: node.pos,
       pos: pos,
-      cameraPosition: [pos.x, pos.y, pos.z + 5],
       cameraTarget: [pos.x, pos.y, pos.z],
       connections: mates.length + (meta.additionalConnections || 0),
       hiddenConnections: meta.additionalConnections,

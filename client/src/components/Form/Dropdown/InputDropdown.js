@@ -36,16 +36,7 @@ class InputDropdown extends Component {
   }
 
   close = () => {
-    let value
-    if (this.props.required)
-      value = (this.props.options.length > 0 && this.props.options[0].value) || ""
-    else
-      value = this.state.typedValue
-    this.props.onChange(value)
-
     this.props.setOpened(false)
-    this.setState({typedValue: value})
-
     this.props.inputFieldRef && this.props.inputFieldRef.current.blur()
   }
 
@@ -53,43 +44,51 @@ class InputDropdown extends Component {
     this.setState({neverTypedFlag: false})
     this.setState({typedValue: value})
     this.props.updateOptions && this.props.updateOptions(value)
-    this.props.onChange("")
+    if (value === "")
+      this.props.onChange("")
   }
 
   setValue = value => {
-    // this.setState({typedValue: value})
+    this.setState({typedValue: value})
     this.props.onChange(value)
   }
 
-  renderOptions = () => this.props.options && this.props.options
-    .map((option, index) => {
-      const style = option.style || {}
+  onFocus = () => {
+    this.props.updateOptions && this.props.updateOptions(this.state.typedValue)
+    this.props.setOpened(true)
+  }
 
-      return (
-        <div
-          key={index}
-          style={style}
-          className="form-group__input--dropdown__options__item"
-          onClick={() => this.setValue(typeof option === "string" ? option : option.value)}
-        >
-          {typeof option === "string" ? option : option.render}
-        </div>
-      )
-    })
+  renderOptions = () => //(this.props.value !== this.state.typedValue) &&
+    this.props.options && this.props.options
+      .map((option, index) => {
+        const style = option.style || {}
+
+        return (
+          <div
+            key={index}
+            style={style}
+            className="form-group__input--dropdown__options__item"
+            onClick={() => this.setValue(typeof option === "string" ? option : option.value)}
+          >
+            {typeof option === "string" ? option : option.render}
+          </div>
+        )
+      })
 
   render = () => (
     <Fragment>
       <Input
         inputFieldRef={this.props.inputFieldRef}
         //somehow it blurs input on iOS
-        // className={"form-group__input--dropdown " + (this.props.opened ? "active" : '')}
+        className={"form-group__input--dropdown " + this.props.className}
         placeholder={this.props.placeholder}
         required={this.props.required}
         value={(this.state.neverTypedFlag && this.props.value) || this.state.typedValue}
         onChange={value => this.onChange(value)}
-        onFocus={() => this.props.setOpened(true)}
+        onFocus={() => this.onFocus()}
         disabled={this.props.disabled}
         showReset={this.props.showReset}
+        onKeyDown={this.props.onKeyDown}
       />
       <div className={"form-group__input--dropdown__options " + (this.props.relativeOptionsList && "position-relative")}>
         {this.props.opened && this.renderOptions()}
