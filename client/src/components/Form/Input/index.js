@@ -28,6 +28,7 @@ export default class Input extends Component {
           onChange={event => this.props.onChange(event.target.value)}
           onFocus={this.props.onFocus}
           disabled={this.props.disabled}
+          onKeyDown={this.props.onKeyDown}
         />
         <label className="form-group__label">
           {this.props.label}

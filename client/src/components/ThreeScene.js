@@ -82,7 +82,6 @@ export default class ThreeScene extends Component{
       this.props.setNode(this.props.nodeToShow.id, false)
       //setCamera() doesn't fire in setNode...
       this.setCamera(
-        this.props.nodeToShow.cameraPosition,
         this.props.nodeToShow.cameraTarget,
         false
       )
@@ -158,7 +157,7 @@ export default class ThreeScene extends Component{
     this.controls.update()
   }
 
-  setCamera = (position, target, transition = true) => {
+  setCamera = (target, transition = true) => {
     // this.camera.position.fromArray(position)
     // this.controls.target.fromArray(target)
     // const newPosition = new THREE.Vector3(...position)

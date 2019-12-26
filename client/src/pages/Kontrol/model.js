@@ -1,0 +1,17 @@
+export default {
+  id: -1,
+  name: "",
+  pos: {},
+  cameraTarget: {},
+  connections: 0,
+  hiddenConnections: 0,
+  mates: [],
+  mentalDisorder: undefined,
+  iq: undefined,
+  userName: undefined,
+  link: undefined,
+  avatar: undefined,
+  offended: undefined,
+  dead: undefined,
+  social: {},
+}

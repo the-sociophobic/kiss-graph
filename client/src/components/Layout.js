@@ -83,7 +83,6 @@ class Layout extends Component {
 
     if (this.threeSceneRef.current)
       this.threeSceneRef.current.setCamera(
-        node.cameraPosition,
         node.cameraTarget,
         transition
       )

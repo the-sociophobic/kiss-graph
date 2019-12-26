@@ -3,14 +3,15 @@ import { withRouter } from 'react-router-dom'
 
 import About from 'pages/About'
 import Kontrol from 'pages/Kontrol'
-import Dropdown from 'components/Form/Dropdown'
 
 import { registerListeners, unregisterListeners } from 'libs/utils/preventMobileScrolling'
-import colorFromWeight from 'libs/utils/colorFromWeight'
 
 import User from 'components/interface/User'
 import MobileExpander from 'components/interface/MobileExpander'
 import Menu from 'components/interface/Menu'
+import NameSearch from 'components/interface/NameSearch'
+
+import StoreContext from 'libs/engines/data/store/StoreContext'
 
 
 class TextInterface extends Component {
@@ -41,33 +42,12 @@ class TextInterface extends Component {
   }
 
   setNode = nodeName => {
-    if (nodeName.length > 0)
-      this.updateOptions(nodeName)
-    const node = this.props.data.store.get({name: nodeName})
+    const node = this.context.store.get({name: nodeName})
 
     if (node === null)
       this.props.setNode()
     else
       this.props.setNode(node.id)
-  }
-
-  updateOptions = value => {
-    if (typeof value === "undefined" || value.length === 0)
-      this.setState({currentOptions: []})
-    else {
-      const options = this.props.data.store.search({name: value, userName: value})
-        .slice(0, window.innerHeight > 736 ? 7 : 5)
-        .map(option => ({
-          value: option.name,
-          style: {':hover': {
-            backgroundColor: colorFromWeight(option.uv, "light"),
-          }},
-          render: <p className="p">
-              {option.name} <em>{option.userName ? ` (@${option.userName})` : ""}</em>
-            </p>
-        }))
-      this.setState({currentOptions: options})
-    }
   }
 
   render = () => {
@@ -98,8 +78,6 @@ class TextInterface extends Component {
 
     let content
     
-    console.log(node)
-
     if (isAboutPage) {
       content = <About />
       document.title = "Kiss Graph: About"
@@ -140,14 +118,9 @@ class TextInterface extends Component {
             ref={this.searchBarRef}
             className="text-interface__search-bar"
           >
-            <Dropdown
-              input
-              value={(this.props.nodeToShow && this.props.nodeToShow.name) || ""}
-              options={this.state.currentOptions}
-              updateOptions={value => this.updateOptions(value)}
-              onChange={value => this.setNode(value)}
-              placeholder="Search..."
-              showReset
+            <NameSearch
+              nodeToShow={this.props.nodeToShow}
+              setNode={value => this.setNode(value)}
             />
           </div>
           
@@ -174,5 +147,7 @@ class TextInterface extends Component {
     )
   }
 }
+
+TextInterface.contextType = StoreContext
 
 export default withRouter(TextInterface)
