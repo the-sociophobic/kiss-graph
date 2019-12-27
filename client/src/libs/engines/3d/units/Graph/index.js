@@ -45,7 +45,7 @@ export default class Graph extends Unit {
       themeGroup.add(this.createNodeSprite(node, fontColor, this.props)))
     scene.add(themeGroup)
     this.theme[color] = themeGroup
-    addThemeEventListener(this.updateTheme)
+    // addThemeEventListener(this.updateTheme)
   }
 
   createNodeSprite = (node, color, props) => {
@@ -114,6 +114,8 @@ export default class Graph extends Unit {
     }
   }
 
-  animate = () => {}
+  animate = () => {
+    this.updateTheme()
+  }
   dispose() {}
 }
