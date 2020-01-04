@@ -17,15 +17,11 @@ export default data => {
     const pos = node.split(' E @')[1].split(',')
     return {
       nickName: nickName,
-      firstName: nickName.split(' ')[0],
-      lastName: nickName.includes(' ') ?
-        nickName.split(' ').slice(1).reduce((a, b) => a + ' ' + b)
-        : '',
-        pos: {
-          x: (Number(pos[0]) - .5) * 2,
-          y: (.5 - Number(pos[1])),
-          z: 0,
-        }
+      pos: {
+        x: (Number(pos[0]) - .5) * 2,
+        y: (.5 - Number(pos[1])),
+        z: 0,
+      }
     }
   })
 

@@ -10,7 +10,6 @@ import TextInterface from 'components/interface/TextInterface'
 import iOS from 'libs/utils/iOS'
 import { pathToName } from 'libs/utils/stringTransforms'
 
-import HeatType from 'components/interface/HeatType'
 import HeatMap from 'components/interface/HeatMap'
 import ControlsHelp from 'components/interface/ControlsHelp'
 
@@ -83,7 +82,7 @@ class Layout extends Component {
 
     if (this.threeSceneRef.current)
       this.threeSceneRef.current.setCamera(
-        node.cameraTarget,
+        node.pos,
         transition
       )
   }

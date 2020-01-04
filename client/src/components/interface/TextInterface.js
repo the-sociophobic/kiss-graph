@@ -10,6 +10,7 @@ import User from 'components/interface/User'
 import MobileExpander from 'components/interface/MobileExpander'
 import Menu from 'components/interface/Menu'
 import NameSearch from 'components/interface/NameSearch'
+import WeightColorsStyle from 'components/interface/WeightColorsStyle'
 
 import StoreContext from 'libs/engines/data/store/StoreContext'
 
@@ -113,6 +114,7 @@ class TextInterface extends Component {
         ref={this.interfaceRef}
         className="text-interface"
       >
+        <WeightColorsStyle />
         <div className="flex-container">
           <div
             ref={this.searchBarRef}

@@ -39,7 +39,7 @@ export default class ThreeScene extends Component{
     if (ViewerDiv.clientWidth < 500 || ViewerDiv.clientHeight < 500)
       this.renderer.setPixelRatio(2)
     else
-      this.renderer.setPixelRatio(1)
+      this.renderer.setPixelRatio(2)
   }
 
   componentDidMount() {
@@ -82,7 +82,7 @@ export default class ThreeScene extends Component{
       this.props.setNode(this.props.nodeToShow.id, false)
       //setCamera() doesn't fire in setNode...
       this.setCamera(
-        this.props.nodeToShow.cameraTarget,
+        this.props.nodeToShow.pos,
         false
       )
     }
@@ -164,7 +164,7 @@ export default class ThreeScene extends Component{
     // console.log(target)
     if (typeof target === "undefined" || this.transitions.length > 0)
       return
-    const newTarget = new THREE.Vector3(...target)
+    const newTarget = new THREE.Vector3(target.x, target.y, target.z)
     const newPosition = newTarget.clone()
       .add(this.camera.position.clone()
         .sub(this.controls.target)

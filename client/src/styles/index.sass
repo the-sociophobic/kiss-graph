@@ -32,7 +32,6 @@ $default-border-radius: 5px
   line-height: 1
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
-  transition: color 1s, background-color 1s, border-color 1s //OPTIMISE
 
 body, html
 //   font-size: 16px
@@ -90,6 +89,9 @@ body, html
   -moz-user-select: none;       /* Firefox */
   -ms-user-select: none;        /* Internet Explorer/Edge */
   user-select: none;            /* Non-prefixed version, currently supported by Chrome and Opera */
+
+.theme-change-transition
+  transition: color 1s, background-color 1s, border-color 1s
 
 //REDO THIS SHIT
 .half
@@ -363,7 +365,7 @@ $arrow-size: 7px
     color: $dark-gray
   &--simple
     display: inline
-    line-height: 1.6
+    line-height: 1.8
     .link
       font-size: 14px
       color: $dark-dark-gray
@@ -443,6 +445,8 @@ $arrow-size: 7px
             border-bottom-right-radius: 3px
           &:hover
             // background-color: $secondary
+            p.p
+              color: white
           p.p
             line-height: 1.35
             font-size: 16px

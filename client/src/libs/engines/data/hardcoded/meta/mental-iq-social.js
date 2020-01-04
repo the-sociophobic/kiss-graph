@@ -1548,7 +1548,7 @@ export default [
     nickName: "Polina Savosina",
     social: {
       vk: "poinasavosina",
-      inst: "polinasavosina",
+      inst: "poinasavosina",
     },
   },
   {
@@ -2113,6 +2113,12 @@ export default [
     },
   },
   {
+    nickName: "Afri",
+    social: {
+      inst: "ofrikiki",
+    },
+  },
+  {
     nickName: "Vera Kachinskaya",
     social: {
       inst: "kachinskaiaa",
@@ -2634,6 +2640,7 @@ export default [
   {
     nickName: "Ivan Naumov",
     social: {
+      vk: "ivnmv",
       inst: "ivnmv_",
     },
   },
@@ -2679,6 +2686,12 @@ export default [
     nickName: "Veronika Petrukhina",
     social: {
       vk: "vspetrukhina",
+    },
+  },
+  {
+    nickName: "Alina Lukashevich",
+    social: {
+      vk: "lukashevich_ali",
     },
   },
   // {

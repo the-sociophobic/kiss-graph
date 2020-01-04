@@ -3,7 +3,6 @@ import edgesDates from './edgesDates'
 import position from 'libs/engines/data/hardcoded/position/02.11.19.json'
 // import position from 'libs/engines/data/hardcoded/position/bojack.json'
 
-import colorFromWeight from 'libs/utils/colorFromWeight'
 import { nameToPath } from 'libs/utils/stringTransforms'
 
 export default data => {
@@ -58,18 +57,17 @@ export default data => {
       name: node.nickName,
       posRaw: node.pos,
       pos: pos,
-      cameraTarget: [pos.x, pos.y, pos.z],
       connections: mates.length + (meta.additionalConnections || 0),
       hiddenConnections: meta.additionalConnections,
       mates: mates,
-      mentalDisorder: meta.mentalDisorder,
-      iq: meta.iq,
       userName: userName,
       link: nameToPath(userName || node.nickName),
-      avatar: meta.avatar,
-      offended: meta.offended,
-      dead: meta.dead,
       social: meta.social,
+      iq: meta.iq,
+      mentalDisorder: meta.mentalDisorder,
+      dead: meta.dead,
+      offended: meta.offended,
+      avatar: meta.avatar,
     }
   })
 
@@ -78,21 +76,11 @@ export default data => {
       nodes.map(node => node.connections)))
   .sort((a, b) => a - b)
 
-  const positionInArray = (array, value) => {
-    let i
-    for (i = 0; value > array[i]; i++)
-      ;
-    return i
-  }
-  const nodeUV = weight => positionInArray(distribution, weight) / distribution.length
+  const nodeUV = weight => distribution.indexOf(weight) / distribution.length
 
   nodes = nodes.map(node => ({
     ...node,
     uv: nodeUV(node.connections),
-    color: {
-      dark: colorFromWeight(nodeUV(node.connections), "dark"),
-      light: colorFromWeight(nodeUV(node.connections), "light"),
-    }
   }))
 
   return {

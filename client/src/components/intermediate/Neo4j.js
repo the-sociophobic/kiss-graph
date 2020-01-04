@@ -40,7 +40,7 @@ export default class Parser extends Component {
       //   y: node.cameraTarget[1],
       //   z: node.cameraTarget[2],
       // },
-      pos: `point({x:${node.cameraTarget[0]}, y:${node.cameraTarget[1]}, z:${node.cameraTarget[2]}})`
+      pos: `point({x:${node.pos.x}, y:${node.pos.y}, z:${node.pos.z}})`
     }))
 
     // console.log(JSON.stringify(nodes).replace(/\"([^(\")"]+)\":/g,"$1:"))

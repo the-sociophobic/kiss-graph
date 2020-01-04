@@ -16,15 +16,16 @@ export default class ControlsHelp extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener( 'mousedown', () => this.setState({click: true}), { passive: false } )
-    window.addEventListener( 'mouseup', () => this.setState({click: false}), { passive: false } )
     window.addEventListener( 'keydown', e => e.shiftKey && this.setState({shift: true}))
     window.addEventListener( 'keyup', e => !e.shiftKey && this.setState({shift: false})  )
 
     let threeElem = document.getElementsByClassName("Viewer")
     threeElem = threeElem && threeElem[0]
-    if (threeElem)
+    if (threeElem) {
       threeElem.addEventListener( 'wheel', () => this.onScroll(), { passive: false } )
+      threeElem.addEventListener( 'mousedown', () => this.setState({click: true}), { passive: false } )
+      threeElem.addEventListener( 'mouseup', () => this.setState({click: false}), { passive: false } )
+    }
 }
 
   onScroll = () => {

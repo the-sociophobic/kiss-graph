@@ -39,19 +39,14 @@ class store {
 
   get = props => {
     if (typeof props === "undefined")
-      // return {
-      //   nodes: this.metaData.nodes,
-      //   edges: this.metaData.edges,
-      // }
-    //RETURN META INFO
-    return {
-      nodesTotalLength: this.metaData.nodes.length,
-      edgesTotalLength: this.metaData.edges.length,
-      weightSet: this.weightSet,
-      maxWeigth: this.maxWeight,
-      nodes: this.metaData.nodes,
-      edges: this.metaData.edges,
-    }
+      return {
+        nodesTotalLength: this.metaData.nodes.length,
+        edgesTotalLength: this.metaData.edges.length,
+        weightSet: this.weightSet,
+        maxWeigth: this.maxWeight,
+        nodes: this.metaData.nodes,
+        edges: this.metaData.edges,
+      }
 
     const { id, name, userName, version } = props
 

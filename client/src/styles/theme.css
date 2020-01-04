@@ -9,7 +9,7 @@
   --dark-dark-gray: #555555;
   --light-light-gray: #f3f6f7;
   /* --apple-item-gray: rgba(118, 120, 119, .075); */
-  --apple-item-gray: rgba(118, 120, 119, .055);
+  --apple-item-gray: rgba(118, 120, 119, .035);
   --secondary: #aaff09;
   --link-color: #0000ee;
   --box-shadow-color: rgba(0, 0, 0, .35);
@@ -31,7 +31,7 @@
     --apple-item-gray: rgba(107, 105, 106, .25);
     --secondary: #4400f6;
     --link-color: #ffff11;
-    --box-shadow-color: rgba(255, 255, 255, .35);
+    --box-shadow-color: rgba(0, 0, 0, .65);
     --button-color: rgba(255, 255, 255, .25);
     --onscreen-button-color: rgba(255, 255, 255, .5);
     --mobile-expander-gradient-color-0: rgba(0, 0, 0, 1);

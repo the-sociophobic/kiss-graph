@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 import Dropdown from 'components/Form/Dropdown'
-import colorFromWeight from 'libs/utils/colorFromWeight'
 import StoreContext from 'libs/engines/data/store/StoreContext'
 
 
@@ -22,7 +21,7 @@ class NameSearch extends Component {
         .map(option => ({
           value: option.name,
           style: {':hover': {
-            backgroundColor: colorFromWeight(option.uv, "light"),
+            backgroundColor: `var(--weight-color-${option.connections})`,
           }},
           render: <p className="p">
               {option.name} <em>{option.userName ? ` (@${option.userName})` : ""}</em>
