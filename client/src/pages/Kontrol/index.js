@@ -1,36 +1,32 @@
 import React, { Component } from 'react'
+
 import StoreContext from 'libs/engines/data/store/StoreContext'
-import NameSearch from 'components/interface/NameSearch'
 // import Neo4j from 'components/intermediate/Neo4j'
-
 import EditNode from './EditNode'
-import model from './model'
+import myDate from 'libs/utils/myDate'
 
-
-const createEmptyNode = (name, id) => ({
-  ...model,
-  id: id,
-  name: name,
-})
 
 class Kontrol extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      nodeAName: "",
-      nodeA: undefined,
-      nodeBName: "",
-      nodeB: undefined,
+      nodeAId: -1,
+      nodeBId: -1,
+      commited: 0,
+      told: 0,
+      published: 0,
     }
   }
 
-  setNode = (nodeName, stateNodeName) => {
-    const node = this.context.store.get({name: nodeName})
+  connectNodes = () => {
+    const { nodeAId, nodeBId } = this.state
 
-    if (node === null)
-      this.setState({[stateNodeName]: createEmptyNode(nodeName, this.context.store.get().nodes.length)})
-    else
-      this.setState({[stateNodeName]: node})
+    if (nodeAId === -1 || nodeBId === -1)
+      return
+
+    this.context.store.push({
+      
+    })
   }
 
   render() {
@@ -38,33 +34,22 @@ class Kontrol extends Component {
 
     return (
       <div>
-        nodes: {data.nodes.length}<br />
-        edges: {data.edges.length}
-        <NameSearch
-          nodeToShow={this.state.nodeA}
-          setNode={value => this.setNode(value, "nodeA")}
-          onKeyDown={e => e.key === "Enter" && this.setNode(this.state.nodeAName, "nodeA")}
-          className="mb-4"
-        />
-        {this.state.nodeA &&
+        <button
+          className="button"
+          onClick={() => this.connectNodes()}
+        >
+          Connect
+        </button>
+        <div className="">
           <EditNode
             node={this.state.nodeA}
-            saveNode={node => {}} //TODO
+            onChange={value => this.setState({nodeA: value})} //TODO
           />
-        }
-        <NameSearch
-          nodeToShow={this.state.nodeB}
-          setNode={value => this.setNode(value, "nodeB")}
-          onKeyDown={e => e.key === "Enter" && this.setNode(this.state.nodeBName, "nodeB")}
-          className="mb-4"
-        />
-        {this.state.nodeB &&
           <EditNode
             node={this.state.nodeB}
-            saveNode={node => {}} //TODO
+            onChange={value => this.setState({nodeB: value})} //TODO
           />
-        }
-        {/* <Neo4j /> */}
+        </div>
       </div>
     )
   }

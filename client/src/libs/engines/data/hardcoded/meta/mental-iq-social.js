@@ -2628,6 +2628,7 @@ export default [
     nickName: "Masha Chukalskaya",
     social: {
       vk: "slakuch",
+      inst: "mmurriam",
     },
   },
   {

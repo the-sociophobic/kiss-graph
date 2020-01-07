@@ -1,7 +1,8 @@
 @import '~bootstrap/scss/bootstrap.scss'
 @import './theme.css'
+@import './outdated.sass'
 
-$red: var(--red)
+$red: var(--red-color)
 $light: var(--main-background)
 $dark: var(--default-font-color)
 $light-gray: var(--light-gray)
@@ -9,7 +10,7 @@ $dark-gray: var(--dark-gray)
 $dark-dark-gray: var(--dark-dark-gray)
 $light-light-gray: var(--light-light-gray)
 $apple-item-gray: var(--apple-item-gray)
-$secondary: var(--secondary)
+$secondary: var(--secondary-color)
 $link-color: var(--link-color)
 $box-shadow-color: var(--box-shadow-color)
 $box-shadow: 0 5px 15px $box-shadow-color
@@ -18,9 +19,15 @@ $onscreen-button-color: var(--onscreen-button-color)
 $mobile-expander-gradient-color-0: var(--mobile-expander-gradient-color-0)
 $mobile-expander-gradient-color-1: var(--mobile-expander-gradient-color-1)
 $mobile-expander-gradient: linear-gradient($mobile-expander-gradient-color-0, $mobile-expander-gradient-color-1)
-$input-height: 32px
+
+$input-height: 32px 
 $default-border-radius: 5px
 
+$mobile-expander-area-height: 30px
+$mobile-expander-button-width: 40px
+$mobile-expander-button-height: 5px
+
+  
 *
   font-family: -apple-system, system-ui, Roboto, "Open Sans", "Helvetica Neue", sans-serif
   font-weight: normal
@@ -36,6 +43,7 @@ $default-border-radius: 5px
 body, html
 //   font-size: 16px
   // font-size: 1em
+  background: $light
   
 
 a
@@ -44,12 +52,6 @@ a
 p
   margin-bottom: 0
   
-button
-  border: none
-  background-color: rgba(255, 255, 255, 0)
-  cursor: pointer
-  outline: none
-
 h1
   // font-size: 32px
   font-size: 2em
@@ -92,13 +94,6 @@ body, html
 
 .theme-change-transition
   transition: color 1s, background-color 1s, border-color 1s
-
-//REDO THIS SHIT
-.half
-  width: 50%
-  overflow-y: auto
-  float: left
-
     
 .App
   max-height: 100vh
@@ -111,12 +106,6 @@ body, html
     display: flex
     flex-direction: column
     align-items: stretch
-
-.container
-  height: 100%
-  margin: auto
-  margin-top: 0
-  margin-bottom: 0
 
 .smart-content
   position: absolute
@@ -148,9 +137,11 @@ $interface-block-padding: 8px
 //REDO THIS SHIT
 .button
   @extend .noselect
+  border: none
+  cursor: pointer
+  outline: none !important
   display: inline
   line-height: 1.2
-  // padding: 2px 6px
   padding: 5px 10px 5px 4px
   border-radius: 6px
   background-color: transparent
@@ -160,7 +151,6 @@ $interface-block-padding: 8px
   &--active
     transition: background-color .1s
     background-color: $button-color
-
 
 
 
@@ -305,12 +295,17 @@ $arrow-size: 7px
 
 .text-interface
   width: $text-interface-width
+  // transition: width .15s
   height: 100%
   background-color: $light
   z-index: 10000
+  position: relative
   @media (min-width: 1025px)
     box-shadow: -12px 0 35px $box-shadow-color
-    overflow: hidden
+    @media (prefers-color-scheme: dark)
+      box-shadow: 12px -12px 25px $box-shadow-color
+      border-right: 1px solid var(--light-gray)
+    // overflow-y: hidden
   @media (max-width: 1024px)
     width: 100%
     height: auto
@@ -318,16 +313,60 @@ $arrow-size: 7px
   &__search-bar
     padding: 10px
   .node-info
-    &__item
+    &__tags
       width: 100%
       line-height: 22px
       margin-bottom: 3px
+      padding: 0 5px
+      margin-bottom: 10px
+      &__item
+        @extend .button
+        @extend .button--active
+        margin: 0 6px 6px 0
     &__connections
       padding-left: 5px
-
-
   &__content
     padding: 0px 11px 50px
+  &--spread
+    width: $text-interface-width * 2
+  &__spread-button
+    @media (max-width: 1024px)
+      display: none
+    @extend .button
+    position: absolute
+    width: $mobile-expander-area-height
+    top: 0
+    right: calc(-#{$mobile-expander-area-height})
+    height: 100%
+    cursor: pointer
+    opacity: .5
+    &:hover
+      opacity: .9
+    &::after, &::before
+      position: absolute
+      right: calc((#{$mobile-expander-area-height} - #{$mobile-expander-button-height}) / 2)
+      content: ""
+      border-radius: $mobile-expander-button-height * 2
+      background-color: $dark-gray
+      height: $mobile-expander-button-width / 2 + $mobile-expander-button-height / 1.1
+      width: $mobile-expander-button-height
+      transition: transform .08s
+    &::before
+      bottom: calc((100% - #{$mobile-expander-button-width} - #{$mobile-expander-button-height}) / 2)
+      transform-origin: center right
+    &::after
+      top: calc((100% - #{$mobile-expander-button-width} - #{$mobile-expander-button-height}) / 2)
+      transform-origin: center left
+    &--opened
+      &::before
+        transform: rotate(-15deg) translate(-$mobile-expander-button-height / 2, 0)
+      &::after
+        transform: rotate(15deg) translate(-$mobile-expander-button-height / 2, 0)
+    &--closed
+      &::before
+        transform: rotate(15deg) translate($mobile-expander-button-height / 2, 0)
+      &::after
+        transform: rotate(-15deg) translate($mobile-expander-button-height / 2, 0)
 
 
 .username-link
@@ -374,6 +413,16 @@ $arrow-size: 7px
       cursor: pointer
 
       
+.input
+  width: 100%
+  line-height: $input-height
+  padding: 0 10px
+  font-size: 16px
+  outline: none
+  border: 1px solid $light-gray
+  background: $light-light-gray
+  -webkit-appearance: none
+  border-radius: $default-border-radius
 
 .form-group
   // padding: 14px 10px 0
@@ -386,16 +435,8 @@ $arrow-size: 7px
     top: -15px
     left: 15px
   &__input
+    @extend .input
     position: relative
-    width: 100%
-    line-height: $input-height
-    padding: 0 10px
-    font-size: 16px
-    outline: none
-    border: 1px solid $light-gray
-    background: $light-light-gray
-    -webkit-appearance: none
-    border-radius: $default-border-radius
     &::placeholder
       color: #b1b1b1
 
@@ -475,11 +516,37 @@ $reset-size: 22px
     height: $reset-size
     width: $reset-size
 
+.custom-checkbox
+  display: inline
+  padding-left: 22px
+  margin-right: 16px
+  position: relative
+  cursor: pointer
+  &::before
+    content: ""
+    position: absolute
+    left: 0
+    top: 1px
+    border: 2px solid $dark-gray
+    border-radius: 1px
+    width: 16px
+    height: 16px
+    opacity: .85
+  &:hover &::before
+    opacity: 1
+  &--checked
+    &::after
+      content: ""
+      position: absolute
+      left: 5px
+      top: -5px
+      width: 10px
+      height: 18px
+      border-right: 3px solid $secondary
+      border-bottom: 3px solid $secondary
+      transform: rotate(45deg)
+        
 
-
-$mobile-expander-area-height: 30px
-$mobile-expander-button-width: 40px
-$mobile-expander-button-height: 5px
 
 .mobile-expander
   width: 100%
@@ -691,7 +758,8 @@ $mobile-expander-button-height: 5px
 
 .side-menu-height
   position: absolute
-  top: 35.5%
+  // top: 35.5%
+  top: 37.5%
   height: 25%
   min-height: 180px
   @media (max-width: 1024px)
@@ -835,13 +903,15 @@ span.emoji
 
 
 .secret
-  padding: 0 5px 10px
+  padding: 0 5px
+  margin-bottom: 10px
   &__link
-    display: block
-    width: 100%
+    display: inline-block
+    // width: 100%
     font-size: 14px
     line-height: 20px
     color: $light-gray !important
+    margin-right: 10px
 
 
 
@@ -875,3 +945,21 @@ span.emoji
   top: 15px
   right: 12px
   color: $dark-dark-gray
+
+
+
+
+.edit-node
+  width: 50%
+  float: left
+  &__input
+    margin-bottom: 11px
+    input
+      @extend .input
+      height: 22px
+      font-size: 14px
+      border-radius: 2px
+      padding-left: 6px
+  &__button
+    @extend .button
+  

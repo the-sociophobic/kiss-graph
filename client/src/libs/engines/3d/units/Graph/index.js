@@ -6,7 +6,8 @@ import Unit from 'libs/engines/3d/Unit'
 import HeatGraph from './HeatGraph'
 
 import tapEvent from 'libs/utils/tapEvent'
-import { currentTheme, addThemeEventListener } from 'libs/utils/colorTheme'
+// import { currentTheme, addThemeEventListener } from 'libs/utils/colorTheme'
+import { currentTheme } from 'libs/utils/colorTheme'
 
 export default class Graph extends Unit {
   constructor(props) {

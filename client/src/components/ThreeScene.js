@@ -13,7 +13,7 @@ const targetToCamera = 5
 var rot = 0
 
 
-export default class ThreeScene extends Component{
+export default class ThreeScene extends Component {
   constructor(props) {
     super(props)
     this.viewerRef = new React.createRef()

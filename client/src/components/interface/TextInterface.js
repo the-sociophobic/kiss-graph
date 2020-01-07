@@ -21,6 +21,7 @@ class TextInterface extends Component {
     this.state = {
       currentOptions: [],
       deviceWidth: 0,
+      desktopSpread: false,
     }
     this.interfaceRef = new React.createRef()
     this.searchBarRef = new React.createRef()
@@ -112,8 +113,12 @@ class TextInterface extends Component {
     return (
       <div
         ref={this.interfaceRef}
-        className="text-interface"
+        className={"text-interface " + (this.state.desktopSpread && "text-interface--spread")}
       >
+        <button
+          className={"text-interface__spread-button " + (this.state.desktopSpread ? "text-interface__spread-button--opened" : "text-interface__spread-button--closed")}
+          onClick={() => this.setState({desktopSpread: !this.state.desktopSpread})}
+        />
         <WeightColorsStyle />
         <div className="flex-container">
           <div
@@ -121,8 +126,8 @@ class TextInterface extends Component {
             className="text-interface__search-bar"
           >
             <NameSearch
-              nodeToShow={this.props.nodeToShow}
-              setNode={value => this.setNode(value)}
+              node={this.props.nodeToShow}
+              onChange={value => this.setNode(value)}
             />
           </div>
           
