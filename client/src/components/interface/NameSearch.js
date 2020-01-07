@@ -34,10 +34,10 @@ class NameSearch extends Component {
   render = () => (
     <Dropdown
       input
-      value={(this.props.nodeToShow && this.props.nodeToShow.name) || ""}
+      value={(this.props.node && this.props.node.name) || ""}
       options={this.state.currentOptions}
       updateOptions={value => this.updateOptions(value)}
-      onChange={value => this.props.setNode(value)}
+      onChange={value => this.props.onChange(value)}
       placeholder="Search..."
       showReset
       onKeyDown={this.props.onKeyDown}

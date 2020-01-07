@@ -58,20 +58,20 @@ class User extends Component {
               </ExternalLink>))
           }
         </div>
-        {Object.keys(node)
-          .filter(key =>
-            ["gender", "homosexuality", "mentalDisorder", "iq", "dead"]
-            .includes(key)
-            &&
-            typeof node[key] !== "undefined"
-          )
-          .map(key =>
-            <div
-              key={key}
-              className="node-info__item"
-            >
+        <div
+          className="node-info__tags"
+        >
+          {Object.keys(node)
+            .filter(key =>
+              ["gender", "homosexuality", "mentalDisorder", "iq", "dead"]
+              .includes(key)
+              &&
+              typeof node[key] !== "undefined"
+            )
+            .map(key =>
               <button
-                className="button button--active"
+                key={key}
+                className="node-info__tags__item"
                 onClick={() => this.props.history.push("/stats/" + (key === "mentalDisorder" ? "mental" : key))}
               >
                 {({
@@ -84,12 +84,10 @@ class User extends Component {
                 {key === "iq" && " IQ"}
                 {key === "dead" && " dead"}
               </button>
-            </div>
-          )
-        }
-        <div className="node-info__item">
+            )
+          }
           <button
-            className="button button--active"
+            className="node-info__tags__item"
             onClick={() => this.props.history.push("/stats/kisses")}
           >
             <Emoji.kiss /> {node.connections}{node.hiddenConnections ? <> ({node.hiddenConnections}<Emoji.hidden />)</> : ""}:

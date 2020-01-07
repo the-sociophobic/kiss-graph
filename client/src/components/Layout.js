@@ -24,7 +24,6 @@ class Layout extends Component {
       nodeToShow: undefined,
       storeConnected: false, //mounts TextInterface only after initial nnode os determined via URLs
     }
-    this.threeSceneRef = new React.createRef()
   }
 
   componentDidMount() {
@@ -80,14 +79,12 @@ class Layout extends Component {
       history.push(`/node/${node.link}`)
     document.title = "Kiss Graph: " + node.name
 
-    if (this.threeSceneRef.current)
-      this.threeSceneRef.current.setCamera(
+    if (this.context.threeSceneRef.current)
+      this.context.threeSceneRef.current.setCamera(
         node.pos,
         transition
       )
   }
-
-  static contextType = StoreContext
 
   render = () => {
     const props = {
@@ -122,7 +119,7 @@ class Layout extends Component {
         }
         <div className="viewer-container" >
           <ThreeScene
-            ref={this.threeSceneRef}
+            ref={this.context.threeSceneRef}
             myScene={myScene}
             {...props}
           />
@@ -134,5 +131,7 @@ class Layout extends Component {
     )
   }
 }
+
+Layout.contextType = StoreContext
 
 export default Layout

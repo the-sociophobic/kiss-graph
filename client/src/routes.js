@@ -1,8 +1,7 @@
-import React from 'react'
-
 import Donations from 'pages/Donations'
 import Bitcoins from 'pages/Bitcoins'
 import Layout from 'components/Layout'
+
 
 export default [
   {
