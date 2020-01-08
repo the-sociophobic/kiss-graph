@@ -14,6 +14,7 @@ class EditNode extends Component {
     this.state = {
       localCopy: {},
     }
+    this.nameSearchRef = React.createRef()
   }
 
   createEmptyNode = name => {
@@ -32,12 +33,14 @@ class EditNode extends Component {
   }
 
   setNode = nodeName => {
-    let node = this.context.store.search({name: nodeName})[0]
+    let node = this.context.store.get({name: nodeName})
 
     if (node === null)
       node = this.createEmptyNode(nodeName)
-    else
+    else {
       node = _.merge(this.createEmptyNode(nodeName), node)
+      this.context.threeSceneRef.current && this.context.threeSceneRef.current.setCamera(node.pos)
+    }
 
     this.props.setNodeId(node.id)
     this.setState({localCopy: node})
@@ -49,7 +52,6 @@ class EditNode extends Component {
   }
 
   renderKey = key => {
-    console.log(this.context.store.get().edges[0])
     switch (typeof this.state.localCopy[key]) {
       case "object":
         return (
@@ -99,11 +101,20 @@ class EditNode extends Component {
     }
   }
 
+  onEnterPress = e => {
+    if (e.keyCode === 13) {
+      this.setNode(e.target.value)
+      this.nameSearchRef.current && this.nameSearchRef.current.close()
+    }
+  }
+
   render = () => (
     <div className="edit-node">
       <NameSearch
+        ref={this.nameSearchRef}
         node={this.props.node}
         onChange={value => this.setNode(value)}
+        onKeyDown={e => this.onEnterPress(e)}
         className="mb-4"
       />
       {this.state.localCopy && (

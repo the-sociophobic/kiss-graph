@@ -1,13 +1,9 @@
-import _ from 'lodash'
-
 import copyToClipboard from 'libs/utils/copyToClipboard'
-// import { model as nodeModel } from 'pages/Kontrol/models/node'
-// import { model as edgeModel } from 'pages/Kontrol/models/edge'
+import { model as nodeModel } from 'pages/Kontrol/models/node'
+import { model as edgeModel } from 'pages/Kontrol/models/edge'
 import { data, parseConnections } from 'libs/engines/data/hardcoded/DB'
+import filterKeys from 'libs/utils/filterKeys'
 
-
-const filterKeys = (item, model) => 
-  _.pickBy(item, (value, key) => Object.keys(model).includes(key))
 
 class store {
   constructor(props) {
@@ -119,28 +115,35 @@ class store {
   push = props => {
     //push edge
     if (Object.keys(props).includes("node0")) {
+      console.log(props)
+      const edge = filterKeys(props, edgeModel)
+      console.log(edge)
       //update
-      if (props.id < this.data.edges) {
-        const index = this.data.edges.map(edge => edge.id).indexOf(props.id)
+      if (edge.id < this.data.edges.length) {
+        const index = this.data.edges.map(edge => edge.id).indexOf(edge.id)
 
         this.data.edges = [
           ...this.data.edges.slice(0, index),
-          ...this.data.edges.slice(index),
+          edge,
+          ...this.data.edges.slice(index + 1),
         ]
       } else
-        this.data.edges.push(props)
+        this.data.edges.push(edge)
     }
     //push node
     else {
-      if (props.id < this.data.nodes) {
-        const index = this.data.nodes.map(edge => edge.id).indexOf(props.id)
+      const node = filterKeys(props, nodeModel)
+      //update
+      if (node.id < this.data.nodes.length) {
+        const index = this.data.nodes.map(edge => edge.id).indexOf(node.id)
 
         this.data.nodes = [
           ...this.data.nodes.slice(0, index),
-          ...this.data.nodes.slice(index),
+          node,
+          ...this.data.nodes.slice(index + 1),
         ]
-      } else
-        this.data.nodes.push(props)
+      } else 
+        this.data.nodes.push(node)
     }
   }
 
