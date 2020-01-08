@@ -89,6 +89,7 @@ const cylinderGraphGeometry = (nodes, edges, segments) => {
   let cylinderMeshes = edges.map(edge => {
     node0 = nodes[edge.node0]
     node1 = nodes[edge.node1]
+
     subVectors.subVectors(node1.vector, node0.vector)
     normal.copy(subVectors).normalize()
     quaternion.setFromUnitVectors(up, normal)

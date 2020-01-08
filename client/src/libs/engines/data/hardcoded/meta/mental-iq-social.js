@@ -2,6 +2,7 @@ export default [
   {
     nickName: "Sasha Bashmakov",
     mentalDisorder: 10,
+    additionalConnections: 5,
     social: {
       vk: "lolbashmak",
       inst: "bashmak.lol",

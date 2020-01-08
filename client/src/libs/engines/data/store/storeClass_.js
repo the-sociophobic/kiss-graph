@@ -1,19 +1,31 @@
-import _ from 'lodash'
+import parser from 'libs/engines/data/hardcoded/dagitty.net'
+import metaParser from 'libs/engines/data/hardcoded/meta'
+import data from 'libs/engines/data/hardcoded/dagitty.net/data.02.11.19'
+import data_prev from 'libs/engines/data/hardcoded/dagitty.net/data.03.06.19'
 
-import copyToClipboard from 'libs/utils/copyToClipboard'
-// import { model as nodeModel } from 'pages/Kontrol/models/node'
-// import { model as edgeModel } from 'pages/Kontrol/models/edge'
-import { data, parseConnections } from 'libs/engines/data/hardcoded/DB'
+//TODO
+// class node {
+//   constructor(props) {
+//     this.props = props
+//   }
+//   edges = () => {}
+// }
 
-
-const filterKeys = (item, model) => 
-  _.pickBy(item, (value, key) => Object.keys(model).includes(key))
+const filterSingleNodes = (nodes, edges) => nodes
+.filter(node => edges
+  .map(edge => (edge.node0 === node.nickName || edge.node1 === node.nickName))
+  .reduce((a, b) => a || b)
+)
 
 class store {
   constructor(props) {
     this.props = props
-    this.data = data
-    this.metaData = parseConnections(data)
+    this.data = parser(data)
+    this.data.nodes = filterSingleNodes(this.data.nodes, this.data.edges)
+    this.metaData = metaParser(this.data)
+    this.data_prev = parser(data_prev)
+    this.data_prev.nodes = filterSingleNodes(this.data_prev.nodes, this.data_prev.edges)
+    this.metaData_prev = metaParser(this.data_prev)
 
     const createSortedSet = (objectsArray, property) =>
       Array.from(
@@ -36,12 +48,23 @@ class store {
         edges: this.metaData.edges,
       }
 
-    const { id, name, userName } = props
+    const { id, name, userName, version } = props
 
-    let { data, metaData } = this
+    let data = {}, metaData = {}
+    if (typeof version === "undefined") {
+      data = this.data
+      metaData = this.metaData
+    } else {
+      data = this.data_prev
+      metaData = this.metaData_prev
+    }
 
     if (typeof id === "undefined" && typeof name === "undefined" && typeof userName === "undefined")
-      return metaData
+      return data
+
+    let nodeInfo = {}
+    let nodes = []
+    let edges = []
 
     if (typeof id !== "undefined") {
       const index = metaData.nodes
@@ -63,14 +86,30 @@ class store {
 
     if (typeof name !== "undefined") {
       const index = metaData.nodes
-        .map(node => node.name)
-        .indexOf(name)
+        .map(node => node.name.toLowerCase())
+        .indexOf(name.toLowerCase())
       if (index !== -1)
         return metaData.nodes[index]
       return null
     }
 
-    return null
+    if (typeof nodeInfo.name !== "undefined")
+      data.edges.forEach(edge => {
+        if (edge.node0 === name) {
+          edges.push(edge)
+          nodes.push(edge.node1)
+        }
+        if (edge.node1 === name) {
+          edges.push(edge)
+          nodes.push(edge.node0)
+        }
+      })
+
+    return ({
+      nodeInfo: nodeInfo,
+      nodes: nodes,
+      edges: edges,
+    })
   }
 
   search = props => {
@@ -115,45 +154,6 @@ class store {
 
     return filteredNodes
   }
-
-  push = props => {
-    //push edge
-    if (Object.keys(props).includes("node0")) {
-      //update
-      if (props.id < this.data.edges) {
-        const index = this.data.edges.map(edge => edge.id).indexOf(props.id)
-
-        this.data.edges = [
-          ...this.data.edges.slice(0, index),
-          ...this.data.edges.slice(index),
-        ]
-      } else
-        this.data.edges.push(props)
-    }
-    //push node
-    else {
-      if (props.id < this.data.nodes) {
-        const index = this.data.nodes.map(edge => edge.id).indexOf(props.id)
-
-        this.data.nodes = [
-          ...this.data.nodes.slice(0, index),
-          ...this.data.nodes.slice(index),
-        ]
-      } else
-        this.data.nodes.push(props)
-    }
-  }
-
-  copyData = () => copyToClipboard(JSON.stringify(this.data))
-  // copyData = () => {
-  //   const data = {
-  //     nodes: this.metaData.nodes.map(node => filterKeys(node, nodeModel)),
-  //     edges: this.metaData.edges.map(edge => filterKeys(edge, edgeModel)),
-  //   }
-
-  //   copyToClipboard(JSON.stringify(data))    
-  // }
-
 }
 
 export default store
