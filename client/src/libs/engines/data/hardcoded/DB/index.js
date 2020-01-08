@@ -1,6 +1,7 @@
 import { nameToPath } from 'libs/utils/stringTransforms'
 
-import data from './24.11.19.json'
+// import data from './24.11.19.json'
+import data from './test.json'
 
 
 const parseConnections = data => {
@@ -13,14 +14,20 @@ const parseConnections = data => {
           .map(edge => {
             const index = mappedNodes.indexOf(edge.node1)
 
-            return data.nodes[index]
+            return {
+              index: index,
+              date: edge.commited,
+            }
           }),
         ...data.edges
           .filter(edge => edge.node1 === node.id)
           .map(edge => {
             const index = mappedNodes.indexOf(edge.node0)
 
-            return data.nodes[index]
+            return {
+              index: index,
+              date: edge.commited,
+            }
           }),
       ]
 
@@ -38,11 +45,26 @@ const parseConnections = data => {
       return {
         ...node,
         mates: mates,
-        connections: mates.length + (node.additionalConnections || 0),
+        connections: mates.length + (node.hiddenConnections || 0),
         userName: userName,
         link: nameToPath(userName || node.name),
     }})
     .filter(node => node.mates.length > 0)
+
+    nodes = nodes.map(node => ({
+      ...node,
+      mates: node.mates.map(mate => {
+        const mateNode = nodes[mate.index]
+
+        return {
+          date: mate.date,
+          connections: mateNode.connections,
+          userName: mateNode.userName,
+          name: mateNode.name,
+          iq: mateNode.iq,
+          mentalDisorder: mateNode.mentalDisorder,
+      }})
+    }))
 
     const distribution = Array.from(new Set(nodes.map(node => node.connections)))
       .sort((a, b) => a - b)

@@ -67,6 +67,8 @@ class User extends Component {
               .includes(key)
               &&
               typeof node[key] !== "undefined"
+              &&
+              node[key] !== false
             )
             .map(key =>
               <button
@@ -95,10 +97,6 @@ class User extends Component {
         </div>
         <div className="node-info__connections">
           <List items={node.mates
-            .map(connection => ({
-              ...this.context.store.get({name: connection.name}),
-              date: connection.date,
-            }))
             .sort((a, b) => b.connections - a.connections)
             .map(connection =>
               [<UserNameLink

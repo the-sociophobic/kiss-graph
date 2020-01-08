@@ -10,6 +10,7 @@ class NameSearch extends Component {
     this.state = {
       currentOptions: [],
     }
+    this.dropdownRef = React.createRef()
   }
 
   updateOptions = value => {
@@ -31,8 +32,11 @@ class NameSearch extends Component {
     }
   }
 
+  close = () => this.dropdownRef.current && this.dropdownRef.current.close()
+
   render = () => (
     <Dropdown
+      ref={this.dropdownRef}
       input
       value={(this.props.node && this.props.node.name) || ""}
       options={this.state.currentOptions}

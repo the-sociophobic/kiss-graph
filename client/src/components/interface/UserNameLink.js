@@ -6,10 +6,7 @@ import myDate from 'libs/utils/myDate'
 export default props => {
   if (props.simple)
     return (
-      <div
-        className="username-link username-link--simple"
-        // style={{color: props.user.color}}
-      >
+      <div className="username-link username-link--simple">
         <span
           className="link"
           style={{color: `var(--weight-color-${props.user.connections}-gray)`}}
