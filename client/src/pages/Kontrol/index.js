@@ -10,23 +10,22 @@ class Kontrol extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      nodeAId: -1,
-      nodeBId: -1,
+      node0: -1,
+      node1: -1,
       commited: 0,
       told: 0,
       published: 0,
+      hidden: false,
     }
   }
 
   connectNodes = () => {
-    const { nodeAId, nodeBId } = this.state
+    const { node0, node1 } = this.state
 
-    if (nodeAId === -1 || nodeBId === -1)
+    if (node0 === -1 || node1 === -1)
       return
 
-    this.context.store.push({
-      
-    })
+    this.context.store.push(this.state)
   }
 
   render() {
@@ -43,11 +42,11 @@ class Kontrol extends Component {
         <div className="">
           <EditNode
             node={this.state.nodeA}
-            onChange={value => this.setState({nodeA: value})} //TODO
+            setNodeId={value => this.setState({node0: value})} //TODO
           />
           <EditNode
             node={this.state.nodeB}
-            onChange={value => this.setState({nodeB: value})} //TODO
+            setNodeId={value => this.setState({node1: value})} //TODO
           />
         </div>
       </div>

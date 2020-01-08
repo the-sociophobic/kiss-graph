@@ -16,8 +16,8 @@ export default class Graph extends Unit {
     const { nodes, edges } = this.props.store.get()
 
     this.edges = edges.map(edge => ({
-      node0: nodes.map(node => node.name).indexOf(edge.node0),
-      node1: nodes.map(node => node.name).indexOf(edge.node1),
+      node0: nodes.map(node => node.id).indexOf(edge.node0),
+      node1: nodes.map(node => node.id).indexOf(edge.node1),
     }))
 
     this.nodes = nodes

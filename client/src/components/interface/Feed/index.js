@@ -25,8 +25,8 @@ export default class Feed extends Component {
     
     const mapNodesToEdges = edges => edges
       .map(edge => {
-        const node0 = this.context.store.get({name: edge.node0})
-        const node1 = this.context.store.get({name: edge.node1})
+        const node0 = this.context.store.get({id: edge.node0})
+        const node1 = this.context.store.get({id: edge.node1})
 
         return {
           ...edge,

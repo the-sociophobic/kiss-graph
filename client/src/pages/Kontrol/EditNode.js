@@ -5,7 +5,7 @@ import StoreContext from 'libs/engines/data/store/StoreContext'
 import NameSearch from 'components/interface/NameSearch'
 import Input from 'components/Form/Input'
 import Checkbox from 'components/Form/Checkbox'
-import model from './model'
+import { editableFields } from './models/node'
 
 
 class EditNode extends Component {
@@ -20,7 +20,7 @@ class EditNode extends Component {
     let target = this.context.threeSceneRef.current.controls.target
 
     return {
-      ...model,
+      ...editableFields,
       id: this.context.store.get().nodes.length,
       name: name,
       pos: {
@@ -32,16 +32,24 @@ class EditNode extends Component {
   }
 
   setNode = nodeName => {
-    const node = this.context.store.search({name: nodeName})[0]
+    let node = this.context.store.search({name: nodeName})[0]
 
     if (node === null)
-      this.setState({localCopy: this.createEmptyNode(nodeName)})
-    else {
-      this.setState({localCopy: _.merge(this.createEmptyNode(nodeName), node)})
-    }
+      node = this.createEmptyNode(nodeName)
+    else
+      node = _.merge(this.createEmptyNode(nodeName), node)
+
+    this.props.setNodeId(node.id)
+    this.setState({localCopy: node})
+  }
+
+  save = () => {
+    this.context.store.push(this.state.localCopy)
+    this.context.store.copyData()
   }
 
   renderKey = key => {
+    console.log(this.context.store.get().edges[0])
     switch (typeof this.state.localCopy[key]) {
       case "object":
         return (
@@ -101,11 +109,11 @@ class EditNode extends Component {
       {this.state.localCopy && (
         <Fragment>
           {Object.keys(this.state.localCopy)
-            .filter(key => Object.keys(model).includes(key))
+            .filter(key => Object.keys(editableFields).includes(key))
             .map(key => this.renderKey(key))}
           <button
             className="edit-node__button"
-            onClick={() => this.props.onChange(this.state.localCopy)}
+            onClick={() => this.save()}
           >
             Save
           </button>
