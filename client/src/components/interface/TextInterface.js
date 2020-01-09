@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
-import { withRouter } from 'react-router-dom'
+
+import withRouter from 'components/withRouterAndRef'
 
 import About from 'pages/About'
 import Kontrol from 'pages/Kontrol'
@@ -22,6 +23,8 @@ class TextInterface extends Component {
       currentOptions: [],
       deviceWidth: 0,
       desktopSpread: false,
+      showFooter: true,
+      showSearch: true,
     }
     this.interfaceRef = new React.createRef()
     this.searchBarRef = new React.createRef()
@@ -51,6 +54,12 @@ class TextInterface extends Component {
     else
       this.props.setNode(node.id)
   }
+
+  openWorkspace = () => this.setState({
+    desktopSpread: true,
+    showFooter: false,
+    showSearch: false,
+  })
 
   render = () => {
     const { node } = this.props
@@ -106,7 +115,7 @@ class TextInterface extends Component {
             </div>
           </div>
         </div>
-        {footer}
+        {this.state.showFooter && footer}
       </Fragment>
     )
 
@@ -121,15 +130,17 @@ class TextInterface extends Component {
         />
         <WeightColorsStyle />
         <div className="flex-container">
-          <div
-            ref={this.searchBarRef}
-            className="text-interface__search-bar"
-          >
-            <NameSearch
-              node={this.props.nodeToShow}
-              onChange={value => this.setNode(value)}
-            />
-          </div>
+          {this.state.showSearch &&
+            <div
+              ref={this.searchBarRef}
+              className="text-interface__search-bar"
+            >
+              <NameSearch
+                node={this.props.nodeToShow}
+                onChange={value => this.setNode(value)}
+              />
+            </div>
+          }
           
           {this.state.deviceWidth <= 1024 ?
             <MobileExpander

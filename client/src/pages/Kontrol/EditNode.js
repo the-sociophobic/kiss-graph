@@ -117,7 +117,7 @@ class EditNode extends Component {
         onKeyDown={e => this.onEnterPress(e)}
         className="mb-4"
       />
-      {this.state.localCopy && (
+      {Object.keys(this.state.localCopy).length > 0 && (
         <Fragment>
           {Object.keys(this.state.localCopy)
             .filter(key => Object.keys(editableFields).includes(key))
@@ -126,7 +126,7 @@ class EditNode extends Component {
             className="edit-node__button"
             onClick={() => this.save()}
           >
-            Save
+            {this.state.localCopy.id < this.context.store.get().nodes.length ? "Update" : "Add"}
           </button>
         </Fragment>        
       )}

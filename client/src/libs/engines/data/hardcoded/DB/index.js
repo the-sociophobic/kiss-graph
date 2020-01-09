@@ -17,6 +17,7 @@ const parseConnections = data => {
             return {
               index: index,
               date: edge.commited,
+              edgeId: edge.id,
             }
           }),
         ...data.edges
@@ -27,6 +28,7 @@ const parseConnections = data => {
             return {
               index: index,
               date: edge.commited,
+              edgeId: edge.id,
             }
           }),
       ]
@@ -49,7 +51,8 @@ const parseConnections = data => {
         userName: userName,
         link: nameToPath(userName || node.name),
     }})
-    .filter(node => node.mates.length > 0)
+    // .filter(node => node.mates.length > 0)
+    //TESTT
 
     nodes = nodes.map(node => ({
       ...node,
@@ -58,6 +61,8 @@ const parseConnections = data => {
 
         return {
           date: mate.date,
+          edgeId: mate.edgeId,
+          id: mateNode.id,
           connections: mateNode.connections,
           userName: mateNode.userName,
           name: mateNode.name,

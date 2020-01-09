@@ -24,19 +24,22 @@ class store {
   get = props => {
     if (typeof props === "undefined")
       return {
-        nodesTotalLength: this.metaData.nodes.length,
-        edgesTotalLength: this.metaData.edges.length,
+        nodesTotalLength: () => this.data.nodes.length,
+        edgesTotalLength: () => this.data.edges.length,
         weightSet: this.weightSet,
         maxWeigth: this.maxWeight,
         nodes: this.metaData.nodes,
         edges: this.metaData.edges,
       }
 
-    const { id, name, userName } = props
+    const { id, name, userName, edgeId } = props
 
     let { data, metaData } = this
 
-    if (typeof id === "undefined" && typeof name === "undefined" && typeof userName === "undefined")
+    if (typeof id === "undefined" &&
+        typeof name === "undefined" &&
+        typeof userName === "undefined" &&
+        typeof edgeId === "undefined")
       return metaData
 
     if (typeof id !== "undefined") {
@@ -63,6 +66,15 @@ class store {
         .indexOf(name)
       if (index !== -1)
         return metaData.nodes[index]
+      return null
+    }
+
+    if (typeof edgeId !== "undefined") {
+      const index = metaData.edges
+        .map(edge => edge.id)
+        .indexOf(edgeId)
+      if (index !== -1)
+        return metaData.edges[index]
       return null
     }
 
@@ -113,9 +125,9 @@ class store {
   }
 
   push = props => {
+    console.log(props)
     //push edge
     if (Object.keys(props).includes("node0")) {
-      console.log(props)
       const edge = filterKeys(props, edgeModel)
       console.log(edge)
       //update
@@ -133,6 +145,7 @@ class store {
     //push node
     else {
       const node = filterKeys(props, nodeModel)
+      console.log(node)
       //update
       if (node.id < this.data.nodes.length) {
         const index = this.data.nodes.map(edge => edge.id).indexOf(node.id)

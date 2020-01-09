@@ -22,7 +22,7 @@ class Layout extends Component {
     this.state = {
       retrievedData: undefined,
       nodeToShow: undefined,
-      storeConnected: false, //mounts TextInterface only after initial nnode os determined via URLs
+      storeConnected: false, //mounts TextInterface only after initial node os determined via URLs
     }
   }
 
@@ -57,7 +57,10 @@ class Layout extends Component {
     //TODO ???
   }
 
-  setNode = (id, transition = true, pushHistory = true) => {
+  setNode = (id, transition = true, pushHistory = true, toggleIdle = true) => {
+    if (toggleIdle)
+      this.context.threeSceneRef.current && this.context.threeSceneRef.current.toggleIdle()
+
     const { history } = this.props
 
     if (typeof id === "undefined" || id === -1 || (id.length && id.length === 0)) {
@@ -101,6 +104,7 @@ class Layout extends Component {
       <div className="page-container">
         {this.state.storeConnected &&
           <TextInterface
+            ref={this.context.textInterfaceRef}
             {...props}
           >
             {this.state.retrievedData &&

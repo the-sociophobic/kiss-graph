@@ -10,7 +10,10 @@ import ResizeObserver from 'resize-observer-polyfill'
 
 const targetToCamera = 5
 
-var rot = 0
+var idleRotationAngle = 0
+var idleRotationHypotenuse = 5
+var idleRotationOffsetY = 0
+var idleRotationSpeed = 0
 
 
 export default class ThreeScene extends Component {
@@ -21,10 +24,10 @@ export default class ThreeScene extends Component {
     
 
     //camera idle vars NEEDS OPTIMISATION
-    this.lastIdle = new Date().getTime()
-    this.prevCameraPos = new THREE.Vector3()
-    this.prevCameraTarget = new THREE.Vector3()
-    this.idleRotation = 0
+    // this.lastIdle = new Date().getTime()
+    // this.prevCameraPos = new THREE.Vector3()
+    // this.prevCameraTarget = new THREE.Vector3()
+    // this.idleRotation = 0
   }
 
   updateDimensions() {
@@ -43,6 +46,10 @@ export default class ThreeScene extends Component {
   }
 
   componentDidMount() {
+    this.toggleIdle()
+    window.addEventListener("click", this.toggleIdle)
+    window.addEventListener("touchstart", this.toggleIdle)
+
     this.resizeObs = new ResizeObserver(this.updateDimensions.bind(this))
       .observe(this.viewerRef.current)
 
@@ -72,7 +79,7 @@ export default class ThreeScene extends Component {
       0.1,
       1000
     )
-    this.controls = new LevControls( this.camera, ViewerDiv )
+    this.controls = new LevControls( this.camera, ViewerDiv, this.toggleIdle ) //REDO THIS SHIT
     this.controls.panSpeed = 1.5
     this.controls.enableKeys = false
     this.camera.position.z = targetToCamera
@@ -139,20 +146,8 @@ export default class ThreeScene extends Component {
     this.renderer.render(this.scene, this.camera)
     this.frameId = window.requestAnimationFrame(this.animate)
 
-    
-    // rot += .024
-    // console.log(rot)
-    // if (rot >= 3.1415 * 2) {
-    //   rot = 0
-    //   this.props.setNode(Math.round(Math.random() * 1000))
-    // }
-    // // this.camera.position.set(camVec.x + 5 * Math.cos(rot), camVec.y + 5 * Math.sin(rot), camVec.z)
-    // this.camera.position.set(this.controls.target.x + 5 * Math.cos(rot), this.controls.target.y, this.controls.target.z + 5 * Math.sin(rot))
-    // const idleTime = 5
-    // if (this.prevCameraPos.clone().sub(this.camera.position).lengthSq > .001 &&
-    //     this.prevCameraTarget.clone().sub(this.controls.target).lengthSq > .001) {
-    //   this.lastIdle = new Date().getTime()
-    // } 
+    if (this.idle)
+      this.idleAnimation()
 
     this.controls.update()
   }
@@ -196,6 +191,44 @@ export default class ThreeScene extends Component {
       numberOfFrames: numberOfFrames || 10,
       currentFrame: 0,
     })
+  }
+
+  idleAnimation = () => {
+    if (idleRotationSpeed < .025)
+      idleRotationSpeed += .00025
+
+    idleRotationAngle += idleRotationSpeed
+    if (idleRotationAngle >= Math.PI * 2) {
+      idleRotationAngle = 0
+      this.props.setNode(Math.round(Math.random() * 1000), true, true, false)
+    }
+    this.camera.position.set(
+      this.controls.target.x + idleRotationHypotenuse * Math.sin(idleRotationAngle),
+      this.controls.target.y + idleRotationOffsetY,
+      this.controls.target.z + idleRotationHypotenuse * Math.cos(idleRotationAngle)
+    )
+  }
+
+  toggleIdle = () => {
+    this.idle = false
+    idleRotationSpeed = 0
+
+    if (this.idleTimeout)
+      clearTimeout(this.idleTimeout)
+
+    this.idleTimeout = setTimeout(() => {
+      idleRotationHypotenuse = ((this.controls.target.x - this.camera.position.x) ** 2 + (this.controls.target.z - this.camera.position.z) ** 2) ** .5
+      idleRotationOffsetY = this.camera.position.y - this.controls.target.y
+      let angle = Math.acos((this.camera.position.z - this.controls.target.z) / idleRotationHypotenuse)
+
+      if (this.camera.position.x - this.controls.target.x < 0)
+        angle = Math.PI * 2 - angle
+
+      if (angle >= 0 && angle <= Math.PI * 2)
+        idleRotationAngle = angle
+
+      this.idle = true
+    }, 10000)
   }
   
   render = () => (

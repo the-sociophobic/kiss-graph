@@ -6,6 +6,8 @@ const model = {
   told: 0,
   published: 0,
   hidden: false,
+  sex: false,
+  married: false,
 }
 
 
@@ -16,6 +18,8 @@ const editableFields = {
   told: 0,
   published: 0,
   hidden: false,
+  sex: false,
+  married: false,
 }
 
 
