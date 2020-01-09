@@ -32,13 +32,40 @@ class store {
         edges: this.metaData.edges,
       }
 
-    const { id, name, userName, edgeId } = props
+    
+    //THIS SOMEHOW DOESN'T WORK
+    // const possibleSearchKeys = ["id", "name", "userName", "link", "edgeId"]
+    // // const { id, name, userName, link, edgeId } = props //google it
+    // let { data, metaData } = this
 
+    // if (Object.keys(props).length === 0)
+    //   return null
+
+    // if (typeof props.edgeId !== "undefined") {
+    //   const index = metaData.edges
+    //     .map(edge => edge.id)
+    //     .indexOf(props.edgeId)
+    //   if (index !== -1)
+    //     return metaData.nodes[index]
+    // }
+    // Object.keys(props).forEach(key => {
+    //   if (typeof props[key] !== "undefined") {
+    //     const index = metaData.nodes
+    //       .map(node => node[key])
+    //       .indexOf(props[key])
+    //     if (index !== -1)
+    //       return metaData.nodes[index]
+    //   }  
+    // })
+    // return null
+
+    const { id, name, userName, link, edgeId } = props
     let { data, metaData } = this
 
     if (typeof id === "undefined" &&
         typeof name === "undefined" &&
         typeof userName === "undefined" &&
+        typeof link === "undefined" &&
         typeof edgeId === "undefined")
       return metaData
 
@@ -55,6 +82,15 @@ class store {
       const index = metaData.nodes
         .map(node => node.userName)
         .indexOf(userName)
+      if (index !== -1)
+        return metaData.nodes[index]
+      return null
+    }
+
+    if (typeof link !== "undefined") {
+      const index = metaData.nodes
+        .map(node => node.link)
+        .indexOf(link)
       if (index !== -1)
         return metaData.nodes[index]
       return null

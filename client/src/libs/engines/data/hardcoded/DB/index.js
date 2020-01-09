@@ -41,15 +41,15 @@ const parseConnections = data => {
           node.social.fb ||
           node.social.twit ||
           (node.social.yt && node.social.yt.startsWith("user/") && node.social.yt.slice(5))
-        )) || undefined
+        )) || nameToPath(node.name)
 
 
       return {
         ...node,
         mates: mates,
         connections: mates.length + (node.hiddenConnections || 0),
-        userName: userName,
-        link: nameToPath(userName || node.name),
+        userName: userName,                       //can be uppercase
+        link: nameToPath(userName || node.name),  //can't be uppercase
     }})
     // .filter(node => node.mates.length > 0)
     //TESTT

@@ -301,7 +301,7 @@ $arrow-size: 7px
   z-index: 10000
   position: relative
   @media (min-width: 1025px)
-    box-shadow: -12px 0 35px $box-shadow-color
+    box-shadow: -2px 0 35px $box-shadow-color
     @media (prefers-color-scheme: dark)
       box-shadow: 12px -12px 25px $box-shadow-color
       border-right: 1px solid var(--light-gray)
@@ -561,7 +561,9 @@ $reset-size: 22px
     display: flex
     flex-direction: column
     align-items: stretch
-    box-shadow: 0 10px 12px $box-shadow-color
+    box-shadow: 0 7px 10px $box-shadow-color
+    @media (prefers-color-scheme: dark)
+      box-shadow: 0 10px 12px $box-shadow-color
   &__static-content-container
     width: 100%
     display: table
@@ -780,9 +782,13 @@ $heat-map-font-size: 14px
     top: calc(#{$heat-map-font-size} / 2)
     right: 30%
     image-rendering: pixelated
+    box-shadow: -4px 0 15px rgba(0, 0, 0, .25)
+    @media (prefers-color-scheme: dark)
+      box-shadow: -4px 0 20px $box-shadow-color
   &__0, &__1, &__2, &__3, &__4
     position: absolute
     font-size: $heat-map-font-size
+    font-weight: 700
     line-height: 1
     color: $dark-dark-gray
     transform: rotate(90deg) translateY(-15px)
@@ -945,4 +951,5 @@ span.emoji
   top: 15px
   right: 12px
   color: $dark-dark-gray
+  font-weight: 400
 
