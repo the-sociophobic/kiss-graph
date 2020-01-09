@@ -31,12 +31,11 @@ class Layout extends Component {
       window.scrollTo(0, 0)
     
     if (this.props.location.pathname.includes("/node/")) {
-      const nodeId = this.props.location.pathname.slice("/node/".length)
+      const nodeLink = this.props.location.pathname.slice("/node/".length)
 
-      if (nodeId) {
-        let node = this.context.store.get({name: pathToName(nodeId)})
-        if (node === null)
-          node = this.context.store.get({userName: nodeId})
+      if (nodeLink) {
+        console.log(nodeLink)
+        let node = this.context.store.get({link: nodeLink})
         if (node !== null)
           this.setNode(node.id, false, false)
       }
