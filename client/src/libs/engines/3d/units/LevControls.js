@@ -17,7 +17,7 @@
 import * as THREE from 'three'
 
 // export default class {
-  function LevControls( object, domElement ) {
+  function LevControls( object, domElement, toggleIdle ) {
 
     this.object = object;
 
@@ -716,6 +716,8 @@ import * as THREE from 'three'
 
     function onMouseDown( event ) {
 
+      toggleIdle()
+
       if ( scope.enabled === false ) return;
 
       // Prevent the browser from scrolling.
@@ -790,6 +792,8 @@ import * as THREE from 'three'
 
     function onMouseMove( event ) {
 
+      toggleIdle()
+
       if ( scope.enabled === false ) return;
 
       event.preventDefault();
@@ -830,6 +834,8 @@ import * as THREE from 'three'
 
     function onMouseUp( event ) {
 
+      toggleIdle()
+
       if ( scope.enabled === false ) return;
 
       handleMouseUp( event );
@@ -844,6 +850,8 @@ import * as THREE from 'three'
     }
 
     function onMouseWheel( event ) {
+
+      toggleIdle()
 
       if ( scope.enabled === false || scope.enableZoom === false || ( state !== STATE.NONE && state !== STATE.ROTATE ) ) return;
 
@@ -860,6 +868,8 @@ import * as THREE from 'three'
 
     function onKeyDown( event ) {
 
+      toggleIdle()
+
       if ( scope.enabled === false || scope.enableKeys === false || scope.enablePan === false ) return;
 
       handleKeyDown( event );
@@ -867,6 +877,8 @@ import * as THREE from 'three'
     }
 
     function onTouchStart( event ) {
+
+      toggleIdle()
 
       if ( scope.enabled === false ) return;
 
@@ -910,6 +922,8 @@ import * as THREE from 'three'
 
     function onTouchMove( event ) {
 
+      toggleIdle()
+
       if ( scope.enabled === false ) return;
 
       event.preventDefault();
@@ -945,6 +959,8 @@ import * as THREE from 'three'
 
     function onTouchEnd( event ) {
 
+      toggleIdle()
+
       if ( scope.enabled === false ) return;
 
       handleTouchEnd( event );
@@ -956,6 +972,8 @@ import * as THREE from 'three'
     }
 
     function onContextMenu( event ) {
+
+      toggleIdle()
 
       if ( scope.enabled === false ) return;
 

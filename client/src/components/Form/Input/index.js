@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-// import ExpandingErrorBox from 'components/ExpandingErrorBox'
+
+import _ from 'lodash'
+
 
 export default class Input extends Component {
   constructor(props) {
@@ -9,6 +11,19 @@ export default class Input extends Component {
 
   focus = () => this.inputFieldRef.current && this.inputFieldRef.current.focus()
   blur = () => this.inputFieldRef.current && this.inputFieldRef.current.blur()
+
+  onKeyDown = e => {
+    if (this.props.number)
+      if (this.props.value.match(/[^0-9]/g))
+        this.props.onChange(this.props.value.replace(/[^0-9]/g, ''))
+    this.props.onKeyDown && this.props.onKeyDown(e)
+  }
+  onBlur = e => {
+    if (this.props.number && this.props.range)
+      if (!_.inRange(this.props.value, this.props.range))
+        this.props.onChange(undefined)
+    this.props.onBlur && this.props.onBlur(e)
+  }
 
   render = () => (
     <div
@@ -20,15 +35,16 @@ export default class Input extends Component {
       <div className="position-relative">
         <input
           ref={this.inputFieldRef}
-          type="text"
+          type={this.props.number ? "number" : "text"}
           className={"form-group__input " + this.props.className}
           placeholder={this.props.placeholder}
           required={this.props.required}
           value={this.props.value}
           onChange={event => this.props.onChange(event.target.value)}
           onFocus={this.props.onFocus}
+          onBlur={this.onBlur}
+          onKeyDown={this.onKeyDown}
           disabled={this.props.disabled}
-          onKeyDown={this.props.onKeyDown}
         />
         <label className="form-group__label">
           {this.props.label}

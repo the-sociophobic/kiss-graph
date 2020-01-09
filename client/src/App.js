@@ -25,7 +25,10 @@ class App extends Component {
           <Helmet />
           <Switch>
             {routes.map(route =>
-              <Route {...route} key={route.path} />
+              <Route
+                {...route}
+                key={route.path}
+              />
             )}
           </Switch>
         </StoreContext.Provider>
