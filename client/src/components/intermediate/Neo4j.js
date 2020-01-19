@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import StoreContext from 'libs/engines/data/store/StoreContext'
+// import { model as nodeModel } from 'pages/Kontrol/models/node'
+
 import axios from 'axios'
 
 
-export default class Parser extends Component {
+class Neo4j extends Component {
   constructor(props) {
     super(props)
     this.state = {}
@@ -29,29 +31,34 @@ export default class Parser extends Component {
     const nodes = data.nodes.map(node => ({
       name: node.name,
       userName: node.userName,
-      mentalDisorder: node.mentalDisorder,
+      social: node.social && JSON.stringify(node.social),
+      pos: `point({x:${node.pos.x}, y:${node.pos.y}, z:${node.pos.z}})`,
+      hiddenConnections: node.hiddenConnections,
       iq: node.iq,
-      avatar: node.avatar,
-      offended: node.offended,
+      mentalDisorder: node.mentalDisorder,
       dead: node.dead,
-      // TODO pos as p3d
-      // pos: {
-      //   x: node.cameraTarget[0],
-      //   y: node.cameraTarget[1],
-      //   z: node.cameraTarget[2],
-      // },
-      pos: `point({x:${node.pos.x}, y:${node.pos.y}, z:${node.pos.z}})`
+      offended: node.offended,
+      //experimental
+      SHR: node.SHR && JSON.stringify(node.SHR),
+      political: node.political && JSON.stringify(node.political),
+      aka: node.aka && JSON.stringify(node.aka),
     }))
 
-    // console.log(JSON.stringify(nodes).replace(/\"([^(\")"]+)\":/g,"$1:"))
-    const nodesProps = JSON.stringify(nodes).replace(/\"([^(\")"]+)\":/g,"$1:")
+    let nodesProps = JSON.stringify(nodes)
+      // .replace(/\"([^(\")"]+)\":/g,"$1:") //WHAT IS IT
+      // .replace(/"point/g, "point")
+      // .replace(/}\)"/g, "})")
+      // .replace(/"{/g, "{")
+      // .replace(/}"/g, "}")
+      // .replace(/"\[/g, "[")
+      // .replace(/\]"/g, "]")
 
     const nodeString = "UNWIND " + nodesProps +
       " AS properties\nCREATE (n:Person)\nSET n = properties\nRETURN n"
-    await this.post([{statement: nodeString}])
+    // await this.post([{statement: nodeString}])
     console.log(nodeString)
-    console.log("nodes added")
-
+    // console.log("nodes added")
+return
     const edges = data.edges
     const edgeString = edges.map(edge => `
       MATCH (a:Person)
@@ -72,8 +79,6 @@ export default class Parser extends Component {
     console.log(edges)
   }
   
-  static contextType = StoreContext
-
   render() {
     return(
       <div>
@@ -88,3 +93,7 @@ export default class Parser extends Component {
     )
   }
 }
+
+Neo4j.contextType = StoreContext
+
+export default  Neo4j
