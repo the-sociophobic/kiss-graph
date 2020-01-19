@@ -206,7 +206,7 @@ class ThreeScene extends Component {
       this.idle.cameraAngleXZ += this.idle.cameraRotationSpeed
       if (this.idle.cameraAngleXZ >= Math.PI * 2) {
         this.idle.cameraAngleXZ = 0
-        this.props.setNode(Math.round(Math.random() * this.context.store.get().nodes.length), true, true, false)
+        this.props.setNode(Math.round(Math.random() * this.context.store.get().nodes.length))
       }
       this.camera.position.set(
         this.controls.target.x + this.idle.cameraOffsetXZ * Math.sin(this.idle.cameraAngleXZ),
@@ -217,8 +217,6 @@ class ThreeScene extends Component {
   }
 
   toggleIdle = () => {
-    if (process.env.REACT_APP_STAGE !== 'live' && process.env.REACT_APP_STAGE !== 'prod')
-      return
     this.idle.active = false
     this.idle.cameraRotationSpeed = 0
 
@@ -237,7 +235,7 @@ class ThreeScene extends Component {
         this.idle.cameraAngleXZ = angle
 
       this.idle.active = true
-    }, 45000)
+    }, 35000)
   }
   
   render = () => (
