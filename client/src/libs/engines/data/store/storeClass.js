@@ -167,13 +167,17 @@ class store {
       const edge = filterKeys(props, edgeModel)
       console.log(edge)
       //update
-      if (edge.id < this.data.edges.length) {
-        const index = this.data.edges.map(edge => edge.id).indexOf(edge.id)
-
+      const index = this.data.edges.map(edge => edge.id).indexOf(edge.id)
+      if (index !== -1) {
         this.data.edges = [
           ...this.data.edges.slice(0, index),
           edge,
           ...this.data.edges.slice(index + 1),
+        ]
+        this.metaData.edges = [
+          ...this.metaData.edges.slice(0, index),
+          edge,
+          ...this.metaData.edges.slice(index + 1),
         ]
       } else
         this.data.edges.push(edge)
@@ -190,6 +194,11 @@ class store {
           ...this.data.nodes.slice(0, index),
           node,
           ...this.data.nodes.slice(index + 1),
+        ]
+        this.metaData.nodes = [
+          ...this.metaData.nodes.slice(0, index),
+          node,
+          ...this.metaData.nodes.slice(index + 1),
         ]
       } else 
         this.data.nodes.push(node)

@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import _ from 'lodash'
 
 import StoreContext from 'libs/engines/data/store/StoreContext'
-// import Neo4j from 'components/intermediate/Neo4j'
+import Neo4j from 'components/intermediate/Neo4j'
 import EditNode from './EditNode'
 import myDate from 'libs/utils/myDate'
 import Input from 'components/Form/Input'
@@ -23,6 +23,7 @@ class Kontrol extends Component {
       ]))
       .reduce((a, b) => ({...a, ...b})),
       hidden: false,
+      editingEdge: false,
     }
   }
 
@@ -43,7 +44,7 @@ class Kontrol extends Component {
 
   createEmptyEdge = (node0, node1) => ({
     ...edgeEditableFields,
-    id: this.context.store.get().edges.length,
+    id: node0 + "-" + node1,
     node0: node0,
     node1: node1,
   })
@@ -77,20 +78,27 @@ class Kontrol extends Component {
     //state is not updated yet
     nodes[nodeNameInState] = this.context.store.get({id: nodeId})
     const { node0, node1 } = nodes
-    console.log(nodes)
-    //try find edge
-    if (
-        node0 !== null && node1 !== null &&
-        typeof node0.mates !== "undefined" && typeof node1.mates !== "undefined"
-      ) {
-      const mateIndex = node0.mates.map(mate => mate.id).indexOf(node1.id)
-      let edge
-      
-      if (mateIndex !== -1)
-        edge = this.context.store.get({edgeId: node0.mates[mateIndex].edgeId}) || {}
 
-      edge = _.merge(edge, this.createEmptyEdge(this.state.node0, this.state.node1))
-      console.log(edge)
+    //try find edge
+    if (node0 !== null && node1 !== null) {
+      let edge = {}
+      console.log(node0)
+      console.log(node1)
+
+      if (typeof node0.mates !== "undefined" && typeof node1.mates !== "undefined") {
+        const mateIndex = node0.mates.map(mate => mate.id).indexOf(node1.id)
+      
+        if (mateIndex !== -1)
+          edge = this.context.store.get({edgeId: node0.mates[mateIndex].edgeId}) || {}
+        console.log(edge)
+  
+        edge = _.merge(this.createEmptyEdge(node0.id, node1.id), edge)
+        this.setState({editingEdge: true})
+      } else {
+        edge = this.createEmptyEdge(node0.id, node1.id)
+        this.setState({editingEdge: false})
+      }
+
       Object.keys(edge).forEach(key => this.setState({[key]: edge[key]}))
     }
   }
@@ -98,6 +106,7 @@ class Kontrol extends Component {
   render() {
     return (
       <div className="kontrol">
+        <Neo4j />
         {this.state.node0 && this.state.node1 &&
           <div className="date-pickers">
             {dates.map(date => (
@@ -121,7 +130,7 @@ class Kontrol extends Component {
               className="date-pickers__button"
               onClick={() => this.pushEdge()}
             >
-              Connect
+              {this.state.editingEdge ? "Update" : "Connect"}
             </button>
           </div>
         }

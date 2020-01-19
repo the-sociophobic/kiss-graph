@@ -152,8 +152,7 @@ class ThreeScene extends Component {
     this.renderer.render(this.scene, this.camera)
     this.frameId = window.requestAnimationFrame(this.animate)
 
-    if (this.idle.active)
-      this.idleAnimation()
+    this.idleAnimation()
 
     this.controls.update()
   }
@@ -200,22 +199,26 @@ class ThreeScene extends Component {
   }
 
   idleAnimation = () => {
-    if (this.idle.cameraRotationSpeed < .025)
-      this.idle.cameraRotationSpeed += .00017
+    if (this.idle.active) {
+      if (this.idle.cameraRotationSpeed < .025)
+        this.idle.cameraRotationSpeed += .00017
 
-    this.idle.cameraAngleXZ += this.idle.cameraRotationSpeed
-    if (this.idle.cameraAngleXZ >= Math.PI * 2) {
-      this.idle.cameraAngleXZ = 0
-      this.props.setNode(Math.round(Math.random() * this.context.store.get().nodes.length), true, true, false)
+      this.idle.cameraAngleXZ += this.idle.cameraRotationSpeed
+      if (this.idle.cameraAngleXZ >= Math.PI * 2) {
+        this.idle.cameraAngleXZ = 0
+        this.props.setNode(Math.round(Math.random() * this.context.store.get().nodes.length), true, true, false)
+      }
+      this.camera.position.set(
+        this.controls.target.x + this.idle.cameraOffsetXZ * Math.sin(this.idle.cameraAngleXZ),
+        this.controls.target.y + this.idle.cameraOffsetY,
+        this.controls.target.z + this.idle.cameraOffsetXZ * Math.cos(this.idle.cameraAngleXZ)
+      )
     }
-    this.camera.position.set(
-      this.controls.target.x + this.idle.cameraOffsetXZ * Math.sin(this.idle.cameraAngleXZ),
-      this.controls.target.y + this.idle.cameraOffsetY,
-      this.controls.target.z + this.idle.cameraOffsetXZ * Math.cos(this.idle.cameraAngleXZ)
-    )
   }
 
   toggleIdle = () => {
+    if (process.env.REACT_APP_STAGE !== 'live' && process.env.REACT_APP_STAGE !== 'prod')
+      return
     this.idle.active = false
     this.idle.cameraRotationSpeed = 0
 
@@ -234,7 +237,7 @@ class ThreeScene extends Component {
         this.idle.cameraAngleXZ = angle
 
       this.idle.active = true
-    }, 12000)
+    }, 45000)
   }
   
   render = () => (
