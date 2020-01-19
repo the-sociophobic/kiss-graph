@@ -56,10 +56,7 @@ class Layout extends Component {
     //TODO ???
   }
 
-  setNode = (id, transition = true, pushHistory = true, toggleIdle = true) => {
-    if (toggleIdle)
-      this.context.threeSceneRef.current && this.context.threeSceneRef.current.toggleIdle()
-
+  setNode = (id, transition = true, pushHistory = true) => {
     const { history } = this.props
 
     if (typeof id === "undefined" || id === -1 || (id.length && id.length === 0)) {
