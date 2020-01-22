@@ -108,6 +108,7 @@ const decode = (model, instance) =>
   .reduce((a, b) => ({...a, ...b}))
 
   const decodeMany = (model, instances) => 
+    // instances?.data?.results[0]?.data.map(instance => decode(model, instance)) //Wait for ECMAScript 2020 Standart
     instances?.data?.results[0]?.data.map(instance => decode(model, instance))
 
 
