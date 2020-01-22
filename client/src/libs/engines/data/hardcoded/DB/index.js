@@ -41,7 +41,7 @@ const parseConnections = data => {
           node.social.fb ||
           node.social.twit ||
           (node.social.yt && node.social.yt.startsWith("user/") && node.social.yt.slice(5))
-        )) || nameToPath(node.name)
+        ))
 
 
       return {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import StoreContext from 'libs/engines/data/store/StoreContext'
-// import { model as nodeModel } from 'pages/Kontrol/models/node'
+import nodeModel from 'libs/engines/data/hardcoded/DB/models/node'
+import { encodeMany, decodeMany } from 'libs/engines/data/hardcoded/DB/models'
 
 import axios from 'axios'
 
@@ -22,49 +23,58 @@ class Neo4j extends Component {
         password: "dermo123"
       }}
     )
+    // .then(res => console.log(res))
 
   addCurrentData = async () => {
     await this.post([{statement: "MATCH (n) DETACH DELETE n"}])
 
     const data = this.context.store.get()
 
-    const nodes = data.nodes.map(node => ({
-      name: node.name,
-      userName: node.userName,
-      social: node.social && JSON.stringify(node.social),
-      pos: `point({x:${node.pos.x}, y:${node.pos.y}, z:${node.pos.z}})`,
-      hiddenConnections: node.hiddenConnections,
-      iq: node.iq,
-      mentalDisorder: node.mentalDisorder,
-      dead: node.dead,
-      offended: node.offended,
-      //experimental
-      SHR: node.SHR && JSON.stringify(node.SHR),
-      political: node.political && JSON.stringify(node.political),
-      aka: node.aka && JSON.stringify(node.aka),
-    }))
+    // const nodes = data.nodes
+    // // .slice(0, 10)
+    // .map(node => ({
+    //   name: node.name,
+    //   userName: node.userName,
+    //   social: node.social && JSON.stringify(node.social),
+    //   pos: `point({x:${node.pos.x}, y:${node.pos.y}, z:${node.pos.z}})`,
+    //   hiddenConnections: node.hiddenConnections,
+    //   iq: node.iq,
+    //   mentalDisorder: node.mentalDisorder,
+    //   dead: node.dead,
+    //   offended: node.offended,
+    //   //experimental
+    //   SHR: node.SHR && JSON.stringify(node.SHR),
+    //   political: node.political && JSON.stringify(node.political),
+    //   aka: node.aka && JSON.stringify(node.aka),
+    // }))
 
-    let nodesProps = JSON.stringify(nodes)
-      // .replace(/\"([^(\")"]+)\":/g,"$1:") //WHAT IS IT
-      // .replace(/"point/g, "point")
-      // .replace(/}\)"/g, "})")
-      // .replace(/"{/g, "{")
-      // .replace(/}"/g, "}")
-      // .replace(/"\[/g, "[")
-      // .replace(/\]"/g, "]")
+    // let nodesProps = JSON.stringify(nodes)
+    //   .replace(/"point/g, "point")
+    //   .replace(/}\)"/g, "})")
+    //   // .replace(/"{/g, "{")
+    //   // .replace(/}"/g, "}")
+    //   // .replace(/"\[/g, "[")
+    //   // .replace(/\]"/g, "]")
+    //   // .replace(/\"([^(\")"]+)\":/g,"$1:")
+    //   .replace(/(?<!\\)\"([^(\")"]+)(?<!\\)\":/g,"$1:")
+    //   // .replace(/\"([^(\")"]+)\":/g, match => {
+    //   //   console.log(match)
+    //   //   return "$1:"
+    //   // }) //WHAT IS IT
+    console.log(encodeMany(nodeModel, data.nodes))
 
-    const nodeString = "UNWIND " + nodesProps +
+    const nodeString = "UNWIND " + encodeMany(nodeModel, data.nodes) +
       " AS properties\nCREATE (n:Person)\nSET n = properties\nRETURN n"
-    // await this.post([{statement: nodeString}])
-    console.log(nodeString)
+    await this.post([{statement: nodeString}])
+    // console.log(nodeString)
     // console.log("nodes added")
 return
     const edges = data.edges
     const edgeString = edges.map(edge => `
       MATCH (a:Person)
-      WHERE a.name = '${edge.node0}'
+      WHERE a.name = '${this.context.store.get({id: edge.node0}).name}'
       MATCH (b:Person)
-      WHERE b.name = '${edge.node1}'
+      WHERE b.name = '${this.context.store.get({id: edge.node1}).name}'
       CREATE (a)-[r:KISS]->(b)
     `)
       .map(statement => ({statement: statement}))
@@ -73,20 +83,26 @@ return
   }
 
   getAllData = async () => {
-    const nodes = (await this.post([{statement: "MATCH (node:Person) RETURN node"}])).data//.results.data
-    console.log(nodes)
-    const edges = (await this.post([{statement: "MATCH -[edge:KISS]-> RETURN edge"}])).data//.results.data
-    console.log(edges)
+    const nodes = (await this.post([{statement: "MATCH (node:Person) RETURN node"}]))
+    console.log(decodeMany(nodes))
+    // const edges = (await this.post([{statement: "MATCH -[edge:KISS]-> RETURN edge"}])).data//.results.data
+    // console.log(edges)
   }
   
   render() {
     return(
       <div>
-        <button onClick={() => this.addCurrentData()}>
+        <button
+          className="button"
+          onClick={() => this.addCurrentData()}
+        >
           Добавить
         </button>
         <br />
-        <button onClick={() => this.getAllData()}>
+        <button
+          className="button"
+          onClick={() => this.getAllData()}
+        >
           JSON
         </button>
       </div>
