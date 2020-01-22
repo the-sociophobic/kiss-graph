@@ -2,45 +2,42 @@ import _ from 'lodash'
 
 
 const editableFields = model =>
-  _.pickBy(model, (value, key) => model[key].type !== "id")
+  _.pickBy(model, (value, key) => !model[key].type.match(/\b(id|ref)\b/g))
 
 const newInstance = model =>
   Object.keys(model)
   .map(key => {
-    if (model[key].default)
-      return model[key].default
+    const encodeType = (model, key) => {
+      if (model[key].default)
+        return model[key].default
 
-    switch (model[key].type) {
-      case "number":
-        return 0
-      case "string":
-        return ""
-      case "boolean":
-        return ""
-      case "object":
-        return {}
-      case "array":
-        return []
-      case "date":
-        return 0
-      case "point3d":
-        return {
-          x: 0,
-          y: 0,
-          z: 0,
-        }
-      case "social":
-        return {
-          tg: undefined,
-          vk: undefined,
-          inst: undefined,
-          twit: undefined,
-          yt: undefined,
-          fb: undefined,
-        }
-      default:
-        return undefined
+      switch (model[key].type) {
+        case "number":
+          return undefined
+        case "string":
+          return ""
+        case "boolean":
+          return ""
+        case "object":
+          if (model[key].fields)
+            return newInstance(model[key].fields)
+          return {}
+        case "array":
+          return []
+        case "date":
+          return undefined
+        case "point3d":
+          return {
+            x: 0,
+            y: 0,
+            z: 0,
+          }
+        default:
+          return undefined
+      }
     }
+
+    return {[key]: encodeType(model, key)}
   })
   .reduce((a, b) => ({...a, ...b}))
 
@@ -54,8 +51,6 @@ const encode = (model, instance) =>
         case "object":
           return instance[key] && JSON.stringify(instance[key])
         case "array":
-          return instance[key] && JSON.stringify(instance[key])
-        case "social":
           return instance[key] && JSON.stringify(instance[key])
         case "id":
           return undefined
@@ -99,11 +94,6 @@ const decode = (model, instance) =>
           return value && JSON.parse(value)
         case "social":
           return value && JSON.parse(value)
-        case "id":
-          return instance.meta[0].id
-        case "ref":
-          // let //TODO instance.row[1], instance.row[2] for edge
-          return instance.meta[0].id
         default:
           return value
       }

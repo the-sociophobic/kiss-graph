@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import StoreContext from 'libs/engines/data/store/StoreContext'
-import nodeModel from 'libs/engines/data/hardcoded/DB/models/node'
-import edgeModel from 'libs/engines/data/hardcoded/DB/models/edge'
+import nodeModel from 'libs/engines/data/store/models/node'
+import edgeModel from 'libs/engines/data/store/models/edge'
 import {
   encode,
   encodeMany,
   decodeMany
-} from 'libs/engines/data/hardcoded/DB/models'
+} from 'libs/engines/data/store/models'
 
 import axios from 'axios'
 
@@ -40,7 +40,8 @@ class Neo4j extends Component {
     await this.post([{statement: nodeString}])
     // return
     const edges = data.edges
-    const edgeString = edges.map(edge => `
+    const edgeString = edges
+      .map(edge => `
         MATCH (a:Person)
         WHERE a.name = '${this.context.store.get({id: edge.node0}).name}'
         MATCH (b:Person)
@@ -54,9 +55,42 @@ class Neo4j extends Component {
   }
 
   getAllData = async () => {
-    // const nodes = (await this.post([{statement: "MATCH (node:Person) RETURN node"}]))
-    // console.log(decodeMany(nodeModel, nodes))
-    const edges = (await this.post([{statement: "MATCH (a:Person)-[edge:KISS]->(b:Person) RETURN edge, a, b"}]))
+    const nodes = await this.post([{
+      statement: `
+        MATCH (node:Person)
+        MATCH (node)-[edge:KISS]-(mate:Person)
+        MATCH (mate)-[mateEdges:KISS]-(mateConnections:Person)
+        WITH {
+          date: edge.commited,
+          edgeId: id(edge),
+          id: id(mate),
+          connections: count(mateConnections) + COALESCE(mate.hiddenConnections, 0),
+          userName: mate.userName,
+          name: mate.name,
+          iq: mate.iq,
+          mentalDisorder: mate.mentalDisorder
+        } as mates, node as node
+        WITH node {
+          .*,
+          id: id(node),
+          mates: collect(mates)
+        } AS node
+        RETURN node
+      `
+    }])
+    console.log(decodeMany(nodeModel, nodes))
+    const edges = await this.post([{
+      statement: `
+        MATCH (node0:Person)-[edge:KISS]->(node1:Person)
+        WITH edge {
+          .*,
+          id: id(edge),
+          node0: id(node0),
+          node1: id(node1)
+        } AS edge
+        RETURN edge
+      `
+    }])
     console.log(decodeMany(edgeModel, edges))
   }
   

@@ -6,6 +6,7 @@ import myScene from 'libs/myScene'
 import StoreContext from 'libs/engines/data/store/StoreContext'
 
 import TextInterface from 'components/interface/TextInterface'
+import Loader from 'components/Loader'
 
 import iOS from 'libs/utils/iOS'
 
@@ -40,7 +41,8 @@ class Layout extends Component {
       }
     }
 
-    this.setState({storeConnected: true})
+    this.context.store.addInitListener(() => this.setState({storeConnected: true}))
+    
     window.onpopstate = this.handleBrowserHistoryButtons.bind(this)
     window.onpushstate = this.handleBrowserHistoryButtons.bind(this)
   }
@@ -95,27 +97,25 @@ class Layout extends Component {
       prevLocation: this.props.location && this.props.location.state && this.props.location.state.from,
     }
 
-    return (
+    return this.state.storeConnected ? (
       <div className="page-container">
-        {this.state.storeConnected &&
-          <TextInterface
-            ref={this.context.textInterfaceRef}
-            {...props}
-          >
-            {this.state.retrievedData &&
-              <div className="interface-container">
-                <div className="interface">
-                  {/* {this.props.children} */}
-                  <textarea
-                    value={this.state.retrievedData}
-                    rows={40}
-                    cols={20}
-                  />
-                </div>
+        <TextInterface
+          ref={this.context.textInterfaceRef}
+          {...props}
+        >
+          {this.state.retrievedData &&
+            <div className="interface-container">
+              <div className="interface">
+                {/* {this.props.children} */}
+                <textarea
+                  value={this.state.retrievedData}
+                  rows={40}
+                  cols={20}
+                />
               </div>
-            }
-          </TextInterface>
-        }
+            </div>
+          }
+        </TextInterface>
         <div className="viewer-container" >
           <ThreeScene
             ref={this.context.threeSceneRef}
@@ -127,7 +127,7 @@ class Layout extends Component {
           <PoweredByNGINX />
         </div>
       </div>
-    )
+    ) : <Loader />
   }
 }
 

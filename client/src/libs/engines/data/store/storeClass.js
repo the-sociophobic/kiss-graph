@@ -1,16 +1,82 @@
+import axios from 'axios'
+
+import nodeModel from 'libs/engines/data/store/models/node'
+import edgeModel from 'libs/engines/data/store/models/edge'
+import {
+  encode,
+  encodeMany,
+  decodeMany
+} from 'libs/engines/data/store/models'
+
 import copyToClipboard from 'libs/utils/copyToClipboard'
-import { model as nodeModel } from 'pages/Kontrol/models/node'
-import { model as edgeModel } from 'pages/Kontrol/models/edge'
 import { data, parseConnections } from 'libs/engines/data/hardcoded/DB'
 import filterKeys from 'libs/utils/filterKeys'
 
 
-class store {
-  constructor(props) {
-    this.props = props
-    this.data = data
-    this.metaData = parseConnections(data)
+const post = async statements =>
+  axios
+    .post("http://localhost:7474/db/data/transaction/commit",
+      {statements: statements},
+      {auth: {
+        username: "neo4j",
+        password: "dermo123"
+      }}
+    )
 
+const getNodes = async () =>
+  decodeMany(
+    nodeModel,
+    await post([{
+      statement: `
+        MATCH (node:Person)
+        MATCH (node)-[edge:KISS]-(mate:Person)
+        MATCH (mate)-[mateEdges:KISS]-(mateConnections:Person)
+        WITH {
+          date: edge.commited,
+          edgeId: id(edge),
+          id: id(mate),
+          connections: count(mateConnections) + COALESCE(mate.hiddenConnections, 0),
+          userName: mate.userName,
+          name: mate.name,
+          iq: mate.iq,
+          mentalDisorder: mate.mentalDisorder
+        } as mates, node as node
+        WITH node {
+          .*,
+          id: id(node),
+          connections: count(mates) + COALESCE(node.hiddenConnections, 0),
+          mates: collect(mates)
+        } AS node
+        RETURN node
+      `
+    }])
+  )
+
+
+const getEdges = async () => {
+  const edges = await post([{
+    statement: `
+      MATCH (node0:Person)-[edge:KISS]->(node1:Person)
+      WITH edge {
+        .*,
+        id: id(edge),
+        node0: id(node0),
+        node1: id(node1)
+      } AS edge
+      RETURN edge
+    `
+  }])
+  return decodeMany(edgeModel, edges)
+}
+
+class store {
+  init = async () => {
+    this.initListeners = []
+
+    this.metaData = {
+      nodes: await getNodes(),
+      edges: await getEdges(),
+    }
     const createSortedSet = (objectsArray, property) =>
       Array.from(
         new Set(objectsArray.map(object => object[property]))
@@ -19,7 +85,34 @@ class store {
     this.weightSet = createSortedSet(this.metaData.nodes, "connections")
     this.iqSet = createSortedSet(this.metaData.nodes, "iq")
     this.mentalDisorderSet = createSortedSet(this.metaData.nodes, "mentalDisorder")
+
+    //REDO THIS SHIT
+    const nodeUV = (weight, distribution) => distribution.indexOf(weight) / distribution.length
+    this.metaData.nodes = this.metaData.nodes.map(node => ({
+      ...node,
+      uv: nodeUV(node.connections, this.weightSet),
+    }))
+
+    this.initListeners.forEach(listener => listener())
   }
+
+  constructor(props) {
+    this.props = props
+    this.data = data
+    // this.metaData = parseConnections(data)
+    this.metaData = {
+      nodes: [],
+      edges: [],
+    }
+
+    this.init()
+  }
+
+  addInitListener = fn =>
+    this.initListeners = [
+      ...this.initListeners,
+      fn
+    ]
 
   get = props => {
     if (typeof props === "undefined")
@@ -136,7 +229,7 @@ class store {
             .reduce((a, b) => a || b)
         )
         .reduce((a, b) => a || b)
-      )
+      ) || []
     }
 
     if (filteredNodes.length < limit) {
@@ -150,7 +243,7 @@ class store {
             .includes(props[key].toLowerCase())
         )
         .reduce((a, b) => a || b)
-      )
+      ) || []
       filteredNodes = [
         ...filteredNodes,
         ...badlyFilteredNodes.slice(0, limit - filteredNodes.length)

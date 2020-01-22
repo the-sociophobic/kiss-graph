@@ -953,3 +953,23 @@ span.emoji
   color: $dark-dark-gray
   font-weight: 400
 
+
+.loader
+  width: 100vw
+  height: 100vh
+  position: relative
+  background-color: $light
+  .emoji
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%) scale(9.0)
+    animation: flash .6s ease-in-out
+    animation-iteration-count: infinite 
+    @keyframes flash
+      0%
+        opacity: 0.5
+      50%
+        opacity: 1
+      100%
+        opacity: 0.5

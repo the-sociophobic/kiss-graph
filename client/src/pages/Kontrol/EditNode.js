@@ -5,7 +5,8 @@ import StoreContext from 'libs/engines/data/store/StoreContext'
 import NameSearch from 'components/interface/NameSearch'
 import Input from 'components/Form/Input'
 import Checkbox from 'components/Form/Checkbox'
-import { editableFields } from './models/node'
+import nodeModel from 'libs/engines/data/store/models/node'
+import { newInstance, editableFields } from 'libs/engines/data/store/models'
 
 
 class EditNode extends Component {
@@ -20,9 +21,9 @@ class EditNode extends Component {
   createEmptyNode = name => {
     let target = this.context.threeSceneRef.current.controls.target
 
+    console.log(newInstance(nodeModel))
     return {
-      ...editableFields,
-      id: this.context.store.get().nodes.length,
+      ...newInstance(nodeModel),
       name: name,
       pos: {
         x: target.x,
@@ -120,7 +121,7 @@ class EditNode extends Component {
       {Object.keys(this.state.localCopy).length > 0 && (
         <Fragment>
           {Object.keys(this.state.localCopy)
-            .filter(key => Object.keys(editableFields).includes(key))
+            .filter(key => Object.keys(editableFields(nodeModel)).includes(key))
             .map(key => this.renderKey(key))}
           <button
             className="edit-node__button"
