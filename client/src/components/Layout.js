@@ -8,7 +8,6 @@ import StoreContext from 'libs/engines/data/store/StoreContext'
 import TextInterface from 'components/interface/TextInterface'
 
 import iOS from 'libs/utils/iOS'
-import { pathToName } from 'libs/utils/stringTransforms'
 
 import HeatMap from 'components/interface/HeatMap'
 import ControlsHelp from 'components/interface/ControlsHelp'

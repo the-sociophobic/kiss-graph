@@ -44,7 +44,7 @@ export default class GraphPosCalculator extends Unit {
     this.verticesBuffer = new THREE.BufferAttribute(vertices, 3)
     this.verticesBuffer.dynamic = true
 
-    this.geometry.addAttribute('position', this.verticesBuffer)
+    this.geometry.setAttribute('position', this.verticesBuffer)
 
     this.deltaTime = .005
     this.frameNumber = 0

@@ -14,7 +14,7 @@ export default (nodes, edges) => {
   let verticesBuffer = new THREE.BufferAttribute(vertices, 3)
   verticesBuffer.dynamic = true
 
-  bufferGeometry.addAttribute('position', verticesBuffer)
+  bufferGeometry.setAttribute('position', verticesBuffer)
 
   let material = new THREE.MeshBasicMaterial( { color: 0x0000ff } )
 

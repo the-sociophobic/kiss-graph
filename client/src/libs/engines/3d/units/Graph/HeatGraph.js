@@ -96,8 +96,8 @@ const cylinderGraphGeometry = (nodes, edges, segments) => {
 
     let cylinderData = cylinderVertices(.05, subVectors.length(), segments, node0.uv, node1.uv)
     let cylinder = new THREE.BufferGeometry()
-    cylinder.addAttribute('position', new THREE.BufferAttribute(cylinderData.vertices, 3))
-    cylinder.addAttribute('uv', new THREE.BufferAttribute(cylinderData.uvs, 2))
+    cylinder.setAttribute('position', new THREE.BufferAttribute(cylinderData.vertices, 3))
+    cylinder.setAttribute('uv', new THREE.BufferAttribute(cylinderData.uvs, 2))
     cylinder.setIndex(indicesAttribute)
     
     //have to convert BufferGeometry into Geometry to .merge() meshes
