@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import StoreContext from 'libs/engines/data/store/StoreContext'
 import nodeModel from 'libs/engines/data/hardcoded/DB/models/node'
-import { encodeMany, decodeMany } from 'libs/engines/data/hardcoded/DB/models'
+import edgeModel from 'libs/engines/data/hardcoded/DB/models/edge'
+import {
+  encode,
+  encodeMany,
+  decodeMany
+} from 'libs/engines/data/hardcoded/DB/models'
 
 import axios from 'axios'
 
@@ -30,63 +35,29 @@ class Neo4j extends Component {
 
     const data = this.context.store.get()
 
-    // const nodes = data.nodes
-    // // .slice(0, 10)
-    // .map(node => ({
-    //   name: node.name,
-    //   userName: node.userName,
-    //   social: node.social && JSON.stringify(node.social),
-    //   pos: `point({x:${node.pos.x}, y:${node.pos.y}, z:${node.pos.z}})`,
-    //   hiddenConnections: node.hiddenConnections,
-    //   iq: node.iq,
-    //   mentalDisorder: node.mentalDisorder,
-    //   dead: node.dead,
-    //   offended: node.offended,
-    //   //experimental
-    //   SHR: node.SHR && JSON.stringify(node.SHR),
-    //   political: node.political && JSON.stringify(node.political),
-    //   aka: node.aka && JSON.stringify(node.aka),
-    // }))
-
-    // let nodesProps = JSON.stringify(nodes)
-    //   .replace(/"point/g, "point")
-    //   .replace(/}\)"/g, "})")
-    //   // .replace(/"{/g, "{")
-    //   // .replace(/}"/g, "}")
-    //   // .replace(/"\[/g, "[")
-    //   // .replace(/\]"/g, "]")
-    //   // .replace(/\"([^(\")"]+)\":/g,"$1:")
-    //   .replace(/(?<!\\)\"([^(\")"]+)(?<!\\)\":/g,"$1:")
-    //   // .replace(/\"([^(\")"]+)\":/g, match => {
-    //   //   console.log(match)
-    //   //   return "$1:"
-    //   // }) //WHAT IS IT
-    console.log(encodeMany(nodeModel, data.nodes))
-
     const nodeString = "UNWIND " + encodeMany(nodeModel, data.nodes) +
       " AS properties\nCREATE (n:Person)\nSET n = properties\nRETURN n"
     await this.post([{statement: nodeString}])
-    // console.log(nodeString)
-    // console.log("nodes added")
-return
+    // return
     const edges = data.edges
     const edgeString = edges.map(edge => `
-      MATCH (a:Person)
-      WHERE a.name = '${this.context.store.get({id: edge.node0}).name}'
-      MATCH (b:Person)
-      WHERE b.name = '${this.context.store.get({id: edge.node1}).name}'
-      CREATE (a)-[r:KISS]->(b)
-    `)
+        MATCH (a:Person)
+        WHERE a.name = '${this.context.store.get({id: edge.node0}).name}'
+        MATCH (b:Person)
+        WHERE b.name = '${this.context.store.get({id: edge.node1}).name}'
+        CREATE (a)-[r:KISS ${JSON.stringify(encode(edgeModel, edge)).replace(/(?<!\\)\"([^(\")"]+)(?<!\\)\":/g,"$1:")}]->(b)
+      `)
       .map(statement => ({statement: statement}))
+    console.log(edgeString)
     await this.post(edgeString)
     console.log("edges added")
   }
 
   getAllData = async () => {
-    const nodes = (await this.post([{statement: "MATCH (node:Person) RETURN node"}]))
-    console.log(decodeMany(nodes))
-    // const edges = (await this.post([{statement: "MATCH -[edge:KISS]-> RETURN edge"}])).data//.results.data
-    // console.log(edges)
+    // const nodes = (await this.post([{statement: "MATCH (node:Person) RETURN node"}]))
+    // console.log(decodeMany(nodeModel, nodes))
+    const edges = (await this.post([{statement: "MATCH (a:Person)-[edge:KISS]->(b:Person) RETURN edge, a, b"}]))
+    console.log(decodeMany(edgeModel, edges))
   }
   
   render() {

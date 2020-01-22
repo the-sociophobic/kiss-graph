@@ -59,6 +59,8 @@ const encode = (model, instance) =>
           return instance[key] && JSON.stringify(instance[key])
         case "id":
           return undefined
+        case "ref":
+          return undefined
         default:
           return instance[key]
       }
@@ -66,7 +68,8 @@ const encode = (model, instance) =>
 
     return {[key]: encodeType(model, instance, key)}
   })
-  .reduce((a, b) => ({...a, ...b}))
+  // .reduce((a, b) => ({...a, ...b}))
+  .reduce((a, b) => _.pickBy({...a, ...b}, _.identity))
 
 const encodeMany = (model, instances) =>
   JSON.stringify(
@@ -87,8 +90,8 @@ const decode = (model, instance) =>
           const pos = value.coordinates
           return {
             x: pos[0],
-            x: pos[1],
-            x: pos[2],
+            y: pos[1],
+            z: pos[2],
           }
         case "object":
           return value && JSON.parse(value)
@@ -98,6 +101,9 @@ const decode = (model, instance) =>
           return value && JSON.parse(value)
         case "id":
           return instance.meta[0].id
+        case "ref":
+          // let //TODO instance.row[1], instance.row[2] for edge
+          return instance.meta[0].id
         default:
           return value
       }
@@ -105,10 +111,10 @@ const decode = (model, instance) =>
 
     return {[key]: decodeType(model, instance, key)}
   })
-  .reduce((a, b) => ({...a, ...b}))
+  // .reduce((a, b) => ({...a, ...b}))
+  .reduce((a, b) => _.pickBy({...a, ...b}, _.identity))
 
   const decodeMany = (model, instances) => 
-    // instances?.data?.results[0]?.data.map(instance => decode(model, instance)) //Wait for ECMAScript 2020 Standart
     instances?.data?.results[0]?.data.map(instance => decode(model, instance))
 
 
