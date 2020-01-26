@@ -1,13 +1,16 @@
 /* eslint-disable */
 
-import axios from 'axios';
+import axios from 'axios'
+
+import isProduction from 'libs/utils/isProduction'
+
 
 /* axios config */
 // axios.defaults.baseURL = process.env.REACT_APP_API_DOMAIN + '/api';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 // axios.defaults.withCredentials = true;
 
-if (process.env.REACT_APP_STAGE === 'live' || process.env.REACT_APP_STAGE === 'prod') {
+if (isProduction()) {
   // console.log("site analytics scripts running")
 
   // const googleAnalytics = document.createElement("script");

@@ -6,6 +6,7 @@ import ResizeObserver from 'resize-observer-polyfill'
 import THREE from 'libs/engines/3d/three'
 import LevControls from 'libs/engines/3d/units/LevControls'
 import StoreContext from 'libs/engines/data/store/StoreContext'
+import isProduction from 'libs/utils/isProduction'
 
 
 const targetToCamera = 5
@@ -42,7 +43,7 @@ class ThreeScene extends Component {
 
   componentDidMount() {
     //REGISTER Camera Idle
-    if (process.env.REACT_APP_STAGE === 'live' || process.env.REACT_APP_STAGE === 'prod') {
+    if (isProduction()) {
       this.toggleIdle()
       window.addEventListener( 'click', this.toggleIdle, { passive: true } )
       window.addEventListener( 'touchstart', this.toggleIdle, { passive: true } )
@@ -102,6 +103,23 @@ class ThreeScene extends Component {
 
     this.interaction = new Interaction(this.renderer, this.scene, this.camera)
 
+    this.initUnits()
+    this.context.store.addUpdateListener(() => {
+      this.disposeUnits()
+      this.initUnits()
+    })
+
+    if (!this.frameId)
+      this.frameId = requestAnimationFrame(this.animate)
+  }
+
+  componentWillUnmount(){
+    this.disposeUnits()
+    cancelAnimationFrame(this.frameId)
+    // this.viewerRef.removeChild(this.renderer.domElement)
+  }
+
+  initUnits = () => {
     this.units = []
     const props = {
       THREE: THREE,
@@ -115,20 +133,12 @@ class ThreeScene extends Component {
     }
 
     this.props.myScene.units.forEach(unit => this.units.push(new unit(props)))
-
-    if (!this.frameId)
-      this.frameId = requestAnimationFrame(this.animate)
   }
-
-  componentWillUnmount(){
+  disposeUnits = () =>
     this.units.forEach(unit => unit.dispose())
-    cancelAnimationFrame(this.frameId)
-    // this.viewerRef.removeChild(this.renderer.domElement)
-  }
 
   animate = () => {
     this.units.forEach(unit => unit.animate())
-
 
     //VECTOR TRANSITIONS
     let unregisteredTransitions = []

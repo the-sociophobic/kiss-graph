@@ -5,6 +5,7 @@ import position from 'libs/engines/data/hardcoded/position/02.11.19.json'
 
 import { nameToPath } from 'libs/utils/stringTransforms'
 
+
 export default data => {
   let edges = data.edges.map(edge => {
     let foundEdgeData = edgesDates.filter(edgeData =>

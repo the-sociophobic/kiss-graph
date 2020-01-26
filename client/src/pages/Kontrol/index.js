@@ -7,9 +7,12 @@ import Neo4j from 'components/intermediate/Neo4j'
 import EditNode from './EditNode'
 import myDate from 'libs/utils/myDate'
 import Input from 'components/Form/Input'
-import { editableFields as edgeEditableFields } from './models/edge'
+import edgeModel from 'libs/engines/data/store/models/edge'
+import { newInstance } from 'libs/engines/data/store/models'
+
 
 const dates = ["commited", "told", "published"]
+
 class Kontrol extends Component {
   constructor(props) {
     super(props)
@@ -32,19 +35,19 @@ class Kontrol extends Component {
     this.context.textInterfaceRef.current.openWorkspace &&
     this.context.textInterfaceRef.current.openWorkspace()
 
-  pushEdge = () => {
+  pushEdge = async () => {
     const { node0, node1 } = this.state
 
     if (node0 === -1 || node1 === -1)
       return
 
-    this.context.store.push(this.state)
+    console.log(await this.context.store.push(this.state))
     this.context.store.copyData()
   }
 
   createEmptyEdge = (node0, node1) => ({
-    ...edgeEditableFields,
-    id: node0 + "-" + node1,
+    ...newInstance(edgeModel),
+    // id: node0 + "-" + node1,
     node0: node0,
     node1: node1,
   })

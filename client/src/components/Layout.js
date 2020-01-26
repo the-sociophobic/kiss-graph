@@ -26,26 +26,28 @@ class Layout extends Component {
     }
   }
 
-  componentDidMount() {
-    if (iOS())
-      window.scrollTo(0, 0)
-    
-    if (this.props.location.pathname.includes("/node/")) {
-      const nodeLink = this.props.location.pathname.slice("/node/".length)
+  componentDidMount = () =>
+    this.context.store
+      .addInitListener(() => {
 
-      if (nodeLink) {
-        console.log(nodeLink)
-        let node = this.context.store.get({link: nodeLink})
-        if (node !== null)
-          this.setNode(node.id, false, false)
-      }
-    }
-
-    this.context.store.addInitListener(() => this.setState({storeConnected: true}))
+        if (iOS())
+          window.scrollTo(0, 0)
+      
+        if (this.props.location.pathname.includes("/node/")) {
+          const nodeLink = this.props.location.pathname.slice("/node/".length)
     
-    window.onpopstate = this.handleBrowserHistoryButtons.bind(this)
-    window.onpushstate = this.handleBrowserHistoryButtons.bind(this)
-  }
+          if (nodeLink) {
+            let node = this.context.store.get({link: nodeLink})
+            if (node !== null)
+              this.setNode(node.id, false, false)
+          }
+        }
+
+        this.setState({storeConnected: true})
+
+        window.onpopstate = this.handleBrowserHistoryButtons.bind(this)
+        window.onpushstate = this.handleBrowserHistoryButtons.bind(this)    
+      })
 
   handleBrowserHistoryButtons = e => {
     if (this.props.location.pathname.includes("/node/")) {

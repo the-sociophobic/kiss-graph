@@ -21,7 +21,6 @@ class EditNode extends Component {
   createEmptyNode = name => {
     let target = this.context.threeSceneRef.current.controls.target
 
-    console.log(newInstance(nodeModel))
     return {
       ...newInstance(nodeModel),
       name: name,
@@ -47,8 +46,8 @@ class EditNode extends Component {
     this.setState({localCopy: node})
   }
 
-  save = () => {
-    this.context.store.push(this.state.localCopy)
+  save = async () => {
+    console.log(await this.context.store.push(this.state.localCopy))
     this.context.store.copyData()
   }
 

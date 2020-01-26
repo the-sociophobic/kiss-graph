@@ -2,6 +2,8 @@ export default {
   id: {type: "id"},
   name: {type: "string"},
   userName: {type: "string"},
+  link: {type: "string", local: true},
+  uv: {type: "number", local: true},
   social: {
     type: "object",
     fields: {
@@ -16,7 +18,7 @@ export default {
     }
   },
   pos: {type: "point3d"},
-  connections: {type: "number"},
+  connections: {type: "number", local: true},
   hiddenConnections: {type: "number"},
   mates: {type: "ref"},
   iq: {type: "string"},

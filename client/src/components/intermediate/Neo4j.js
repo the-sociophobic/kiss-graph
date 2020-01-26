@@ -3,9 +3,9 @@ import StoreContext from 'libs/engines/data/store/StoreContext'
 import nodeModel from 'libs/engines/data/store/models/node'
 import edgeModel from 'libs/engines/data/store/models/edge'
 import {
-  encode,
   encodeMany,
-  decodeMany
+  encodeJSONstring,
+  decodeMany,
 } from 'libs/engines/data/store/models'
 
 import axios from 'axios'
@@ -42,11 +42,11 @@ class Neo4j extends Component {
     const edges = data.edges
     const edgeString = edges
       .map(edge => `
-        MATCH (a:Person)
-        WHERE a.name = '${this.context.store.get({id: edge.node0}).name}'
-        MATCH (b:Person)
-        WHERE b.name = '${this.context.store.get({id: edge.node1}).name}'
-        CREATE (a)-[r:KISS ${JSON.stringify(encode(edgeModel, edge)).replace(/(?<!\\)\"([^(\")"]+)(?<!\\)\":/g,"$1:")}]->(b)
+        MATCH (node0:Person)
+        WHERE node0.name = '${this.context.store.get({id: edge.node0}).name}'
+        MATCH (node1:Person)
+        WHERE node1.name = '${this.context.store.get({id: edge.node1}).name}'
+        CREATE (node0)-[edge:KISS ${encodeJSONstring(edgeModel, edge)}]->(node1)
       `)
       .map(statement => ({statement: statement}))
     console.log(edgeString)
