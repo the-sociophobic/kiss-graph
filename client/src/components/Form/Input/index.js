@@ -36,7 +36,7 @@ export default class Input extends Component {
         <input
           ref={this.inputFieldRef}
           type={this.props.number ? "number" : "text"}
-          className={"form-group__input " + this.props.className}
+          className="form-group__input"
           placeholder={this.props.placeholder}
           required={this.props.required}
           value={this.props.value}

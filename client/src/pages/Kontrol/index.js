@@ -11,7 +11,7 @@ import edgeModel from 'libs/engines/data/store/models/edge'
 import { newInstance } from 'libs/engines/data/store/models'
 
 
-const dates = ["commited", "told", "published"]
+const dates = ["commited", "told"]//, "published"]
 
 class Kontrol extends Component {
   constructor(props) {
@@ -41,7 +41,11 @@ class Kontrol extends Component {
     if (node0 === -1 || node1 === -1)
       return
 
-    console.log(await this.context.store.push(this.state))
+    let edge = this.state
+    if (typeof this.state.id === "undefined")
+      edge.published = (new myDate()).getTime() / 1000
+
+    console.log(await this.context.store.push(edge))
     this.context.store.copyData()
   }
 
@@ -85,22 +89,19 @@ class Kontrol extends Component {
     //try find edge
     if (node0 !== null && node1 !== null) {
       let edge = {}
-      console.log(node0)
-      console.log(node1)
 
-      if (typeof node0.mates !== "undefined" && typeof node1.mates !== "undefined") {
+      if (node0.mates.length > 0 && node1.mates.length > 0) {
         const mateIndex = node0.mates.map(mate => mate.id).indexOf(node1.id)
       
-        if (mateIndex !== -1)
-          edge = this.context.store.get({edgeId: node0.mates[mateIndex].edgeId}) || {}
-        console.log(edge)
-  
-        edge = _.merge(this.createEmptyEdge(node0.id, node1.id), edge)
-        this.setState({editingEdge: true})
+        if (mateIndex !== -1) {
+          edge = this.context.store.get({edgeId: node0.mates[mateIndex].edgeId})
+          this.setState({editingEdge: true})
+        }
       } else {
         edge = this.createEmptyEdge(node0.id, node1.id)
         this.setState({editingEdge: false})
       }
+      edge = _.merge(this.createEmptyEdge(node0.id, node1.id), edge)
 
       Object.keys(edge).forEach(key => this.setState({[key]: edge[key]}))
     }

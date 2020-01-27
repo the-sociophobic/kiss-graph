@@ -10,10 +10,7 @@ const interpolateVOffset = v => v * (1 - heatMapOffset.vOffset[0] - heatMapOffse
 
 export default (nodesInput, edges, scene) => {
 
-  let nodes = nodesInput.map(node => ({
-    ...node,
-    // uv: nodeUV(node.weight)
-  }))
+  let nodes = nodesInput
 
   var finalMesh
   // let textureLoader = new THREE.TextureLoader()

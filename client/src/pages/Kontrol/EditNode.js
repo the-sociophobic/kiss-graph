@@ -7,81 +7,89 @@ import Input from 'components/Form/Input'
 import Checkbox from 'components/Form/Checkbox'
 import nodeModel from 'libs/engines/data/store/models/node'
 import { newInstance, editableFields } from 'libs/engines/data/store/models'
+import { flatten, deflatten, filterKeys } from 'libs/utils/objectUtils'
+
+
+const flattenEditableFields = [
+  ...Object.keys(flatten(editableFields(nodeModel)))
+    .map(key => key.replace(".type", "").replace(".fields", "")),
+  "pos.x",
+  "pos.y",
+  "pos.z",
+]
+const flattenNodeModel = Object.keys(flatten(nodeModel))
+  .map(key => ({
+    [key.replace(".type", "").replace(".fields", "")]: flatten(nodeModel)[key]
+  }))
+  .reduce((a, b) => ({...a, ...b}))
 
 
 class EditNode extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      localCopy: {},
-    }
+    this.state = flatten(newInstance(nodeModel))
     this.nameSearchRef = React.createRef()
   }
 
   createEmptyNode = name => {
-    let target = this.context.threeSceneRef.current.controls.target
+    let target = this.context.threeSceneRef?.current?.controls?.target
 
     return {
-      ...newInstance(nodeModel),
+      ...flatten(newInstance(nodeModel)),
       name: name,
-      pos: {
-        x: target.x,
-        y: target.y,
-        z: target.z,
-      }
+      "pos.x": target?.x,
+      "pos.y": target?.y,
+      "pos.z": target?.z,
     }
   }
 
   setNode = nodeName => {
-    let node = this.context.store.get({name: nodeName})
-
-    if (node === null)
-      node = this.createEmptyNode(nodeName)
-    else {
-      node = _.merge(this.createEmptyNode(nodeName), node)
-      this.context.threeSceneRef.current && this.context.threeSceneRef.current.setCamera(node.pos)
+    if (nodeName === null || nodeName === "") {
+      this.setState(flatten(newInstance(nodeModel)))
+      return
     }
 
+    let node = this.context.store.get({name: nodeName})
+    console.log(node)
+
+    if (node === null || typeof node === "undefined")
+      node = this.createEmptyNode(nodeName)
+    else {
+      this.context.threeSceneRef.current && this.context.threeSceneRef.current.setCamera(node.pos)
+      node = {
+        ...this.createEmptyNode(nodeName),
+        ...flatten(filterKeys(node, {
+          id: {},
+          ...editableFields(nodeModel)
+        }))
+      }
+    }
+
+    console.log(node)
     this.props.setNodeId(node.id)
-    this.setState({localCopy: node})
+    this.setState(node)
   }
 
   save = async () => {
-    console.log(await this.context.store.push(this.state.localCopy))
+    const nodeFromStore = await this.context.store.push(deflatten(this.state))
+    this.setNode(nodeFromStore.name)
+    this.context.store.copyData()
+  }
+  delete = async () => {
+    await this.context.store.delete(deflatten(this.state))
+    this.setNode(null)
     this.context.store.copyData()
   }
 
-  renderKey = key => {
-    switch (typeof this.state.localCopy[key]) {
-      case "object":
-        return (
-          Object.keys(this.state.localCopy[key])
-            .map(keyKey =>
-              <Input
-                key={key + keyKey}
-                className="edit-node__input"
-                value={this.state.localCopy[key][keyKey]}
-                onChange={value => this.setState({
-                  localCopy: {
-                    ...this.state.localCopy,
-                    [key]: {
-                      ...this.state.localCopy[key],
-                      [keyKey]: value
-                    }  
-                  }
-                })}
-                label={`${key}: ${keyKey}`}
-              />
-            )
-        )
+  renderKey = (model, key) => {
+    switch (model[key]) {
       case "boolean":
         return (
           <Checkbox
             key={key}
-            value={this.state.localCopy[key]}
-            onChange={value => this.setState({
-              localCopy: {...this.state.localCopy, [key]: value}
-            })}
+            className="edit-node__checkbox"
+            value={this.state[key]}
+            onChange={value => this.setState({[key]: value})}
           >
             {key}
           </Checkbox>
@@ -91,10 +99,8 @@ class EditNode extends Component {
           <Input
             key={key}
             className="edit-node__input"
-            value={this.state.localCopy[key]}
-            onChange={value => this.setState({
-              localCopy: {...this.state.localCopy, [key]: value}
-            })}
+            value={this.state[key]}
+            onChange={value => this.setState({[key]: value})}
             label={key}
           />
         )
@@ -108,30 +114,42 @@ class EditNode extends Component {
     }
   }
 
-  render = () => (
-    <div className="edit-node">
-      <NameSearch
-        ref={this.nameSearchRef}
-        node={this.props.node}
-        onChange={value => this.setNode(value)}
-        onKeyDown={e => this.onEnterPress(e)}
-        className="mb-4"
-      />
-      {Object.keys(this.state.localCopy).length > 0 && (
-        <Fragment>
-          {Object.keys(this.state.localCopy)
-            .filter(key => Object.keys(editableFields(nodeModel)).includes(key))
-            .map(key => this.renderKey(key))}
-          <button
-            className="edit-node__button"
-            onClick={() => this.save()}
-          >
-            {this.state.localCopy.id < this.context.store.get().nodes.length ? "Update" : "Add"}
-          </button>
-        </Fragment>        
-      )}
-    </div>
-  )
+  render = () => {
+    const isNew = typeof this.state.id === "undefined"
+
+    return (
+      <div className="edit-node">
+        <NameSearch
+          ref={this.nameSearchRef}
+          node={this.props.node}
+          onChange={value => this.setNode(value)}
+          onKeyDown={e => this.onEnterPress(e)}
+          className="mb-4"
+        />
+        {this.state.name && this.state.name.length > 0 && (
+          <Fragment>
+            <button
+              className="edit-node__button"
+              onClick={() => this.save()}
+            >
+              {isNew ? "Add" : "Update"}
+            </button>
+            {!isNew &&
+              <button
+                className="edit-node__button"
+                onClick={() => this.delete()}
+              >
+                Delete
+              </button>
+            }
+            {Object.keys(this.state)
+              .filter(key => flattenEditableFields.includes(key))
+              .map(key => this.renderKey(flattenNodeModel, key))}
+          </Fragment>        
+        )}
+      </div>
+    )
+  }
 }
 
 EditNode.contextType = StoreContext

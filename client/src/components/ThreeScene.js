@@ -134,8 +134,12 @@ class ThreeScene extends Component {
 
     this.props.myScene.units.forEach(unit => this.units.push(new unit(props)))
   }
-  disposeUnits = () =>
+  disposeUnits = () => {
     this.units.forEach(unit => unit.dispose())
+    //REDO THIS SHIT: units should unregister themselves
+    while(this.scene.children.length > 0)
+      this.scene.remove(this.scene.children[0])
+  }
 
   animate = () => {
     this.units.forEach(unit => unit.animate())

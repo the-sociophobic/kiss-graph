@@ -5,10 +5,12 @@ import {
   createEdge,
   setNode,
   setEdge,
+  deleteNode,
+  deleteEdge,
 } from 'libs/engines/data/store/Neo4j'
 import nodeModel from 'libs/engines/data/store/models/node'
 import edgeModel from 'libs/engines/data/store/models/edge'
-import { decode } from 'libs/engines/data/store/models'
+import { decodeMany } from 'libs/engines/data/store/models'
 
 import {
   data,
@@ -18,7 +20,6 @@ import {
 import copyToClipboard from 'libs/utils/copyToClipboard'
 import listenersClass from 'libs/utils/listenersClass'
 import createSortedSet from 'libs/utils/createSortedSet'
-import filterKeys from 'libs/utils/filterKeys'
 import isProduction from 'libs/utils/isProduction'
 import { nameToPath } from 'libs/utils/stringTransforms'
 
@@ -37,6 +38,15 @@ class store extends listenersClass {
   }
 
   init = async () => {
+    await this.getData()
+    this.callInitListeners()
+  }
+  update = async () => {
+    await this.getData()
+    this.callUpdateListeners()
+  }
+
+  getData = async () => {
     if (isProduction())
       this.metaData = parseConnections(data)
     else
@@ -45,13 +55,11 @@ class store extends listenersClass {
         edges: await getEdges(),
       }
 
-      console.log(this.metaData.nodes.length)
-
     //CALC SECONDARY DATA
     this.iqSet = createSortedSet(this.metaData.nodes, "iq")
     this.weightSet = createSortedSet(this.metaData.nodes, "connections")
     this.mentalDisorderSet = createSortedSet(this.metaData.nodes, "mentalDisorder")
-  
+
     const calcNodeUV = (weight, distribution) =>
       distribution.indexOf(weight) / distribution.length
 
@@ -76,9 +84,6 @@ class store extends listenersClass {
       userName: calcUserName(node),
       link: calcLink(node),
     }))
-
-    //TELL EVERYONE DATA IS READY
-    this.callInitListeners()
   }
 
   get = props => {
@@ -177,52 +182,23 @@ class store extends listenersClass {
       else
         res = setNode(props)
     }
-    await res
-    this.callUpdateListeners()
-    console.log(res)
-    return decode(isEdge ? edgeModel : nodeModel, res)
-    // console.log(props)
-    // //push edge
-    // if (Object.keys(props).includes("node0")) {
-    //   const edge = filterKeys(props, edgeModel)
-    //   console.log(edge)
-    //   //update
-    //   const index = this.data.edges.map(edge => edge.id).indexOf(edge.id)
-    //   if (index !== -1) {
-    //     this.data.edges = [
-    //       ...this.data.edges.slice(0, index),
-    //       edge,
-    //       ...this.data.edges.slice(index + 1),
-    //     ]
-    //     this.metaData.edges = [
-    //       ...this.metaData.edges.slice(0, index),
-    //       edge,
-    //       ...this.metaData.edges.slice(index + 1),
-    //     ]
-    //   } else
-    //     this.data.edges.push(edge)
-    // }
-    // //push node
-    // else {
-    //   const node = filterKeys(props, nodeModel)
-    //   console.log(node)
-    //   //update
-    //   if (node.id < this.data.nodes.length) {
-    //     const index = this.data.nodes.map(edge => edge.id).indexOf(node.id)
+    await this.update()
+    return (
+      await decodeMany(isEdge ? edgeModel : nodeModel, await res)
+    )[0]
+  }
 
-    //     this.data.nodes = [
-    //       ...this.data.nodes.slice(0, index),
-    //       node,
-    //       ...this.data.nodes.slice(index + 1),
-    //     ]
-    //     this.metaData.nodes = [
-    //       ...this.metaData.nodes.slice(0, index),
-    //       node,
-    //       ...this.metaData.nodes.slice(index + 1),
-    //     ]
-    //   } else 
-    //     this.data.nodes.push(node)
-    // }
+  delete = async props => {
+    let res
+    let isEdge = Object.keys(props).includes("node0")
+
+    if (isEdge)
+      res = deleteEdge(props)
+    else
+      res = deleteNode(props)
+
+    await this.update()
+    return await res
   }
 
   copyData = () => copyToClipboard(JSON.stringify(this.data))

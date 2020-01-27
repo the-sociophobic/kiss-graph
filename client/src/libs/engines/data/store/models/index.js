@@ -24,9 +24,9 @@ const newInstance = model =>
       case "number":
         return undefined
       case "string":
-        return ""
+        return undefined
       case "boolean":
-        return ""
+        return undefined
       case "object":
         if (model[key].fields)
           return newInstance(model[key].fields)
@@ -85,6 +85,8 @@ const encodeMany = (model, instances) =>
 
 const encodeJSONstring = (model, instance) =>
   JSON.stringify(encode(model, instance))
+    .replace(/"point/g, "point")
+    .replace(/}\)"/g, "})")
     .replace(/(?<!\\)\"([^(\")"]+)(?<!\\)\":/g,"$1:")
 
 //DECODE FROM DB

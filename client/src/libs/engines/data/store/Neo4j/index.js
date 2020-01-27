@@ -22,34 +22,97 @@ const post = async statements =>
       }}
     )
 
-const getNodes = async () =>
-  decodeMany(
-    nodeModel,
-    await post([{
-      statement: `
-        MATCH (node:Person)
-        MATCH (node)-[edge:KISS]-(mate:Person)
-        MATCH (mate)-[mateEdges:KISS]-(mateConnections:Person)
-        WITH {
-          date: edge.commited,
-          edgeId: id(edge),
-          id: id(mate),
-          connections: count(mateConnections) + COALESCE(mate.hiddenConnections, 0),
-          userName: mate.userName,
-          name: mate.name,
-          iq: mate.iq,
-          mentalDisorder: mate.mentalDisorder
-        } as mates, node as node
-        WITH node {
-          .*,
-          id: id(node),
-          connections: count(mates) + COALESCE(node.hiddenConnections, 0),
-          mates: collect(mates)
-        } AS node
-        RETURN node
-      `
-    }])
-  )
+const getNodes = async () => {
+  const connectedNodes = await post([{
+    statement: `
+      MATCH (node:Person)
+      MATCH (node)-[edge:KISS]-(mate:Person)
+      MATCH (mate)-[mateEdges:KISS]-(mateConnections:Person)
+      WITH {
+        date: edge.commited,
+        edgeId: id(edge),
+        id: id(mate),
+        connections: count(mateConnections) + COALESCE(mate.hiddenConnections, 0),
+        userName: mate.userName,
+        name: mate.name,
+        iq: mate.iq,
+        mentalDisorder: mate.mentalDisorder
+      } as mates, node as node
+      WITH node {
+        .*,
+        id: id(node),
+        connections: count(mates) + COALESCE(node.hiddenConnections, 0),
+        mates: collect(mates)
+      } AS node
+      RETURN node
+    `
+  }])
+  const singleNodes = await post([{
+    statement: `
+      MATCH (node:Person)
+      WHERE NOT (node)-[:KISS]-(:Person)
+      WITH node {
+        .*,
+        id: id(node),
+        connections: COALESCE(node.hiddenConnections, 0),
+        mates: []
+      } AS node
+      RETURN node
+    `
+  }])
+
+  return [
+    ...decodeMany(nodeModel, connectedNodes),
+    ...decodeMany(nodeModel, singleNodes),
+  ]
+}
+const getNode = async id => {
+  const connectedNodes = await post([{
+    statement: `
+      MATCH (node:Person)
+      WHERE ID(node) = ${id}
+      MATCH (node)-[edge:KISS]-(mate:Person)
+      MATCH (mate)-[mateEdges:KISS]-(mateConnections:Person)
+      WITH {
+        date: edge.commited,
+        edgeId: id(edge),
+        id: id(mate),
+        connections: count(mateConnections) + COALESCE(mate.hiddenConnections, 0),
+        userName: mate.userName,
+        name: mate.name,
+        iq: mate.iq,
+        mentalDisorder: mate.mentalDisorder
+      } as mates, node as node
+      WITH node {
+        .*,
+        id: id(node),
+        connections: count(mates) + COALESCE(node.hiddenConnections, 0),
+        mates: collect(mates)
+      } AS node
+      RETURN node
+    `
+  }])
+  const singleNodes = await post([{
+    statement: `
+      MATCH (node:Person)
+      WHERE ID(node) = ${id} AND NOT (node)-[:KISS]-(:Person)
+      WITH node {
+        .*,
+        id: id(node),
+        connections: COALESCE(node.hiddenConnections, 0),
+        mates: []
+      } AS node
+      RETURN node
+    `
+  }])
+
+  const foundArray = [
+    ...decodeMany(nodeModel, connectedNodes),
+    ...decodeMany(nodeModel, singleNodes),
+  ]
+
+  return foundArray[0]
+}
 
 const getEdges = async () =>
   decodeMany(
@@ -72,6 +135,12 @@ const createNode = async node =>
   await post([{
     statement: `
       CREATE (node:Person ${encodeJSONstring(nodeModel, node)})
+      WITH node {
+        .*,
+        id: id(node),
+        connections: COALESCE(node.hiddenConnections, 0),
+        mates: []
+      } AS node
       RETURN node
     `
   }])
@@ -83,26 +152,58 @@ const createEdge = async edge =>
       MATCH (node1:Person)
       WHERE ID(node1) = ${edge.node1}
       CREATE (node0)-[edge:KISS ${encodeJSONstring(edgeModel, edge)}]->(node1)
+      WITH edge {
+        .*,
+        id: id(edge),
+        node0: id(node0),
+        node1: id(node1)
+      } AS edge
       RETURN edge
-    `
+  `
   }])
 
-const setNode = async node =>
-  await post([{
+const setNode = async node => {
+  const nodeId = await post([{
     statement: `
       MATCH (node:Person)
       WHERE ID(node) = ${node.id}
       SET node = ${encodeJSONstring(nodeModel, node)}
-      RETURN node
+      RETURN ID(node)
     `
   }])
+
+  return await getNode(nodeId)
+}
 const setEdge = async edge =>
   await post([{
     statement: `
       MATCH (edge:KISS)
       WHERE ID(edge) = ${edge.id}
       SET edge = ${encodeJSONstring(edgeModel, edge)}
+      WITH edge {
+        .*,
+        id: id(edge),
+        node0: id(node0),
+        node1: id(node1)
+      } AS edge
       RETURN edge
+  `
+  }])
+
+const deleteNode = async node =>
+  await post([{
+    statement: `
+      MATCH (node:Person)
+      WHERE ID(node) = ${node.id}
+      DETACH DELETE node
+    `
+  }])
+const deleteEdge = async edge =>
+  await post([{
+    statement: `
+      MATCH (edge:KISS)
+      WHERE ID(edge) = ${edge.id}
+      DELETE edge
     `
   }])
 
@@ -114,4 +215,6 @@ export {
   createEdge,
   setNode,
   setEdge,
+  deleteNode,
+  deleteEdge,
 }
