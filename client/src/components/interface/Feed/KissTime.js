@@ -16,8 +16,7 @@ const timeIsDefined = date => date.minute() !== 0 || date.hour() !== 0 ||
 //0100 04 sec -- day unknown
 //1000 08 sec -- month unknown
 const encodeTime = props => {
-  console.log(props)
-  let {
+  const {
     year,
     month,
     day,
@@ -50,10 +49,11 @@ const encodeTime = props => {
       return number.length === 1 ? ("0" + number) : number
     return number
   }
+
   const date = new Date(
     `${year}-${addZero(month)}-${addZero(day)}T${addZero(hour)}:${addZero(minute)}:${addZero(seconds)}`
   )
-  console.log(date)
+
   return date.getTime() / 1000
 }
 

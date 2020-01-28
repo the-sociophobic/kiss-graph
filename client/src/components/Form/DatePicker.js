@@ -59,16 +59,23 @@ export default class DatePicker extends Component {
     }
   }
 
-  // static getDerivedStateFromProps(props, state) {
-  //   if (props.value !== state.prevValue) {
-  //     state.prevValue = props.value
-  //     state.myDateInstance = new myDate(props.value)
-  //     Object.keys(numbersToInput)
-  //       .forEach(key => state[key + "Str"] = state.myDateInstance[numbersToInput[key].fn]())
-  //   }
+  static getDerivedStateFromProps(props, state) {
+    if (props.value !== state.prevValue) {
+      const noValue = props.value === "" || typeof props.value === "undefined"
 
-  //   return state
-  // }
+      state.prevValue = props.value
+      state.myDateInstance = noValue ? undefined : new myDate(props.value)
+      Object.keys(numbersToInput)
+        .forEach(key =>
+          state[key + "Str"] = noValue ?
+            ""
+            :
+            state.myDateInstance[numbersToInput[key].fn]()
+        )
+    }
+
+    return state
+  }
 
   //PROBABLY OUTDATED
   checkDate = () => {
@@ -90,7 +97,7 @@ export default class DatePicker extends Component {
       ...this.state,
       [key + "Str"]: value,
     }
-    console.log(newState)
+
     this.setState({
       ...newState,
       myDateInstance: new myDate(
