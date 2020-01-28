@@ -7,8 +7,13 @@ import Neo4j from 'components/intermediate/Neo4j'
 import EditNode from './EditNode'
 import myDate from 'libs/utils/myDate'
 import Input from 'components/Form/Input'
+import DatePicker from 'components/Form/DatePicker'
 import edgeModel from 'libs/engines/data/store/models/edge'
 import { newInstance } from 'libs/engines/data/store/models'
+import {
+  undefinedToEmptyString,
+  emptyStringToUndefined,
+} from 'libs/utils/objectUtils'
 
 
 const dates = ["commited", "told"]//, "published"]
@@ -45,7 +50,7 @@ class Kontrol extends Component {
     if (typeof this.state.id === "undefined")
       edge.published = (new myDate()).getTime() / 1000
 
-    console.log(await this.context.store.push(edge))
+    console.log(await this.context.store.push(emptyStringToUndefined(edge)))
     this.context.store.copyData()
   }
 
@@ -101,9 +106,15 @@ class Kontrol extends Component {
         edge = this.createEmptyEdge(node0.id, node1.id)
         this.setState({editingEdge: false})
       }
-      edge = _.merge(this.createEmptyEdge(node0.id, node1.id), edge)
 
-      Object.keys(edge).forEach(key => this.setState({[key]: edge[key]}))
+      edge = {
+        ...this.createEmptyEdge(node0.id, node1.id),
+        ...edge
+      }
+      console.log(edge)
+
+      Object.keys(undefinedToEmptyString(edge))
+        .forEach(key => this.setState({[key]: edge[key]}))
     }
   }
 
@@ -113,7 +124,7 @@ class Kontrol extends Component {
         <Neo4j />
         {this.state.node0 && this.state.node1 &&
           <div className="date-pickers">
-            {dates.map(date => (
+            {/* {dates.map(date => (
               <div className="date-pickers__row">
                 <div className="date-pickers__input-container">
                   <Input
@@ -129,7 +140,13 @@ class Kontrol extends Component {
                   {typeof this.state[date + "Class"] === "object" ? this.state[date + "Class"].dateTime() : this.state[date + "Class"]}
                 </div>
               </div>
-            ))}
+            ))} */}
+            {dates.map(date =>
+              <DatePicker
+                value={this.state[date]}
+                onChange={value => this.setState({[date]: value})}
+              />
+            )}
             <button
               className="date-pickers__button"
               onClick={() => this.pushEdge()}

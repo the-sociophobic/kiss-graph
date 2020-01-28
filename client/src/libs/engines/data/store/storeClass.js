@@ -183,9 +183,8 @@ class store extends listenersClass {
         res = setNode(props)
     }
     await this.update()
-    return (
-      await decodeMany(isEdge ? edgeModel : nodeModel, await res)
-    )[0]
+
+    return await res
   }
 
   delete = async props => {
@@ -201,7 +200,10 @@ class store extends listenersClass {
     return await res
   }
 
-  copyData = () => copyToClipboard(JSON.stringify(this.data))
+  copyData = () => copyToClipboard(JSON.stringify({
+    nodes: this.metaData.nodes,
+    edges: this.metaData.edges,
+  }))
   // copyData = () => {
   //   const data = {
   //     nodes: this.metaData.nodes.map(node => filterKeys(node, nodeModel)),

@@ -84,6 +84,15 @@ textarea
 body, html
   position: fixed
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+  -webkit-appearance: none
+  margin: 0
+
+input[type=number]
+  -moz-appearance:textfield
+
+
 .noselect
   -webkit-touch-callout: none;  /* iOS Safari */
   -webkit-user-select: none;    /* Safari */
@@ -973,3 +982,48 @@ span.emoji
         opacity: 1
       100%
         opacity: 0.5
+
+
+.custom-date-picker
+  width: 100%
+  display: table
+  margin-bottom: 20px
+  &__inputs
+    &__item
+      display: block
+      float: left
+      // width: 50px
+      // background-color: blue
+      margin: 0 3px
+      input
+        border: none
+        padding: 0 2px
+        float: left
+        border-radius: 0
+        background: none
+        border-bottom: 1px solid $dark
+        height: 25px
+      .form-group__label
+        top: -8px
+        left: 3px
+      &--year
+        margin-right: 20px
+        width: 45px
+      &--month
+        width: 28px
+      &--day
+        width: 28px
+      &--hour
+        width: 28px
+      &--minute
+        width: 28px
+    &__after
+      display: block
+      float: left
+      line-height: 25px
+      // background-color: red
+      position: relative
+  &__res
+    float: left
+    line-height: 25px
+    margin-left: 30px

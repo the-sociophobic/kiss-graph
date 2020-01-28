@@ -7,7 +7,13 @@ import Input from 'components/Form/Input'
 import Checkbox from 'components/Form/Checkbox'
 import nodeModel from 'libs/engines/data/store/models/node'
 import { newInstance, editableFields } from 'libs/engines/data/store/models'
-import { flatten, deflatten, filterKeys } from 'libs/utils/objectUtils'
+import {
+  flatten,
+  deflatten,
+  filterKeys,
+  undefinedToEmptyString,
+  emptyStringToUndefined,
+} from 'libs/utils/objectUtils'
 
 
 const flattenEditableFields = [
@@ -27,7 +33,7 @@ const flattenNodeModel = Object.keys(flatten(nodeModel))
 class EditNode extends Component {
   constructor(props) {
     super(props)
-    this.state = flatten(newInstance(nodeModel))
+    this.state = undefinedToEmptyString(flatten(newInstance(nodeModel)))
     this.nameSearchRef = React.createRef()
   }
 
@@ -50,7 +56,6 @@ class EditNode extends Component {
     }
 
     let node = this.context.store.get({name: nodeName})
-    console.log(node)
 
     if (node === null || typeof node === "undefined")
       node = this.createEmptyNode(nodeName)
@@ -65,18 +70,19 @@ class EditNode extends Component {
       }
     }
 
-    console.log(node)
     this.props.setNodeId(node.id)
-    this.setState(node)
+    this.setState(undefinedToEmptyString(node))
   }
 
   save = async () => {
-    const nodeFromStore = await this.context.store.push(deflatten(this.state))
+    const nodeFromStore = await this.context.store
+      .push(deflatten(emptyStringToUndefined(this.state)))
     this.setNode(nodeFromStore.name)
     this.context.store.copyData()
   }
   delete = async () => {
-    await this.context.store.delete(deflatten(this.state))
+    await this.context.store
+      .delete(deflatten(emptyStringToUndefined(this.state)))
     this.setNode(null)
     this.context.store.copyData()
   }
@@ -115,7 +121,7 @@ class EditNode extends Component {
   }
 
   render = () => {
-    const isNew = typeof this.state.id === "undefined"
+    const isNew = typeof this.state.id !== "number"
 
     return (
       <div className="edit-node">

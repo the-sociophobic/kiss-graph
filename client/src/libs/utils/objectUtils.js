@@ -45,8 +45,21 @@ const deflatten = obj => {
     {}
 }
 
+const undefinedToEmptyString = obj =>
+  Object.keys(obj)
+    .map(key => ({[key]: typeof obj[key] === "undefined" ? "" : obj[key]}))
+    .reduce((a, b) => ({...a, ...b}))
+
+const emptyStringToUndefined = obj =>
+  Object.keys(obj)
+    .map(key => ({[key]: obj[key] === "" ? undefined : obj[key]}))
+    .reduce((a, b) => ({...a, ...b}))
+
+
 export {
   filterKeys,
   flatten,
   deflatten,
+  undefinedToEmptyString,
+  emptyStringToUndefined,
 }

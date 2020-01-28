@@ -105,10 +105,12 @@ const getNode = async id => {
       RETURN node
     `
   }])
+  const decodedConnecttedNodes = decodeMany(nodeModel, connectedNodes)
+  const decodedSingleNodes = decodeMany(nodeModel, singleNodes)
 
   const foundArray = [
-    ...decodeMany(nodeModel, connectedNodes),
-    ...decodeMany(nodeModel, singleNodes),
+    ...(Array.isArray(decodedConnecttedNodes) ? decodedConnecttedNodes : []),
+    ...(Array.isArray(decodedSingleNodes) ? decodedSingleNodes : []),
   ]
 
   return foundArray[0]
@@ -131,8 +133,8 @@ const getEdges = async () =>
     }])
   )
 
-const createNode = async node =>
-  await post([{
+const createNode = async node => {
+  const resNode = await post([{
     statement: `
       CREATE (node:Person ${encodeJSONstring(nodeModel, node)})
       WITH node {
@@ -144,8 +146,11 @@ const createNode = async node =>
       RETURN node
     `
   }])
-const createEdge = async edge =>
-  await post([{
+
+  return decodeMany(nodeModel, resNode)[0]
+}
+const createEdge = async edge => {
+  const resEdge = await post([{
     statement: `
       MATCH (node0:Person)
       WHERE ID(node0) = ${edge.node0}
@@ -162,20 +167,23 @@ const createEdge = async edge =>
   `
   }])
 
+  return decodeMany(edgeModel, resEdge)[0]
+}
+
 const setNode = async node => {
   const nodeId = await post([{
     statement: `
       MATCH (node:Person)
       WHERE ID(node) = ${node.id}
       SET node = ${encodeJSONstring(nodeModel, node)}
-      RETURN ID(node)
+      RETURN {id: ID(node)}
     `
   }])
 
-  return await getNode(nodeId)
+  return await getNode(nodeId.data.results[0].data[0].row[0].id)
 }
-const setEdge = async edge =>
-  await post([{
+const setEdge = async edge => {
+  const resEdge = await post([{
     statement: `
       MATCH (edge:KISS)
       WHERE ID(edge) = ${edge.id}
@@ -189,6 +197,9 @@ const setEdge = async edge =>
       RETURN edge
   `
   }])
+
+  return decodeMany(edgeModel, resEdge)
+}
 
 const deleteNode = async node =>
   await post([{

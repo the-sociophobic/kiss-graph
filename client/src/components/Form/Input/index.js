@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 import _ from 'lodash'
 
+import { clamp } from 'libs/utils/math'
+
 
 export default class Input extends Component {
   constructor(props) {
@@ -14,14 +16,14 @@ export default class Input extends Component {
 
   onKeyDown = e => {
     if (this.props.number)
-      if (this.props.value.match(/[^0-9]/g))
+      if (this.props.value && this.props.value.match(/[^0-9]/g))
         this.props.onChange(this.props.value.replace(/[^0-9]/g, ''))
     this.props.onKeyDown && this.props.onKeyDown(e)
   }
   onBlur = e => {
-    if (this.props.number && this.props.range)
-      if (!_.inRange(this.props.value, this.props.range))
-        this.props.onChange(undefined)
+    // if (this.props.number && this.props.range)
+    //   if (this.props.range)
+    //     this.props.onChange(clamp(this.props.number, this.props.range[0], this.props.range[1]))
     this.props.onBlur && this.props.onBlur(e)
   }
 

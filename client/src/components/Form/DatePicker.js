@@ -1,30 +1,76 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 import Input from 'components/Form/Input'
-import KissTime from 'components/interface/Feed/KissTime'
+import KissTime, { encodeTime } from 'components/interface/Feed/KissTime'
 
 import myDate from 'libs/utils/myDate'
 
 
 const numbersToInput = {
-  day: { range: [1, 31] }, //TODO
-  month: { range: [1, 12] },
-  year: { range: [-10000, 3000] }, //TODO for Jesus
-  hour: { range: [0, 23] },
-  minute: { range: [0, 59] }
+  day: { 
+    range: [1, 31],
+    fn: "day",
+    label: "dd",
+    after: "/",
+  }, //TODO
+  month: {
+    range: [1, 12],
+    fn: "month",
+    label: "mm",
+    after: "/",
+  },
+  year: {
+    range: [-10000, 3000],
+    fn: "year",
+    label: "yyyy",
+  }, //TODO for Jesus
+  hour: {
+    range: [0, 23],
+    fn: "hour",
+    label: "hh",
+    after: ":",
+  },
+  minute: {
+    range: [0, 59],
+    fn: "minute",
+    label: "mm",
+  }
 }
 
 export default class DatePicker extends Component {
-  dateStructor(props) {
+  constructor(props) {
     super(props)
+
+    let myDateInstance
+    if (typeof props.value !== "undefined" && props.value !== "")
+      myDateInstance = new myDate(props.value)
+
     this.state = {
       ...Object.keys(numbersToInput)
-        .map(key => ({[key + "Str"]: ""}))
+        .map(key => ({
+          [key + "Str"]: typeof myDateInstance === "undefined" ?
+            ""
+            :
+            myDateInstance[numbersToInput[key].fn]()
+        }))
         .reduce((a, b) => ({...a, ...b})),
-      myDateInstance: undefined
+      myDateInstance: myDateInstance,
+      prevValue: props.value,
     }
   }
 
+  // static getDerivedStateFromProps(props, state) {
+  //   if (props.value !== state.prevValue) {
+  //     state.prevValue = props.value
+  //     state.myDateInstance = new myDate(props.value)
+  //     Object.keys(numbersToInput)
+  //       .forEach(key => state[key + "Str"] = state.myDateInstance[numbersToInput[key].fn]())
+  //   }
+
+  //   return state
+  // }
+
+  //PROBABLY OUTDATED
   checkDate = () => {
     if (typeof this.state.dateStr !== "undefined" &&
       this.state.dateStr.length > 0)
@@ -39,58 +85,47 @@ export default class DatePicker extends Component {
     this.props.onChange(undefined)
   }
 
+  recalcDate = (key, value) => {
+    let newState = {
+      ...this.state,
+      [key + "Str"]: value,
+    }
+    console.log(newState)
+    this.setState({
+      ...newState,
+      myDateInstance: new myDate(
+        encodeTime(
+          Object.keys(numbersToInput)
+            .map(key => ({[key]: newState[key + "Str"]}))
+            .reduce((a, b) => ({...a, ...b}))
+        ))
+    })
+  }
+
   render = () => (
     <div className="custom-date-picker">
       <div className="custom-date-picker__inputs">
         {Object.keys(numbersToInput).map(key => (
-          <Input
-            number
-            range={numbersToInput[key].range}
-            className={"custom-date-picker__" + key}
-            value={this.state[key + "Str"]}
-            onChange={value => this.setState({[key + "Str"]: value})}
-            placeholder={key}
-            // onBlur={() => this.checkDate()}
-          />
+          <Fragment>
+            <Input
+              number
+              range={numbersToInput[key].range}
+              className={"custom-date-picker__inputs__item custom-date-picker__inputs__item--" + key}
+              value={this.state[key + "Str"]}
+              onChange={value => this.recalcDate(key, value)}
+              // placeholder={numbersToInput[key].label}
+              label={numbersToInput[key].label}
+              // onBlur={() => this.checkDate()}
+            />
+            <div className="custom-date-picker__inputs__after">
+              {numbersToInput[key].after}
+            </div>
+          </Fragment>
         ))}
-        {/* <Input
-          className="custom-date-picker__date"
-          value={this.state.dateStr}
-          onChange={value => this.setState({dateStr: value})}
-          placeholder="date"
-          onBlur={() => this.checkDate()}
-        />
-        <Input
-          className="custom-date-picker__date"
-          value={this.state.dateStr}
-          onChange={value => this.setState({dateStr: value})}
-          placeholder="date"
-          onBlur={() => this.checkDate()}
-        />
-        <Input
-          number
-          range={[0, 23]}
-          className="custom-date-picker__hour"
-          value={this.state.hourStr}
-          onChange={value => this.setState({hourStr: value})}
-          placeholder="hour"
-        />
-        :
-        <Input
-          number
-          range={[0, 59]}
-          className="custom-date-picker__minute"
-          value={this.state.minuteStr}
-          onChange={value => this.setState({minuteStr: value})}
-          placeholder="min"
-        /> */}
       </div>
       <div className="custom-date-picker__res">
         {this.state.myDateInstance &&
-          <KissTime
-            date={this.state.myDateInstance.getTime()}
-            className="custom-date-picker__kiss-time"
-          />
+          (this.state.myDateInstance.time() + " " + this.state.myDateInstance.toStringDot())
         }
       </div>
     </div>
