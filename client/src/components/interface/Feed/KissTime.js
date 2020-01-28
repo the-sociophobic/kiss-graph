@@ -16,7 +16,7 @@ const timeIsDefined = date => date.minute() !== 0 || date.hour() !== 0 ||
 //0100 04 sec -- day unknown
 //1000 08 sec -- month unknown
 const encodeTime = props => {
-  const {
+  let {
     year,
     month,
     day,

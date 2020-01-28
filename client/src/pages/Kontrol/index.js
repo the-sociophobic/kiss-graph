@@ -145,6 +145,7 @@ class Kontrol extends Component {
               <DatePicker
                 value={this.state[date]}
                 onChange={value => this.setState({[date]: value})}
+                label={date}
               />
             )}
             <button

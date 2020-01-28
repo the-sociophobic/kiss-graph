@@ -111,6 +111,9 @@ export default class DatePicker extends Component {
 
   render = () => (
     <div className="custom-date-picker">
+      <div className="custom-date-picker__label">
+        {this.props.label}
+      </div>
       <div className="custom-date-picker__inputs">
         {Object.keys(numbersToInput).map(key => (
           <Fragment>
