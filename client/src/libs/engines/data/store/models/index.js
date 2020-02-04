@@ -76,15 +76,12 @@ const encode = (model, instance) =>
   }
   
 const encodeMany = (model, instances) =>
-  JSON.stringify(
+  encodeJSONstring(
     instances.map(instance => encode(model, instance))
   )
-  .replace(/"point/g, "point")
-  .replace(/}\)"/g, "})")
-  .replace(/(?<!\\)\"([^(\")"]+)(?<!\\)\":/g,"$1:")
 
-const encodeJSONstring = (model, instance) =>
-  JSON.stringify(encode(model, instance))
+const encodeJSONstring = obj =>
+  JSON.stringify(obj)
     .replace(/"point/g, "point")
     .replace(/}\)"/g, "})")
     .replace(/(?<!\\)\"([^(\")"]+)(?<!\\)\":/g,"$1:")

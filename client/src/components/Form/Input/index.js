@@ -15,9 +15,11 @@ export default class Input extends Component {
   blur = () => this.inputFieldRef.current && this.inputFieldRef.current.blur()
 
   onKeyDown = e => {
+    const value = "" + this.props.value
+    
     if (this.props.number)
-      if (this.props.value && this.props.value.match(/[^0-9]/g))
-        this.props.onChange(this.props.value.replace(/[^0-9]/g, ''))
+      if (this.props.value && value.match(/[^0-9]/g))
+        this.props.onChange(value.replace(/[^0-9]/g, ''))
     this.props.onKeyDown && this.props.onKeyDown(e)
   }
   onBlur = e => {

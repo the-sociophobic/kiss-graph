@@ -136,7 +136,7 @@ const getEdges = async () =>
 const createNode = async node => {
   const resNode = await post([{
     statement: `
-      CREATE (node:Person ${encodeJSONstring(nodeModel, node)})
+      CREATE (node:Person ${encodeJSONstring(encode(nodeModel, node))})
       WITH node {
         .*,
         id: id(node),
@@ -156,7 +156,7 @@ const createEdge = async edge => {
       WHERE ID(node0) = ${edge.node0}
       MATCH (node1:Person)
       WHERE ID(node1) = ${edge.node1}
-      CREATE (node0)-[edge:KISS ${encodeJSONstring(edgeModel, edge)}]->(node1)
+      CREATE (node0)-[edge:KISS ${encodeJSONstring(encode(edgeModel, edge))}]->(node1)
       WITH edge {
         .*,
         id: id(edge),
@@ -175,7 +175,7 @@ const setNode = async node => {
     statement: `
       MATCH (node:Person)
       WHERE ID(node) = ${node.id}
-      SET node = ${encodeJSONstring(nodeModel, node)}
+      SET node = ${encodeJSONstring(encode(nodeModel, node))}
       RETURN {id: ID(node)}
     `
   }])
@@ -185,16 +185,10 @@ const setNode = async node => {
 const setEdge = async edge => {
   const resEdge = await post([{
     statement: `
-      MATCH (edge:KISS)
+      MATCH ()-[edge:KISS]-()
       WHERE ID(edge) = ${edge.id}
-      SET edge = ${encodeJSONstring(edgeModel, edge)}
-      WITH edge {
-        .*,
-        id: id(edge),
-        node0: id(node0),
-        node1: id(node1)
-      } AS edge
-      RETURN edge
+      SET edge = ${encodeJSONstring(encode(edgeModel, edge))}
+      RETURN {id: ID(edge)}
   `
   }])
 
@@ -212,7 +206,7 @@ const deleteNode = async node =>
 const deleteEdge = async edge =>
   await post([{
     statement: `
-      MATCH (edge:KISS)
+      MATCH ()-[edge:KISS]-()
       WHERE ID(edge) = ${edge.id}
       DELETE edge
     `

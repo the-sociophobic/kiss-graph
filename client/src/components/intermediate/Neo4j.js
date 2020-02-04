@@ -3,6 +3,7 @@ import StoreContext from 'libs/engines/data/store/StoreContext'
 import nodeModel from 'libs/engines/data/store/models/node'
 import edgeModel from 'libs/engines/data/store/models/edge'
 import {
+  encode,
   encodeMany,
   encodeJSONstring,
   decodeMany,
@@ -46,7 +47,7 @@ class Neo4j extends Component {
         WHERE node0.name = '${this.context.store.get({id: edge.node0}).name}'
         MATCH (node1:Person)
         WHERE node1.name = '${this.context.store.get({id: edge.node1}).name}'
-        CREATE (node0)-[edge:KISS ${encodeJSONstring(edgeModel, edge)}]->(node1)
+        CREATE (node0)-[edge:KISS ${encodeJSONstring(encode(edgeModel, edge))}]->(node1)
       `)
       .map(statement => ({statement: statement}))
     console.log(edgeString)
@@ -55,54 +56,55 @@ class Neo4j extends Component {
   }
 
   getAllData = async () => {
-    const nodes = await this.post([{
-      statement: `
-        MATCH (node:Person)
-        MATCH (node)-[edge:KISS]-(mate:Person)
-        MATCH (mate)-[mateEdges:KISS]-(mateConnections:Person)
-        WITH {
-          date: edge.commited,
-          edgeId: id(edge),
-          id: id(mate),
-          connections: count(mateConnections) + COALESCE(mate.hiddenConnections, 0),
-          userName: mate.userName,
-          name: mate.name,
-          iq: mate.iq,
-          mentalDisorder: mate.mentalDisorder
-        } as mates, node as node
-        WITH node {
-          .*,
-          id: id(node),
-          mates: collect(mates)
-        } AS node
-        RETURN node
-      `
-    }])
-    console.log(decodeMany(nodeModel, nodes))
-    const edges = await this.post([{
-      statement: `
-        MATCH (node0:Person)-[edge:KISS]->(node1:Person)
-        WITH edge {
-          .*,
-          id: id(edge),
-          node0: id(node0),
-          node1: id(node1)
-        } AS edge
-        RETURN edge
-      `
-    }])
-    console.log(decodeMany(edgeModel, edges))
+    // const nodes = await this.post([{
+    //   statement: `
+    //     MATCH (node:Person)
+    //     MATCH (node)-[edge:KISS]-(mate:Person)
+    //     MATCH (mate)-[mateEdges:KISS]-(mateConnections:Person)
+    //     WITH {
+    //       date: edge.commited,
+    //       edgeId: id(edge),
+    //       id: id(mate),
+    //       connections: count(mateConnections) + COALESCE(mate.hiddenConnections, 0),
+    //       userName: mate.userName,
+    //       name: mate.name,
+    //       iq: mate.iq,
+    //       mentalDisorder: mate.mentalDisorder
+    //     } as mates, node as node
+    //     WITH node {
+    //       .*,
+    //       id: id(node),
+    //       mates: collect(mates)
+    //     } AS node
+    //     RETURN node
+    //   `
+    // }])
+    // const decodedNodes = decodeMany(nodeModel, nodes)
+    // const edges = await this.post([{
+    //   statement: `
+    //     MATCH (node0:Person)-[edge:KISS]->(node1:Person)
+    //     WITH edge {
+    //       .*,
+    //       id: id(edge),
+    //       node0: id(node0),
+    //       node1: id(node1)
+    //     } AS edge
+    //     RETURN edge
+    //   `
+    // }])
+    // const decodedEdges = decodeMany(edgeModel, edges)
+    this.context.store.copyData()
   }
   
   render() {
     return(
       <div>
-        <button
+        {/* <button
           className="button"
           onClick={() => this.addCurrentData()}
         >
           Добавить
-        </button>
+        </button> */}
         <br />
         <button
           className="button"

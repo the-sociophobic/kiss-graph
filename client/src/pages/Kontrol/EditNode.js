@@ -43,9 +43,9 @@ class EditNode extends Component {
     return {
       ...flatten(newInstance(nodeModel)),
       name: name,
-      "pos.x": target?.x,
-      "pos.y": target?.y,
-      "pos.z": target?.z,
+      "pos.x": target?.x + Math.random() / 2 - .25,
+      "pos.y": target?.y + Math.random() / 2 - .25,
+      "pos.z": target?.z + Math.random() / 2 - .25,
     }
   }
 

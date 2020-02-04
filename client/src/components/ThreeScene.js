@@ -249,7 +249,7 @@ class ThreeScene extends Component {
         this.idle.cameraAngleXZ = angle
 
       this.idle.active = true
-    }, 35000)
+    }, 120000)
   }
   
   render = () => (

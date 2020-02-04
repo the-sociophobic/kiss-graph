@@ -37,6 +37,17 @@ const numbersToInput = {
   }
 }
 
+const numbersFromMyDateInstance = myDateInstance =>
+  Object.keys(numbersToInput)
+  .map(key => ({
+    [key + "Str"]: typeof myDateInstance === "undefined" ?
+      ""
+      :
+      myDateInstance[numbersToInput[key].fn]()
+  }))
+  .reduce((a, b) => ({...a, ...b}))
+
+
 export default class DatePicker extends Component {
   constructor(props) {
     super(props)
@@ -46,14 +57,7 @@ export default class DatePicker extends Component {
       myDateInstance = new myDate(props.value)
 
     this.state = {
-      ...Object.keys(numbersToInput)
-        .map(key => ({
-          [key + "Str"]: typeof myDateInstance === "undefined" ?
-            ""
-            :
-            myDateInstance[numbersToInput[key].fn]()
-        }))
-        .reduce((a, b) => ({...a, ...b})),
+      ...numbersFromMyDateInstance(myDateInstance),
       myDateInstance: myDateInstance,
       prevValue: props.value,
     }
@@ -61,35 +65,18 @@ export default class DatePicker extends Component {
 
   static getDerivedStateFromProps(props, state) {
     if (props.value !== state.prevValue) {
-      const noValue = props.value === "" || typeof props.value === "undefined"
+      const myDateInstance = (props.value === "" || typeof props.value === "undefined") ?
+        undefined : new myDate(props.value)
 
-      state.prevValue = props.value
-      state.myDateInstance = noValue ? undefined : new myDate(props.value)
-      Object.keys(numbersToInput)
-        .forEach(key =>
-          state[key + "Str"] = noValue ?
-            ""
-            :
-            state.myDateInstance[numbersToInput[key].fn]()
-        )
+      state = {
+        ...state,
+        prevValue: props.value,
+        myDateInstance: myDateInstance,
+        ...numbersFromMyDateInstance(myDateInstance)
+      }
     }
 
     return state
-  }
-
-  //PROBABLY OUTDATED
-  checkDate = () => {
-    if (typeof this.state.dateStr !== "undefined" &&
-      this.state.dateStr.length > 0)
-    {
-      const dateClass = new myDate(this.state.dateStr)
-      if (!dateClass.getTime().includes("NaN")) {
-        this.setState({myDateInstance: dateClass})
-        this.props.onChange(dateClass.getTime() / 1000)
-      }
-    }
-    this.setState({myDateInstance: undefined})
-    this.props.onChange(undefined)
   }
 
   recalcDate = (key, value) => {
@@ -98,15 +85,21 @@ export default class DatePicker extends Component {
       [key + "Str"]: value,
     }
 
-    this.setState({
-      ...newState,
-      myDateInstance: new myDate(
-        encodeTime(
-          Object.keys(numbersToInput)
-            .map(key => ({[key]: newState[key + "Str"]}))
-            .reduce((a, b) => ({...a, ...b}))
-        ))
-    })
+    const myDateInstance = new myDate(
+      encodeTime(
+        Object.keys(numbersToInput)
+          .map(key => ({[key]: newState[key + "Str"]}))
+          .reduce((a, b) => ({...a, ...b}))
+      )
+    )
+
+    if (isNaN(myDateInstance.getTime()))
+      this.setState({
+        ...newState,
+        myDateInstance: myDateInstance
+      })
+    else
+      this.props.onChange(myDateInstance.getTime() / 1000)
   }
 
   render = () => (

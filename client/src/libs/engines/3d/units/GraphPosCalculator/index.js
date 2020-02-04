@@ -18,9 +18,12 @@ export default class GraphPosCalculator extends Unit {
       // new THREE.Vector3(node.pos.x, node.pos.y, node.pos.z)
       // :
       new THREE.Vector3(
-        node.posRaw.x * 2.15,
-        node.posRaw.y * 2.15,
-        Math.random() * (60 - node.connections) / 15
+        // node.posRaw.x * 2.15,
+        // node.posRaw.y * 2.15,
+        // Math.random() * (60 - node.connections) / 15
+        node.pos.x,
+        node.pos.y,
+        node.pos.z
       ),
       weight: node.connections > 0 ? node.connections : 1, //TODO
     }))

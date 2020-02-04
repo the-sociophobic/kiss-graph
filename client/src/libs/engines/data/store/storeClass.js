@@ -47,7 +47,7 @@ class store extends listenersClass {
   }
 
   getData = async () => {
-    if (isProduction())
+    if (isProduction())// || true)
       this.metaData = parseConnections(data)
     else
       this.metaData = {
