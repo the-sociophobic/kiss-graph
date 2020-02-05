@@ -128,7 +128,10 @@ export default class GraphCloth extends PhysicalUnit {
   }
 
   getRecalculatedPos = () => this.nodes
-    .map(node => node.vector.toArray())
+    .map(node => ({
+      id: node.id,
+      pos: node.vector.toArray(),
+    }))
 }
 
 

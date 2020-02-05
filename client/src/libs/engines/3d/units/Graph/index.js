@@ -65,7 +65,7 @@ export default class Graph extends Unit {
         maxFontSize: 32,
         texture: {
           fontFamily: 'Arial, Helvetica, sans-serif',
-          text: node.name.replace(' ', '\n'),
+          text: (node.name || "").replace(' ', '\n'), //REDO THIS SHIT TEST some nodes has no name?!
         },  
       })
 

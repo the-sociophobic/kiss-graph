@@ -7,6 +7,7 @@ import THREE from 'libs/engines/3d/three'
 import LevControls from 'libs/engines/3d/units/LevControls'
 import StoreContext from 'libs/engines/data/store/StoreContext'
 import isProduction from 'libs/utils/isProduction'
+import GraphPosCalculator from 'libs/engines/3d/units/GraphPosCalculator'
 
 
 const targetToCamera = 5
@@ -120,7 +121,7 @@ class ThreeScene extends Component {
   }
 
   initUnits = () => {
-    this.units = []
+    this.units = {}
     const props = {
       THREE: THREE,
       renderer: this.renderer,
@@ -132,17 +133,32 @@ class ThreeScene extends Component {
       setNode: this.props.setNode,
     }
 
-    this.props.myScene.units.forEach(unit => this.units.push(new unit(props)))
+    Object.keys(this.props.myScene.units)
+      .forEach(unitName => {
+        const unit = this.props.myScene.units[unitName]
+
+        if (!unit.disabled ^ this.unitsToggled)
+          this.units[unitName] = new unit.unit(props)
+      })
+        
   }
+
   disposeUnits = () => {
-    this.units.forEach(unit => unit.dispose())
+    Object.keys(this.units)
+      .forEach(unitName => this.units[unitName].dispose())
     //REDO THIS SHIT: units should unregister themselves
     while(this.scene.children.length > 0)
       this.scene.remove(this.scene.children[0])
   }
 
+  toggleUnits = () => {
+    this.disposeUnits()
+    this.unitsToggled = !this.unitsToggled
+    this.initUnits()
+  }
+
   animate = () => {
-    this.units.forEach(unit => unit.animate())
+    Object.keys(this.units).forEach(unitName => this.units[unitName].animate())
 
     //VECTOR TRANSITIONS
     let unregisteredTransitions = []

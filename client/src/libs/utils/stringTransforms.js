@@ -11,7 +11,7 @@ const camelize = string => string
 const pathToName = string => string
   .replace(/-/g, ' ')
 
-const nameToPath = string => string
+const nameToPath = string => (string || "") //REDO THIS SHIT TEST some nodes has no name?!
   .toLowerCase()
   .replace(/ /g, '-')
 

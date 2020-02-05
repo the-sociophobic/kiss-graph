@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 import _ from 'lodash'
 
@@ -31,6 +31,8 @@ class Kontrol extends Component {
       .reduce((a, b) => ({...a, ...b})),
       hidden: false,
       editingEdge: false,
+
+      recalcInProcess: false,
     }
   }
 
@@ -126,10 +128,45 @@ class Kontrol extends Component {
     }
   }
 
+  toggleCalc = () => {
+    let tmp = this.context.threeSceneRef?.current?.toggleUnits()
+    this.setState({recalcInProcess: !this.state.recalcInProcess})
+  }
+
+  pauseCalc = () => {
+    let tmp = this.context.threeSceneRef?.current?.units?.graphCalc.pause()
+  }
+  saveCalc = async () => {
+    let tmp = await this.context.threeSceneRef?.current?.units?.graphCalc.save()
+    console.log("update done")
+  }
+
   render() {
     return (
       <div className="kontrol">
         <Neo4j />
+        <button
+          className="button"
+          onClick={() => this.toggleCalc()}
+        >
+          {this.state.recalcInProcess ? "cancel" : "recalc"}
+        </button>
+        {this.state.recalcInProcess && (
+          <Fragment>
+            <button
+              className="button"
+              onClick={() => this.pauseCalc()}
+            >
+              {this.state.recalcInProcess ? "pause" : "play"}
+            </button>
+            <button
+              className="button"
+              onClick={() => this.saveCalc()}
+            >
+              save
+            </button>
+          </Fragment>
+        )}
         {this.state.node0 && this.state.node1 &&
           <div className="date-pickers">
             {dates.map(date =>

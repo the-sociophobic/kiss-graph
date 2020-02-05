@@ -3,9 +3,15 @@ import GraphPosCalculator from 'libs/engines/3d/units/GraphPosCalculator'
 // import Skybox from 'libs/engines/3d/units/Skybox'
 
 export default {
-  units: [
+  units: {
     // Skybox,
-    Graph,
-    // GraphPosCalculator,
-  ]
+    heatGraph: {
+      unit: Graph,
+      disabled: false,
+    },
+    graphCalc: {
+      unit: GraphPosCalculator,
+      disabled: true,
+    },
+  }
 }
