@@ -1,6 +1,7 @@
 import Unit from 'libs/engines/3d/Unit'
 import GraphCloth from './GraphCloth'
-import copyToClipboard from 'libs/utils/copyToClipboard'
+// import copyToClipboard from 'libs/utils/copyToClipboard'
+import { updateNodes } from 'libs/engines/data/store/Neo4j'
 
 
 const msPerFrame = 350
@@ -117,7 +118,16 @@ export default class GraphPosCalculator extends Unit {
       }    
     }))
 
-    copyToClipboard(JSON.stringify(nodes))    
+    const res = await updateNodes(nodes)
+    console.log("updated positions")
+    console.log(res)
+    // console.log(nodes)
+    // console.log("nodes updated")
+    // const edges = this.props.store.get().edges
+    // copyToClipboard(JSON.stringify({
+    //   nodes: nodes,
+    //   edges: edges,
+    // }))
     // for (const pos of positions) {
     //   const node = {
     //     ...this.props.store.get({id: pos.id}),

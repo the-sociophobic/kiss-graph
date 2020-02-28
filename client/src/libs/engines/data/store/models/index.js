@@ -59,19 +59,37 @@ const encode = (model, instance) =>
   const encodeType = (model, instance, key) => {
     if (model[key].local)
       return undefined
+
+    const value = instance[key]
+
     switch (model[key].type) {
       case "point3d":
-        return `point({x:${instance[key].x}, y:${instance[key].y}, z:${instance[key].z}})`
+        return `point({x:${value.x}, y:${value.y}, z:${value.z}})`
       case "object":
-        return instance[key] && JSON.stringify(instance[key])
+        return value && JSON.stringify(value)
       case "array":
-        return instance[key] && JSON.stringify(instance[key])
+        return value && JSON.stringify(value)
       case "id":
         return undefined
       case "ref":
         return undefined
+      case "number":
+        let parsed = value
+
+        if (typeof value === "string")
+          parsed = value.includes(".") ? parseFloat(value) : parseInt(value)
+
+        if (isNaN(parsed))
+          return model[key].canBeString ? value : undefined
+        return parsed
+      case "select":
+        if (typeof value === "undefined" && typeof model[key].default !== "undefined")
+          return model[key].default
+        if (model[key].options?.includes(value))
+          return value
+        return undefined
       default:
-        return instance[key]
+        return value
     }
   }
   
@@ -85,6 +103,7 @@ const encodeJSONstring = obj =>
     .replace(/"point/g, "point")
     .replace(/}\)"/g, "})")
     .replace(/(?<!\\)\"([^(\")"]+)(?<!\\)\":/g,"$1:")
+    //REDO THIS SHIT PARSE
 
 //DECODE FROM DB
 const decode = (model, instance) =>
@@ -93,7 +112,7 @@ const decode = (model, instance) =>
       [key]: decodeType(model, instance, key)
     }))
     // .reduce((a, b) => ({...a, ...b}))
-    .reduce((a, b) => _.pickBy({...a, ...b}, _.identity))
+    .reduce((a, b) => _.pickBy({...a, ...b}, (value, key) => typeof value !== "undefined"))
 
   const decodeType = (model, instance, key) => {
     const value = instance.row[0][key]

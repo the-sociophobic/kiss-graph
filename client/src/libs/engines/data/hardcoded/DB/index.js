@@ -1,7 +1,7 @@
 import { nameToPath } from 'libs/utils/stringTransforms'
 
 // import data from './24.11.19.json'
-import data from './test.json'
+import data from './testt.json'
 
 
 const parseConnections = data => {

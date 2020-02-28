@@ -21,9 +21,11 @@ export default {
   connections: {type: "number", local: true},
   hiddenConnections: {type: "number"},
   mates: {type: "ref"},
-  iq: {type: "string"},
-  iq2: {type: "string"},
+  iq: {type: "number", canBeString: true},
+  iq2: {type: "number", canBeString: true},
   mentalDisorder: {type: "string"},
+  male: {type: "boolean"},
+  sex: {type: "select", options: ["male", "female"]},
   dead: {type: "boolean"},
   offended: {type: "boolean"},
   SHR: {

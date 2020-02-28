@@ -1,6 +1,6 @@
 export default {
   id: {type: "id"},
-  type: {type: "string", default: "KISS"},
+  type: {type: "select", options: ["KISS", "SEX", "MARRIED"], default: "KISS"},
   node0: {type: "ref"},
   node1: {type: "ref"},
   commited: {type: "date"},

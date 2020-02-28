@@ -8,6 +8,7 @@ import {
   encodeJSONstring,
   decodeMany,
 } from 'libs/engines/data/store/models'
+import copyToClipboard from 'libs/utils/copyToClipboard'
 
 import axios from 'axios'
 
@@ -41,18 +42,31 @@ class Neo4j extends Component {
     await this.post([{statement: nodeString}])
     // return
     const edges = data.edges
+    console.log(edges)
     const edgeString = edges
-      .map(edge => `
+      .map(edge => {
+        console.log(edge)
+
+        return (`
         MATCH (node0:Person)
         WHERE node0.name = '${this.context.store.get({id: edge.node0}).name}'
         MATCH (node1:Person)
         WHERE node1.name = '${this.context.store.get({id: edge.node1}).name}'
         CREATE (node0)-[edge:KISS ${encodeJSONstring(encode(edgeModel, edge))}]->(node1)
-      `)
+      `)})
       .map(statement => ({statement: statement}))
-    console.log(edgeString)
+    // console.log(edgeString)
     await this.post(edgeString)
     console.log("edges added")
+  }
+
+  copyToJSON = () => {
+    const { nodes, edges } = this.context.store.get()
+
+    copyToClipboard(JSON.stringify({
+      nodes: nodes,
+      edges: edges,
+    }))
   }
 
   getAllData = async () => {
@@ -106,11 +120,17 @@ class Neo4j extends Component {
           Добавить
         </button> */}
         <br />
+        {/* <button
+          className="button"
+          onClick={() => this.addCurrentData()}
+        >
+          replace...
+        </button> */}
         <button
           className="button"
-          onClick={() => this.getAllData()}
+          onClick={() => this.copyToJSON()}
         >
-          JSON
+          copy to JSON
         </button>
       </div>
     )

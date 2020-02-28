@@ -15,9 +15,17 @@ export default class GraphCloth extends PhysicalUnit {
       .from(Array(this.nodes.length))
       .map(() => new THREE.Vector3())
 
-    this.maxWeight = Math.max(...props.nodes.map(node => node.weight))
-    this.maxWeightIndex = props.nodes.map(node => node.weight).indexOf(this.maxWeight)
-    this.nodes.forEach(node => node.vector.sub(this.nodes[this.maxWeightIndex].vector))
+    this.maxWeight = 0
+    this.nodes.forEach((node, index) => {
+      if (node.weight > this.maxWeight) {
+        this.maxWeight = node.weight
+        this.maxWeightIndex = index
+        this.maxWeightId = node.id
+      }
+    })
+    console.log(this.maxWeightId)
+    this.nodes
+      .forEach(node => node.vector.sub(this.nodes[this.maxWeightIndex].vector))
   }
 
   recalculate = deltaTime => {

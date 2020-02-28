@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import _ from 'lodash'
+// import _ from 'lodash'
 
 import StoreContext from 'libs/engines/data/store/StoreContext'
 import NameSearch from 'components/interface/NameSearch'
@@ -13,6 +13,7 @@ import {
   filterKeys,
   undefinedToEmptyString,
   emptyStringToUndefined,
+  emptyDataToUndefined,
 } from 'libs/utils/objectUtils'
 
 
@@ -76,13 +77,19 @@ class EditNode extends Component {
 
   save = async () => {
     const nodeFromStore = await this.context.store
-      .push(deflatten(emptyStringToUndefined(this.state)))
+      .push(
+        emptyDataToUndefined(
+          deflatten(
+            emptyStringToUndefined(this.state))))
     this.setNode(nodeFromStore.name)
     this.context.store.copyData()
   }
   delete = async () => {
     await this.context.store
-      .delete(deflatten(emptyStringToUndefined(this.state)))
+      .delete(
+        emptyDataToUndefined(
+          deflatten(
+            emptyStringToUndefined(this.state))))
     this.setNode(null)
     this.context.store.copyData()
   }

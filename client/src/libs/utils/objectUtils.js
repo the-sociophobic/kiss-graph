@@ -54,6 +54,14 @@ const emptyStringToUndefined = obj =>
   Object.keys(obj)
     .map(key => ({[key]: obj[key] === "" ? undefined : obj[key]}))
     .reduce((a, b) => ({...a, ...b}))
+const emptyDataToUndefined = obj =>
+  Object.keys(obj)
+    .map(key => ({
+      [key]: (Object.entries(obj).length === 0 && obj.constructor === Object) ||
+             (Array.isArray(obj[key]) && obj[key].length === 0) ?
+        undefined : obj[key]
+    }))
+    .reduce((a, b) => ({...a, ...b}))
 
 
 export {
@@ -62,4 +70,5 @@ export {
   deflatten,
   undefinedToEmptyString,
   emptyStringToUndefined,
+  emptyDataToUndefined,
 }

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import _ from 'lodash'
+// import _ from 'lodash'
 
-import { clamp } from 'libs/utils/math'
+// import { clamp } from 'libs/utils/math'
 
 
 export default class Input extends Component {

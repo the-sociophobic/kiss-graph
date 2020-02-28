@@ -175,6 +175,7 @@ const setNode = async node => {
     statement: `
       MATCH (node:Person)
       WHERE ID(node) = ${node.id}
+      SET node = {}
       SET node = ${encodeJSONstring(encode(nodeModel, node))}
       RETURN {id: ID(node)}
     `
@@ -182,6 +183,25 @@ const setNode = async node => {
 
   return await getNode(nodeId.data.results[0].data[0].row[0].id)
 }
+const updateNodes = async nodes => {
+  const nodess = nodes
+    .filter(node => node.id !== "undefined" && typeof node.id !== "undefined")
+    .map(node =>
+      ({
+        statement: `
+          MATCH (node:Person)
+          WHERE ID(node) = ${node.id}
+          SET node = ${encodeJSONstring(encode(nodeModel, node))}
+          RETURN {id: ID(node)}
+        `
+      })
+    )
+  // console.log(nodess.filter(nodeCommand => nodeCommand.statement.includes("undefined")))
+  console.log(nodess)
+  const res = await post(nodess)
+  return res
+}
+
 const setEdge = async edge => {
   const resEdge = await post([{
     statement: `
@@ -219,6 +239,7 @@ export {
   createNode,
   createEdge,
   setNode,
+  updateNodes,
   setEdge,
   deleteNode,
   deleteEdge,

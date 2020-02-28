@@ -9,7 +9,6 @@ const interpolateUOffset = u => u * (1 - heatMapOffset.uOffset[0] - heatMapOffse
 const interpolateVOffset = v => v * (1 - heatMapOffset.vOffset[0] - heatMapOffset.vOffset[1]) + heatMapOffset.vOffset[0]
 
 export default (nodesInput, edges, scene) => {
-
   let nodes = nodesInput
 
   var finalMesh

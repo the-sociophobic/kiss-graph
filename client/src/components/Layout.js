@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 import ThreeScene from './ThreeScene'
 import myScene from 'libs/myScene'
@@ -98,6 +98,27 @@ class Layout extends Component {
       history: this.props.history,
       prevLocation: this.props.location && this.props.location.state && this.props.location.state.from,
     }
+
+    // return (
+    //   <Loader
+    //     text={
+    //       <Fragment>
+    //       <p>
+    //         Этот сайт исследует человеческие взаимоотношения и не пропагандирует ничего незаконного.<br />
+    //       </p>
+    //       <p>
+    //         В связи с далекой от Истины статьей 78 канала о смерти Кристины Кукушкиной, об этом сайте создалось некорректное впечатление и сюда заходит много людей.<br />
+    //       </p>
+    //       <p>
+    //         Кристина не является девушкой Льва Васильева. Лев Васильев не желает никому смерти на этом сайте и не будет нагонять сюда трафик засчет смерти своей подруги.<br />
+    //       </p>
+    //       <p>
+    //         Пожалуйста, приходите в другой раз. Относитесь скептически к новостным ресурсам. Особенно к 78 каналу.
+    //       </p>
+    //       </Fragment>
+    //     }
+    //   />
+    // )
 
     return this.state.storeConnected ? (
       <div className="page-container">

@@ -557,6 +557,38 @@ $reset-size: 22px
         
 
 
+$custom-select-circle-size: 16px
+$custom-select-inner-circle-size: 8px
+.custom-select
+  width: 100%
+  display: table
+  margin: 10px 0
+  &__option
+    display: inline-block
+    padding-left: 20px
+    cursor: pointer
+    position: relative
+    &::before
+      content: ""
+      position: absolute
+      top: 0
+      left: 0
+      width: 16px
+      height: 16px
+      border: 2px solid $dark-gray
+      border-radius: 20px
+    &--selected
+      &::after
+        content: ""
+        position: absolute
+        top: calc((#{$custom-select-circle-size} - #{$custom-select-inner-circle-size}) / 2)
+        left: calc((#{$custom-select-circle-size} - #{$custom-select-inner-circle-size}) / 2)
+        background-color: $secondary
+        width: $custom-select-inner-circle-size
+        height: $custom-select-inner-circle-size
+
+
+
 .mobile-expander
   width: 100%
   height: $mobile-expander-area-height
@@ -968,20 +1000,43 @@ span.emoji
   height: 100vh
   position: relative
   background-color: $light
-  .emoji
+  &__container
     position: absolute
     top: 50%
     left: 50%
-    transform: translate(-50%, -50%) scale(9.0)
-    animation: flash .6s ease-in-out
-    animation-iteration-count: infinite 
-    @keyframes flash
-      0%
-        opacity: 0.5
-      50%
-        opacity: 1
-      100%
-        opacity: 0.5
+    transform: translate(-50%, -50%)
+    max-width: 700px
+    width: 100%
+  &__text
+    width: 100%
+    text-align: center
+    padding: 0 10px
+    p
+      line-height: 1.55
+      font-size: 15px
+      margin-bottom: 10px
+  &__emoji__container
+    width: 100%
+    padding-top: 35%
+    position: relative
+    .emoji
+      // padding: 0
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      // transform: translate(-50%, -50%) scale(9.0)
+      width: 20%
+      margin: auto
+      animation: flash .6s ease-in-out
+      animation-iteration-count: infinite 
+      @keyframes flash
+        0%
+          opacity: 0.5
+        50%
+          opacity: 1
+        100%
+          opacity: 0.5
 
 
 .custom-date-picker
@@ -1029,3 +1084,5 @@ span.emoji
     float: left
     line-height: 25px
     margin-left: 30px
+
+

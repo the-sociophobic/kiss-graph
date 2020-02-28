@@ -1,10 +1,9 @@
 import React, { Component, Fragment } from 'react'
 
-import _ from 'lodash'
-
 import StoreContext from 'libs/engines/data/store/StoreContext'
 import Neo4j from 'components/intermediate/Neo4j'
 import EditNode from './EditNode'
+import Checkbox from 'components/Form/Checkbox'
 import myDate from 'libs/utils/myDate'
 import DatePicker from 'components/Form/DatePicker'
 import edgeModel from 'libs/engines/data/store/models/edge'
@@ -30,6 +29,7 @@ class Kontrol extends Component {
       ]))
       .reduce((a, b) => ({...a, ...b})),
       hidden: false,
+      publishedInstantly: true,
       editingEdge: false,
 
       recalcInProcess: false,
@@ -49,7 +49,10 @@ class Kontrol extends Component {
 
     let edge = this.state
     if (typeof this.state.id === "undefined")
-      edge.published = (new myDate()).getTime() / 1000
+      edge.published = Math.round((new myDate()).getTime() / 1000)
+
+    if (this.state.publishedInstantly)
+      edge.told = edge.published
 
     await this.context.store.push(emptyStringToUndefined(edge))
     this.context.store.copyData()
@@ -137,8 +140,10 @@ class Kontrol extends Component {
     let tmp = this.context.threeSceneRef?.current?.units?.graphCalc.pause()
   }
   saveCalc = async () => {
+    this.pauseCalc()
     let tmp = await this.context.threeSceneRef?.current?.units?.graphCalc.save()
-    console.log("update done")
+    await this.context.store.update()
+    this.toggleCalc()
   }
 
   render() {
@@ -169,13 +174,32 @@ class Kontrol extends Component {
         )}
         {this.state.node0 && this.state.node1 &&
           <div className="date-pickers">
-            {dates.map(date =>
-              <DatePicker
-                value={this.state[date]}
-                onChange={value => this.setState({[date]: value})}
-                label={date}
-              />
-            )}
+            {
+              (this.state.publishedInstantly ? ["commited"] : dates)
+                .map(date =>
+                  <DatePicker
+                    value={this.state[date]}
+                    onChange={value => this.setState({[date]: value})}
+                    label={date}
+                  />
+                )
+            }
+
+            <Checkbox
+              className="edit-node__checkbox"
+              value={this.state.hidden}
+              onChange={value => this.setState({hidden: value})}
+            >
+              hidden
+            </Checkbox>
+            <Checkbox
+              className="edit-node__checkbox"
+              value={this.state.publishedInstantly}
+              onChange={value => this.setState({publishedInstantly: value})}
+            >
+              publishedInstantly
+            </Checkbox>
+
             <button
               className="date-pickers__button"
               onClick={() => this.pushEdge()}
