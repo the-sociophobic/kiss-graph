@@ -60,14 +60,7 @@ class Neo4j extends Component {
     console.log("edges added")
   }
 
-  copyToJSON = () => {
-    const { nodes, edges } = this.context.store.get()
-
-    copyToClipboard(JSON.stringify({
-      nodes: nodes,
-      edges: edges,
-    }))
-  }
+  copyToJSON = () => this.context.store.copyData()
 
   getAllData = async () => {
     // const nodes = await this.post([{
@@ -128,9 +121,21 @@ class Neo4j extends Component {
         </button> */}
         <button
           className="button"
-          onClick={() => this.copyToJSON()}
+          onClick={() => this.context.store.copyData()}
         >
           copy to JSON
+        </button>
+        <button
+          className="button"
+          onClick={() => this.context.store.copyPos()}
+        >
+          copy position
+        </button>
+        <button
+          className="button"
+          onClick={() => this.context.store.copyUV()}
+        >
+          copy uv
         </button>
       </div>
     )

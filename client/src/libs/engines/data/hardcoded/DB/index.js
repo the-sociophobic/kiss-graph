@@ -1,7 +1,9 @@
 import { nameToPath } from 'libs/utils/stringTransforms'
 
 // import data from './24.11.19.json'
-import data from './testt.json'
+import mainData from './testt.json'
+import position from './position.json'
+import uv from './uv.json'
 
 
 const parseConnections = data => {
@@ -88,6 +90,13 @@ const parseConnections = data => {
     }
   }
    
+const data = {
+  ...mainData,
+  geometry: {
+    position: position,
+    uv: uv,
+  },
+}
 
 export {
   data,

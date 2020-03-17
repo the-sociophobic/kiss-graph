@@ -35,6 +35,8 @@ class User extends Component {
                   return "vk.com/" + node.social[key]
                 case "inst":
                   return "instagram.com/" + node.social[key]
+                case "inst2":
+                  return "instagram.com/" + node.social[key]
                 case "twit":
                   return "twitter.com/" + node.social[key]
                 case "yt":

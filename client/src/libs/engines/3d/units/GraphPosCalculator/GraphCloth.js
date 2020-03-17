@@ -146,8 +146,8 @@ export default class GraphCloth extends PhysicalUnit {
 const velocityAttenuation = .975
 
 const overflowForceK = 10
-const overflowForceDistanceFromCenter = 35
-const clampDistanceFromCenter = 50
+const overflowForceDistanceFromCenter = 45
+const clampDistanceFromCenter = 60
 const returnToCenterForceK = 0
 
 const maxVectorLength = 50000

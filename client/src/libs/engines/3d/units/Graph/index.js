@@ -8,28 +8,15 @@ import HeatGraph from './HeatGraph'
 import tapEvent from 'libs/utils/tapEvent'
 // import { currentTheme, addThemeEventListener } from 'libs/utils/colorTheme'
 import { currentTheme } from 'libs/utils/colorTheme'
+import isProduction from 'libs/utils/isProduction'
+
 
 export default class Graph extends Unit {
   constructor(props) {
     super(props)
-    const { THREE, scene } = props
-    const { nodes, edges } = this.props.store.get()
+    const { store, scene } = props
 
-    this.edges = edges.map(edge => ({
-      node0: nodes.map(node => node.id).indexOf(edge.node0),
-      node1: nodes.map(node => node.id).indexOf(edge.node1),
-    }))
-
-    this.nodes = nodes
-    .map(node => {
-      return ({
-        vector: new THREE.Vector3(node.pos.x, node.pos.y, node.pos.z),
-        weight: node.connections,
-        uv: node.uv,
-      })
-    })
-
-    HeatGraph(this.nodes, this.edges, scene)
+    HeatGraph(store, scene)
 
     this.currentTheme = currentTheme()
     this.theme = {}
@@ -64,7 +51,9 @@ export default class Graph extends Unit {
         // maxFontSize: 64,
         maxFontSize: 32,
         texture: {
-          fontFamily: 'Arial, Helvetica, sans-serif',
+          // fontFamily: 'Arial, Helvetica, sans-serif',
+          // fontFamily: `'SPb', -apple-system, system-ui, Roboto, "Open Sans", "Helvetica Neue", sans-serif`,
+          fontFamily: `'Arc', -apple-system, system-ui, Roboto, "Open Sans", "Helvetica Neue", sans-serif`,
           text: (node.name || "").replace(' ', '\n'), //REDO THIS SHIT TEST some nodes has no name?!
         },  
       })

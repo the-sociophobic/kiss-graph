@@ -44,9 +44,10 @@ class store extends listenersClass {
   }
 
   getData = async () => {
-    if (isProduction())// || true)
+    if (isProduction()) {
       this.metaData = parseConnections(data)
-    else
+      this.geometry = data.geometry
+    } else
       this.metaData = {
         nodes: await getNodes(),
         edges: await getEdges(),
@@ -201,15 +202,20 @@ class store extends listenersClass {
     nodes: this.metaData.nodes,
     edges: this.metaData.edges,
   }))
-  // copyData = () => {
-  //   const data = {
-  //     nodes: this.metaData.nodes.map(node => filterKeys(node, nodeModel)),
-  //     edges: this.metaData.edges.map(edge => filterKeys(edge, edgeModel)),
-  //   }
+  //copy buffer can't handle that size
+  copyPos = () => copyToClipboard(JSON.stringify(
+    this.geometry.position
+  ))
+  copyUV = () => copyToClipboard(JSON.stringify(
+    this.geometry.uv
+  ))
 
-  //   copyToClipboard(JSON.stringify(data))    
-  // }
-
+  getGeometry = () => {
+    return this.geometry
+  }
+  setGeometry = geometry => {
+    this.geometry = geometry
+  }
 }
 
 export default store

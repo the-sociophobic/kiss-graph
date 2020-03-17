@@ -2,6 +2,23 @@
 @import './theme.css'
 @import './outdated.sass'
 
+// @include font-face(Bingley, fonts/Samplino);
+@font-face
+  font-family: 'Bingley'
+  src: url('./fonts/ALS Bingley Regular.otf')
+@font-face
+  font-family: 'Departure'
+  src: url('./fonts/ALS Departure Regular.otf')
+@font-face
+  font-family: 'SPb'
+  src: url('./fonts/ALS_SPb.otf')
+@font-face
+  font-family: 'Alumna'
+  src: url('./fonts/ALS-Alumna.otf')
+@font-face
+  font-family: 'Arc'
+  src: url('./fonts/ALSArc-Light.ttf') format('truetype')
+
 $red: var(--red-color)
 $light: var(--main-background)
 $dark: var(--default-font-color)
@@ -27,9 +44,13 @@ $mobile-expander-area-height: 30px
 $mobile-expander-button-width: 40px
 $mobile-expander-button-height: 5px
 
+// $regular-font-size: $regular-font-size
+$regular-font-size: 14px //for Arc font
   
 *
-  font-family: -apple-system, system-ui, Roboto, "Open Sans", "Helvetica Neue", sans-serif
+  // font-family: -apple-system, system-ui, Roboto, "Open Sans", "Helvetica Neue", sans-serif
+  // font-family: 'SPb', -apple-system, system-ui, Roboto, "Open Sans", "Helvetica Neue", sans-serif
+  font-family: 'Arc', -apple-system, system-ui, Roboto, "Open Sans", "Helvetica Neue", sans-serif
   font-weight: normal
   color: $dark
   outline: none
@@ -254,18 +275,18 @@ $arrow-size: 7px
       float: left
       position: relative
       padding-left: 20px
-      font-size: 14px
+      font-size: $regular-font-size
     &__connections
       width: 25px
       float: right
-      font-size: 14px
+      font-size: $regular-font-size
       font-weight: 600
       color: #110cd7
     &__addition
       width: 35px
       min-height: 1px
       float: right
-      font-size: 14px
+      font-size: $regular-font-size
       color: green
   &-row.up, &-row.down, &-row.neutral
     .rating-row__name::before
@@ -382,7 +403,7 @@ $arrow-size: 7px
   width: 100%
   // max-width: 500px
   line-height: 20px
-  font-size: 14px
+  font-size: $regular-font-size
   display: flex
   flex-direction: row
   &:nth-child(odd)
@@ -415,7 +436,7 @@ $arrow-size: 7px
     display: inline
     line-height: 1.8
     .link
-      font-size: 14px
+      font-size: $regular-font-size
       color: $dark-dark-gray
       // color: inherit
       text-decoration: underline
@@ -719,7 +740,7 @@ $custom-select-inner-circle-size: 8px
   //   content: ""
   p.link
     display: inline-block
-    font-size: 14px
+    font-size: $regular-font-size
     cursor: pointer
     color: $link-color
 
@@ -735,7 +756,7 @@ $custom-select-inner-circle-size: 8px
   &__option
     @extend .noselect
     text-align: center
-    font-size: 14px
+    font-size: $regular-font-size
     line-height: $input-height - 4px
     flex-grow: 1
     border-right: 1px solid $light-gray
@@ -811,7 +832,7 @@ $custom-select-inner-circle-size: 8px
     height: 35%
 
 
-$heat-map-font-size: 14px
+$heat-map-font-size: $regular-font-size
 .heat-map
   @extend .side-menu-height
   right: -1px
@@ -905,7 +926,7 @@ $heat-type-transition: .1s
 
 
 span.emoji
-  // font-size: 14px
+  // font-size: $regular-font-size
   font-size: inherit
   padding-left: 5px
   display: inline-block
@@ -928,11 +949,11 @@ span.emoji
     width: 100%
     &__item
       width: 100%
-      // font-size: 14px
+      // font-size: $regular-font-size
       &:nth-child(odd)
         background-color: $apple-item-gray
       &__time
-        font-size: 14px
+        font-size: $regular-font-size
         display: inline-block
         width: 50px
         padding-left: 5px
@@ -955,7 +976,7 @@ span.emoji
   &__link
     display: inline-block
     // width: 100%
-    font-size: 14px
+    font-size: $regular-font-size
     line-height: 20px
     color: $light-gray !important
     margin-right: 10px

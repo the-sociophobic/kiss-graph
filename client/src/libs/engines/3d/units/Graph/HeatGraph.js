@@ -1,5 +1,7 @@
 import THREE from 'libs/engines/3d/three'
 import heatMap from 'img/heat32.png'
+import isProduction from 'libs/utils/isProduction'
+
 
 const heatMapOffset = {
   uOffset: [0, 6 / 32],
@@ -8,19 +10,44 @@ const heatMapOffset = {
 const interpolateUOffset = u => u * (1 - heatMapOffset.uOffset[0] - heatMapOffset.uOffset[1]) + heatMapOffset.uOffset[0]
 const interpolateVOffset = v => v * (1 - heatMapOffset.vOffset[0] - heatMapOffset.vOffset[1]) + heatMapOffset.vOffset[0]
 
-export default (nodesInput, edges, scene) => {
-  let nodes = nodesInput
-
+export default (store, scene) => {
   var finalMesh
   // let textureLoader = new THREE.TextureLoader()
   new THREE.TextureLoader()
     .load(heatMap, texture => {
       // texture.magFilter = THREE.NearestFilter;
       // texture.minFilter = THREE.LinearMipMapLinearFilter;
-      let material = new THREE.MeshBasicMaterial( { map: texture } )      
-      let bufferGeometry = new THREE.BufferGeometry()
-        .fromGeometry(cylinderGraphGeometry(nodes, edges, 3))
-      finalMesh = new THREE.Mesh(bufferGeometry, material)
+      let material = new THREE.MeshBasicMaterial( { map: texture } )
+      if (isProduction()) {
+        let bufferGeometry = new THREE.BufferGeometry()
+        bufferGeometry.setAttribute( 'position', new THREE.BufferAttribute( new Float32Array(store.getGeometry().position), 3 ) )
+        bufferGeometry.setAttribute( 'uv', new THREE.BufferAttribute( new Float32Array(store.getGeometry().uv), 2 ) )
+
+        finalMesh = new THREE.Mesh(bufferGeometry, material)
+      } else {
+        let edges = store.get().edges
+        .map(edge => ({
+          node0: store.get().nodes.map(node => node.id).indexOf(edge.node0),
+          node1: store.get().nodes.map(node => node.id).indexOf(edge.node1),
+        }))
+    
+        let nodes = store.get().nodes
+          .map(node => ({
+            vector: new THREE.Vector3(node.pos.x, node.pos.y, node.pos.z),
+            weight: node.connections,
+            uv: node.uv,
+          }))
+
+        let bufferGeometry = new THREE.BufferGeometry()
+          .fromGeometry(cylinderGraphGeometry(nodes, edges, 3))
+
+        finalMesh = new THREE.Mesh(bufferGeometry, material)
+
+        store.setGeometry({
+          position: finalMesh.toJSON().geometries[0].data.attributes.position.array,
+          uv: finalMesh.toJSON().geometries[0].data.attributes.uv.array,
+        })
+      }
 
       scene.add(finalMesh)
     })

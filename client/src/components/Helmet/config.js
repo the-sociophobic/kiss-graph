@@ -17,7 +17,8 @@ if (isProduction()) {
   // googleAnalytics.src = "https://www.googletagmanager.com/gtag/js?id=G-XB8NCSJJSE"
   // googleAnalytics.innerHTML = `
   //   <!-- Global site tag (gtag.js) - Google Analytics -->
-  //   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XB8NCSJJSE"></script>
+  //   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XB8NCSJJSE">
+  //   </script>
   //   <script>
   //     window.dataLayer = window.dataLayer || [];
   //     function gtag(){dataLayer.push(arguments);}
@@ -27,6 +28,14 @@ if (isProduction()) {
   //   </script>
   // `;
   // document.head.appendChild(googleAnalytics);
+
+  // const googleAddSense = document.createElement("script");
+  // googleAnalytics.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+  // googleAnalytics.innerHTML = `
+  //   <script data-ad-client="ca-pub-5356473212753983" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+  //   </script>
+  // `;
+  // document.head.appendChild(googleAddSense);
 
   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
