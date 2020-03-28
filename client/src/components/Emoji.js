@@ -49,6 +49,14 @@ export default [
     symbol: "💀",
     name: "dead",
   },
+  {
+    symbol: "💔",
+    name: "offended",
+  },
+  {
+    symbol: "🤬",
+    name: "triggered",
+  },
 ].map(emoji => ({
   [emoji.name]: () => (
     <span

@@ -65,7 +65,7 @@ class User extends Component {
         >
           {Object.keys(node)
             .filter(key =>
-              ["gender", "homosexuality", "mentalDisorder", "iq", "dead"]
+              ["gender", "homosexuality", "mentalDisorder", "iq", "dead", "offended"]
               .includes(key)
               &&
               typeof node[key] !== "undefined"
@@ -76,17 +76,19 @@ class User extends Component {
               <button
                 key={key}
                 className="node-info__tags__item"
-                onClick={() => this.props.history.push("/stats/" + (key === "mentalDisorder" ? "mental" : key))}
+                onClick={() => this.props.history.push("/stats/" + (key === "mentalDisorder" ? "mental" : (key === "offended" ? "triggered" : key)))} //REDO THIS SHIT
               >
                 {({
                     mentalDisorder: () => <Emoji.mentalDisorder />,
                     iq: () => <Emoji.IQ />,
                     dead: () => <Emoji.dead />,
+                    offended: () => <Emoji.triggered />,
                   })[key]()
                 } {node[key]}
                 {key === "mentalDisorder" && "/10 mental disorder"}
                 {key === "iq" && " IQ"}
                 {key === "dead" && " dead"}
+                {key === "offended" && " triggered"}
               </button>
             )
           }

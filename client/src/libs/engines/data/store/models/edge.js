@@ -1,6 +1,14 @@
 export default {
   id: {type: "id"},
-  type: {type: "select", options: ["KISS", "SEX", "MARRIED"], default: "KISS"},
+  type: {type: "select", options: [
+    "KISS",
+    "SEX",
+    "MARRIED",
+    "FRIENDSHIP",
+    "CHIVALRY",
+    "ILLNESS",
+    "STATE", //for unsorted labels
+  ], default: "KISS"},
   node0: {type: "ref"},
   node1: {type: "ref"},
   commited: {type: "date"},

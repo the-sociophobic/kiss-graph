@@ -76,6 +76,21 @@ class Stats extends Component {
     />
   )
 
+  renderTriggered = () => (
+    <List
+      items={this.context.store.get().nodes
+        .filter(node => node.offended)
+        .sort((a, b) => b.connections - a.connections)
+        .map(node => [
+          <UserNameLink
+            user={node}
+            setNode={this.props.setNode}
+          />
+        ])
+      }
+    />
+  )
+
   render = () => (
     <RadioHeader
       initialOptionFromURL
@@ -96,6 +111,11 @@ class Stats extends Component {
           label: () => <>MD<Emoji.mentalDisorder /></>,
           content: () => this.renderMentalDisorder(),
           title: "Kiss Graph: Stats / mental disorders",
+        },
+        triggered: {
+          label: () => <>triggered<Emoji.triggered /></>,
+          content: () => this.renderTriggered(),
+          title: "Kiss Graph: Stats / triggered",
         },
         dead: {
           label: () => <>dead<Emoji.dead /></>,
