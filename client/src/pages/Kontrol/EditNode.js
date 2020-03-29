@@ -5,7 +5,8 @@ import StoreContext from 'libs/engines/data/store/StoreContext'
 import NameSearch from 'components/interface/NameSearch'
 import Input from 'components/Form/Input'
 import Checkbox from 'components/Form/Checkbox'
-import nodeModel from 'libs/engines/data/store/models/node'
+import Select from 'components/Form/Select'
+import nodeModel from 'libs/engines/data/store/models/person'
 import { newInstance, editableFields } from 'libs/engines/data/store/models'
 import {
   flatten,
@@ -107,6 +108,18 @@ class EditNode extends Component {
             {key}
           </Checkbox>
         )
+      // case "select":
+      //   return (
+      //     <Select
+      //       key={key}
+      //       className="edit-node__select"
+      //       value={this.state[key]}
+      //       options={model[key].options}
+      //       onChange={value => this.setState({[key]: value})}
+      //     >
+      //       {key}
+      //     </Select>
+      //   )
       default:
         return (
           <Input

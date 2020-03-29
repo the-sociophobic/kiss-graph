@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { EmojiByName } from 'components/Emoji'
 import myDate from 'libs/utils/myDate'
 
 
@@ -33,6 +34,7 @@ export default props => {
             onClick={() => props.setNode(props.user.name)}
           >
             {props.user.userName ? ("@" + props.user.userName) : props.user.name}
+            {props.user.emoji && <EmojiByName name={props.user.emoji} />}
           </span>
         </div>
         {props.date &&
@@ -56,6 +58,7 @@ export default props => {
           onClick={() => props.setNode(props.user.name)}
         >
           {props.user.userName ? ("@" + props.user.userName) : props.user.name}
+          {props.user.emoji && <EmojiByName name={props.user.emoji} />}
         </span>
       </div>
       {props.date &&

@@ -45,7 +45,7 @@ $mobile-expander-button-width: 40px
 $mobile-expander-button-height: 5px
 
 // $regular-font-size: $regular-font-size
-$regular-font-size: 14px //for Arc font
+$regular-font-size: 15px //for Arc font
   
 *
   // font-family: -apple-system, system-ui, Roboto, "Open Sans", "Helvetica Neue", sans-serif
@@ -343,6 +343,9 @@ $arrow-size: 7px
   &__search-bar
     padding: 10px
   .node-info
+    &__emoji
+      font-size: 56px
+      padding: 6px 12px 12px
     &__tags
       width: 100%
       line-height: 22px
@@ -402,7 +405,7 @@ $arrow-size: 7px
 .username-link
   width: 100%
   // max-width: 500px
-  line-height: 20px
+  line-height: 21px
   font-size: $regular-font-size
   display: flex
   flex-direction: row
@@ -925,7 +928,7 @@ $heat-type-transition: .1s
         transform: translateX(0px)
 
 
-span.emoji
+.emoji
   // font-size: $regular-font-size
   font-size: inherit
   padding-left: 5px
@@ -934,6 +937,10 @@ span.emoji
     transform: translateY(1px)
   &__world
     transform: translateY(1px)
+  &__img
+      transform: translate(-2px, -2px)
+      height: 1em
+      width: auto
 
 
 

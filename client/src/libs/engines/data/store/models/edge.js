@@ -6,8 +6,7 @@ export default {
     "MARRIED",
     "FRIENDSHIP",
     "CHIVALRY",
-    "ILLNESS",
-    "STATE", //for unsorted labels
+    "STATE", //for connections with non-Persons (Labels)
   ], default: "KISS"},
   node0: {type: "ref"},
   node1: {type: "ref"},

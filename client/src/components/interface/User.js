@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 import StoreContext from 'libs/engines/data/store/StoreContext'
 import UserNameLink from 'components/interface/UserNameLink'
 import List from 'components/interface/List'
-import Emoji from 'components/Emoji'
+import Emoji, { EmojiByName } from 'components/Emoji'
 import ExternalLink from 'components/ExternalLink'
 
 
@@ -25,6 +25,11 @@ class User extends Component {
 
     return (
       <div className="node-info">
+        {node.emoji &&
+          <div className="node-info__emoji">
+            <EmojiByName name={node.emoji} />
+          </div>
+        }
         <div className="secret">
           {node.social && Object.keys(node.social)
             .map(key => {
@@ -45,6 +50,8 @@ class User extends Component {
                   return "www.facebook.com/" + node.social[key]
                 case "tg":
                   return "t.me/" + node.social[key]
+                case "steam":
+                  return "steamcommunity.com/" + node.social[key]
                 default:
                   return ""
               }

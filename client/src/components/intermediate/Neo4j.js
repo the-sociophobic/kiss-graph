@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import StoreContext from 'libs/engines/data/store/StoreContext'
-import nodeModel from 'libs/engines/data/store/models/node'
+import nodeModel from 'libs/engines/data/store/models/person'
 import edgeModel from 'libs/engines/data/store/models/edge'
 import {
   encode,

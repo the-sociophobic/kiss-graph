@@ -8,8 +8,9 @@ import {
   decodeMany
 } from 'libs/engines/data/store/models'
 
-import nodeModel from 'libs/engines/data/store/models/node'
 import edgeModel from 'libs/engines/data/store/models/edge'
+import personModel from 'libs/engines/data/store/models/person'
+import labelModel from 'libs/engines/data/store/models/label'
 
 
 const post = async statements =>
@@ -36,7 +37,8 @@ const getNodes = async () => {
         userName: mate.userName,
         name: mate.name,
         iq: mate.iq,
-        mentalDisorder: mate.mentalDisorder
+        mentalDisorder: mate.mentalDisorder,
+        emoji: mate.emoji
       } as mates, node as node
       WITH node {
         .*,
@@ -62,8 +64,8 @@ const getNodes = async () => {
   }])
 
   return [
-    ...decodeMany(nodeModel, connectedNodes),
-    ...decodeMany(nodeModel, singleNodes),
+    ...decodeMany(personModel, connectedNodes),
+    ...decodeMany(personModel, singleNodes),
   ]
 }
 const getNode = async id => {
@@ -81,7 +83,8 @@ const getNode = async id => {
         userName: mate.userName,
         name: mate.name,
         iq: mate.iq,
-        mentalDisorder: mate.mentalDisorder
+        mentalDisorder: mate.mentalDisorder,
+        emoji: mate.emoji
       } as mates, node as node
       WITH node {
         .*,
@@ -105,8 +108,8 @@ const getNode = async id => {
       RETURN node
     `
   }])
-  const decodedConnecttedNodes = decodeMany(nodeModel, connectedNodes)
-  const decodedSingleNodes = decodeMany(nodeModel, singleNodes)
+  const decodedConnecttedNodes = decodeMany(personModel, connectedNodes)
+  const decodedSingleNodes = decodeMany(personModel, singleNodes)
 
   const foundArray = [
     ...(Array.isArray(decodedConnecttedNodes) ? decodedConnecttedNodes : []),
@@ -136,7 +139,7 @@ const getEdges = async () =>
 const createNode = async node => {
   const resNode = await post([{
     statement: `
-      CREATE (node:Person ${encodeJSONstring(encode(nodeModel, node))})
+      CREATE (node:Person ${encodeJSONstring(encode(personModel, node))})
       WITH node {
         .*,
         id: id(node),
@@ -147,16 +150,16 @@ const createNode = async node => {
     `
   }])
 
-  return decodeMany(nodeModel, resNode)[0]
+  return decodeMany(personModel, resNode)[0]
 }
 const createEdge = async edge => {
   const resEdge = await post([{
     statement: `
-      MATCH (node0:Person)
+      MATCH (node0)
       WHERE ID(node0) = ${edge.node0}
-      MATCH (node1:Person)
+      MATCH (node1)
       WHERE ID(node1) = ${edge.node1}
-      CREATE (node0)-[edge:KISS ${encodeJSONstring(encode(edgeModel, edge))}]->(node1)
+      CREATE (node0)-[edge:${edge.type} ${encodeJSONstring(encode(edgeModel, edge))}]->(node1)
       WITH edge {
         .*,
         id: id(edge),
@@ -173,10 +176,10 @@ const createEdge = async edge => {
 const setNode = async node => {
   const nodeId = await post([{
     statement: `
-      MATCH (node:Person)
+      MATCH (node:${node.type})
       WHERE ID(node) = ${node.id}
       SET node = {}
-      SET node = ${encodeJSONstring(encode(nodeModel, node))}
+      SET node = ${encodeJSONstring(encode(personModel, node))}
       RETURN {id: ID(node)}
     `
   }])
@@ -189,15 +192,14 @@ const updateNodes = async nodes => {
     .map(node =>
       ({
         statement: `
-          MATCH (node:Person)
+          MATCH (node:${node.type})
           WHERE ID(node) = ${node.id}
-          SET node = ${encodeJSONstring(encode(nodeModel, node))}
+          SET node = ${encodeJSONstring(encode(personModel, node))}
           RETURN {id: ID(node)}
         `
       })
     )
-  // console.log(nodess.filter(nodeCommand => nodeCommand.statement.includes("undefined")))
-  console.log(nodess)
+
   const res = await post(nodess)
   return res
 }
@@ -205,7 +207,7 @@ const updateNodes = async nodes => {
 const setEdge = async edge => {
   const resEdge = await post([{
     statement: `
-      MATCH ()-[edge:KISS]-()
+      MATCH ()-[edge:${edge.type}]-()
       WHERE ID(edge) = ${edge.id}
       SET edge = ${encodeJSONstring(encode(edgeModel, edge))}
       RETURN {id: ID(edge)}
@@ -218,7 +220,7 @@ const setEdge = async edge => {
 const deleteNode = async node =>
   await post([{
     statement: `
-      MATCH (node:Person)
+      MATCH (node:${node.type})
       WHERE ID(node) = ${node.id}
       DETACH DELETE node
     `
@@ -226,7 +228,7 @@ const deleteNode = async node =>
 const deleteEdge = async edge =>
   await post([{
     statement: `
-      MATCH ()-[edge:KISS]-()
+      MATCH ()-[edge:${edge.type}]-()
       WHERE ID(edge) = ${edge.id}
       DELETE edge
     `

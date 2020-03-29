@@ -10,6 +10,7 @@ import { registerListeners, unregisterListeners } from 'libs/utils/preventMobile
 import User from 'components/interface/User'
 import MobileExpander from 'components/interface/MobileExpander'
 import Menu from 'components/interface/Menu'
+import Feed from 'components/interface/Feed'
 import NameSearch from 'components/interface/NameSearch'
 import WeightColorsStyle from 'components/interface/WeightColorsStyle'
 
@@ -99,6 +100,7 @@ class TextInterface extends Component {
       content = <Kontrol />
     else
       content = <Menu setNode={this.setNode.bind(this)} />
+      // content = <Feed setNode={this.setNode.bind(this)} />
       
 
     const contentWithFooter = (

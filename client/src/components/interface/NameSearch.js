@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import Dropdown from 'components/Form/Dropdown'
+import { EmojiByName } from 'components/Emoji'
 import StoreContext from 'libs/engines/data/store/StoreContext'
 
 
@@ -25,7 +26,7 @@ class NameSearch extends Component {
             backgroundColor: `var(--weight-color-${option.connections})`,
           }},
           render: <p className="p">
-              {option.name} <em>{option.userName ? ` (@${option.userName})` : ""}</em>
+              {option.name} {option.emoji && <EmojiByName name={option.emoji} />} <em>{option.userName ? ` (@${option.userName})` : ""}</em>
             </p>
         }))
       this.setState({currentOptions: options})
