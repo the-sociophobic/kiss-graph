@@ -1,12 +1,45 @@
 import _ from 'lodash'
 
+import {
+  deflatten,
+  filterKeys,
+  undefinedToEmptyString,
+  emptyStringToUndefined,
+  emptyDataToUndefined,
+} from 'libs/utils/objectUtils'
+
+
+const flattenModel = (model, parentName = "") => 
+  Object.keys(model).length > 0 ?
+    Object.keys(model).map(key => {
+      if (model[key].hasOwnProperty("type")) {
+        switch (model[key].type) {
+          case "point3d":
+            return flattenModel({
+              x: {type: "number"},
+              y: {type: "number"},
+              z: {type: "number"},
+            }, parentName + key + ".")
+          case "object":
+            return flattenModel(model[key].fields, parentName + key + ".")
+          default:
+            return ({[parentName + key]: model[key]})
+        }          
+      } else
+        return flattenModel(model[key], parentName + key + ".")
+    })
+    .reduce((a, b) => ({...a, ...b}))
+    :
+    {}
 
 const editableFields = model =>
   _.pickBy(model, (value, key) =>
     !model[key].local &&
-    !model[key].type.match(/\b(id|ref)\b/g)
+    !model[key].type.match(/\b(id|ref|array)\b/g)
   )
 
+const flattenEditableModel = model =>
+  editableFields(flattenModel(model))
 
 //CREATE NEW INSTANCE
 const newInstance = model =>
@@ -46,6 +79,17 @@ const newInstance = model =>
     }
   }
 
+const flattenNewInstance = model =>
+  undefinedToEmptyString(newInstance(flattenModel(model)))
+
+const flattenEditableNewInstance = model =>
+  undefinedToEmptyString(newInstance(editableFields(flattenModel(model))))
+
+const deflattenDataByModel = (data, model) => 
+  emptyDataToUndefined(
+    deflatten(
+      emptyStringToUndefined(
+        filterKeys(data, flattenModel(model)))))
 
 //ENCODE FOR DB
 const encode = (model, instance) =>
@@ -140,12 +184,23 @@ const decodeMany = (model, instances) =>
   instances?.data?.results[0]?.data.map(instance => decode(model, instance))
 
 
+const isPerson = obj => obj.hasOwnProperty("pos") //REDO THIS SHIT: for labels other than Person / Concept
+
+
 export {
+  flattenModel,
   editableFields,
+  flattenEditableModel,
   newInstance,
+  flattenNewInstance,
+  flattenEditableNewInstance,
+  deflattenDataByModel,
+
   encode,
   encodeMany,
   encodeJSONstring,
   decode,
   decodeMany,
+
+  isPerson,
 }

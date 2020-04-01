@@ -129,8 +129,9 @@ export default class GraphCloth extends PhysicalUnit {
       if (node.weight === this.maxWeight)
         return
       const velocity = velocities[index]
-      node.vector
-      .add(velocity.clone().multiplyScalar(deltaTime))
+      if (!node.staticPos)
+        node.vector
+        .add(velocity.clone().multiplyScalar(deltaTime))
       // .clampLength(0, clampDistanceFromCenter)
     })
   }

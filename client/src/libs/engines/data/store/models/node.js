@@ -1,9 +1,9 @@
 export default {
   id: {type: "id"},
-  type: {type: "select", options: [ //weeeeell it is partly supported by Cypher syntax
-    "Person",
-    "Label"
-  ], default: "Person"},
+  // type: {type: "select", options: [ //weeeeell it is partly supported by Cypher syntax
+  //   "Person",
+  //   "Label"
+  // ], default: "Person"},
 
   name: {type: "string"},
   userName: {type: "string"}, //used as link if defined

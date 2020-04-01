@@ -3,9 +3,12 @@ import React, { Component, Fragment } from 'react'
 import StoreContext from 'libs/engines/data/store/StoreContext'
 import Neo4j from 'components/intermediate/Neo4j'
 import EditNode from './EditNode'
+
 import Checkbox from 'components/Form/Checkbox'
 import myDate from 'libs/utils/myDate'
 import DatePicker from 'components/Form/DatePicker'
+import Select from 'components/Form/Select'
+
 import edgeModel from 'libs/engines/data/store/models/edge'
 import { newInstance } from 'libs/engines/data/store/models'
 import {
@@ -22,11 +25,7 @@ class Kontrol extends Component {
     this.state = {
       node0: undefined,
       node1: undefined,
-      ...dates.map(date => ([
-        {[date]: undefined}, //UNIX Timestamp
-        {[date + "Input"]: 0},
-        {[date + "Class"]: 0},
-      ]))
+      ...dates.map(date => ({[date]: undefined}))
       .reduce((a, b) => ({...a, ...b})),
       hidden: false,
       publishedInstantly: true,
@@ -74,25 +73,6 @@ class Kontrol extends Component {
     node0: node0,
     node1: node1,
   })
-
-  checkDate = date => {
-    if (typeof this.state[date + "Input"] !== "undefined" &&
-      this.state[date + "Input"].length > 0)
-    {
-      const dateClass = new myDate(this.state[date + "Input"])
-      this.setState({
-        [date + "Class"]: dateClass,
-        [date]: dateClass.getTime() / 1000
-      })
-    }
-    else
-      this.setState({
-        [date + "Class"]: undefined,
-        [date]: undefined,
-      })
-  }
-
-  onEnterPress = (e, date) => e.keyCode === 13 && this.checkDate(date)
 
   setNodeId = (nodeId, nodeNameInState) => {
     this.setState({[nodeNameInState]: nodeId})
@@ -174,6 +154,7 @@ class Kontrol extends Component {
         )}
         {this.state.node0 && this.state.node1 &&
           <div className="date-pickers">
+            <Select />
             {
               (this.state.publishedInstantly ? ["commited"] : dates)
                 .map(date =>

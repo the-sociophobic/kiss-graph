@@ -21,7 +21,7 @@ class NameSearch extends Component {
       const options = this.context.store.search({name: value, userName: value})
         .slice(0, window.innerHeight > 736 ? 7 : 5)
         .map(option => ({
-          value: option.name,
+          value: option,
           style: {':hover': {
             backgroundColor: `var(--weight-color-${option.connections})`,
           }},
@@ -35,7 +35,7 @@ class NameSearch extends Component {
 
   close = () => this.dropdownRef.current && this.dropdownRef.current.close()
 
-  render = () => (
+  render = () =>  (
     <Dropdown
       ref={this.dropdownRef}
       input

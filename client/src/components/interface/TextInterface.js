@@ -47,13 +47,18 @@ class TextInterface extends Component {
     window.removeEventListener('orientationchange', this.updateDeviceWidth.bind(this))
   }
 
-  setNode = nodeName => {
-    const node = this.context.store.get({name: nodeName})
+  setNode = input => { //REDO THIS SHIT: It is used in many plaaces, bugs inevitable...
+    if (typeof input === "string") {
+      let nodeName = input
+      const node = this.context.store.get({name: nodeName})
 
-    if (node === null)
-      this.props.setNode()
-    else
-      this.props.setNode(node.id)
+      if (node === null)
+        this.props.setNode()
+      else
+        this.props.setNode(node.id)
+    } else {
+      this.props.setNode(input.id)
+    }
   }
 
   openWorkspace = () => this.setState({

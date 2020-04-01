@@ -10,7 +10,7 @@ import {
 
 import edgeModel from 'libs/engines/data/store/models/edge'
 import personModel from 'libs/engines/data/store/models/person'
-import labelModel from 'libs/engines/data/store/models/label'
+import conceptModel from 'libs/engines/data/store/models/concept'
 
 
 const post = async statements =>
@@ -159,7 +159,7 @@ const createEdge = async edge => {
       WHERE ID(node0) = ${edge.node0}
       MATCH (node1)
       WHERE ID(node1) = ${edge.node1}
-      CREATE (node0)-[edge:${edge.type} ${encodeJSONstring(encode(edgeModel, edge))}]->(node1)
+      CREATE (node0)-[edge:KISS ${encodeJSONstring(encode(edgeModel, edge))}]->(node1)
       WITH edge {
         .*,
         id: id(edge),
@@ -176,7 +176,7 @@ const createEdge = async edge => {
 const setNode = async node => {
   const nodeId = await post([{
     statement: `
-      MATCH (node:${node.type})
+      MATCH (node:Person)
       WHERE ID(node) = ${node.id}
       SET node = {}
       SET node = ${encodeJSONstring(encode(personModel, node))}
@@ -192,8 +192,9 @@ const updateNodes = async nodes => {
     .map(node =>
       ({
         statement: `
-          MATCH (node:${node.type})
+          MATCH (node:Person)
           WHERE ID(node) = ${node.id}
+          SET node = {}
           SET node = ${encodeJSONstring(encode(personModel, node))}
           RETURN {id: ID(node)}
         `
@@ -207,7 +208,7 @@ const updateNodes = async nodes => {
 const setEdge = async edge => {
   const resEdge = await post([{
     statement: `
-      MATCH ()-[edge:${edge.type}]-()
+      MATCH ()-[edge:KISS]-()
       WHERE ID(edge) = ${edge.id}
       SET edge = ${encodeJSONstring(encode(edgeModel, edge))}
       RETURN {id: ID(edge)}
@@ -220,7 +221,7 @@ const setEdge = async edge => {
 const deleteNode = async node =>
   await post([{
     statement: `
-      MATCH (node:${node.type})
+      MATCH (node:Person)
       WHERE ID(node) = ${node.id}
       DETACH DELETE node
     `
@@ -228,7 +229,7 @@ const deleteNode = async node =>
 const deleteEdge = async edge =>
   await post([{
     statement: `
-      MATCH ()-[edge:${edge.type}]-()
+      MATCH ()-[edge:KISS]-()
       WHERE ID(edge) = ${edge.id}
       DELETE edge
     `

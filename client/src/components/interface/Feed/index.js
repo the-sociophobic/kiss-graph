@@ -1,28 +1,59 @@
 import React, { Component } from 'react'
 
-import RadioHeader from 'components/interface/RadioHeader'
 import StoreContext from 'libs/engines/data/store/StoreContext'
+import RadioHeader from 'components/interface/RadioHeader'
 import UserNameLink from 'components/interface/UserNameLink'
 import KissTime from 'components/interface/Feed/KissTime'
-import Emoji from 'components/Emoji'
+import Emoji, { EmojiByName } from 'components/Emoji'
 import myDate from 'libs/utils/myDate'
+import { insertIntoSortedArray } from 'libs/utils/sort'
 
+
+const minItemsShown = 50
+const itemsOffset = 50
 
 export default class Feed extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {}
-
     this.options = ["told", "published", "commited"]
+    this.optionsEmoji = {
+      told: "told",
+      published: "world",
+      commited: "kiss",
+    }
+
+    this.edgesArraysByOption = this.options
+      .map(option => ({[option]: []}))
+      .reduce((a, b) => ({...a, ...b}))
+
+    this.state = {
+      ...this.options.map(option => ({[option + "Shown"]: minItemsShown}))
+        .reduce((a, b) => ({...a, ...b}))
+    }
   }
 
   static contextType = StoreContext
 
   componentDidMount() {
-    const filterEdgesByProperty = (edges, prop) => edges
-      .filter(edge => edge[prop])
+    const { edges } = this.context.store.get()
+
+    edges.forEach(edge =>
+      this.options.forEach(option => {
+        if (edge.hasOwnProperty(option))
+          insertIntoSortedArray(this.edgesArraysByOption[option], edge, (a, b) => a[option] - b[option])
+      }))
     
+    this.options.forEach(option =>
+      this.setState({
+        [option]: this.slowEdgesParser(
+          this.edgesArraysByOption[option]
+            .slice(0, minItemsShown)
+          , option)
+    }))
+  }
+
+  slowEdgesParser = (edges, type) => {
     const mapNodesToEdges = edges => edges
       .map(edge => {
         const node0 = this.context.store.get({id: edge.node0})
@@ -47,14 +78,11 @@ export default class Feed extends Component {
         }
       })
 
-    const groupByDays = (edges, prop) => {
-      const sortedEdges = edges
-        .sort((a, b) => b[prop] - a[prop])
-
+    const groupByDays = (edges, type) => {
       let days = []
 
-      sortedEdges.forEach(edge => {
-        const date = new myDate(edge[prop]).toStringDot()
+      edges.forEach(edge => {
+        const date = new myDate(edge[type]).toStringDot()
         let dayIndex = days.map(day => day.date).indexOf(date)
 
         if (dayIndex === -1) {
@@ -71,11 +99,7 @@ export default class Feed extends Component {
       return days
     }
 
-    const { edges } = this.context.store.get()
-
-    this.options.forEach(option => {
-      this.setState({[option]: groupByDays(mapNodesToEdges(filterEdgesByProperty(edges, option)), option)})
-    })
+    return groupByDays(mapNodesToEdges(edges), type)
   }
 
   renderKisses = type => this.state[type] && this.state[type]
@@ -114,28 +138,65 @@ export default class Feed extends Component {
       </div>
     ))
 
+  renderShowMore = type => (
+    <button
+      className="button--load-more"
+      onClick={() => {
+        const currentArray = this.state[type]
+        const currentlyShown = this.state[type + "Shown"]
+        const additionalArray = this.slowEdgesParser(
+          this.edgesArraysByOption[type]
+            .slice(currentlyShown, currentlyShown + itemsOffset)
+          , type)
+        let mergedArray
+
+        if (currentArray[currentArray.length - 1].date === additionalArray[0].date) {
+          mergedArray = [
+            ...(currentArray.length > 1 ? currentArray.slice(0, -1) : []), //surprisingly .slice() doesn't return []
+            {
+              date: additionalArray[0].date,
+              entries: [
+                ...currentArray[currentArray.length - 1].entries,
+                ...additionalArray[0].entries,
+              ]
+            },
+            ...(additionalArray.length > 1 ? additionalArray.slice(-1) : [])
+          ]
+        } else 
+          mergedArray = [
+            ...currentArray,
+            ...additionalArray
+          ]
+          
+          this.setState({
+            [type]: mergedArray,
+          [type + "Shown"]: currentlyShown + itemsOffset
+        })
+      }}
+    >
+      Load more
+    </button>
+  )
+
   render = () => (
     <RadioHeader
       initialOptionFromURL
       affectURL
       prevURL="/news/"
-      options={{
-        told: {
-          label: () => <>told<Emoji.told /></>,
-          content: () => this.renderKisses("told"),
-          title: "Kiss Graph: News / told",
-        },
-        published: {
-          label: () => <>published<Emoji.world /></>,
-          content: () => this.renderKisses("published"),
-          title: "Kiss Graph: News / published",
-        },
-        commited: {
-          label: () => <>commited<Emoji.kiss /></>,
-          content: () => this.renderKisses("commited"),
-          title: "Kiss Graph: News / commited",
-        },
-      }}
+      options={
+        this.options
+          .map(option => ({[option]: {
+            title: "Kiss Graph: News / " + option,
+            label: () => <>{option}<EmojiByName name={this.optionsEmoji[option]} /></>,
+            content: () => <>
+              {this.renderKisses(option)}
+              {this.state[option + "Shown"] < this.edgesArraysByOption[option].length &&
+                this.renderShowMore(option)
+              }
+            </>,
+          }}))
+          .reduce((a, b) => ({...a, ...b}))
+      }
     />
   )
 }

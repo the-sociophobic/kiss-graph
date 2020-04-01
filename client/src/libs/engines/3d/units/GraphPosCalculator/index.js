@@ -32,7 +32,8 @@ export default class GraphPosCalculator extends Unit {
         node.pos.y,
         node.pos.z
       ),
-      weight: node.connections > 0 ? node.connections : 1, //TODO
+      weight: node.connections > 0 ? node.connections : .5, //TODO
+      staticPos: node.staticPos,
     }))
 
     this.GraphCloth = new GraphCloth({

@@ -1,153 +1,115 @@
 import React, { Component, Fragment } from 'react'
-// import _ from 'lodash'
+import _ from 'lodash'
 
 import StoreContext from 'libs/engines/data/store/StoreContext'
 import NameSearch from 'components/interface/NameSearch'
-import Input from 'components/Form/Input'
-import Checkbox from 'components/Form/Checkbox'
 import Select from 'components/Form/Select'
-import nodeModel from 'libs/engines/data/store/models/person'
-import { newInstance, editableFields } from 'libs/engines/data/store/models'
+import Form from './Form'
+
+import personModel from 'libs/engines/data/store/models/person'
+import conceptModel from 'libs/engines/data/store/models/concept'
+
+import {
+  editableFields,
+  flattenEditableModel,
+  flattenNewInstance,
+  deflattenDataByModel,
+  isPerson
+} from 'libs/engines/data/store/models'
 import {
   flatten,
-  deflatten,
   filterKeys,
   undefinedToEmptyString,
-  emptyStringToUndefined,
-  emptyDataToUndefined,
 } from 'libs/utils/objectUtils'
-
-
-const flattenEditableFields = [
-  ...Object.keys(flatten(editableFields(nodeModel)))
-    .map(key => key.replace(".type", "").replace(".fields", "")),
-  "pos.x",
-  "pos.y",
-  "pos.z",
-]
-const flattenNodeModel = Object.keys(flatten(nodeModel))
-  .map(key => ({
-    [key.replace(".type", "").replace(".fields", "")]: flatten(nodeModel)[key]
-  }))
-  .reduce((a, b) => ({...a, ...b}))
-
+  
 
 class EditNode extends Component {
   constructor(props) {
     super(props)
-    this.state = undefinedToEmptyString(flatten(newInstance(nodeModel)))
+    this.state = {
+      currentModel: personModel,
+    }
     this.nameSearchRef = React.createRef()
   }
 
-  createEmptyNode = name => {
-    let target = this.context.threeSceneRef?.current?.controls?.target
-
-    return {
-      ...flatten(newInstance(nodeModel)),
+  createEmptyNode = (name, model) => {
+    const currentModel = model || this.state.currentModel
+    let instance = {
+      ...flattenNewInstance(this.state.currentModel),
       name: name,
-      "pos.x": target?.x + Math.random() / 2 - .25,
-      "pos.y": target?.y + Math.random() / 2 - .25,
-      "pos.z": target?.z + Math.random() / 2 - .25,
     }
+
+    if (isPerson(currentModel)) {
+      let target = this.context.threeSceneRef?.current?.controls?.target
+
+      instance = {
+        ...instance,
+        "pos.x": target?.x + Math.random() / 2 - .25,
+        "pos.y": target?.y + Math.random() / 2 - .25,
+        "pos.z": target?.z + Math.random() / 2 - .25,
+      }
+    }
+
+    return instance
   }
 
-  setNode = nodeName => {
-    if (nodeName === null || nodeName === "") {
-      this.setState(flatten(newInstance(nodeModel)))
-      return
-    }
+  setNode = input => {
+    let { currentModel } = this.state
+    let node
 
-    let node = this.context.store.get({name: nodeName})
-
-    if (node === null || typeof node === "undefined")
-      node = this.createEmptyNode(nodeName)
+    if (input === null || typeof input === "undefined" || input.name === null || input.name === "")
+      node = this.createEmptyNode(input.name)
     else {
-      this.context.threeSceneRef.current && this.context.threeSceneRef.current.setCamera(node.pos)
+      node = input
+      if (typeof input.id !== "undefined")
+        if (isPerson(node)) {
+          currentModel = personModel
+          this.context.threeSceneRef && this.context.threeSceneRef.current.setCamera(node.pos)
+        }
+        else
+          currentModel = conceptModel
+
       node = {
-        ...this.createEmptyNode(nodeName),
+        ...this.createEmptyNode(node.name, currentModel),
         ...flatten(filterKeys(node, {
-          id: {},
-          ...editableFields(nodeModel)
+          id: {}, //so actual id will not be filtered
+          ...editableFields(personModel)
         }))
       }
     }
 
     this.props.setNodeId(node.id)
-    this.setState(undefinedToEmptyString(node))
+    this.setState({currentModel: currentModel})
+    this.setState(undefinedToEmptyString(flatten(node)))
   }
 
   save = async () => {
     const nodeFromStore = await this.context.store
-      .push(
-        emptyDataToUndefined(
-          deflatten(
-            emptyStringToUndefined(this.state))))
-    this.setNode(nodeFromStore.name)
-    this.context.store.copyData()
+      .push(deflattenDataByModel(this.state, this.state.currentModel))
+    this.setNode(nodeFromStore)
   }
   delete = async () => {
     await this.context.store
-      .delete(
-        emptyDataToUndefined(
-          deflatten(
-            emptyStringToUndefined(this.state))))
-    this.setNode(null)
-    this.context.store.copyData()
-  }
-
-  renderKey = (model, key) => {
-    switch (model[key]) {
-      case "boolean":
-        return (
-          <Checkbox
-            key={key}
-            className="edit-node__checkbox"
-            value={this.state[key]}
-            onChange={value => this.setState({[key]: value})}
-          >
-            {key}
-          </Checkbox>
-        )
-      // case "select":
-      //   return (
-      //     <Select
-      //       key={key}
-      //       className="edit-node__select"
-      //       value={this.state[key]}
-      //       options={model[key].options}
-      //       onChange={value => this.setState({[key]: value})}
-      //     >
-      //       {key}
-      //     </Select>
-      //   )
-      default:
-        return (
-          <Input
-            key={key}
-            className="edit-node__input"
-            value={this.state[key]}
-            onChange={value => this.setState({[key]: value})}
-            label={key}
-          />
-        )
-    }
+      .delete(deflattenDataByModel(this.state, this.state.currentModel))
+    this.setNode({name: null})
   }
 
   onEnterPress = e => {
     if (e.keyCode === 13) {
-      this.setNode(e.target.value)
+      this.setNode({name: e.target.value})
       this.nameSearchRef.current && this.nameSearchRef.current.close()
     }
   }
 
   render = () => {
     const isNew = typeof this.state.id !== "number"
+    const { name, currentModel } = this.state
 
     return (
       <div className="edit-node">
         <NameSearch
           ref={this.nameSearchRef}
-          node={this.props.node}
+          node={this.state}
           onChange={value => this.setNode(value)}
           onKeyDown={e => this.onEnterPress(e)}
           className="mb-4"
@@ -168,9 +130,25 @@ class EditNode extends Component {
                 Delete
               </button>
             }
-            {Object.keys(this.state)
-              .filter(key => flattenEditableFields.includes(key))
-              .map(key => this.renderKey(flattenNodeModel, key))}
+            {isNew &&
+              <Select
+                value={this.state.currentModel}
+                onChange={model => this.setState({
+                  ...this.createEmptyNode(name, model),
+                  currentModel: model
+                })}
+                options={[
+                  {value: personModel, label: "Person"},
+                  {value: conceptModel, label: "Concept"},
+                ]}
+                label={"node type"}
+              />
+            }
+            <Form
+              state={this.state}
+              setState={this.setState.bind(this)}
+              model={flattenEditableModel(currentModel)}
+            />
           </Fragment>        
         )}
       </div>

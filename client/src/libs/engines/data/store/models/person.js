@@ -14,14 +14,21 @@ export default {
       twit: {type: "string"},
       yt: {type: "string"},
       fb: {type: "string"},
+      fb2: {type: "string"},
       steam: {type: "string"},
+      ticktok: {type: "string"},
     }
   },
+
+  staticPos: {type: "boolean"},
   pos: {type: "point3d"},
   iq: {type: "number", canBeString: true},
   iq2: {type: "number", canBeString: true},
   mentalDisorder: {type: "string"},
-  male: {type: "boolean"},
+  gender: {type: "select", options: [
+    "m",
+    "f"
+  ], canBeUndefined: true},
   dead: {type: "boolean"},
   offended: {type: "boolean"},
   SHR: {

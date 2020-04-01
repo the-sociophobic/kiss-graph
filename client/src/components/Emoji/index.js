@@ -212,6 +212,14 @@ const emojis = [
     symbol: "🍆",
     name: "baklazhan",
   },
+  {
+    symbol: "👌🏻",
+    name: "ok",
+  },
+  {
+    symbol: "⚖️",
+    name: "justice",
+  },
 ]
 
 const emojisArray = emojis

@@ -72,7 +72,7 @@ class User extends Component {
         >
           {Object.keys(node)
             .filter(key =>
-              ["gender", "homosexuality", "mentalDisorder", "iq", "dead", "offended"]
+              ["mentalDisorder", "iq", "dead", "offended"]
               .includes(key)
               &&
               typeof node[key] !== "undefined"

@@ -9,10 +9,7 @@ import {
   deleteEdge,
 } from 'libs/engines/data/store/Neo4j'
 
-import {
-  data,
-  parseConnections
-} from 'libs/engines/data/hardcoded/DB'
+import { data } from 'libs/engines/data/hardcoded/DB'
 
 import copyToClipboard from 'libs/utils/copyToClipboard'
 import listenersClass from 'libs/utils/listenersClass'
@@ -45,11 +42,15 @@ class store extends listenersClass {
 
   getData = async () => {
     if (isProduction()) {
-      this.metaData = parseConnections(data)
+      this.metaData.nodes = data.nodes
+      this.metaData.edges = data.edges
       this.geometry = data.geometry
     } else
       this.metaData = {
         nodes: await getNodes(),
+        // nodes: await (await getNodes())
+        //   .map(node => node.male ? ({...node, male: undefined, gender: "male"}) : node)
+        //   .map(node => ({...node, type: undefined})),
         edges: await getEdges(),
       }
 
@@ -68,7 +69,7 @@ class store extends listenersClass {
         node.social.inst ||
         (node.social.vk && (!node.social.vk.startsWith("id") || node.social.vk.includes("_")) && node.social.vk) ||
         node.social.tg ||
-        node.social.fb ||
+        // node.social.fb ||
         node.social.twit ||
         (node.social.yt && node.social.yt.startsWith("user/") && node.social.yt.slice(5))
       )) || undefined

@@ -45,7 +45,7 @@ class Neo4j extends Component {
     console.log(edges)
     const edgeString = edges
       .map(edge => {
-        console.log(edge)
+        // console.log(edge)
 
         return (`
         MATCH (node0:Person)
@@ -111,8 +111,8 @@ class Neo4j extends Component {
           onClick={() => this.addCurrentData()}
         >
           Добавить
-        </button> */}
-        <br />
+        </button>
+        <br /> */}
         {/* <button
           className="button"
           onClick={() => this.addCurrentData()}

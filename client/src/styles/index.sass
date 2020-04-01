@@ -2,19 +2,6 @@
 @import './theme.css'
 @import './outdated.sass'
 
-// @include font-face(Bingley, fonts/Samplino);
-@font-face
-  font-family: 'Bingley'
-  src: url('./fonts/ALS Bingley Regular.otf')
-@font-face
-  font-family: 'Departure'
-  src: url('./fonts/ALS Departure Regular.otf')
-@font-face
-  font-family: 'SPb'
-  src: url('./fonts/ALS_SPb.otf')
-@font-face
-  font-family: 'Alumna'
-  src: url('./fonts/ALS-Alumna.otf')
 @font-face
   font-family: 'Arc'
   src: url('./fonts/ALSArc-Light.ttf') format('truetype')
@@ -181,6 +168,15 @@ $interface-block-padding: 8px
   &--active
     transition: background-color .1s
     background-color: $button-color
+  &--load-more
+    @extend .button
+    width: 90%
+    height: 30px
+    color: $dark
+    background-color: $light-gray
+    margin-left: 5%
+    margin-top: 8px
+    font-size: $regular-font-size
 
 
 
@@ -413,7 +409,7 @@ $arrow-size: 7px
     // background-color: $apple-item-gray
 
   &__number
-    width: 55px
+    width: 48px
     text-align: right
     padding-right: 7px
     color: inherit
@@ -581,15 +577,16 @@ $reset-size: 22px
         
 
 
-$custom-select-circle-size: 16px
-$custom-select-inner-circle-size: 8px
-.custom-select
+$my-select-circle-size: 16px
+$my-select-inner-circle-size: 8px
+.my-select
   width: 100%
   display: table
   margin: 10px 0
   &__option
     display: inline-block
     padding-left: 20px
+    margin-right: 10px
     cursor: pointer
     position: relative
     &::before
@@ -605,11 +602,12 @@ $custom-select-inner-circle-size: 8px
       &::after
         content: ""
         position: absolute
-        top: calc((#{$custom-select-circle-size} - #{$custom-select-inner-circle-size}) / 2)
-        left: calc((#{$custom-select-circle-size} - #{$custom-select-inner-circle-size}) / 2)
+        top: calc((#{$my-select-circle-size} - #{$my-select-inner-circle-size}) / 2)
+        left: calc((#{$my-select-circle-size} - #{$my-select-inner-circle-size}) / 2)
         background-color: $secondary
-        width: $custom-select-inner-circle-size
-        height: $custom-select-inner-circle-size
+        width: $my-select-inner-circle-size
+        height: $my-select-inner-circle-size
+        border-radius: 20px
 
 
 
