@@ -72,7 +72,7 @@ class User extends Component {
         >
           {Object.keys(node)
             .filter(key =>
-              ["mentalDisorder", "iq", "dead", "offended"]
+              ["mentalDisorder", "iq", "dead", "offended", "gay"]
               .includes(key)
               &&
               typeof node[key] !== "undefined"
@@ -90,12 +90,14 @@ class User extends Component {
                     iq: () => <Emoji.IQ />,
                     dead: () => <Emoji.dead />,
                     offended: () => <Emoji.triggered />,
+                    gay: () => <Emoji.gay />,
                   })[key]()
                 } {node[key]}
                 {key === "mentalDisorder" && "/10 mental disorder"}
                 {key === "iq" && " IQ"}
                 {key === "dead" && " dead"}
                 {key === "offended" && " triggered"}
+                {key === "gay" && "% gay"}
               </button>
             )
           }

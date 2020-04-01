@@ -17,6 +17,9 @@ export default {
       fb2: {type: "string"},
       steam: {type: "string"},
       ticktok: {type: "string"},
+      skype: {type: "string"},
+      linkedin: {type: "string"},
+      phone: {type: "string"},
     }
   },
 

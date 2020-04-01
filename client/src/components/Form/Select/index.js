@@ -13,7 +13,7 @@ export default class Select extends Component {
 
     return (
       <div className={"my-select " + this.props.className}>
-        {options
+        {(options || [])
           .map(optionIn => typeof optionIn === "string" ? ({value: optionIn, label: optionIn}) : optionIn)
           .map(option => 
             <div

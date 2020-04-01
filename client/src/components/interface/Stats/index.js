@@ -91,6 +91,22 @@ class Stats extends Component {
     />
   )
 
+  renderGay = () => (
+    <List
+      items={this.context.store.get().nodes
+        .filter(node => node.gay && node.mates.length > 4)
+        .sort((a, b) => b.gay - a.gay)
+        .map(node => [
+          <UserNameLink
+            gay
+            user={node}
+            setNode={this.props.setNode}
+          />
+        ])
+      }
+    />
+  )
+
   render = () => (
     <RadioHeader
       initialOptionFromURL
@@ -98,7 +114,7 @@ class Stats extends Component {
       prevURL="/stats/"
       options={{
         kisses: {
-          label: () => <>kisses<Emoji.kiss /></>,
+          label: () => <><Emoji.kiss /></>,
           content: () => this.renderKisses(),
           title: "Kiss Graph: Stats / kisses",
         },
@@ -113,12 +129,17 @@ class Stats extends Component {
           title: "Kiss Graph: Stats / mental disorders",
         },
         triggered: {
-          label: () => <>triggered<Emoji.triggered /></>,
+          label: () => <><Emoji.triggered /></>,
           content: () => this.renderTriggered(),
           title: "Kiss Graph: Stats / triggered",
         },
+        gay: {
+          label: () => <><Emoji.gay /></>,
+          content: () => this.renderGay(),
+          title: "Kiss Graph: Stats / gay",
+        },
         dead: {
-          label: () => <>dead<Emoji.dead /></>,
+          label: () => <><Emoji.dead /></>,
           content: () => this.renderDead(),
           title: "Kiss Graph: Stats / dead",
         },

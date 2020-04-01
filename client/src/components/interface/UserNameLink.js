@@ -17,7 +17,7 @@ export default props => {
         </span>
       </div>
     )
-  if (props.IQ || props.mentalDisorder)
+  if (props.IQ || props.mentalDisorder || props.gay)
     return (
       <div
         className="username-link"
@@ -27,6 +27,7 @@ export default props => {
         <div className="username-link__number">
           {props.IQ && props.user.iq}
           {props.mentalDisorder && props.user.mentalDisorder}
+          {props.gay && props.user.gay}%
         </div>
         <div className="username-link__name">
           <span
@@ -61,6 +62,7 @@ export default props => {
           {props.user.emoji && <EmojiByName name={props.user.emoji} />}
         </span>
       </div>
+      {props.user.gender}
       {props.date &&
         <div className="username-link__date">
           {new myDate(props.date).toStringDot()}

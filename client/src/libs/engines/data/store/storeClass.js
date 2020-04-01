@@ -17,6 +17,8 @@ import createSortedSet from 'libs/utils/createSortedSet'
 import isProduction from 'libs/utils/isProduction'
 import { nameToPath } from 'libs/utils/stringTransforms'
 
+import { calcGay } from 'libs/engines/data/hardcoded/meta/namesRecognition'
+
 
 class store extends listenersClass {
   constructor(props) {
@@ -47,7 +49,7 @@ class store extends listenersClass {
       this.geometry = data.geometry
     } else
       this.metaData = {
-        nodes: await getNodes(),
+        nodes: calcGay(await getNodes()), //REDO THIS SHIT
         // nodes: await (await getNodes())
         //   .map(node => node.male ? ({...node, male: undefined, gender: "male"}) : node)
         //   .map(node => ({...node, type: undefined})),

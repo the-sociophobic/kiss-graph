@@ -9,6 +9,7 @@ import {
   decodeMany,
 } from 'libs/engines/data/store/models'
 import copyToClipboard from 'libs/utils/copyToClipboard'
+import changeGender from 'libs/engines/data/hardcoded/meta/namesRecognition'
 
 import axios from 'axios'
 
@@ -136,6 +137,12 @@ class Neo4j extends Component {
           onClick={() => this.context.store.copyUV()}
         >
           copy uv
+        </button>
+        <button
+          className="button"
+          onClick={() => changeGender(this.context.store)}
+        >
+          determine genders
         </button>
       </div>
     )

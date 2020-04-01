@@ -38,7 +38,8 @@ const getNodes = async () => {
         name: mate.name,
         iq: mate.iq,
         mentalDisorder: mate.mentalDisorder,
-        emoji: mate.emoji
+        emoji: mate.emoji,
+        gender: mate.gender
       } as mates, node as node
       WITH node {
         .*,
@@ -84,7 +85,8 @@ const getNode = async id => {
         name: mate.name,
         iq: mate.iq,
         mentalDisorder: mate.mentalDisorder,
-        emoji: mate.emoji
+        emoji: mate.emoji,
+        gender: mate.gender
       } as mates, node as node
       WITH node {
         .*,
