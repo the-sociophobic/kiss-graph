@@ -62,7 +62,7 @@ export default props => {
           {props.user.emoji && <EmojiByName name={props.user.emoji} />}
         </span>
       </div>
-      {props.user.gender}
+      {/* {props.user.gender} */}
       {props.date &&
         <div className="username-link__date">
           {new myDate(props.date).toStringDot()}

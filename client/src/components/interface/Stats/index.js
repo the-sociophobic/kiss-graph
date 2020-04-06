@@ -5,6 +5,7 @@ import Emoji from 'components/Emoji'
 import StoreContext from 'libs/engines/data/store/StoreContext'
 import UserNameLink from 'components/interface/UserNameLink'
 import List from 'components/interface/List'
+import { genderDetermined } from 'libs/engines/data/hardcoded/meta/namesRecognition'
 
 
 class Stats extends Component {
@@ -107,6 +108,21 @@ class Stats extends Component {
     />
   )
 
+  renderGenderless = () => (
+    <List
+      items={this.context.store.get().nodes
+        .filter(node => !genderDetermined(node))
+        .map(node => [
+          <UserNameLink
+            gay
+            user={node}
+            setNode={this.props.setNode}
+          />
+        ])
+      }
+    />
+  )
+
   render = () => (
     <RadioHeader
       initialOptionFromURL
@@ -143,6 +159,11 @@ class Stats extends Component {
           content: () => this.renderDead(),
           title: "Kiss Graph: Stats / dead",
         },
+        // genderless: {
+        //   label: () => <><Emoji.gay /></>,
+        //   content: () => this.renderGenderless(),
+        //   title: "Kiss Graph: Stats / genderless",
+        // },
       }}
     />
   )

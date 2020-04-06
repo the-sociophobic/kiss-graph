@@ -1,26 +1,33 @@
 import node from './node'
+import { socialLinks } from 'libs/utils/social'
+
 
 export default {
   ...node,
   uv: {type: "number", local: true},
   social: {
     type: "object",
-    fields: {
-      tg: {type: "string"},
-      vk: {type: "string"},
-      vk2: {type: "string"},
-      inst: {type: "string"},
-      inst2: {type: "string"},
-      twit: {type: "string"},
-      yt: {type: "string"},
-      fb: {type: "string"},
-      fb2: {type: "string"},
-      steam: {type: "string"},
-      ticktok: {type: "string"},
-      skype: {type: "string"},
-      linkedin: {type: "string"},
-      phone: {type: "string"},
-    }
+    fields: Object.keys(socialLinks)
+      .map(key => ({[key]: {type: "string"}}))
+      .reduce((a, b) => ({...a, ...b}))
+    // fields: {
+    //   tg: {type: "string"},
+    //   vk: {type: "string"},
+    //   vk2: {type: "string"},
+    //   inst: {type: "string"},
+    //   inst2: {type: "string"},
+    //   twit: {type: "string"},
+    //   yt: {type: "string"},
+    //   fb: {type: "string"},
+    //   fb2: {type: "string"},
+    //   steam: {type: "string"},
+    //   discord: {type: "string"},
+    //   soundcloud: {type: "string"},
+    //   ticktok: {type: "string"},
+    //   skype: {type: "string"},
+    //   linkedin: {type: "string"},
+    //   phone: {type: "string"},
+    // }
   },
 
   staticPos: {type: "boolean"},
@@ -48,4 +55,5 @@ export default {
       LA: {type: "number"},
     }
   },
+  school: {type: "string"},
 }

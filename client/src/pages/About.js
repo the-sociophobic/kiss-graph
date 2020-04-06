@@ -53,9 +53,9 @@ class About extends Component {
           {this.state.memeDateString} с первой публикации мема<br />
           {this.state.siteDateString} с публикации сайта<br />
           {countable(nodes.length, ["человек", "человека", "человек"])} на графе<br />
-          {countable(edges.length, ["связь", "связи", "связей"])}<br />
-          {countable(nodes.filter(node => node.offended).length, ["человек", "человека", "человек"])} заявило об оскорблении чувств<br />
-          {countable(nodes.filter(node => node.dead).length, ["человек", "человека", "человек"])} умерло<br /><br />
+          {countable(edges.length, ["связь", "связи", "связей"])} на графе<br />
+          {countable(nodes.filter(node => node.offended).length, ["человек заявил", "человека заявили", "человек заявили"])} об оскорблении чувств<br />
+          {countable(nodes.filter(node => node.dead).length, ["человек мёртв", "человека мертвы", "человек мертво"])}<br /><br />
         </p>
         {articles.map(article => (
           <article className="article">

@@ -363,17 +363,16 @@ export default class myDate {
       result += " "
       clippedDate = clippedDate.addDay(clippedDate.pastDays())
     }
-    if (clippedDate.pastHours() > 0) {
-      result += clippedDate.pastHours()
-      result += ":"
+    // console.log(clippedDate.pastHours())
+    result += (clippedDate.pastHours() < 10 ? "0" : "") + clippedDate.pastHours()
+    result += ":"
+    if (clippedDate.pastHours() > 0)
       clippedDate = clippedDate.addHour(clippedDate.pastHours())
-    }
-    if (clippedDate.pastMinutes() > 0) {
-      result += clippedDate.pastMinutes()
-      result += ":"
+    result += (clippedDate.pastMinutes() < 10 ? "0" : "") + clippedDate.pastMinutes()
+    result += ":"
+  if (clippedDate.pastMinutes() > 0)
       clippedDate = clippedDate.addMinute(clippedDate.pastMinutes())
-    }
-    result += clippedDate.pastSeconds()
+    result += (clippedDate.pastSeconds() < 10 ? "0" : "") + clippedDate.pastSeconds()
 
     return result
   }

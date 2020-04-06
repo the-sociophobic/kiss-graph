@@ -6,17 +6,17 @@ const maleNameList = [
   "Valera",
   ["Evgeny", "Evgeniy"],  //2 gender name
   "Igor",
-  ["Alexander", "Alexandr"],  //2 gender name
+  ["Alexander", "Alexandr", "Aleksander", "Aleksandr", "Alek", "Alik"],  //2 gender name
   ["Roma", "Roman"],
   ["Mikhail", "Mihail", "Misha", "Michael"],
   ["Vitya", "Viktor"],
   "German",
   ["Denis", "Den", "Dekhiar", "Dehiar", "Dekhiyar", "Dekhyyar"],
   ["Tema", "Tyoma", "Artyom", "Artem", "Artyomka", "Artemka", "Artemy"],
-  ["Lesha", "Lyosha", "Alexey", "Alexei"],
-  ["Filip", "Filipp", "Fil"],
+  ["Lesha", "Lyosha", "Alexey", "Alexei", "Aleksey", "Aleksei"],
+  ["Filip", "Filipp", "Fil", "Fill"],
   ["Dmitriy", "Dmitry", "Dima"],
-  ["Danya", "Daniil", "Danyil"],
+  ["Danya", "Daniil", "Danyil", "Danik"],
   ["Danil", "Danila"],
   "Ruslan",
   ["Nikita", "Nikitos", "Nick"],
@@ -26,13 +26,13 @@ const maleNameList = [
   "Anton",
   ["Senya", "Arseny", "Arseniy", "Arsenii", "Arseni"],
   ["Arsenty", "Arsentiy", "Arsentii", "Arsenti"],
-  ["Ivan", "Vanya", "Vano"],
+  ["Ivan", "Vanya", "Vano", "Ioan", "Ioann"],
   "Vyacheslav", //2 gender name
   ["Gosha", "Georgy", "Georgiy", "Georgii", "Zhorzh"],
-  ["Grisha", "Grigory", "Grigoriy", "Grigorii", "Grigori"],
+  ["Grisha", "Grigory", "Grigoriy", "Grigorii", "Grigori", "Zhora"],
   "Grigor",
   ["Seryozha", "Serezha", "Sergey", "Sergy", "Sergay", "Sirgey", "Sirgay", "Sirgy"],
-  ["Volodya", "Vladimir", "Vlad", "Vova", "Vovan"],
+  ["Volodya", "Vladimir", "Vlad", "Vova", "Vovan", "Vladislav", "Vladyslav"],
   ["Ilia", "Ilya", "Iliya", "Ilias", "Iliyas", "Ilyas"],
   ["Tima", "Timofey", "Timofei"],
   "Timur",
@@ -40,7 +40,7 @@ const maleNameList = [
   "Rolan",
   ["Mark", "Marko"],
   ["Andrey", "Andrei", "Andew"],
-  ["Senya", "Senia", "Semyon", "Semen"],
+  ["Senya", "Senia", "Semyon", "Semen", "Sema", "Syoma"],
   ["Lenya", "Lyonya", "Lenny", "Leonid", "Leonyd"],
   "Aziz",
   "Stas",
@@ -53,7 +53,7 @@ const maleNameList = [
   ["Ildar", "Eldar"],
   ["Yuriy", "Yury", "Uriy", "Ury", "Yura", "Ura"],
   "Stefan",
-  ["Fedya", "Fedia", "Fedor", "Fyodor"],
+  ["Fedya", "Fedia", "Fedor", "Fyodor", "Fydor"],
   ["David", "Devid"],
   ["Damir", "Damyr"],
   ["Tihon", "Tikhon"],
@@ -70,25 +70,71 @@ const maleNameList = [
   ["Venya", "Venia", "Veniamin", "Venyamin"],
   ["Vitalik", "Vitaly", "Vitaliy", "Vitalii", "Vitali"],
   ["Gena", "Genady", "Genadiy", "Genadii", "Genadi"],
+  "Mariush",
+  ["Sebastyan", "Sebastian"],
+  "Matteo",
+  "Federico",
+  "Matt",
+  "Joel",
+  ["Tarik", "Turik"],
+  "Vsevolod",
+  "Moatssem",
+  ["Tommy", "Tomas", "Tom", "Tomasz"],
+  "Csaba",
+  "Darie",
+  "Braulio",
+  ["Ron", "Rony", "Ronny"],
+  "Felix",
+  ["Stepa", "Styopa", "Stepan"],
+  "Matteus",
+  "Amir",
+  "Rostislav",
+  "Givi",
+  ["Serafim", "Seraphim"],
+  ["Kolya", "Kolia", "Nikolay", "Nikolai"],
+  ["Esconder", "Eskonder"],
+  "Rodion",
+  "Radik",
+  "Azat",
+  "Emil",
+  "Oliver",
+  ["Natan", "Nathan"],
+  "Gera",
+  "Avvakum",
+  ["Matvey", "Matvei", "Matviy"],
+  "Karim",
+  "Jack",
+  "Ilnar",
+  "Stanislav",
+  "Patrick",
+  "Donatas",
+  "Marat",
+  "Yasha",
+  "Ilshat",
+  "Svyatoslav",
+  str => str.endsWith("slav"),
+  ["Dyonisy", "Dyonisiy", "Dionisy", "Dionisiy"],
+  "Papa",
+  "Makar",
 
 ]
 const femaleNameList = [
   ["Anastasia", "Anastasiya", "Nastya"],
   ["Olga", "Olya"],
   ["Kristina", "Kris"],
-  ["Anna", "Anya"],
-  "Alexandra",  //2 gender name
+  ["Anna", "Anya", "Anisya", "Anysya", "Anisia", "Anysia"],
+  ["Alexandra", "Aleksandra"],  //2 gender name
   "Sveta",
   ["Sonya", "Sonia", "Sofia", "Sofya", "Sofiya"],
   ["Polina", "Polya"],
-  ["Masha", "Maria", "Mariya"],
+  ["Masha", "Maria", "Mariya", "Mary", "Mari", "Marusya", "Maryana", "Mariana"],
   "Maya",
   "Kira",
   ["Lena", "Elena"],
   ["Alyona", "Alena"],
   "Elvira",
   ["Kate", "Katya", "Ekaterina", "Katerina", "Katrin", "Kathrin"],
-  ["Nata", "Natasha", "Natalya", "Natalia", "Nataiya"],
+  ["Nata", "Natasha", "Natalya", "Natalia", "Nataliya"],
   ["Tanya", "Tatyana"],
   "Yana",
   ["Julia", "Juliya", "Julya", "Yulya", "Yuliya", "Yulia", "Uliya", "Ulia", "Ulya"],
@@ -100,12 +146,12 @@ const femaleNameList = [
   ["Dasha", "Darya", "Dariya", "Daria"],
   "Darina",
   "Dariko",
-  ["Tonya", "Tonia"],
-  ["Vika", "Viktoriya", "Viktorya"],
+  ["Tonya", "Tonia", "Antonina"],
+  ["Vika", "Viktoriya", "Viktorya", "Viktoria"],
   ["Arina", "Arisha", "Arishka"],
   ["Evgenia", "Evgeniya", "Evgenya"], //2 gender name
   "Zhanna",
-  ["Sima", "Serafima"],
+  ["Sima", "Serafima", "Seraphima"],
   "Lana",
   ["Nika", "Veronika"],
   "Albina",
@@ -116,7 +162,7 @@ const femaleNameList = [
   ["Ira", "Irina"],
   ["Emilia", "Emilya", "Emiliya", "Emily"],
   ["Alisa", "Alice"],
-  ["Lina", "Alina"],
+  ["Lina", "Alina", "Angelina"],
   "Milana",
   ["Valeriya", "Valeria", "Valerya", "Lera"],
   ["Alesya", "Alesia", "Alesiya"],
@@ -124,7 +170,7 @@ const femaleNameList = [
   ["Lyuba", "Luba", "Lyubof", "Lubof", "Lyubov", "Lubov"],
   ["Elya", "Elina"],
   ["Vita", "Vitalia", "Vitaliya"],
-  ["Anzhela", "Anzhelika"],
+  ["Anzhela", "Anzhelika", "Angela", "Anjela"],
   "Anfisa",
   "Lolita",
   ["Lada", "Vlada", "Vladislava"],
@@ -138,7 +184,51 @@ const femaleNameList = [
   "Nina",
   ["Sveta", "Svetlana"],
   ["Nadezhda", "Nadya", "Nadia"],
-  "Marta"
+  "Marta",
+  ["Patricia", "Patrycia"],
+  ["Izabela", "Isabela"],
+  "Vasilisa",
+  "Fekla",
+  ["Liana", "Lyana", "Lianna", "Lyanna", "Lia", "Liya", "Lya"],
+  ["Galya", "Galia", "Galina"],
+  "Marina",
+  "Almira",
+  "Nikol",
+  "Anisia",
+  "Yanita",
+  ["Eva", "Eve"],
+  "Yulana",
+  ["Anita", "Anyta"],
+  ["Pelageya", "Pelagea", "Pelageiya", "Pelageia"],
+  ["Rebecca", "Becca", "Beca", "Bekka", "Beka"],
+  "Inna",
+  "Larisa",
+  "Amanda",
+  ["Safira", "Saphira"],
+  "Karolina",
+  ["Kamila", "Kamilla"],
+  ["Elsa", "Elza"],
+  "Samira",
+  "Sabina",
+  ["Asya", "Asia"],
+  ["Agrippina", "Agripina"],
+  "Mila",
+  ["Luda", "Lyuda", "Ludmila", "Lyudmila"],
+  "Alevtina",
+  "Oksana",
+  "Linda",
+  "Roza",
+  ["Katalina", "Catalina"],
+  ["Stasya", "Stasia"],
+  "Malvina",
+  ["Melanya", "Melania", "Melaniya"],
+  "Mama",
+  ["Yaroslava", "Jaroslava"],
+  ["Stoya", "Stoia"],
+  "Snezhanna",
+  "Ayla",
+  "Marfa",
+  
 ]
 
 const changeFromNameList = async (store, inputNameList, gender) => {
@@ -155,10 +245,18 @@ const changeFromNameList = async (store, inputNameList, gender) => {
   var changedNamesNumber = 0
 
   for (const index in nameList) {
-    const name = nameList[index]
-    const res = store.search({name: name})
-      .filter(person => person.name.split(" ")[0].toLowerCase() === name.toLowerCase())
-    
+    const nameOrFn = nameList[index]
+    let res
+
+    if (typeof nameOrFn === "string") {
+      res = store.search({name: nameOrFn})
+        .filter(person => 
+          person.name.split(" ")[0].toLowerCase() === nameOrFn.toLowerCase()
+        )
+    } else
+      res = store.get().nodes
+        .filter(node => nameOrFn(node.name.split(" ")[0].toLowerCase()))
+  
     for (const index2 in res) {
       const person = res[index2]
       if (!person.hasOwnProperty("gender")) {
@@ -168,21 +266,24 @@ const changeFromNameList = async (store, inputNameList, gender) => {
         })
         console.log(++changedNamesNumber + " " + resolvedName.name + " " + resolvedName.gender)
       }
-    }
+    }        
   }
-  // console.log(changedNamesNumber)
 }
 
 const changeGender = store => {
   changeFromNameList(store, maleNameList, "m") //1/04/2020 478 or 420 names + 7 + 19 + 5 + 10 + 3 + 21 + 12
   changeFromNameList(store, femaleNameList, "f") //1/04/2020 579 names + 11 + 12 + 8 + 6 + 8 + 19
+  // changeFromNameList(store, [
+  //   ["Anita", "Anyta"],
+  //   ["Pelageya", "Pelagea", "Pelageiya", "Pelageia"],
+  // ], "f")
 }
 
 export default changeGender
 
-const calcGay = nodes => nodes.map(node => {
-  const genderDetermined = node => node.gender === "m" || node.gender === "f"
+const genderDetermined = node => node.gender === "m" || node.gender === "f"
 
+const calcGay = nodes => nodes.map(node => {
   if (genderDetermined(node) &&
     node.mates.length > 0 && node.mates
       .map(mate => genderDetermined(mate))
@@ -205,4 +306,7 @@ const calcGay = nodes => nodes.map(node => {
   return node
 })
 
-export { calcGay }
+export {
+  genderDetermined,
+  calcGay
+}

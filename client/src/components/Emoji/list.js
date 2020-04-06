@@ -290,6 +290,22 @@ const emojis = [
     symbol: "🏥",
     name: "hospital",
   },
+  {
+    symbol: "🧝🏼‍♀",
+    name: "elf",
+  },
+  {
+    symbol: "🥦",
+    name: "vegan",
+  },
+  {
+    symbol: "💡",
+    name: "light",
+  },
+  {
+    symbol: "🐦",
+    name: "pigeon",
+  },
 ]
 
 export default emojis
