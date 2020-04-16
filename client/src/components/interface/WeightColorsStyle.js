@@ -22,6 +22,10 @@ class WeightColorsStyle extends Component {
                 ["--weight-color-" + weight + "-gray"]: colorFromWeight(index / weightSet.length, "light", "gray")
               })
             ).reduce((a, b) => ({...a, ...b})),
+            // ...weightSet.map((weight, index) => ({
+            //     ["--weight-color-" + weight + "-transparent"]: colorFromWeight(index / weightSet.length, "light", "transparent")
+            //   })
+            // ).reduce((a, b) => ({...a, ...b})),
             mediaQueries: {
               '(prefers-color-scheme: dark)': {
                 ...weightSet.map((weight, index) => ({
@@ -32,6 +36,10 @@ class WeightColorsStyle extends Component {
                     ["--weight-color-" + weight + "-gray"]: colorFromWeight(index / weightSet.length, "dark", "gray")
                   })
                 ).reduce((a, b) => ({...a, ...b})),
+                // ...weightSet.map((weight, index) => ({
+                //     ["--weight-color-" + weight + "-transparent"]: colorFromWeight(index / weightSet.length, "dark", "transparent")
+                //   })
+                // ).reduce((a, b) => ({...a, ...b})),
               }
             }
           }}

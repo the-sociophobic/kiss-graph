@@ -348,14 +348,27 @@ $arrow-size: 7px
       width: 100%
       line-height: 22px
       margin-bottom: 3px
-      padding: 0 5px
-      margin-bottom: 10px
+      // padding: 0 5px
+      margin-bottom: 0px
+      display: table
       &__item
         @extend .button
         @extend .button--active
         margin: 0 6px 6px 0
+        display: inline-block
+        float: left
+        &--emoji
+          padding: 0
+          width: 64px
+          height: 64px
+          font-size: 50px
+          line-height: 1
+          .emoji
+            padding-left: 0
+          .emoji__img
+            padding-left: 5px
     &__connections
-      padding-left: 5px
+      // padding-left: 5px
   &__content
     padding: 0px 11px 50px
   &--spread
@@ -934,11 +947,11 @@ $heat-type-transition: .1s
   padding-left: 5px
   display: inline-block
   &__kiss
-    transform: translateY(1px)
+    transform: translateY(.07em)
   &__world
-    transform: translateY(1px)
+    transform: translateY(.07em)
   &__img
-      transform: translate(-2px, -2px)
+      transform: translate(-.05em, -.15em)
       height: 1em
       width: auto
 

@@ -85,5 +85,5 @@ export default (weight, theme, tone) => {
     b: newColor.b.length === 2 ? newColor.b : "0" + newColor.b,
   }
 
-  return "#" + newColor.r + newColor.g + newColor.b
+  return "#" + newColor.r + newColor.g + newColor.b + (tone === "transparent" ? "d0" : "")
 }

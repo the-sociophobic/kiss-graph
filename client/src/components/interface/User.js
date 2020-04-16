@@ -32,6 +32,15 @@ class User extends Component {
   renderProps = node => {
     const propsMap = [
       {
+        name: "emoji",
+        onClick: () => {},
+        className: "node-info__tags__item--emoji",
+        // style: {background: `linear-gradient(var(--button-color) 50%, var(--weight-color-${node.connections}) 100%)`},
+        style: {backgroundColor: `var(--weight-color-${node.connections})`},
+        render: node =>
+          <EmojiByName name={node.emoji} />
+      },
+      {
         name: "mentalDisorder",
         link: "mental",
         text: "/10 mental disorder"
@@ -69,10 +78,11 @@ class User extends Component {
       typeof node[prop.name] !== "undefined" &&
         <button
           key={prop.name}
-          className="node-info__tags__item"
-          onClick={() => this.props.history.push("/stats/" + (prop.link || prop.name))}
+          className={"node-info__tags__item " + prop.className}
+          style={prop.style}
+          onClick={prop.onClick ? prop.onClick : () => this.props.history.push("/stats/" + (prop.link || prop.name))}
         >
-          {prop.render ? prop.render() :
+          {prop.render ? prop.render(node) :
             <>
               <EmojiByName name={prop.emoji || prop.name} />
               {node[prop.name]}
@@ -91,16 +101,19 @@ class User extends Component {
 
     return (
       <div className="node-info">
-        {node.emoji &&
+        {/* {node.emoji &&
           <div className="node-info__emoji">
             <EmojiByName name={node.emoji} />
           </div>
-        }
-        <div className="secret">
+        } */}
+        {/* <div className="secret">
           {this.renderSocialLinks(node)}
-        </div>
+        </div> */}
         <div className="node-info__tags">
-          {this.renderProps(node)}
+          {this.renderProps({
+            emoji: "person",
+            ...node,
+          })}
         </div>
         <div className="node-info__connections">
           <List items={node.mates

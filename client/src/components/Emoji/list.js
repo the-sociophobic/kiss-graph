@@ -1,4 +1,5 @@
 import greenfrog from './custom/greenfrog.png'
+import arsenyan from './custom/arsenyan.png'
 
 
 const emojis = [
@@ -61,6 +62,10 @@ const emojis = [
   {
     src: greenfrog,
     name: "greenfrog",
+  },
+  {
+    src: arsenyan,
+    name: "arsenyan",
   },
   {
     symbol: "🛹",
@@ -317,6 +322,18 @@ const emojis = [
   {
     symbol: "💁🏻‍♀️",
     name: "female",
+  },
+  {
+    symbol: "👤",
+    name: "person",
+  },
+  {
+    symbol: "🧬",
+    name: "gene",
+  },
+  {
+    symbol: "🏆",
+    name: "winner",
   },
 ]
 

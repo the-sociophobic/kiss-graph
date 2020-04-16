@@ -30,7 +30,7 @@ const socialLinks = {
   behance: {link: "behance.net", disabled: true},
   dribbble: {link: "dribbble.com", disabled: true},
   discord: {link: "discordapp.com", disabled: true},
-  soundcloud: {link: "soundcloud.com"},
+  soundcloud: {link: "soundcloud.com", disabled: true},
   ticktok: {link: "ticktok.com", disabled: true},
   skype: {link: "skype.com", disabled: true},
   linkedin: {link: "linkedin.com", disabled: true},
