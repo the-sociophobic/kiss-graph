@@ -41,11 +41,13 @@ const getNodes = async () => {
         emoji: mate.emoji,
         gender: mate.gender
       } as mates, node as node
+
       WITH node {
         .*,
         id: id(node),
         connections: count(mates) + COALESCE(node.hiddenConnections, 0),
-        mates: collect(mates)
+        mates: collect(mates),
+        iq: coalesce((node.iq2 + toInteger(node.iq)) / 2, node.iq)
       } AS node
       RETURN node
     `

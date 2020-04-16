@@ -37,7 +37,7 @@ class Stats extends Component {
         .sort((a, b) => (typeof b.iq !== "number" ? 0 : b.iq) - (typeof a.iq !== "number" ? 0 : a.iq))
         .map(node => [
           <UserNameLink
-            IQ
+            prop="IQ"
             user={node}
             setNode={this.props.setNode}
           />
@@ -53,7 +53,7 @@ class Stats extends Component {
         .sort((a, b) => (typeof b.mentalDisorder !== "number" ? 0 : b.mentalDisorder) - (typeof a.mentalDisorder !== "number" ? 0 : a.mentalDisorder))
         .map(node => [
           <UserNameLink
-            mentalDisorder
+            prop="mentalDisorder"
             user={node}
             setNode={this.props.setNode}
           />
@@ -95,11 +95,11 @@ class Stats extends Component {
   renderGay = () => (
     <List
       items={this.context.store.get().nodes
-        .filter(node => node.gay && node.mates.length > 4)
+        .filter(node => node.gay)
         .sort((a, b) => b.gay - a.gay)
         .map(node => [
           <UserNameLink
-            gay
+            prop="gay"
             user={node}
             setNode={this.props.setNode}
           />
@@ -114,7 +114,37 @@ class Stats extends Component {
         .filter(node => !genderDetermined(node))
         .map(node => [
           <UserNameLink
-            gay
+            user={node}
+            setNode={this.props.setNode}
+          />
+        ])
+      }
+    />
+  )
+
+  renderAttrMale = () => (
+    <List
+      items={this.context.store.get().nodes
+        .filter(node => node.am)
+        .sort((a, b) => b.am - a.am)
+        .map(node => [
+          <UserNameLink
+            prop="am"
+            user={node}
+            setNode={this.props.setNode}
+          />
+        ])
+      }
+    />
+  )
+  renderAttrFemale = () => (
+    <List
+      items={this.context.store.get().nodes
+        .filter(node => node.af)
+        .sort((a, b) => b.af - a.af)
+        .map(node => [
+          <UserNameLink
+            prop="af"
             user={node}
             setNode={this.props.setNode}
           />
@@ -135,12 +165,12 @@ class Stats extends Component {
           title: "Kiss Graph: Stats / kisses",
         },
         iq: {
-          label: () => <>IQ<Emoji.IQ /></>,
+          label: () => <><Emoji.IQ /></>,
           content: () => this.renderIQ(),
           title: "Kiss Graph: Stats / IQ",
         },
         mental: {
-          label: () => <>MD<Emoji.mentalDisorder /></>,
+          label: () => <><Emoji.mentalDisorder /></>,
           content: () => this.renderMentalDisorder(),
           title: "Kiss Graph: Stats / mental disorders",
         },
@@ -164,6 +194,16 @@ class Stats extends Component {
         //   content: () => this.renderGenderless(),
         //   title: "Kiss Graph: Stats / genderless",
         // },
+        "attractiveness-male": {
+          label: () => <><Emoji.male /></>,
+          content: () => this.renderAttrMale(),
+          title: "Kiss Graph: Stats / male attractiveness",
+        },
+        "attractiveness-female": {
+          label: () => <><Emoji.female /></>,
+          content: () => this.renderAttrFemale(),
+          title: "Kiss Graph: Stats / female attractiveness",
+        },
       }}
     />
   )

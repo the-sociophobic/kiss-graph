@@ -1,3 +1,6 @@
+import _ from 'lodash'
+
+
 // REDO THIS SHIT: DELETE ALL NAMES Unknown 2 etc
 
 const maleNameList = [
@@ -6,7 +9,7 @@ const maleNameList = [
   "Valera",
   ["Evgeny", "Evgeniy"],  //2 gender name
   "Igor",
-  ["Alexander", "Alexandr", "Aleksander", "Aleksandr", "Alek", "Alik"],  //2 gender name
+  ["Alexander", "Alexandr", "Aleksander", "Aleksandr", "Alek", "Alik", "Sanya", "Sanyok", "Sanek"],  //2 gender name
   ["Roma", "Roman"],
   ["Mikhail", "Mihail", "Misha", "Michael"],
   ["Vitya", "Viktor"],
@@ -27,7 +30,7 @@ const maleNameList = [
   ["Senya", "Arseny", "Arseniy", "Arsenii", "Arseni"],
   ["Arsenty", "Arsentiy", "Arsentii", "Arsenti"],
   ["Ivan", "Vanya", "Vano", "Ioan", "Ioann"],
-  "Vyacheslav", //2 gender name
+  ["Vyacheslav", "Vyacheslev"], //2 gender name
   ["Gosha", "Georgy", "Georgiy", "Georgii", "Zhorzh"],
   ["Grisha", "Grigory", "Grigoriy", "Grigorii", "Grigori", "Zhora"],
   "Grigor",
@@ -116,6 +119,13 @@ const maleNameList = [
   ["Dyonisy", "Dyonisiy", "Dionisy", "Dionisiy"],
   "Papa",
   "Makar",
+  "Elon",
+  ["Johnny", "John"],
+  "Anzol",
+  "Ares",
+  "Ostap",
+  "Valentin",
+  ["Ilarion", "Illarion"],
 
 ]
 const femaleNameList = [
@@ -129,7 +139,7 @@ const femaleNameList = [
   ["Polina", "Polya"],
   ["Masha", "Maria", "Mariya", "Mary", "Mari", "Marusya", "Maryana", "Mariana"],
   "Maya",
-  "Kira",
+  ["Kira", "‎Keira"],
   ["Lena", "Elena"],
   ["Alyona", "Alena"],
   "Elvira",
@@ -228,7 +238,8 @@ const femaleNameList = [
   "Snezhanna",
   "Ayla",
   "Marfa",
-  
+  "Vesta",
+  "Ksantoria",
 ]
 
 const changeFromNameList = async (store, inputNameList, gender) => {
@@ -284,29 +295,36 @@ export default changeGender
 const genderDetermined = node => node.gender === "m" || node.gender === "f"
 
 const calcGay = nodes => nodes.map(node => {
-  if (genderDetermined(node) &&
-    node.mates.length > 0 && node.mates
+  if (node.mates && genderDetermined(node) &&
+    node.mates.length > 4 && node.mates
       .map(mate => genderDetermined(mate))
       .reduce((a, b) => a && b))
   {
-    let gay
+    let potentialPartners, attractiveness
 
-    if (node.gender === "m")
-      gay = node.mates.filter(mate => mate.gender === "m")
-    else
-      gay = node.mates.filter(mate => mate.gender === "f")
-    
-    gay = Math.round(gay.length / node.mates.length * 1000) / 10
-    return ({
-      ...node,
-      gay: gay
-    })
+    if (node.gender === "m") {
+      potentialPartners = node.mates.filter(mate => mate.gender === "f").length
+      attractiveness = {am: potentialPartners}
+    } else {
+      potentialPartners = node.mates.filter(mate => mate.gender === "m").length
+      attractiveness = {af: potentialPartners}
+    }    
+    const gayPartners = node.mates.length - potentialPartners
+
+    if (gayPartners > 0)
+      return ({
+        ...node,
+        ...attractiveness,
+        gay: Math.round(gayPartners / node.mates.length * 1000) / 10
+      })
+    return node
   }
 
   return node
 })
 
+
 export {
   genderDetermined,
-  calcGay
+  calcGay,
 }

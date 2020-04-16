@@ -37,9 +37,9 @@ class ThreeScene extends Component {
     this.controls.update()
 
     if (ViewerDiv.clientWidth < 500 || ViewerDiv.clientHeight < 500)
-      this.renderer.setPixelRatio(2)
+      this.renderer.setPixelRatio(1)
     else
-      this.renderer.setPixelRatio(2)
+      this.renderer.setPixelRatio(1)
   }
 
   componentDidMount() {
@@ -73,7 +73,7 @@ class ThreeScene extends Component {
     this.renderer.setClearColor(0x000000, 0)
     this.renderer.setSize(width, height)
     if (width < 500 || height < 500)
-      this.renderer.setPixelRatio(2)
+      this.renderer.setPixelRatio(1)
     // this.renderer.sortObjects = false
     ViewerDiv.appendChild(this.renderer.domElement)
 

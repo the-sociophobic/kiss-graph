@@ -156,7 +156,10 @@ const decode = (model, instance) =>
       [key]: decodeType(model, instance, key)
     }))
     // .reduce((a, b) => ({...a, ...b}))
-    .reduce((a, b) => _.pickBy({...a, ...b}, (value, key) => typeof value !== "undefined"))
+    .reduce((a, b) =>
+      _.pickBy({...a, ...b},
+        (value, key) =>
+          typeof value !== "undefined" && value !== null))
 
   const decodeType = (model, instance, key) => {
     const value = instance.row[0][key]

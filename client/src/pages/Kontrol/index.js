@@ -18,6 +18,7 @@ import {
 
 
 const dates = ["commited", "told"]//, "published"]
+// const sameDate = 1586901060
 
 class Kontrol extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class Kontrol extends Component {
       ...dates.map(date => ({[date]: undefined}))
       .reduce((a, b) => ({...a, ...b})),
       hidden: false,
-      publishedInstantly: true,
+      publishedInstantly: false,
       editingEdge: false,
 
       recalcInProcess: false,
@@ -103,7 +104,8 @@ class Kontrol extends Component {
 
       edge = {
         ...this.createEmptyEdge(node0.id, node1.id),
-        ...edge
+        ...edge,
+        // told: sameDate
       }
 
       Object.keys(undefinedToEmptyString(edge))

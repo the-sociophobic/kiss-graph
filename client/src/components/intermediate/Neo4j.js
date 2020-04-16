@@ -10,6 +10,8 @@ import {
 } from 'libs/engines/data/store/models'
 import copyToClipboard from 'libs/utils/copyToClipboard'
 import changeGender from 'libs/engines/data/hardcoded/meta/namesRecognition'
+import { socialLinks } from 'libs/utils/social'
+import _ from 'lodash'
 
 import axios from 'axios'
 
@@ -61,7 +63,28 @@ class Neo4j extends Component {
     console.log("edges added")
   }
 
-  copyToJSON = () => this.context.store.copyData()
+  copyToJSON = () => {
+    const props = ["gender", "SHR", "political"]
+    const removeProps = nodes =>
+      nodes.map(node => 
+          _.pickBy({
+              ...node,
+              social: _.pickBy(node.social, (v, k) => !socialLinks[k].disabled),
+              mates: !node.mates ? undefined : node.mates.map(mate =>
+                _.pickBy(mate, (v, k) =>
+                  // !props.includes(k) && typeof v !== "undefined" && v !== null && !(k === "name" && mate.userName)))
+                  !props.includes(k) && typeof v !== "undefined" && v !== null))
+            }, (value, key) =>
+              !props.includes(key) && typeof value !== "undefined" && value !== null)// && !_.isEmpty(value))
+      )
+
+    const clearedNodes = removeProps(this.context.store.get().nodes)
+    // console.log(clearedNodes)
+    copyToClipboard(JSON.stringify({
+      nodes: clearedNodes,
+      edges: this.context.store.get().edges,
+    }))
+  }
 
   getAllData = async () => {
     // const nodes = await this.post([{
@@ -122,7 +145,7 @@ class Neo4j extends Component {
         </button> */}
         <button
           className="button"
-          onClick={() => this.context.store.copyData()}
+          onClick={() => this.copyToJSON()}
         >
           copy to JSON
         </button>

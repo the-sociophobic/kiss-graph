@@ -23,9 +23,9 @@ export default class GraphCloth extends PhysicalUnit {
         this.maxWeightId = node.id
       }
     })
-    console.log(this.maxWeightId)
-    this.nodes
-      .forEach(node => node.vector.sub(this.nodes[this.maxWeightIndex].vector))
+    // console.log(this.maxWeightId)
+    // this.nodes
+    //   .forEach(node => node.vector.sub(this.nodes[this.maxWeightIndex].vector))
   }
 
   recalculate = deltaTime => {

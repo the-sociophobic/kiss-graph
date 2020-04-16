@@ -306,6 +306,18 @@ const emojis = [
     symbol: "🐦",
     name: "pigeon",
   },
+  {
+    symbol: "🐸",
+    name: "frog",
+  },
+  {
+    symbol: "💁🏻‍♂️",
+    name: "male",
+  },
+  {
+    symbol: "💁🏻‍♀️",
+    name: "female",
+  },
 ]
 
 export default emojis

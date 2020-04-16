@@ -8,8 +8,8 @@
   --dark-gray: #999999;
   --dark-dark-gray: #555555;
   --light-light-gray: #f3f6f7;
-  /* --apple-item-gray: rgba(118, 120, 119, .075); */
-  --apple-item-gray: rgba(118, 120, 119, .035);
+  --apple-item-gray: rgba(118, 120, 119, .065);
+  /* --apple-item-gray: rgba(118, 120, 119, .035); */
   --secondary-color: #aaff09;
   --link-color: #0000ee;
   --box-shadow-color: rgba(0, 0, 0, .1);

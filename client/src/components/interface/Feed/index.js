@@ -16,7 +16,7 @@ export default class Feed extends Component {
   constructor(props) {
     super(props)
 
-    this.options = ["told", "published", "commited"]
+    this.options = ["published", "told", "commited"]
     this.optionsEmoji = {
       told: "told",
       published: "world",

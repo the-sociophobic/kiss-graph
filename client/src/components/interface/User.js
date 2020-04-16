@@ -16,6 +16,7 @@ class User extends Component {
   }
 
   renderSocialLinks = node =>
+    node.social &&
     parseLinks(node.social)
       .map(link => link.length > 0 && (
         <ExternalLink

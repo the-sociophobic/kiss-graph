@@ -128,7 +128,7 @@ export default class DatePicker extends Component {
       </div>
       <div className="custom-date-picker__res">
         {this.state.myDateInstance &&
-          (this.state.myDateInstance.time() + " " + this.state.myDateInstance.toStringDot())
+          (this.state.myDateInstance.time() + " " + this.state.myDateInstance.toStringDot() + " " + this.state.myDateInstance.getTime())
         }
       </div>
     </div>

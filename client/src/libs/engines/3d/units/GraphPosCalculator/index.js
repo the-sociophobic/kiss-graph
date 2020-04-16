@@ -4,7 +4,7 @@ import GraphCloth from './GraphCloth'
 import { updateNodes } from 'libs/engines/data/store/Neo4j'
 
 
-const msPerFrame = 350
+const msPerFrame = 450
 
 
 export default class GraphPosCalculator extends Unit {
