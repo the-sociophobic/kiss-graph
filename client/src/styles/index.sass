@@ -34,6 +34,8 @@ $mobile-expander-button-height: 5px
 // $regular-font-size: $regular-font-size
 $regular-font-size: 15px //for Arc font
   
+$node-change-transition: .3s
+
 *
   // font-family: -apple-system, system-ui, Roboto, "Open Sans", "Helvetica Neue", sans-serif
   // font-family: 'SPb', -apple-system, system-ui, Roboto, "Open Sans", "Helvetica Neue", sans-serif
@@ -363,6 +365,7 @@ $arrow-size: 7px
           height: 64px
           font-size: 50px
           line-height: 1
+          transition: background-color $node-change-transition
           .emoji
             padding-left: 0
           .emoji__img
@@ -851,7 +854,10 @@ $my-select-inner-circle-size: 8px
 $heat-map-font-size: $regular-font-size
 .heat-map
   @extend .side-menu-height
-  right: -1px
+  @extend .noselect
+  *
+    @extend .noselect
+  right: 2px
   width: 40px
   img
     height: calc(100% - #{$heat-map-font-size})
@@ -866,8 +872,8 @@ $heat-map-font-size: $regular-font-size
   &__0, &__1, &__2, &__3, &__4
     position: absolute
     font-size: $heat-map-font-size
-    font-weight: 700
     line-height: 1
+    font-weight: 700
     color: $dark-dark-gray
     transform: rotate(90deg) translateY(-15px)
     transform-origin: top left
@@ -882,11 +888,18 @@ $heat-map-font-size: $regular-font-size
   &__4
     bottom: 0
   &__description
-    font-size: $heat-map-font-size
+    font-size: $heat-map-font-size 
     display: block
     width: 150px
     transform: translate(-35px, 85px) rotate(90deg)
     color: $dark-dark-gray
+  &__pointer
+    position: absolute
+    right: 0
+    font-size: $heat-map-font-size * 1.7
+    transform: translate(9px, -3px)
+    transition: margin-top $node-change-transition
+
 
 
 $heat-type-width: 40px
@@ -951,7 +964,7 @@ $heat-type-transition: .1s
   &__world
     transform: translateY(.07em)
   &__img
-      transform: translate(-.05em, -.15em)
+      transform: translate(-.05em, -.1em)
       height: 1em
       width: auto
 

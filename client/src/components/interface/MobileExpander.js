@@ -32,9 +32,11 @@ export default class MobileExpander extends Component {
     window.addEventListener('orientationchange', this.updateMaxHeight.bind(this))
     this.updateMaxHeight()
     
-    const { prevLocation } = this.props
-    if (prevLocation === "/news")
-      this.setState({state: "opened"})
+    const { prevLocation, node } = this.props
+
+    if (prevLocation === "/news" ||
+      (typeof prevLocation === "undefined" && typeof node !== "undefined"))
+      setTimeout(() =>  this.open(), 50)
   }
   componentWillUnmount() {
     const element = this.draggableArrowRef.current
@@ -111,13 +113,32 @@ export default class MobileExpander extends Component {
     return delta
   }
 
+  open = () => {
+    this.setState({
+      state: "moving",
+      prevousState: "closed",
+      initialY: 1,
+      currentY: 1,
+    })
+
+    setTimeout(() => 
+      this.setState({
+        state: "opened",
+        prevousState: "moving",
+        initialY: 0,
+        currentY: 0,
+        prevousY: 0,
+      })
+    , 50)
+  }
+
   render = () => {
     const deltaY = this.calculateDeltaY()
     let heightStyle = {}
-    // console.log(deltaY)
+
     if (this.state.state === "moving")
       heightStyle = {height: deltaY + "px"}
-    if (this.state.state === "opened")
+    if (this.state.state === "opened" || this.state.state === "opening")
       heightStyle = {height: this.state.maxHeight + "px"}
     
     return (

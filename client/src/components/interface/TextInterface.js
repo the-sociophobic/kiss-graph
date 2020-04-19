@@ -10,7 +10,7 @@ import { registerListeners, unregisterListeners } from 'libs/utils/preventMobile
 import User from 'components/interface/User'
 import MobileExpander from 'components/interface/MobileExpander'
 import Menu from 'components/interface/Menu'
-import Feed from 'components/interface/Feed'
+// import Feed from 'components/interface/Feed'
 import NameSearch from 'components/interface/NameSearch'
 import WeightColorsStyle from 'components/interface/WeightColorsStyle'
 
@@ -47,17 +47,22 @@ class TextInterface extends Component {
     window.removeEventListener('orientationchange', this.updateDeviceWidth.bind(this))
   }
 
-  setNode = input => { //REDO THIS SHIT: It is used in many plaaces, bugs inevitable...
+  setNode = (input, transition, pushHistory) => { //REDO THIS SHIT: It is used in many places, bugs inevitable...
+    if (typeof input === "undefined" || input === null) {
+      this.props.setNode(null, transition, pushHistory)
+      return
+    }
+
     if (typeof input === "string") {
       let nodeName = input
       const node = this.context.store.get({name: nodeName})
 
       if (node === null)
-        this.props.setNode()
+        this.props.setNode(null, transition, pushHistory)
       else
-        this.props.setNode(node.id)
+        this.props.setNode(node.id, transition, pushHistory)
     } else {
-      this.props.setNode(input.id)
+      this.props.setNode(input.id, transition, pushHistory)
     }
   }
 
@@ -151,6 +156,7 @@ class TextInterface extends Component {
           
           {this.state.deviceWidth <= 1024 ?
             <MobileExpander
+              node={node}
               history={this.props.history}
               prevLocation={this.props.prevLocation}
             >

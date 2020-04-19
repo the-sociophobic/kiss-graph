@@ -17,27 +17,9 @@ export default class GraphPosCalculator extends Unit {
       node0: nodes.map(node => node.id).indexOf(edge.node0),
       node1: nodes.map(node => node.id).indexOf(edge.node1),
     }))
-    this.nodes = nodes
-    .filter(node => node.connections > 0) //TODO TOFIX
-    .map(node => ({
-      id: node.id,
-      vector: //node.pos ? 
-      // new THREE.Vector3(node.pos.x, node.pos.y, node.pos.z)
-      // :
-      new THREE.Vector3(
-        // node.posRaw.x * 2.15,
-        // node.posRaw.y * 2.15,
-        // Math.random() * (60 - node.connections) / 15
-        node.pos.x,
-        node.pos.y,
-        node.pos.z
-      ),
-      weight: node.connections > 0 ? node.connections : .5, //TODO
-      staticPos: node.staticPos,
-    }))
 
     this.GraphCloth = new GraphCloth({
-      nodes: this.nodes,
+      nodes: nodes,
       edges: this.edges,
     })
 

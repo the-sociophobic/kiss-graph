@@ -35,10 +35,11 @@ class NameSearch extends Component {
 
   close = () => this.dropdownRef.current && this.dropdownRef.current.close()
 
-  render = () =>  (
+  render = () => (
     <Dropdown
       ref={this.dropdownRef}
       input
+      keepValue
       value={(this.props.node && this.props.node.name) || ""}
       options={this.state.currentOptions}
       updateOptions={value => this.updateOptions(value)}

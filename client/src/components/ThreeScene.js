@@ -7,7 +7,6 @@ import THREE from 'libs/engines/3d/three'
 import LevControls from 'libs/engines/3d/units/LevControls'
 import StoreContext from 'libs/engines/data/store/StoreContext'
 import isProduction from 'libs/utils/isProduction'
-import GraphPosCalculator from 'libs/engines/3d/units/GraphPosCalculator'
 
 
 const targetToCamera = 5

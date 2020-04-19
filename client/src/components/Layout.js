@@ -62,16 +62,18 @@ class Layout extends Component {
   setNode = (id, transition = true, pushHistory = true) => {
     const { history } = this.props
 
-    if (typeof id === "undefined" || id === -1 || (id.length && id.length === 0)) {
+    if (typeof id === "undefined" || id === -1 || id === null || (id.length && id.length === 0)) {
       this.setState({nodeToShow: undefined})
-      history.push(`/news/told`)
-      document.title = "Kiss Graph: News / told"
+      if (pushHistory) {
+        history.push(`/news/published`)
+        document.title = "Kiss Graph: News / published"
+      }
       return
     }
 
     const node = this.context.store.get({id: id})
 
-    if (typeof node === 'undefined')
+    if (typeof node === 'undefined' || node === null)
       return
 
     this.setState({nodeToShow: node})
@@ -145,7 +147,7 @@ class Layout extends Component {
             myScene={myScene}
             {...props}
           />
-          <HeatMap />
+          <HeatMap node={this.state.nodeToShow} />
           <ControlsHelp />
           <PoweredByNGINX />
         </div>

@@ -7,6 +7,7 @@ import List from 'components/interface/List'
 import Emoji, { EmojiByName } from 'components/Emoji'
 import ExternalLink from 'components/ExternalLink'
 import { parseLinks } from 'libs/utils/social'
+import isProduction from '../../libs/utils/isProduction'
 
 
 class User extends Component {
@@ -47,8 +48,12 @@ class User extends Component {
       },
       {
         name: "iq",
-        emoji: "IQ",
-        text: " IQ",
+        render: () => //REDO THIS SHIT: IQ SHOULD BE COUNTED FROM 1, 2 ON BACKEND
+        <>
+          <Emoji.IQ /> {typeof node.iq === "string" ?
+            node.iq :
+            (node.iq + (node.iq2 || node.iq)) >> 1} IQ
+        </>
       },
       {
         name: "dead",
@@ -80,7 +85,12 @@ class User extends Component {
           key={prop.name}
           className={"node-info__tags__item " + prop.className}
           style={prop.style}
-          onClick={prop.onClick ? prop.onClick : () => this.props.history.push("/stats/" + (prop.link || prop.name))}
+          onClick={prop.onClick ?
+            prop.onClick :
+            () => {
+              this.props.setNode(null, false, false)
+              this.props.history.push("/stats/" + (prop.link || prop.name))
+            }}
         >
           {prop.render ? prop.render(node) :
             <>
@@ -106,9 +116,10 @@ class User extends Component {
             <EmojiByName name={node.emoji} />
           </div>
         } */}
-        {/* <div className="secret">
-          {this.renderSocialLinks(node)}
-        </div> */}
+        {!isProduction() &&
+          <div className="secret">
+            {this.renderSocialLinks(node)}
+          </div>}
         <div className="node-info__tags">
           {this.renderProps({
             emoji: "person",

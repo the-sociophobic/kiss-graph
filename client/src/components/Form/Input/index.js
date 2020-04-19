@@ -58,7 +58,7 @@ export default class Input extends Component {
             className="reset"
             onClick={() => {
               this.focus()
-              this.props.onChange("")
+              this.props.onChange(null)
             }}
           />
         }

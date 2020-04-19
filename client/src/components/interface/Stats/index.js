@@ -34,6 +34,12 @@ class Stats extends Component {
     <List
       items={this.context.store.get().nodes
         .filter(node => node.iq)
+        .map(node => ({
+          ...node,
+          iq: typeof node.iq === "string" ?
+            node.iq :
+            (node.iq + (node.iq2 || node.iq)) >> 1,
+        }))
         .sort((a, b) => (typeof b.iq !== "number" ? 0 : b.iq) - (typeof a.iq !== "number" ? 0 : a.iq))
         .map(node => [
           <UserNameLink

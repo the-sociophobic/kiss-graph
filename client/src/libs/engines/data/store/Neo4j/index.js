@@ -25,6 +25,7 @@ const post = async statements =>
 
 const getNodes = async () => {
   const connectedNodes = await post([{
+    // iq: coalesce((node.iq2 + toInteger(node.iq)) / 2, node.iq)
     statement: `
       MATCH (node:Person)
       MATCH (node)-[edge:KISS]-(mate:Person)
@@ -46,8 +47,7 @@ const getNodes = async () => {
         .*,
         id: id(node),
         connections: count(mates) + COALESCE(node.hiddenConnections, 0),
-        mates: collect(mates),
-        iq: coalesce((node.iq2 + toInteger(node.iq)) / 2, node.iq)
+        mates: collect(mates)
       } AS node
       RETURN node
     `

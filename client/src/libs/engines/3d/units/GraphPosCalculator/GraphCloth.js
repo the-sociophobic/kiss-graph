@@ -6,7 +6,38 @@ export default class GraphCloth extends PhysicalUnit {
   constructor(props) {
     super(props)
 
-    this.nodes = [...props.nodes]
+    this.maxWeight = 0
+    props.nodes.forEach((node, index) => {
+      if (node.connections > this.maxWeight) {
+        this.maxWeight = node.connections
+        this.maxWeightIndex = index
+        this.maxWeightId = node.id
+      }
+    })
+    console.log(this.maxWeight)
+    // this.nodes
+    //   .forEach(node => node.vector.sub(this.nodes[this.maxWeightIndex].vector))
+
+    this.nodes = props.nodes
+    // .filter(node => node.connections > 0) //TODO TOFIX
+      .map(node => ({
+        id: node.id,
+        vector: //node.pos ? 
+        // new THREE.Vector3(node.pos.x, node.pos.y, node.pos.z)
+        // :
+        new THREE.Vector3(
+          // node.posRaw.x * 2.15,
+          // node.posRaw.y * 2.15,
+          // Math.random() * (60 - node.connections) / 15
+          node.pos.x - props.nodes[this.maxWeightIndex].pos.x,
+          node.pos.y - props.nodes[this.maxWeightIndex].pos.y,
+          node.pos.z - props.nodes[this.maxWeightIndex].pos.z
+        ),
+        weight: node.connections > 0 ? node.connections : .5, //TODO
+        staticPos: node.staticPos,
+      }))
+    
+
     this.edges = props.edges
     this.forces = Array
       .from(Array(this.nodes.length))
@@ -14,18 +45,6 @@ export default class GraphCloth extends PhysicalUnit {
     this.velocities = Array
       .from(Array(this.nodes.length))
       .map(() => new THREE.Vector3())
-
-    this.maxWeight = 0
-    this.nodes.forEach((node, index) => {
-      if (node.weight > this.maxWeight) {
-        this.maxWeight = node.weight
-        this.maxWeightIndex = index
-        this.maxWeightId = node.id
-      }
-    })
-    // console.log(this.maxWeightId)
-    // this.nodes
-    //   .forEach(node => node.vector.sub(this.nodes[this.maxWeightIndex].vector))
   }
 
   recalculate = deltaTime => {

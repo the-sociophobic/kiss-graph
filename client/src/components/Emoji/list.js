@@ -335,6 +335,14 @@ const emojis = [
     symbol: "🏆",
     name: "winner",
   },
+  {
+    symbol: "🕹",
+    name: "gamepad",
+  },
+  {
+    symbol: "👈🏻",
+    name: "pointer",
+  },
 ]
 
 export default emojis

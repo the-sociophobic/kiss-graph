@@ -18,10 +18,10 @@ class InputDropdown extends Component {
     if (state.oldPropValue !== props.value) {
       state.oldPropValue = props.value
 
-      if (props.value !== state.typedValue &&
-          props.value !== null &&
-          props.value !== "" &&
-          typeof props.value !== "undefined") {
+      if (props.value !== state.typedValue) {// &&
+          // props.value !== null &&
+          // props.value !== "" &&
+          // typeof props.value !== "undefined") {
         state.typedValue = props.value
         state.neverTypedFlag = false
 
@@ -41,10 +41,15 @@ class InputDropdown extends Component {
   }
 
   onChange = value => {
+    if (value === null) {
+      this.setState({typedValue: ""})
+      this.props.onChange("")
+      return
+    }
     this.setState({neverTypedFlag: false})
     this.setState({typedValue: value})
     this.props.updateOptions && this.props.updateOptions(value)
-    if (value === "")
+    if (value === "" && !this.props.keepValue)
       this.props.onChange("")
   }
 
@@ -57,6 +62,7 @@ class InputDropdown extends Component {
     this.props.updateOptions && this.props.updateOptions(this.state.typedValue)
     this.props.setOpened(true)
   }
+  onBlur = () => this.setState({neverTypedFlag: true})
 
   renderOptions = () => //(this.props.value !== this.state.typedValue) &&
     this.props.options && this.props.options
@@ -86,6 +92,7 @@ class InputDropdown extends Component {
         value={(this.state.neverTypedFlag && this.props.value) || this.state.typedValue}
         onChange={value => this.onChange(value)}
         onFocus={() => this.onFocus()}
+        onBlur={() => this.onBlur()}
         disabled={this.props.disabled}
         showReset={this.props.showReset}
         onKeyDown={this.props.onKeyDown}
