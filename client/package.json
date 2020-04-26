@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.1",
     "bootstrap": "^4.4.1",
+    "cors": "^2.8.5",
     "lodash": "^4.17.15",
     "node-sass": "^4.13.1",
     "radium": "^0.26.0",

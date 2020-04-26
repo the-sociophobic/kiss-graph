@@ -9,7 +9,7 @@ import {
   deleteEdge,
 } from 'libs/engines/data/store/Neo4j'
 
-import { data } from 'libs/engines/data/hardcoded/DB'
+// import { data } from 'libs/engines/data/hardcoded/DB'
 
 import copyToClipboard from 'libs/utils/copyToClipboard'
 import listenersClass from 'libs/utils/listenersClass'
@@ -20,12 +20,14 @@ import { nameToPath } from 'libs/utils/stringTransforms'
 import { calcGay } from 'libs/engines/data/hardcoded/meta/namesRecognition'
 import edgesTypes from 'libs/engines/data/hardcoded/meta/edgesTypes'
 
+import axios from 'axios'
+
 
 class store extends listenersClass {
   constructor(props) {
     super(props)
     this.props = props
-    this.data = data //ORIGINAL DATA
+    // this.data = data //ORIGINAL DATA
     this.metaData = {
       nodes: [],
       edges: [],
@@ -45,9 +47,11 @@ class store extends listenersClass {
 
   getData = async () => {
     if (isProduction()) {
-      this.metaData.nodes = data.nodes
-      this.metaData.edges = data.edges
-      this.geometry = data.geometry
+      this.metaData = (await axios.get("https://kiss-graph.com/data/nodes")).data
+      this.geometry = {
+        position: (await axios.get("https://kiss-graph.com/data/position")).data,
+        uv: (await axios.get("https://kiss-graph.com/data/uv")).data,
+      }
     } else {
       this.metaData = edgesTypes({ //REDO THIS SHIT
         nodes: await getNodes(), //REDO THIS SHIT
