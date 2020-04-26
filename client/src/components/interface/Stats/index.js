@@ -201,12 +201,12 @@ class Stats extends Component {
         //   title: "Kiss Graph: Stats / genderless",
         // },
         "attractiveness-male": {
-          label: () => <><Emoji.male /></>,
+          label: () => <><Emoji.gene /><Emoji.winner /><Emoji.male /></>,
           content: () => this.renderAttrMale(),
           title: "Kiss Graph: Stats / male attractiveness",
         },
         "attractiveness-female": {
-          label: () => <><Emoji.female /></>,
+          label: () => <><Emoji.gene /><Emoji.winner /><Emoji.female /></>,
           content: () => this.renderAttrFemale(),
           title: "Kiss Graph: Stats / female attractiveness",
         },

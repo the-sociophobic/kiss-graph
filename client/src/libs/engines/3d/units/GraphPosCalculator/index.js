@@ -1,7 +1,7 @@
 import Unit from 'libs/engines/3d/Unit'
 import GraphCloth from './GraphCloth'
 // import copyToClipboard from 'libs/utils/copyToClipboard'
-import { updateNodes } from 'libs/engines/data/store/Neo4j'
+import { updateNodes, updateEdges } from 'libs/engines/data/store/Neo4j'
 
 
 const msPerFrame = 450
@@ -102,6 +102,8 @@ export default class GraphPosCalculator extends Unit {
     }))
 
     const res = await updateNodes(nodes)
+    // const res = await updateEdges(this.props.store.get().edges.map(edge => ({...edge, type: "KISS"})))
+
     console.log("updated positions")
     console.log(res)
     // console.log(nodes)

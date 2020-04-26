@@ -184,7 +184,7 @@ $interface-block-padding: 8px
 
 
 
-$text-interface-width: 350px
+$text-interface-width: 375px
 
 //VIEWER
 $canvas-offset: 40px
@@ -353,6 +353,8 @@ $arrow-size: 7px
       // padding: 0 5px
       margin-bottom: 0px
       display: table
+      &:not(:first-child)
+        margin-top: 6px
       &__item
         @extend .button
         @extend .button--active
@@ -371,6 +373,7 @@ $arrow-size: 7px
           .emoji__img
             padding-left: 5px
     &__connections
+      margin-bottom: 12px
       // padding-left: 5px
   &__content
     padding: 0px 11px 50px

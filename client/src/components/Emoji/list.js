@@ -343,6 +343,10 @@ const emojis = [
     symbol: "👈🏻",
     name: "pointer",
   },
+  {
+    symbol: "🔌",
+    name: "sex",
+  },
 ]
 
 export default emojis

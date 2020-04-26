@@ -26,13 +26,15 @@ const post = async statements =>
 const getNodes = async () => {
   const connectedNodes = await post([{
     // iq: coalesce((node.iq2 + toInteger(node.iq)) / 2, node.iq)
+    //REDO THIS SHIT
     statement: `
       MATCH (node:Person)
       MATCH (node)-[edge:KISS]-(mate:Person)
-      MATCH (mate)-[mateEdges:KISS]-(mateConnections:Person)
+      MATCH (mate)-[mateEdges:KISS {type: "KISS"}]-(mateConnections:Person)
       WITH {
         date: edge.commited,
         edgeId: id(edge),
+        type: edge.type,
         id: id(mate),
         connections: count(mateConnections) + COALESCE(mate.hiddenConnections, 0),
         userName: mate.userName,
@@ -77,10 +79,11 @@ const getNode = async id => {
       MATCH (node:Person)
       WHERE ID(node) = ${id}
       MATCH (node)-[edge:KISS]-(mate:Person)
-      MATCH (mate)-[mateEdges:KISS]-(mateConnections:Person)
+      MATCH (mate)-[mateEdges:KISS {type: "KISS"}]-(mateConnections:Person)
       WITH {
         date: edge.commited,
         edgeId: id(edge),
+        type: edge.type,
         id: id(mate),
         connections: count(mateConnections) + COALESCE(mate.hiddenConnections, 0),
         userName: mate.userName,
@@ -209,6 +212,25 @@ const updateNodes = async nodes => {
   return res
 }
 
+const updateEdges = async edges => {
+  const edgess = edges
+    .filter(edge => edge.id !== "undefined" && typeof edge.id !== "undefined")
+    .map(edge =>
+      ({
+        statement: `
+          MATCH ()-[edge]-()
+          WHERE ID(edge) = ${edge.id}
+          SET edge = {}
+          SET edge = ${encodeJSONstring(encode(edgeModel, edge))}
+          RETURN {id: ID(edge)}
+        `
+      })
+    )
+
+  const res = await post(edgess)
+  return res
+}
+
 const setEdge = async edge => {
   const resEdge = await post([{
     statement: `
@@ -247,6 +269,7 @@ export {
   createEdge,
   setNode,
   updateNodes,
+  updateEdges,
   setEdge,
   deleteNode,
   deleteEdge,

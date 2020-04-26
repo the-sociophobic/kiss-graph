@@ -36,7 +36,7 @@ export default class Feed extends Component {
   static contextType = StoreContext
 
   componentDidMount() {
-    const { edges } = this.context.store.get()
+    const edges = this.context.store.get().edges.filter(edge => edge.type !== "SEX")
 
     edges.forEach(edge =>
       this.options.forEach(option => {
@@ -102,6 +102,18 @@ export default class Feed extends Component {
     return groupByDays(mapNodesToEdges(edges), type)
   }
 
+  renderEmoji = edge => {
+    switch (edge.type) {
+      case "DEBATED":
+        return <Emoji.womanBan />
+      case "MARRIED":
+        return <Emoji.married />
+      case "SEX":
+        return <Emoji.sex />
+      default:
+        return <Emoji.kiss />
+    }
+  }
   renderKisses = type => this.state[type] && this.state[type]
     .map(day => (
       <div
@@ -126,7 +138,7 @@ export default class Feed extends Component {
                 user={entry.node0}
                 setNode={this.props.setNode}
               />
-              <Emoji.kiss />
+              {this.renderEmoji(entry)}
               <UserNameLink
                 simple
                 user={entry.node1}

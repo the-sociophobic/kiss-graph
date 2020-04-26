@@ -18,6 +18,7 @@ import isProduction from 'libs/utils/isProduction'
 import { nameToPath } from 'libs/utils/stringTransforms'
 
 import { calcGay } from 'libs/engines/data/hardcoded/meta/namesRecognition'
+import edgesTypes from 'libs/engines/data/hardcoded/meta/edgesTypes'
 
 
 class store extends listenersClass {
@@ -48,13 +49,10 @@ class store extends listenersClass {
       this.metaData.edges = data.edges
       this.geometry = data.geometry
     } else
-      this.metaData = {
+      this.metaData = edgesTypes({ //REDO THIS SHIT
         nodes: calcGay(await getNodes()), //REDO THIS SHIT
-        // nodes: await (await getNodes())
-        //   .map(node => node.male ? ({...node, male: undefined, gender: "male"}) : node)
-        //   .map(node => ({...node, type: undefined})),
         edges: await getEdges(),
-      }
+      })
 
     //CALC SECONDARY DATA
     this.iqSet = createSortedSet(this.metaData.nodes, "iq")
@@ -168,7 +166,7 @@ class store extends listenersClass {
     return filteredNodes
   }
 
-  push = async props => {
+  push = async (props, updateAfter = true) => {
     let res
     let isEdge = Object.keys(props).includes("node0")
 
@@ -183,7 +181,8 @@ class store extends listenersClass {
       else
         res = setNode(props)
     }
-    await this.update()
+    if (updateAfter)
+      await this.update()
 
     return await res
   }

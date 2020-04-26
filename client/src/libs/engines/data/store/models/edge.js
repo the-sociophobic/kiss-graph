@@ -1,13 +1,14 @@
 export default {
   id: {type: "id"},
-  // type: {type: "select", options: [
-  //   "KISS",
-  //   "SEX",
-  //   "MARRIED",
-  //   "FRIENDSHIP",
-  //   "CHIVALRY",
-  //   "STATE", //for connections with non-Persons (Labels)
-  // ], default: "KISS"},
+  type: {type: "select", options: [
+    "KISS",
+    "SEX",
+    "MARRIED",
+    "DEBATED"
+    // "FRIENDSHIP",
+    // "CHIVALRY",
+    // "STATE", //for connections with non-Persons (Labels)
+  ], default: "KISS"},
   node0: {type: "ref"},
   node1: {type: "ref"},
   commited: {type: "date"},

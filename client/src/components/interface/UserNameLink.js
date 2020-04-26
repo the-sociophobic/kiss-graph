@@ -21,7 +21,8 @@ export default props => {
       <div className="username-link username-link--simple">
         <span
           className="link"
-          style={{color: `var(--weight-color-${props.user.connections}-gray)`}}
+          // style={{color: `var(--weight-color-${props.user.connections}-gray)`}}
+          style={{color: `var(--weight-color-${props.user.connections})`}}
           onClick={() => props.setNode(props.user)}
         >
           {props.user.userName ? ("@" + props.user.userName) : props.user.name}

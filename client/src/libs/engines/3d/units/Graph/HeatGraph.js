@@ -27,6 +27,7 @@ export default (store, scene) => {
       } else {
         let edges = store.get().edges
         .map(edge => ({
+          type: edge.type,
           node0: store.get().nodes.map(node => node.id).indexOf(edge.node0),
           node1: store.get().nodes.map(node => node.id).indexOf(edge.node1),
         }))
@@ -117,7 +118,7 @@ const cylinderGraphGeometry = (nodes, edges, segments) => {
     normal.copy(subVectors).normalize()
     quaternion.setFromUnitVectors(up, normal)
 
-    let cylinderData = cylinderVertices(.05, subVectors.length(), segments, node0.uv, node1.uv)
+    let cylinderData = cylinderVertices(.05, subVectors.length(), segments, node0.uv, node1.uv, edge.type === "DEBATED")
     let cylinder = new THREE.BufferGeometry()
     cylinder.setAttribute('position', new THREE.BufferAttribute(cylinderData.vertices, 3))
     cylinder.setAttribute('uv', new THREE.BufferAttribute(cylinderData.uvs, 2))

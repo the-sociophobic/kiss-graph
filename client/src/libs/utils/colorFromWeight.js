@@ -54,9 +54,12 @@ export default (weight, theme, tone) => {
     }
     if (tone === "gray")
       newColor = {
-        r: 80 + newColor.r / 8 * 1,
-        g: 80 + newColor.g / 8 * 1,
-        b: 80 + newColor.b / 8 * 1,
+        // r: 80 + newColor.r / 8 * 1,
+        // g: 80 + newColor.g / 8 * 1,
+        // b: 80 + newColor.b / 8 * 1,
+        r: 50 + newColor.r / 2 * 1,
+        g: 50 + newColor.g / 2 * 1,
+        b: 50 + newColor.b / 2 * 1,
       }
   }
   if (theme === "dark") {
@@ -68,9 +71,12 @@ export default (weight, theme, tone) => {
     }
     if (tone === "gray")
       newColor = {
-        r: 140 + newColor.r / 8 * 1,
-        g: 140 + newColor.g / 8 * 1,
-        b: 140 + newColor.b / 8 * 1,
+        // r: 140 + newColor.r / 8 * 1,
+        // g: 140 + newColor.g / 8 * 1,
+        // b: 140 + newColor.b / 8 * 1,
+        r: 70 + newColor.r / 2 * 1,
+        g: 70 + newColor.g / 2 * 1,
+        b: 70 + newColor.b / 2 * 1,
       }
   }
 

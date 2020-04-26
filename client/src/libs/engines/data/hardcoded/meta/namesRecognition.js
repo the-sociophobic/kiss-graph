@@ -252,7 +252,6 @@ const changeFromNameList = async (store, inputNameList, gender) => {
       nameList.push(name)
   })
 
-  console.log(nameList)
   var changedNamesNumber = 0
 
   for (const index in nameList) {
@@ -274,7 +273,7 @@ const changeFromNameList = async (store, inputNameList, gender) => {
         const resolvedName = await store.push({
           ...person,
           gender: gender
-        })
+        }, false)
         console.log(++changedNamesNumber + " " + resolvedName.name + " " + resolvedName.gender)
       }
     }        

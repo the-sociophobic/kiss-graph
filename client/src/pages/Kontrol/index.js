@@ -31,6 +31,7 @@ class Kontrol extends Component {
       hidden: false,
       publishedInstantly: false,
       editingEdge: false,
+      type: "KISS",
 
       recalcInProcess: false,
     }
@@ -91,14 +92,24 @@ class Kontrol extends Component {
       let edge = {}
 
       if (node0.mates.length > 0 && node1.mates.length > 0) {
-        const mateIndex = node0.mates.map(mate => mate.id).indexOf(node1.id)
+        const typeNamesMap = {
+          KISS: "mates",
+          MARRIED: "sposes",
+          DEBATED: "debated",
+          SEX: "sex",
+        }
+        const arrayName = typeNamesMap[this.state.type]
+        const mateIndex = node0[arrayName].map(mate => mate.id).indexOf(node1.id)
       
         if (mateIndex !== -1) {
-          edge = this.context.store.get({edgeId: node0.mates[mateIndex].edgeId})
+          edge = this.context.store.get({edgeId: node0[arrayName][mateIndex].edgeId})
           this.setState({editingEdge: true})
         }
       } else {
-        edge = this.createEmptyEdge(node0.id, node1.id)
+        edge = {
+          ...this.createEmptyEdge(node0.id, node1.id),
+          type: this.state.type,
+        }
         this.setState({editingEdge: false})
       }
 
@@ -154,9 +165,14 @@ class Kontrol extends Component {
             </button>
           </Fragment>
         )}
+        <Select
+          value={this.state.type}
+          onChange={value => this.setState({type: value})}
+          options={edgeModel.type.options}
+          label="edgeType"
+        />
         {this.state.node0 && this.state.node1 &&
           <div className="date-pickers">
-            <Select />
             {
               (this.state.publishedInstantly ? ["commited"] : dates)
                 .map(date =>

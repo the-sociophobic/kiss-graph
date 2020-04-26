@@ -54,7 +54,9 @@ class InputDropdown extends Component {
   }
 
   setValue = value => {
-    this.setState({typedValue: value})
+    const res = typeof value.name !== "undefined" ? value.name : value //REDO THIS SHIT
+
+    this.setState({typedValue: res})
     this.props.onChange(value)
   }
 
