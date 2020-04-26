@@ -18,6 +18,14 @@ app.get('/libs/recycle-polytech/index.css', (req, res) =>
 app.get('/libs/recycle-polytech/icon.png', (req, res) =>
   res.sendFile(path.join(__dirname, 'libs/recycle-polytech', 'icon.png')))
 
+
+app.get('/data/nodes', (req, res) =>
+  res.sendFile(path.join(__dirname, 'src/libs/engines/data/hardcoded/DB', 'testt.json')))
+app.get('/data/position', (req, res) =>
+  res.sendFile(path.join(__dirname, 'src/libs/engines/data/hardcoded/DB', 'position.json')))
+app.get('/data/uv', (req, res) =>
+  res.sendFile(path.join(__dirname, 'src/libs/engines/data/hardcoded/DB', 'uv.json')))
+
 app.get('/*', (req, res) =>
   res.sendFile(path.join(__dirname, 'build', 'index.html')))
 
