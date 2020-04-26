@@ -48,11 +48,13 @@ class store extends listenersClass {
       this.metaData.nodes = data.nodes
       this.metaData.edges = data.edges
       this.geometry = data.geometry
-    } else
+    } else {
       this.metaData = edgesTypes({ //REDO THIS SHIT
-        nodes: calcGay(await getNodes()), //REDO THIS SHIT
+        nodes: await getNodes(), //REDO THIS SHIT
         edges: await getEdges(),
       })
+      this.metaData.nodes = calcGay(this.metaData.nodes)
+    }
 
     //CALC SECONDARY DATA
     this.iqSet = createSortedSet(this.metaData.nodes, "iq")

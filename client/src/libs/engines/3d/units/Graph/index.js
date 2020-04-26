@@ -31,6 +31,7 @@ export default class Graph extends Unit {
 
     nodes.forEach(node =>
       themeGroup.add(this.createNodeSprite(node, fontColor, this.props)))
+    // themeGroup.renderOrder = 1
     scene.add(themeGroup)
     this.theme[color] = themeGroup
     // addThemeEventListener(this.updateTheme)
@@ -61,7 +62,7 @@ export default class Graph extends Unit {
       // sprite.position.set(node.pos.x, node.pos.y, node.pos.z + .5)
       sprite.position.set(node.pos.x, node.pos.y, node.pos.z)
       // scene.add(sprite)
-      sprite.cursor = 'pointer'      
+      sprite.cursor = 'pointer'
       tapEvent(sprite, () => props.setNode(node.id))
       tapEvent(sprite, () => props.setNode(node.id), 'mousedown', 'mouseup')
 

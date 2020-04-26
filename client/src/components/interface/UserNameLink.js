@@ -25,7 +25,7 @@ export default props => {
           style={{color: `var(--weight-color-${props.user.connections})`}}
           onClick={() => props.setNode(props.user)}
         >
-          {props.user.userName ? ("@" + props.user.userName) : props.user.name}
+          {props.emoji && <EmojiByName name={props.emoji} />} {props.user.userName ? ("@" + props.user.userName) : props.user.name}
         </span>
       </div>
     )
@@ -36,6 +36,7 @@ export default props => {
         key={props.user.name}
         style={{color: `var(--weight-color-${props.user.connections})`}}
       >
+        {props.emoji && <EmojiByName name={props.emoji} />} 
         <div className="username-link__number">
           {renderPropValue(props)}
           {/* {props.IQ && props.user.iq}
@@ -63,6 +64,7 @@ export default props => {
       key={props.user.name}
       style={{color: `var(--weight-color-${props.user.connections})`}}
     >
+      {props.emoji && <EmojiByName name={props.emoji} />} 
       <div className="username-link__number">
         {props.user.connections}
       </div>

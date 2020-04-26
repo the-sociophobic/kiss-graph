@@ -8,12 +8,26 @@ import Emoji, { EmojiByName } from 'components/Emoji'
 import ExternalLink from 'components/ExternalLink'
 import { parseLinks } from 'libs/utils/social'
 import isProduction from '../../libs/utils/isProduction'
+import copyToClipboard from 'libs/utils/copyToClipboard'
+import openInNewTab from 'libs/utils/openInNewTab'
+import { getPostsByHashtag } from 'libs/utils/vkAPI'
 
 
 class User extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      showSecretLinks: !isProduction(),
+    }
+
+    this.updateNumberOfHashtagPosts()
+  }
+
+  updateNumberOfHashtagPosts = async () => {
+    console.log(await getPostsByHashtag({
+      owner_id: "-190713011",
+      hashtag: this.props.node.hashtag,
+    }))
   }
 
   renderSocialLinks = node =>
@@ -34,12 +48,36 @@ class User extends Component {
     const propsMap = [
       {
         name: "emoji",
-        onClick: () => {},
+        onClick: () => this.setState({showSecretLinks: !this.state.showSecretLinks}),
         className: "node-info__tags__item--emoji",
         // style: {background: `linear-gradient(var(--button-color) 50%, var(--weight-color-${node.connections}) 100%)`},
         style: {backgroundColor: `var(--weight-color-${node.connections})`},
         render: node =>
           <EmojiByName name={node.emoji} />
+      },
+      {
+        name: "name",
+        onClick: () => copyToClipboard(`${node.hashtag ? `#${node.hashtag}@i_love_my_frens \n` : ""}https://kiss-graph.com/node/${node.link}\n`),
+        render: () => <>
+          <Emoji.copy /> Copy
+        </>
+      },
+      {
+        name: "specialSite",
+        onClick: () => openInNewTab(node.specialSite),
+        render: () => <>
+          <EmojiByName name={node.specialSiteEmoji || "world"} /> {node.specialSiteName || node.name}
+        </>
+      },
+      {
+        name: "hashtag",
+        onClick: () => {
+          openInNewTab(`https://vk.com/wall-190713011?q=%23${node.hashtag}`, true)
+          node.hashtag2 && openInNewTab(`https://vk.com/wall-190713011?q=%23${node.hashtag2}`)
+        },
+        render: () => <>
+          #{node.hashtag}
+        </>
       },
       {
         name: "mentalDisorder",
@@ -73,7 +111,7 @@ class User extends Component {
         onClick: () => {},
         render: () =>
           <>
-            <Emoji.married /> {node.sposes.length}:
+            <Emoji.married /> {node.sposes.length}
           </>
       },
       {
@@ -81,7 +119,7 @@ class User extends Component {
         onClick: () => {},
         render: () =>
           <>
-            <Emoji.womanBan /> {node.debated.length}:
+            <Emoji.womanBan /> {node.debated.length}
           </>
       },
       {
@@ -90,14 +128,17 @@ class User extends Component {
         render: () =>
           <>
             <Emoji.kiss /> {node.connections}
-            {node.hiddenConnections ? <> ({node.hiddenConnections}<Emoji.hidden />)</> : ""}:
+            {node.hiddenConnections ? <> ({node.hiddenConnections}<Emoji.hidden />)</> : ""}
           </>
       }
     ]
 
     return (
       <div className="node-info__tags">
-      {propsMap.map(prop =>
+      {propsMap
+      .filter(prop =>
+        !(Array.isArray(node[prop.name]) && node[prop.name].length === 0))
+      .map(prop =>
         typeof node[prop.name] !== "undefined" &&
           <button
             key={prop.name}
@@ -124,10 +165,10 @@ class User extends Component {
     )
   }
 
-  renderConnections = (node, arrayName) =>
-    node[arrayName].length > 0 && (
+  renderConnections = connections =>
+    connections.length > 0 && (
       <div className="node-info__connections">
-        <List items={node[arrayName]
+        <List items={connections
           .sort((a, b) => b.connections - a.connections)
           .map(connection =>
             [<UserNameLink
@@ -135,6 +176,7 @@ class User extends Component {
               user={connection}
               setNode={this.props.setNode}
               date={connection.date}
+              emoji={connection.typeEmoji}
             />]
           )}
         />
@@ -151,55 +193,22 @@ class User extends Component {
       emoji: "person",
       ...node,
     }
-    // if (node.sposes.length > 0)
-      nodeProps = {
-        ...nodeProps,
-        sposes: undefined,
-        debated: undefined,
-        mates: undefined,
-      }
-    // else if (node.debated.length > 0)
-    //   nodeProps = {
-    //     ...nodeProps,
-    //     sposes: undefined,
-    //     mates: undefined,
-    //   }
-    // else
-    //   nodeProps = {
-    //     ...nodeProps,
-    //     sposes: undefined,
-    //     debated: undefined,
-    //   }
   
     return (
       <div className="node-info">
-        {/* {node.emoji &&
-          <div className="node-info__emoji">
-            <EmojiByName name={node.emoji} />
-          </div>
-        } */}
-        {!isProduction() &&
+        {this.state.showSecretLinks &&
           <div className="secret">
             {this.renderSocialLinks(node)}
           </div>}
         
         {this.renderProps(nodeProps)}
 
-        {node.sposes.length > 0 &&
-          this.renderProps({sposes: node.sposes})}
-        {this.renderConnections(node, "sposes")}
-
-        {node.debated.length > 0 &&
-          this.renderProps({debated: node.debated})}
-        {this.renderConnections(node, "debated")}
-
-        {node.connections > 0 &&
-          this.renderProps({
-            mates: node.mates,
-            connections: node.connections,
-            hiddenConnections: node.hiddenConnections
-          })}
-        {this.renderConnections(node, "mates")}
+        {this.renderConnections([
+          ...node.sposes.map(spose => ({...spose, typeEmoji: "married"})),
+          ...node.debated.map(mate => ({...mate, typeEmoji: "womanBan"})),
+          ...node.mates.map(mate => ({...mate, typeEmoji: "kiss"})),
+        ].sort((a, b) => b. connections - a.connections)
+        )}
 
       </div>
     )

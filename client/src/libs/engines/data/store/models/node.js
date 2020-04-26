@@ -9,6 +9,11 @@ export default {
   userName: {type: "string"}, //used as link if defined
   link: {type: "string", local: true},
   emoji: {type: "string"},
+  hashtag: {type: "string"},
+  hashtag2: {type: "string"},
+  specialSite: {type: "string"},
+  specialSiteName: {type: "string"},
+  specialSiteEmoji: {type: "string"},
 
   connections: {type: "number", local: true},
   hiddenConnections: {type: "number"},

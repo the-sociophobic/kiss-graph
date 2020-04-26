@@ -92,6 +92,10 @@ const emojis = [
     name: "mac",
   },
   {
+    symbol: "💾",
+    name: "copy",
+  },
+  {
     symbol: "🌅",
     name: "acid",
   },
