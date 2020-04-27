@@ -37,10 +37,10 @@ class ThreeScene extends Component {
     this.renderer.setSize(ViewerDiv.clientWidth, ViewerDiv.clientHeight)
     this.controls.update()
 
-    if (ViewerDiv.clientWidth < 500 || ViewerDiv.clientHeight < 500)
-      this.renderer.setPixelRatio(1)
-    else
-      this.renderer.setPixelRatio(1)
+    // if (ViewerDiv.clientWidth < 500 || ViewerDiv.clientHeight < 500)
+    //   this.renderer.setPixelRatio(1)
+    // else
+    //   this.renderer.setPixelRatio(1)
   }
 
   componentDidMount() {
@@ -73,8 +73,8 @@ class ThreeScene extends Component {
     // this.renderer.setClearColor('#000')
     this.renderer.setClearColor(0x000000, 0)
     this.renderer.setSize(width, height)
-    if (width < 500 || height < 500)
-      this.renderer.setPixelRatio(1)
+    // if (width < 500 || height < 500)
+    this.renderer.setPixelRatio(isProduction() ? 2 : 1)
     // this.renderer.sortObjects = false
     ViewerDiv.appendChild(this.renderer.domElement)
 
@@ -237,7 +237,10 @@ class ThreeScene extends Component {
       this.idle.cameraAngleXZ += this.idle.cameraRotationSpeed
       if (this.idle.cameraAngleXZ >= Math.PI * 2) {
         this.idle.cameraAngleXZ = 0
-        this.props.setNode(Math.round(Math.random() * this.context.store.get().nodes.length))
+        const randomNode = this.context.store.get().nodes[
+          Math.round(Math.random() * (this.context.store.get().nodes.length - 1))
+        ]
+        this.props.setNode(randomNode.id, true, true)
       }
       this.camera.position.set(
         this.controls.target.x + this.idle.cameraOffsetXZ * Math.sin(this.idle.cameraAngleXZ),

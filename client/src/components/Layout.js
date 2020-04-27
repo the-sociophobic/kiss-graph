@@ -56,7 +56,9 @@ class Layout extends Component {
       const nodeLink = this.props.location.pathname.slice("/node/".length)
       const node = this.context.store.search({link: nodeLink})[0]
   
-      this.setNode(node.id, true, false)  
+      this.setNode(node.id, true, false)
+    } else {
+      this.setNode(undefined, false, false)
     }
     //TODO ???
   }
@@ -111,7 +113,7 @@ class Layout extends Component {
           <li className="li"><Emoji.married /> for married couples, <Emoji.womanBan /> for disputed kisses </li>
           <li className="li"><button className="button"><Emoji.copy /> Copy</button> button to quickly Share user</li>
           <li className="li">
-            <button className="button"><Emoji.gene /><Emoji.winner /><Emoji.male /></button>, <button className="button"><Emoji.gene /><Emoji.winner /><Emoji.female /></button> sections shows champions in attractiveness for opposite gender
+            <button className="button"><Emoji.gene /><Emoji.winner /><Emoji.male /></button>, <button className="button"><Emoji.gene /><Emoji.winner /><Emoji.female /></button> sections show champions in attractiveness for opposite gender
           </li>
           <li className="li"><button className="button">#ИмяФамилия</button> backward compatibility with <ExternalLink to="https://vk.com/i_love_my_frens">vk.com/i_love_my_frens</ExternalLink></li>
         </ul>
@@ -119,12 +121,12 @@ class Layout extends Component {
       {this.state.storeConnected &&
       <div className="page-container">
         <TextInterface
-          ref={mount => this.context.textInterfaceRef = mount}
+          ref={this.context.textInterfaceRef}
           {...props}
         />
         <div className="viewer-container" >
           <ThreeScene
-            ref={mount => this.context.threeSceneRef = mount}
+            ref={this.context.threeSceneRef}
             myScene={myScene}
             {...props}
           />

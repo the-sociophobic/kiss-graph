@@ -18,7 +18,7 @@ class Loader extends Component {
     }
 
     this.checkInterval = setInterval(() => {
-      if (this.context?.threeSceneRef?.units?.heatGraph) {
+      if (this.context?.threeSceneRef?.current?.units?.heatGraph) {
         clearInterval(this.checkInterval)
         this.init()
       }
@@ -26,7 +26,7 @@ class Loader extends Component {
   }
 
   init = () =>
-    this.context.threeSceneRef.units.heatGraph.addInitListener(() => this.hide())
+    this.context.threeSceneRef.current.units.heatGraph.addInitListener(() => this.hide())
 
   show = () => {
     this.setState({
@@ -47,7 +47,7 @@ class Loader extends Component {
       className="loader"
       style={{
         transition: `opacity ${transition}ms`,
-        display: this.state.display ? "block" : "none",
+        display: this.state.display ? "flex" : "none",
         opacity: this.state.transparent ? 0 : 1,
       }}
     >
@@ -59,7 +59,7 @@ class Loader extends Component {
           {this.props.children}
         </div>
         <div className="loader__by">
-          by @the_sociophobic
+          by <b className="gradient-text gradient-text-animation-1">@the_sociophobic</b>
         </div>
       </div>
     </div>

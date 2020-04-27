@@ -17,6 +17,7 @@
   --onscreen-button-color: rgba(210, 210, 210, .75);
   --mobile-expander-gradient-color-0: rgba(255, 255, 255, 1);
   --mobile-expander-gradient-color-1: rgba(255, 255, 255, .88 );
+  --heat-gradient: linear-gradient(95deg, #af00ff 0%, #0000ff 16.67%, #00c3c3 33.33%, #00dd00 50%, #e0e000 66.67%, #ff8000 83.33%, #b90000 100%);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -36,5 +37,6 @@
     --onscreen-button-color: rgba(255, 255, 255, .5);
     --mobile-expander-gradient-color-0: rgba(0, 0, 0, 1);
     --mobile-expander-gradient-color-1: rgba(0, 0, 0, .88);
+    --heat-gradient: linear-gradient(95deg, #bf00ff 0%, #3f3fff 16.67%, #00ffff 33.33%, #00ff00 50%, #ffff00 66.67%, #ff8000 83.33%, #b90000 100%);
   }
 }
