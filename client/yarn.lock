@@ -6994,6 +6994,13 @@ multicast-dns@^6.0.1:
     dns-packet "^1.3.1"
     thunky "^1.0.2"
 
+multiple-extend@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/multiple-extend/-/multiple-extend-0.1.2.tgz#bb38d1875fda1181bed1c7fbf4d28d1ffb88fd87"
+  integrity sha512-CQeZjNRQP2HVJ7YYlXvRTS46A8f9eB0PpzAiX1OcAA2X0MC1fNFCwyGObRfsJTtJFfgzy/gskn7QOmCuoXHPxw==
+  dependencies:
+    putil-merge "^3.5.1"
+
 mute-stream@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
@@ -8726,6 +8733,11 @@ punycode@^2.1.0, punycode@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
+
+putil-merge@^3.5.1:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/putil-merge/-/putil-merge-3.6.0.tgz#1c0b31cddf67d430debcceb9e6e18405a7167851"
+  integrity sha512-gtfiT20Xg+YyBaiWg5yrNoh3nKAR3mlfwrq1jWZ6KyQb6LvfImeqFAzxapXmtJdipm0NiiRP7eXXmF7h2ll2fA==
 
 q@^1.1.2:
   version "1.5.1"

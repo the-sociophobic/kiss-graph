@@ -16,7 +16,9 @@ class ThreeScene extends Component {
     super(props)
     this.viewerRef = new React.createRef()
     this.transitions = []
-    
+
+    this.units = {}
+
     this.idle = {
       active: false,
       cameraAngleXZ: 0,

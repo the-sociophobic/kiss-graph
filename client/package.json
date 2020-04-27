@@ -10,6 +10,7 @@
     "bootstrap": "^4.4.1",
     "cors": "^2.8.5",
     "lodash": "^4.17.15",
+    "multiple-extend": "^0.1.2",
     "node-sass": "^4.13.1",
     "radium": "^0.26.0",
     "react": "^16.12.0",

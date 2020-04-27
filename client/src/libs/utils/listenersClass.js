@@ -13,7 +13,7 @@ export default class listenersClass {
   callInitListeners = () => {
     this.initialized = true
     this.initListeners.forEach(listener => listener())
-    this.updateListeners.forEach(listener => listener())
+    // this.updateListeners.forEach(listener => listener())
     this.initListeners = []
   }
 

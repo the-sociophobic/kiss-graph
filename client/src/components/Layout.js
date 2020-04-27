@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 
 import ThreeScene from './ThreeScene'
 import myScene from 'libs/myScene'
@@ -12,6 +12,8 @@ import iOS from 'libs/utils/iOS'
 
 import HeatMap from 'components/interface/HeatMap'
 import ControlsHelp from 'components/interface/ControlsHelp'
+import ExternalLink from 'components/ExternalLink'
+import Emoji from 'components/Emoji'
 
 import PoweredByNGINX from 'components/easterEgg/PoweredByNGINX'
 
@@ -20,9 +22,9 @@ class Layout extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      retrievedData: undefined,
       nodeToShow: undefined,
       storeConnected: false, //mounts TextInterface only after initial node os determined via URLs
+      spritesCreated: false,
     }
   }
 
@@ -93,7 +95,6 @@ class Layout extends Component {
   render = () => {
     const props = {
       data: this.context,
-      sendData: data => this.setState({retrievedData: data}),
       node: this.state.nodeToShow,
       setNode: this.setNode.bind(this),
       nodeToShow: this.state.nodeToShow,
@@ -101,49 +102,29 @@ class Layout extends Component {
       prevLocation: this.props.location && this.props.location.state && this.props.location.state.from,
     }
 
-    // return (
-    //   <Loader
-    //     text={
-    //       <Fragment>
-    //       <p>
-    //         Этот сайт исследует человеческие взаимоотношения и не пропагандирует ничего незаконного.<br />
-    //       </p>
-    //       <p>
-    //         В связи с далекой от Истины статьей 78 канала о смерти Кристины Кукушкиной, об этом сайте создалось некорректное впечатление и сюда заходит много людей.<br />
-    //       </p>
-    //       <p>
-    //         Кристина не является девушкой Льва Васильева. Лев Васильев не желает никому смерти на этом сайте и не будет нагонять сюда трафик засчет смерти своей подруги.<br />
-    //       </p>
-    //       <p>
-    //         Пожалуйста, приходите в другой раз. Относитесь скептически к новостным ресурсам. Особенно к 78 каналу.
-    //       </p>
-    //       </Fragment>
-    //     }
-    //   />
-    // )
-
-    return this.state.storeConnected ? (
+    return <>
+      <Loader>
+        <h1 className="h1">Kiss Graph v5.11</h1>
+        <h4 className="h4">Updates:</h4>
+        <ul className="ul">
+          <li className="li">Loading screen, that shows updates!</li>
+          <li className="li"><Emoji.married /> for married couples, <Emoji.womanBan /> for disputed kisses </li>
+          <li className="li"><button className="button"><Emoji.copy /> Copy</button> button to quickly Share user</li>
+          <li className="li">
+            <button className="button"><Emoji.gene /><Emoji.winner /><Emoji.male /></button>, <button className="button"><Emoji.gene /><Emoji.winner /><Emoji.female /></button> sections shows champions in attractiveness for opposite gender
+          </li>
+          <li className="li"><button className="button">#ИмяФамилия</button> backward compatibility with <ExternalLink to="https://vk.com/i_love_my_frens">vk.com/i_love_my_frens</ExternalLink></li>
+        </ul>
+      </Loader>
+      {this.state.storeConnected &&
       <div className="page-container">
         <TextInterface
-          ref={this.context.textInterfaceRef}
+          ref={mount => this.context.textInterfaceRef = mount}
           {...props}
-        >
-          {this.state.retrievedData &&
-            <div className="interface-container">
-              <div className="interface">
-                {/* {this.props.children} */}
-                <textarea
-                  value={this.state.retrievedData}
-                  rows={40}
-                  cols={20}
-                />
-              </div>
-            </div>
-          }
-        </TextInterface>
+        />
         <div className="viewer-container" >
           <ThreeScene
-            ref={this.context.threeSceneRef}
+            ref={mount => this.context.threeSceneRef = mount}
             myScene={myScene}
             {...props}
           />
@@ -152,7 +133,8 @@ class Layout extends Component {
           <PoweredByNGINX />
         </div>
       </div>
-    ) : <Loader />
+    }
+    </>
   }
 }
 

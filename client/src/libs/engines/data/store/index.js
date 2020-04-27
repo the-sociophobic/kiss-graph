@@ -7,7 +7,7 @@ import StoreContext from './StoreContext'
 const initialState = stateRefs => ({
   store: new storeClass(stateRefs),
   threeSceneRef: React.createRef(),
-  textInterfaceRef: React.createRef(),
+  textInterfaceRef: undefined,
 })
 
 export {

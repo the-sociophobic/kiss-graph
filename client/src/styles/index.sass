@@ -5,6 +5,9 @@
 @font-face
   font-family: 'Arc'
   src: url('./fonts/ALSArc-Light.ttf') format('truetype')
+@font-face
+  font-family: 'Arc-Bold'
+  src: url('./fonts/ALSArc-Bold.ttf') format('truetype')
 
 $red: var(--red-color)
 $light: var(--main-background)
@@ -101,6 +104,20 @@ input::-webkit-inner-spin-button
 
 input[type=number]
   -moz-appearance:textfield
+
+
+.h1, .h2, .h3
+  font-family: 'Arc-Bold', -apple-system, system-ui, Roboto, "Open Sans", "Helvetica Neue", sans-serif
+
+.h1
+  font-size: $regular-font-size * 3
+
+.h2
+  font-size: $regular-font-size * 2
+
+.h3
+  font-size: $regular-font-size * 1.5
+
 
 
 .noselect
@@ -798,6 +815,10 @@ $my-select-inner-circle-size: 8px
       border-bottom-right-radius: $default-border-radius - 1px
     &--selected
       background-color: $light-light-gray
+    .emoji
+      margin-left: 5px
+      transform: translateY(-1px)
+
 
 
 
@@ -997,6 +1018,8 @@ $heat-type-transition: .1s
         width: 50px
         padding-left: 5px
         color: $dark-gray
+      .emoji
+        margin-left: 5px
 
 
 .List
@@ -1060,34 +1083,66 @@ $heat-type-transition: .1s
   height: 100vh
   position: relative
   background-color: $light
+  z-index: 20000
   &__container
+    @extend .d-flex
+    @extend .flex-column
+    @extend .justify-content-between
+    @extend .align-items-center
     position: absolute
     top: 50%
     left: 50%
     transform: translate(-50%, -50%)
-    max-width: 700px
+    max-width: 800px
     width: 100%
+    height: 100%
+    padding: 30px
+    @media screen and ( max-width: 1024px )  
+      padding: 17px 35px 30px
   &__text
-    width: 100%
-    text-align: center
-    padding: 0 10px
-    p
-      line-height: 1.55
-      font-size: 15px
-      margin-bottom: 10px
+    .h1
+      margin-bottom: 40px
+      text-align: center
+      @media screen and ( max-width: 1024px )  
+        font-size: $regular-font-size * 2.25
+        margin-bottom: 20px
+    .h4
+      margin-bottom: 20px
+      @media screen and ( max-width: 1024px )  
+        font-size: $regular-font-size * 1.2
+        margin-bottom: 10px
+    .ul
+      padding-left: 22px
+      .li
+        font-size: $regular-font-size * 1.2
+        margin-bottom: 10px
+        @media screen and ( max-width: 1024px )  
+          font-size: $regular-font-size * 1
+    .button
+      @extend .button--active
+      margin: 0 6px 6px 0
+      display: inline-block
+      padding-left: 10px
+  &__by
+    @extend .h3
+    @media screen and ( max-width: 1024px )
+      font-size: $regular-font-size * 1.4
   &__emoji__container
-    width: 100%
-    padding-top: 35%
+    margin-top: 5%
+    width: 30%
+    padding-top: 30%
+    @media screen and ( max-width: 1024px )  
+      margin-top: 10%
+      width: 35%
+      padding-top: 35%
+      margin-bottom: 2.5%
     position: relative
     .emoji
-      // padding: 0
       position: absolute
-      top: 50%
-      left: 50%
-      transform: translate(-50%, -50%)
-      // transform: translate(-50%, -50%) scale(9.0)
-      width: 20%
-      margin: auto
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
       animation: flash .6s ease-in-out
       animation-iteration-count: infinite 
       @keyframes flash

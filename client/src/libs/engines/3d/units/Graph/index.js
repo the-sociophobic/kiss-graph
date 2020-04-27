@@ -1,8 +1,10 @@
-// import TextSprite from 'three.textsprite'
+import classes from 'multiple-extend'
+
 import UserSprite from 'libs/engines/3d/units/UserSprite'
 
 import Unit from 'libs/engines/3d/Unit'
-// import LineGraph from './LineGraph'
+import listenersClass from 'libs/utils/listenersClass'
+
 import HeatGraph from './HeatGraph'
 
 import tapEvent from 'libs/utils/tapEvent'
@@ -11,7 +13,7 @@ import { currentTheme } from 'libs/utils/colorTheme'
 import isProduction from 'libs/utils/isProduction'
 
 
-export default class Graph extends Unit {
+export default class Graph extends classes(Unit, listenersClass) {
   constructor(props) {
     super(props)
     const { store, scene } = props
@@ -107,6 +109,7 @@ export default class Graph extends Unit {
 
   animate = () => {
     this.updateTheme()
+    !this.initialized && this.callInitListeners()
   }
   dispose() {}
 }
