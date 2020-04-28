@@ -28,9 +28,11 @@ const getNodes = async () => {
     // iq: coalesce((node.iq2 + toInteger(node.iq)) / 2, node.iq)
     //REDO THIS SHIT
     statement: `
-      MATCH (node:Person)
-      MATCH (node)-[edge:KISS]-(mate:Person)
-      MATCH (mate)-[mateEdges:KISS {type: "KISS"}]-(mateConnections:Person)
+      MATCH (node:Person)-[edge]-(mate:Person)
+      WITH node AS node, edge AS edge, mate AS mate
+      MATCH (mate)-[mateKiss {type: "KISS"}]-(mateConnections:Person)
+      WITH node AS node, edge AS edge, mate AS mate, mateConnections AS mateConnections
+
       WITH {
         date: edge.commited,
         edgeId: id(edge),
@@ -57,7 +59,7 @@ const getNodes = async () => {
   const singleNodes = await post([{
     statement: `
       MATCH (node:Person)
-      WHERE NOT (node)-[:KISS]-(:Person)
+      WHERE NOT (node)-[{type: "KISS"}]-(:Person)
       WITH node {
         .*,
         id: id(node),
@@ -78,8 +80,11 @@ const getNode = async id => {
     statement: `
       MATCH (node:Person)
       WHERE ID(node) = ${id}
-      MATCH (node)-[edge:KISS]-(mate:Person)
-      MATCH (mate)-[mateEdges:KISS {type: "KISS"}]-(mateConnections:Person)
+      MATCH (node:Person)-[edge]-(mate:Person)
+      WITH node AS node, edge AS edge, mate AS mate
+      MATCH (mate)-[mateKiss {type: "KISS"}]-(mateConnections:Person)
+      WITH node AS node, edge AS edge, mate AS mate, mateConnections AS mateConnections
+
       WITH {
         date: edge.commited,
         edgeId: id(edge),
@@ -105,7 +110,7 @@ const getNode = async id => {
   const singleNodes = await post([{
     statement: `
       MATCH (node:Person)
-      WHERE ID(node) = ${id} AND NOT (node)-[:KISS]-(:Person)
+      WHERE ID(node) = ${id} AND NOT (node)-[{type: "KISS"}]-()
       WITH node {
         .*,
         id: id(node),

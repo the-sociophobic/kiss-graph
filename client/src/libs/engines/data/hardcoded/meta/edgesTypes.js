@@ -12,9 +12,12 @@ const edgesTypes = props => {
     return ({
       ...node,
       connections: node.connections - sposes.length - debated.length - sex.length,
-      mates: typeRemover(mates),
-      sposes: typeRemover(sposes),
-      debated: typeRemover(debated),
+      // mates: typeRemover(mates),
+      // sposes: typeRemover(sposes),
+      // debated: typeRemover(debated),
+      mates: mates,
+      sposes: sposes,
+      debated: debated,
       // sex: typeRemover(sex),
     })
   })

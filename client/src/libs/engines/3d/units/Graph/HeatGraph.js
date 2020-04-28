@@ -25,12 +25,27 @@ export default (store, scene) => {
 
         finalMesh = new THREE.Mesh(bufferGeometry, material)
       } else {
+        store.get().edges
+        .forEach(edge => {
+          const node0 = store.get().nodes.map(node => node.id).indexOf(edge.node0)
+          const node1 = store.get().nodes.map(node => node.id).indexOf(edge.node1)
+          if (node0 === -1) {
+            console.log(edge.node0)
+            console.log(edge)
+          }
+          if (node1 === -1) {
+            console.log(edge.node1)
+            console.log(edge)
+          }
+        })
+
         let edges = store.get().edges
-        .map(edge => ({
-          type: edge.type,
-          node0: store.get().nodes.map(node => node.id).indexOf(edge.node0),
-          node1: store.get().nodes.map(node => node.id).indexOf(edge.node1),
-        }))
+          .filter(edge => edge.type === "KISS" || edge.type === "DEBATED")      
+          .map(edge => ({
+            type: edge.type,
+            node0: store.get().nodes.map(node => node.id).indexOf(edge.node0),
+            node1: store.get().nodes.map(node => node.id).indexOf(edge.node1),
+          }))
     
         let nodes = store.get().nodes
           .map(node => ({

@@ -1130,11 +1130,34 @@ $heat-type-transition: .1s
     height: 100%
     padding: 50px 30px 30px
     @media screen and ( max-width: 1024px )  
-      padding: 35px 35px 70px
-    @media screen and ( max-width: 340px )
-      transform: scale(.85) translateY(-5%)
+      padding: 25px 35px 130px
+    @media screen and ( max-width: 320px )
+      transform: scale(.75) translateY(-10%)
     @media screen and ( max-width: 568px ) and (orientation: landscape)
-      transform: scale(.85) translateY(-5%)
+      transform: scale(.75) translateY(-10%)
+  &__emoji__container
+    width: 25%
+    padding-top: 25%
+    @media screen and ( max-width: 1024px )  
+      width: 30%
+      padding-top: 30%
+      margin-bottom: 10%
+    position: relative
+    .emoji
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      animation: flash .75s ease-in-out
+      animation-iteration-count: infinite 
+      @keyframes flash
+        0%
+          opacity: 0.5
+        50%
+          opacity: 1
+        100%
+          opacity: 0.5
   &__text
     @extend .d-flex
     @extend .flex-column
@@ -1159,7 +1182,7 @@ $heat-type-transition: .1s
         margin-bottom: 10px
         line-height: 1.5
         @media screen and ( max-width: 1024px )  
-          font-size: $regular-font-size * 1
+          font-size: $regular-font-size * .9
     .button
       @extend .button--active
       margin: 0 6px 6px 0
@@ -1169,29 +1192,7 @@ $heat-type-transition: .1s
     @extend .h3
     @media screen and ( max-width: 1024px )
       font-size: $regular-font-size * 1.4
-  &__emoji__container
-    width: 25%
-    padding-top: 25%
-    @media screen and ( max-width: 1024px )  
-      width: 35%
-      padding-top: 35%
-      margin-bottom: 2.5%
-    position: relative
-    .emoji
-      position: absolute
-      top: 0
-      left: 0
-      width: 100%
-      height: 100%
-      animation: flash .75s ease-in-out
-      animation-iteration-count: infinite 
-      @keyframes flash
-        0%
-          opacity: 0.5
-        50%
-          opacity: 1
-        100%
-          opacity: 0.5
+
 
 
 .custom-date-picker

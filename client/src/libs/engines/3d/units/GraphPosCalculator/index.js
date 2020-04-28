@@ -13,10 +13,12 @@ export default class GraphPosCalculator extends Unit {
     const { THREE, scene } = props
     const { nodes, edges } = this.props.store.get()
 
-    this.edges = edges.map(edge => ({
-      node0: nodes.map(node => node.id).indexOf(edge.node0),
-      node1: nodes.map(node => node.id).indexOf(edge.node1),
-    }))
+    this.edges = edges
+      .filter(edge => edge.type === "KISS" || edge.type === "DEBATED")
+      .map(edge => ({
+        node0: nodes.map(node => node.id).indexOf(edge.node0),
+        node1: nodes.map(node => node.id).indexOf(edge.node1),
+      }))
 
     this.GraphCloth = new GraphCloth({
       nodes: nodes,
