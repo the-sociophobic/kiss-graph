@@ -351,6 +351,14 @@ const emojis = [
     symbol: "🔌",
     name: "sex",
   },
+  {
+    symbol: "❤️",
+    name: "heart",
+  },
+  {
+    symbol: "💔",
+    name: "heartBroken",
+  },
 ]
 
 export default emojis

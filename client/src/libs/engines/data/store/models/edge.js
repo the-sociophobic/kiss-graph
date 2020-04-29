@@ -4,7 +4,9 @@ export default {
     "KISS",
     "SEX",
     "MARRIED",
-    "DEBATED"
+    "DEBATED",
+    "DATE",
+    "BREAKUP",
     // "FRIENDSHIP",
     // "CHIVALRY",
     // "STATE", //for connections with non-Persons (Labels)

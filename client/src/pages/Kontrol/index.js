@@ -97,6 +97,8 @@ class Kontrol extends Component {
           MARRIED: "sposes",
           DEBATED: "debated",
           SEX: "sex",
+          DATE: "date",
+          BREAKUP: "breakup",
         }
         const arrayName = typeNamesMap[this.state.type]
         const mateIndex = node0[arrayName].map(mate => mate.id).indexOf(node1.id)

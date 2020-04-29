@@ -1,3 +1,6 @@
+import isProduction from 'libs/utils/isProduction'
+
+
 const edgesTypes = props => {
   const { nodes, edges } = props
 
@@ -6,19 +9,23 @@ const edgesTypes = props => {
     const sposes = node.mates.filter(node => node.type === "MARRIED")
     const debated = node.mates.filter(node => node.type === "DEBATED")
     const sex = node.mates.filter(node => node.type === "SEX")
+    const date = node.mates.filter(node => node.type === "DATE")
+    const breakup = node.mates.filter(node => node.type === "BREAKUP")
 
     const typeRemover = nodes => nodes.map(node => ({...node, type: undefined}))
 
     return ({
       ...node,
-      connections: node.connections - sposes.length - debated.length - sex.length,
+      connections: node.connections - sposes.length - debated.length - sex.length - date.length - breakup.length,
       // mates: typeRemover(mates),
       // sposes: typeRemover(sposes),
       // debated: typeRemover(debated),
       mates: mates,
       sposes: sposes,
       debated: debated,
-      // sex: typeRemover(sex),
+      date: date,
+      breakup: breakup,
+      sex: isProduction() ? [] : sex,
     })
   })
 

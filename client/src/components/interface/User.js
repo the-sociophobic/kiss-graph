@@ -18,6 +18,7 @@ class User extends Component {
     super(props)
     this.state = {
       showSecretLinks: !isProduction(),
+      copied: false,
     }
 
     this.updateNumberOfHashtagPosts()
@@ -57,9 +58,13 @@ class User extends Component {
       },
       {
         name: "name",
-        onClick: () => copyToClipboard(`${node.hashtag ? `#${node.hashtag}@i_love_my_frens \n` : ""}https://kiss-graph.com/node/${node.link}\n`),
+        onClick: () => {
+          copyToClipboard(`${node.hashtag ? `#${node.hashtag}@i_love_my_frens \n` : ""}https://kiss-graph.com/node/${node.link}\n`)
+          this.setState({copied: true})
+          setTimeout(() => this.setState({copied: false}), 10000)
+        },
         render: () => <>
-          <Emoji.copy /> Copy
+          <Emoji.copy /> {this.state.copied ? "Copied to clipboard" : "Copy"}
         </>
       },
       {
@@ -112,6 +117,30 @@ class User extends Component {
         render: () =>
           <>
             <Emoji.married /> {node.sposes.length}
+          </>
+      },
+      {
+        name: "sex",
+        onClick: () => {},
+        render: () =>
+          <>
+            <Emoji.sex /> {node.sex.length}
+          </>
+      },
+      {
+        name: "date",
+        onClick: () => {},
+        render: () =>
+          <>
+            <Emoji.heart /> {node.date.length}
+          </>
+      },
+      {
+        name: "breakup",
+        onClick: () => {},
+        render: () =>
+          <>
+            <Emoji.heartBroken /> {node.breakup.length}
           </>
       },
       {
@@ -207,6 +236,9 @@ class User extends Component {
           ...node.sposes.map(spose => ({...spose, typeEmoji: "married"})),
           ...node.debated.map(mate => ({...mate, typeEmoji: "womanBan"})),
           ...node.mates.map(mate => ({...mate, typeEmoji: "kiss"})),
+          ...node.sex.map(spose => ({...spose, typeEmoji: "sex"})),
+          ...node.date.map(mate => ({...mate, typeEmoji: "heart"})),
+          ...node.breakup.map(mate => ({...mate, typeEmoji: "heartBroken"})),
         ].sort((a, b) => b. connections - a.connections)
         )}
 

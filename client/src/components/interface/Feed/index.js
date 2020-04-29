@@ -7,6 +7,7 @@ import KissTime from 'components/interface/Feed/KissTime'
 import Emoji, { EmojiByName } from 'components/Emoji'
 import myDate from 'libs/utils/myDate'
 import { insertIntoSortedArray } from 'libs/utils/sort'
+import isProduction from '../../../libs/utils/isProduction'
 
 
 const minItemsShown = 50
@@ -36,7 +37,7 @@ export default class Feed extends Component {
   static contextType = StoreContext
 
   componentDidMount() {
-    const edges = this.context.store.get().edges.filter(edge => edge.type !== "SEX")
+    const edges = this.context.store.get().edges.filter(edge => edge.type !== "SEX" || !isProduction())
 
     edges.forEach(edge =>
       this.options.forEach(option => {
@@ -104,6 +105,10 @@ export default class Feed extends Component {
 
   renderEmoji = edge => {
     switch (edge.type) {
+      case "DATE":
+        return <Emoji.heart />
+      case "BREAKUP":
+        return <Emoji.heartBroken />
       case "DEBATED":
         return <Emoji.womanBan />
       case "MARRIED":

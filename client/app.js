@@ -15,6 +15,8 @@ app.get('/libs/starukha/index.css', (req, res) =>
   res.sendFile(path.join(__dirname, 'libs/starukha', 'index.css')))
 app.get('/libs/starukha/icon.png', (req, res) =>
   res.sendFile(path.join(__dirname, 'libs/starukha', 'icon.png')))
+app.get('/libs/starukha/font', (req, res) =>
+  res.sendFile(path.join(__dirname, 'libs/starukha', 'bodoni.ttf')))
 
 app.get('/libs/recycle-polytech/index.js', (req, res) =>
   res.sendFile(path.join(__dirname, 'libs/recycle-polytech', 'index.js')))
