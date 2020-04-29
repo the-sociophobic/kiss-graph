@@ -106,11 +106,11 @@ class Layout extends Component {
 
     return <>
       <Loader>
-        <h1 className="h1">Kiss Graph v5.11</h1>
+        <h1 className="h1">Kiss Graph v5.12</h1>
         <h4 className="h4">Updates:</h4>
         <ul className="ul">
           <li className="li">Loading screen, that shows updates!</li>
-          <li className="li"><Emoji.married /> for married couples, <Emoji.womanBan /> for disputed kisses </li>
+          <li className="li"><Emoji.married /> for married couples, <Emoji.womanBan /> for disputed kisses, <Emoji.heart /> for dating, <Emoji.heartBroken /> for break ups </li>
           <li className="li"><button className="button"><Emoji.copy /> Copy</button> button to quickly Share user</li>
           <li className="li">
             <button className="button"><Emoji.gene /><Emoji.winner /><Emoji.male /></button>, <button className="button"><Emoji.gene /><Emoji.winner /><Emoji.female /></button> sections show champions in attractiveness for opposite gender
