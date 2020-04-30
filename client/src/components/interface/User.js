@@ -213,10 +213,16 @@ class User extends Component {
     )
           
   render = () => {
-    const { node } = this.props
+    let { node } = this.props
 
     if (typeof node === "undefined")
       return <></>
+
+    if (isProduction())
+      node = {
+        ...node,
+        sex: [],
+      }
 
     let nodeProps = {
       emoji: "person",

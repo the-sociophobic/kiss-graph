@@ -10,7 +10,7 @@ import { insertIntoSortedArray } from 'libs/utils/sort'
 import isProduction from '../../../libs/utils/isProduction'
 
 
-const minItemsShown = 50
+const minItemsShown = 150
 const itemsOffset = 50
 
 export default class Feed extends Component {

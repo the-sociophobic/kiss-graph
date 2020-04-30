@@ -25,7 +25,7 @@ const edgesTypes = props => {
       debated: debated,
       date: date,
       breakup: breakup,
-      sex: isProduction() ? [] : sex,
+      sex: sex,
     })
   })
 

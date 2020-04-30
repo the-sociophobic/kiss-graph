@@ -314,9 +314,12 @@ const calcGay = nodes => nodes.map(node => {
       return ({
         ...node,
         ...attractiveness,
-        gay: Math.round(gayPartners / node.mates.length * 1000) / 10
+        gay: Math.round(gayPartners / node.mates.length * 1000) / 10,
       })
-    return node
+    return ({
+      ...node,
+      ...attractiveness,
+    })
   }
 
   return node

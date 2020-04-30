@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
 
-const defaultMinItems = 30
-const defaultOffset = 30
+const defaultMinItems = 50
+const defaultOffset = 50
 
 export default class extends Component {
   constructor(props) {
