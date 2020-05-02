@@ -64,7 +64,10 @@ class InputDropdown extends Component {
     this.props.updateOptions && this.props.updateOptions(this.state.typedValue)
     this.props.setOpened(true)
   }
-  onBlur = () => this.setState({neverTypedFlag: true})
+  onBlur = () => this.setState({
+    neverTypedFlag: true,
+    typedValue: this.props.value
+  })
 
   renderOptions = () => //(this.props.value !== this.state.typedValue) &&
     this.props.options && this.props.options
