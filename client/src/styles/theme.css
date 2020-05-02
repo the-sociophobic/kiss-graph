@@ -14,6 +14,7 @@
   --link-color: #0000ee;
   --box-shadow-color: rgba(0, 0, 0, .1);
   --button-color: rgba(210, 210, 210, .5);
+  --button-color-selected: rgba(170, 170, 170, .9);
   --onscreen-button-color: rgba(210, 210, 210, .75);
   --mobile-expander-gradient-color-0: rgba(255, 255, 255, 1);
   --mobile-expander-gradient-color-1: rgba(255, 255, 255, .88 );
@@ -34,6 +35,7 @@
     --link-color: #ffff11;
     --box-shadow-color: rgba(25, 25, 25, .85);
     --button-color: rgba(255, 255, 255, .25);
+    --button-color-selected: rgba(255, 255, 255, .35);
     --onscreen-button-color: rgba(255, 255, 255, .5);
     --mobile-expander-gradient-color-0: rgba(0, 0, 0, 1);
     --mobile-expander-gradient-color-1: rgba(0, 0, 0, .88);

@@ -359,6 +359,10 @@ const emojis = [
     symbol: "💔",
     name: "heartBroken",
   },
+  {
+    symbol: "📁",
+    name: "folder",
+  },
 ]
 
 export default emojis

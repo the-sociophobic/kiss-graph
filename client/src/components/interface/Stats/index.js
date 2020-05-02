@@ -30,6 +30,67 @@ class Stats extends Component {
     />
   )
 
+  renderMarriages = () => (
+    <List
+      items={this.context.store.get().nodes
+        .filter(node => node.sposes.length > 0)
+        .sort((a, b) => b.sposes.length - a.sposes.length)
+        .map(node => [
+          <UserNameLink
+            prop="sposes"
+            user={node}
+            setNode={this.props.setNode}
+          />
+        ])
+      }
+    />
+  )
+  renderDates = () => (
+    <List
+      items={this.context.store.get().nodes
+        .filter(node => node.date.length > 0)
+        .sort((a, b) => b.date.length - a.date.length)
+        .map(node => [
+          <UserNameLink
+            prop="date"
+            user={node}
+            setNode={this.props.setNode}
+          />
+        ])
+      }
+    />
+  )
+  renderBreakUps = () => (
+    <List
+      items={this.context.store.get().nodes
+        .filter(node => node.breakup.length > 0)
+        .sort((a, b) => b.breakup.length - a.breakup.length)
+        .map(node => [
+          <UserNameLink
+            prop="breakup"
+            user={node}
+            setNode={this.props.setNode}
+          />
+        ])
+      }
+    />
+  )
+  renderDebated = () => (
+    <List
+      items={this.context.store.get().nodes
+        .filter(node => node.debated.length > 0)
+        .sort((a, b) => b.debated.length - a.debated.length)
+        .map(node => [
+          <UserNameLink
+            prop="debated"
+            user={node}
+            setNode={this.props.setNode}
+          />
+        ])
+      }
+    />
+  )
+
   renderIQ = () => (
     <List
       items={this.context.store.get().nodes
@@ -161,37 +222,58 @@ class Stats extends Component {
 
   render = () => (
     <RadioHeader
+      buttons
       initialOptionFromURL
       affectURL
       prevURL="/stats/"
       options={{
         kisses: {
-          label: () => <><Emoji.kiss /></>,
+          label: () => <><Emoji.kiss /> kisses</>,
           content: () => this.renderKisses(),
           title: "Kiss Graph: Stats / kisses",
         },
+        marriages: {
+          label: () => <><Emoji.married /> marriages</>,
+          content: () => this.renderMarriages(),
+          title: "Kiss Graph: Stats / marriages",
+        },
+        dates: {
+          label: () => <><Emoji.heart /> dates</>,
+          content: () => this.renderDates(),
+          title: "Kiss Graph: Stats / dates",
+        },
+        "break-ups": {
+          label: () => <><Emoji.heartBroken /> break ups</>,
+          content: () => this.renderBreakUps(),
+          title: "Kiss Graph: Stats / break ups",
+        },
+        unrecognized: {
+          label: () => <><Emoji.womanBan /> unrecognized kisses</>,
+          content: () => this.renderDebated(),
+          title: "Kiss Graph: Stats / unrecognized",
+        },
         iq: {
-          label: () => <><Emoji.IQ /></>,
+          label: () => <><Emoji.IQ /> IQ</>,
           content: () => this.renderIQ(),
           title: "Kiss Graph: Stats / IQ",
         },
-        mental: {
-          label: () => <><Emoji.mentalDisorder /></>,
+        "mental-disorder": {
+          label: () => <><Emoji.mentalDisorder /> mental disorder</>,
           content: () => this.renderMentalDisorder(),
           title: "Kiss Graph: Stats / mental disorders",
         },
         triggered: {
-          label: () => <><Emoji.triggered /></>,
+          label: () => <><Emoji.triggered /> triggered</>,
           content: () => this.renderTriggered(),
           title: "Kiss Graph: Stats / triggered",
         },
         gay: {
-          label: () => <><Emoji.gay /></>,
+          label: () => <><Emoji.gay /> gay</>,
           content: () => this.renderGay(),
           title: "Kiss Graph: Stats / gay",
         },
         dead: {
-          label: () => <><Emoji.dead /></>,
+          label: () => <><Emoji.dead /> dead</>,
           content: () => this.renderDead(),
           title: "Kiss Graph: Stats / dead",
         },
@@ -200,15 +282,15 @@ class Stats extends Component {
         //   content: () => this.renderGenderless(),
         //   title: "Kiss Graph: Stats / genderless",
         // },
-        "attractiveness-male": {
-          label: () => <><Emoji.gene /><Emoji.winner /><Emoji.male /></>,
+        "most-fertile-males": {
+          label: () => <><Emoji.gene /><Emoji.winner /><Emoji.male /> most fertile males</>,
           content: () => this.renderAttrMale(),
-          title: "Kiss Graph: Stats / male attractiveness",
+          title: "Kiss Graph: Stats / most fertile males",
         },
-        "attractiveness-female": {
-          label: () => <><Emoji.gene /><Emoji.winner /><Emoji.female /></>,
+        "most-fertile-females": {
+          label: () => <><Emoji.gene /><Emoji.winner /><Emoji.female /> most fertile females</>,
           content: () => this.renderAttrFemale(),
-          title: "Kiss Graph: Stats / female attractiveness",
+          title: "Kiss Graph: Stats / most fertile females",
         },
       }}
     />

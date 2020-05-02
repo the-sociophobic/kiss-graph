@@ -10,6 +10,14 @@ const renderPropValue = props => {
       return props.user.iq
     case "gay":
       return props.user.gay + "%"
+    case "sposes":
+      return props.user[props.prop].length
+    case "date":
+      return props.user[props.prop].length
+    case "breakup":
+      return props.user[props.prop].length
+    case "debated":
+      return props.user[props.prop].length
     default:
       return props.user[props.prop]
   }
@@ -36,7 +44,11 @@ export default props => {
         key={props.user.name}
         style={{color: `var(--weight-color-${props.user.connections})`}}
       >
-        {props.emoji && <EmojiByName name={props.emoji} />} 
+        {props.emoji &&
+          <div className="username-link__type">
+            <EmojiByName name={props.emoji} />
+          </div>
+        } 
         <div className="username-link__number">
           {renderPropValue(props)}
           {/* {props.IQ && props.user.iq}
@@ -64,7 +76,11 @@ export default props => {
       key={props.user.name}
       style={{color: `var(--weight-color-${props.user.connections})`}}
     >
-      {props.emoji && <EmojiByName name={props.emoji} />} 
+      {props.emoji &&
+        <div className="username-link__type">
+          <EmojiByName name={props.emoji} />
+        </div>
+      } 
       <div className="username-link__number">
         {props.user.connections}
       </div>

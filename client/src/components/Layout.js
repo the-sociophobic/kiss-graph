@@ -106,15 +106,16 @@ class Layout extends Component {
 
     return <>
       <Loader>
-        <h1 className="h1">Kiss Graph v5.12</h1>
+        <h1 className="h1">Kiss Graph v5.13</h1>
         <h4 className="h4">Updates:</h4>
         <ul className="ul">
-          <li className="li">Loading screen, that shows updates!</li>
+          <li className="li">Data sorting on /node/ pages</li>
+          <li className="li">Redesigned /stats page</li>
           <li className="li"><Emoji.married /> for married couples, <Emoji.womanBan /> for disputed kisses, <Emoji.heart /> for dating, <Emoji.heartBroken /> for break ups </li>
           <li className="li"><button className="button"><Emoji.copy /> Copy</button> button to quickly Share user</li>
-          <li className="li">
-            <button className="button"><Emoji.gene /><Emoji.winner /><Emoji.male /></button>, <button className="button"><Emoji.gene /><Emoji.winner /><Emoji.female /></button> sections show champions in attractiveness for opposite gender
-          </li>
+          {/* <li className="li">
+            <button className="button"><Emoji.gene /><Emoji.winner /><Emoji.male /></button>, <button className="button"><Emoji.gene /><Emoji.winner /><Emoji.female /></button> most attractive people to the opposite gender
+          </li> */}
           <li className="li"><button className="button">#ИмяФамилия</button> backward compatibility with <ExternalLink to="https://vk.com/i_love_my_frens">vk.com/i_love_my_frens</ExternalLink></li>
         </ul>
       </Loader>

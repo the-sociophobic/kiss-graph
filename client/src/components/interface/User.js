@@ -13,12 +13,24 @@ import openInNewTab from 'libs/utils/openInNewTab'
 import { getPostsByHashtag } from 'libs/utils/vkAPI'
 
 
+const sortByTypePriority = [
+  "DEBATED",
+  "KISS",
+  "BREAKUP",
+  "DATE",
+  "SEX",
+  "MARRIED",
+]
+
+
 class User extends Component {
   constructor(props) {
     super(props)
     this.state = {
       showSecretLinks: !isProduction(),
       copied: false,
+      sortBy: "date",
+      orderDesc: true,
     }
 
     this.updateNumberOfHashtagPosts()
@@ -113,7 +125,7 @@ class User extends Component {
       },
       {
         name: "sposes",
-        onClick: () => {},
+        onClick: () => this.props.history.push("/stats/marriages"),
         render: () =>
           <>
             <Emoji.married /> {node.sposes.length}
@@ -121,7 +133,6 @@ class User extends Component {
       },
       {
         name: "sex",
-        onClick: () => {},
         render: () =>
           <>
             <Emoji.sex /> {node.sex.length}
@@ -129,7 +140,7 @@ class User extends Component {
       },
       {
         name: "date",
-        onClick: () => {},
+        onClick: () => this.props.history.push("/stats/dates"),
         render: () =>
           <>
             <Emoji.heart /> {node.date.length}
@@ -137,7 +148,7 @@ class User extends Component {
       },
       {
         name: "breakup",
-        onClick: () => {},
+        onClick: () => this.props.history.push("/stats/break-ups"),
         render: () =>
           <>
             <Emoji.heartBroken /> {node.breakup.length}
@@ -145,7 +156,7 @@ class User extends Component {
       },
       {
         name: "debated",
-        onClick: () => {},
+        onClick: () => this.props.history.push("/stats/unrecognized"),
         render: () =>
           <>
             <Emoji.womanBan /> {node.debated.length}
@@ -194,11 +205,63 @@ class User extends Component {
     )
   }
 
+  setSortBy = sortBy => this.setState({
+    sortBy: sortBy,
+    orderDesc: this.state.sortBy === sortBy ? !this.state.orderDesc : (sortBy !== "name")
+  })
+
   renderConnections = connections =>
     connections.length > 0 && (
       <div className="node-info__connections">
+        <div className="username-link username-link--sort">
+          <div
+            className={"username-link__type " + (this.state.sortBy === "type" &&
+              (this.state.orderDesc ? "desc-order" : "asc-order"))}
+            onClick={() => this.setSortBy("type")}
+          >
+            <Emoji.folder />
+          </div>
+          <div
+            className={"username-link__number " + (this.state.sortBy === "number" &&
+              (this.state.orderDesc ? "desc-order" : "asc-order"))}
+            onClick={() => this.setSortBy("number")}
+          >
+            <Emoji.kiss />
+          </div>
+          <div
+            className={"username-link__name " + (this.state.sortBy === "name" &&
+              (this.state.orderDesc ? "desc-order" : "asc-order"))}
+            onClick={() => this.setSortBy("name")}
+          >
+            node
+          </div>
+          <div
+            className={"username-link__date " + (this.state.sortBy === "date" &&
+              (this.state.orderDesc ? "desc-order" : "asc-order"))}
+            onClick={() => this.setSortBy("date")}
+          >
+            commited
+          </div>
+        </div>
         <List items={connections
-          .sort((a, b) => b.connections - a.connections)
+          .sort((a, b) => {
+            const { sortBy, orderDesc } = this.state
+            const multiplier = orderDesc ? 1 : -1
+
+            switch (sortBy) {
+              case "type":
+                return (sortByTypePriority.indexOf(b.type) - sortByTypePriority.indexOf(a.type)) * multiplier
+              case "number":
+                return (b.connections - a.connections) * multiplier
+              case "name":
+                const aName = a.userName || a.name
+                const bName = b.userName || b.name
+
+                return bName.localeCompare(aName) * multiplier
+              default:
+                return (b[sortBy] - a[sortBy]) * multiplier
+            }
+          })
           .map(connection =>
             [<UserNameLink
               key={connection.userName || connection.name}

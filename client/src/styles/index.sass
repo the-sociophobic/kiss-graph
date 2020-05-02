@@ -22,6 +22,7 @@ $link-color: var(--link-color)
 $box-shadow-color: var(--box-shadow-color)
 $box-shadow: 0 5px 15px $box-shadow-color
 $button-color: var(--button-color)
+$button-color-selected: var(--button-color-selected)
 $onscreen-button-color: var(--onscreen-button-color)
 $mobile-expander-gradient-color-0: var(--mobile-expander-gradient-color-0)
 $mobile-expander-gradient-color-1: var(--mobile-expander-gradient-color-1)
@@ -470,6 +471,10 @@ $arrow-size: 7px
   &:nth-child(odd)
     // background-color: $apple-item-gray
 
+  &__type
+    width: 30px    
+    line-height: inherit
+    font-size: inherit
   &__number
     width: 48px
     text-align: right
@@ -504,6 +509,32 @@ $arrow-size: 7px
       // color: inherit
       text-decoration: underline
       cursor: pointer
+  &--sort
+    cursor: pointer
+    border-bottom: 1px solid $light-gray
+    padding-bottom: 5px
+    *
+      @extend .noselect
+    .asc-order,
+    .desc-order
+      &::after
+        content: ""
+        display: inline-block
+        width: 5px
+        height: 5px
+        border-right: 2px solid $light-gray
+        border-bottom: 2px solid $light-gray
+        margin-left: .25em
+    .asc-order
+      &::after
+        transform: translateY(-.1em) rotate(-135deg)
+    .desc-order
+      &::after
+        transform: translateY(-.2em) rotate(45deg)
+    // span.emoji + .asc-order::after,
+    // span.emoji + .desc-order::after
+    //   margin-left: 0 !important
+
 
       
 .input
@@ -812,35 +843,56 @@ $my-select-inner-circle-size: 8px
 
 
 .radio-header
-  &__container
-    margin-bottom: 20px
-    width: 100%
-    display: flex
-    border: 1px solid $light-gray
-    border-radius: $default-border-radius
+  margin-bottom: 20px
+  width: 100%
   &__option
     @extend .noselect
     text-align: center
     font-size: $regular-font-size
-    line-height: $input-height - 4px
-    flex-grow: 1
-    border-right: 1px solid $light-gray
-    cursor: pointer
-    background-color: $light
     color: $dark-dark-gray
     transition: none !important
-    &:first-of-type
-      border-top-left-radius: $default-border-radius - 1px
-      border-bottom-left-radius: $default-border-radius - 1px
-    &:last-of-type
-      border-right: none
-      border-top-right-radius: $default-border-radius - 1px
-      border-bottom-right-radius: $default-border-radius - 1px
-    &--selected
-      background-color: $light-light-gray
-    .emoji
-      margin-left: 5px
-      transform: translateY(-1px)
+  &:not(&--buttons)
+    display: flex
+    border: 1px solid $light-gray
+    border-radius: $default-border-radius
+    .radio-header__option
+      line-height: $input-height - 4px
+      flex-grow: 1
+      border-right: 1px solid $light-gray
+      cursor: pointer
+      background-color: $light
+      &:first-of-type
+        border-top-left-radius: $default-border-radius - 1px
+        border-bottom-left-radius: $default-border-radius - 1px
+      &:last-of-type
+        border-right: none
+        border-top-right-radius: $default-border-radius - 1px
+        border-bottom-right-radius: $default-border-radius - 1px
+      &--selected
+        background-color: $light-light-gray
+      .emoji
+        margin-left: 5px
+        transform: translateY(-1px)
+  &--buttons
+    display: table
+    .radio-header__option
+      @extend .button
+      @extend .button--active
+      margin: 0 8px 8px 0
+      display: inline-block
+      float: left
+      padding-left: 7px
+      padding-right: 7px
+      &--selected
+        // background-color: $secondary
+        background-color: rgba(0, 0, 0, 0)
+        box-shadow: inset 0px 0px 0px 2px $secondary
+        color: $dark
+        // border: 3px solid $button-color
+        // box-sizing: border-box
+      .emoji
+        transform: translateX(.1em)
+
 
 
 
@@ -1013,6 +1065,8 @@ $heat-type-transition: .1s
     transform: translateY(.07em)
   &__world
     transform: translateY(.07em)
+  &__folder
+    transform: translateY(.1em)
   &__img
       transform: translate(-.05em, -.1em)
       height: 1em

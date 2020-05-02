@@ -52,7 +52,7 @@ class RadioHeader extends Component {
 
   render = () => (
     <Fragment>
-      <div className="radio-header__container">
+      <div className={"radio-header " + (this.props.buttons && "radio-header--buttons")}>
         {Object.keys(this.props.options).map(key => {
           const option = this.props.options[key]
           const label = typeof option === "string" ? option : option.label()
