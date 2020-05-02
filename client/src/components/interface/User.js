@@ -125,7 +125,7 @@ class User extends Component {
       },
       {
         name: "sposes",
-        onClick: () => this.props.history.push("/stats/marriages"),
+        link: "marriages",
         render: () =>
           <>
             <Emoji.married /> {node.sposes.length}
@@ -140,7 +140,7 @@ class User extends Component {
       },
       {
         name: "date",
-        onClick: () => this.props.history.push("/stats/dates"),
+        link: "dates",
         render: () =>
           <>
             <Emoji.heart /> {node.date.length}
@@ -148,7 +148,7 @@ class User extends Component {
       },
       {
         name: "breakup",
-        onClick: () => this.props.history.push("/stats/break-ups"),
+        link: "break-ups",
         render: () =>
           <>
             <Emoji.heartBroken /> {node.breakup.length}
@@ -156,7 +156,7 @@ class User extends Component {
       },
       {
         name: "debated",
-        onClick: () => this.props.history.push("/stats/unrecognized"),
+        link: "unrecognized",
         render: () =>
           <>
             <Emoji.womanBan /> {node.debated.length}
@@ -258,6 +258,8 @@ class User extends Component {
                 const bName = b.userName || b.name
 
                 return bName.localeCompare(aName) * multiplier
+              case "date":
+                return ((b[sortBy] || 0) - (a[sortBy] || 0)) * multiplier
               default:
                 return (b[sortBy] - a[sortBy]) * multiplier
             }
