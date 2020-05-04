@@ -13,7 +13,7 @@ const socialLinks = {
   dribbble: {link: "dribbble.com",},
   discord: {link: "discordapp.com", disabled: true},
   soundcloud: {link: "soundcloud.com"},
-  ticktok: {link: "ticktok.com", disabled: true},
+  ticktok: {link: "tiktok.com"}, //REDO THIS SHIT: It's tiktok
   skype: {link: "skype.com", disabled: true},
   linkedin: {link: "linkedin.com"},
   phone: {link: "", disabled: true},
@@ -31,7 +31,7 @@ const socialLinks = {
   // dribbble: {link: "dribbble.com", disabled: true},
   // discord: {link: "discordapp.com", disabled: true},
   // soundcloud: {link: "soundcloud.com", disabled: true},
-  // ticktok: {link: "ticktok.com", disabled: true},
+  // ticktok: {link: "tiktok.com", disabled: true},
   // skype: {link: "skype.com", disabled: true},
   // linkedin: {link: "linkedin.com", disabled: true},
   // phone: {link: "", disabled: true},
@@ -40,7 +40,7 @@ const socialLinks = {
 const parseLinks = social => social &&
   Object.keys(social)
     .filter(key => !socialLinks[key].disabled)
-    .map(key => socialLinks[key] && (socialLinks[key].link + "/" + social[key]))
+    .map(key => socialLinks[key] && (socialLinks[key].link + (key !== "ticktok" ? "/" : "/@") + social[key]))
 
 export {
   socialLinks,
