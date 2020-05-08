@@ -78,7 +78,7 @@ class TextInterface extends Component {
 
     const footer = (
       <div className="footer">
-        {!isAboutPage &&
+        {!isAboutPage ?
           <p
             className="link"
             onClick={() => {
@@ -87,6 +87,21 @@ class TextInterface extends Component {
             }}
           >
             about
+          </p>
+          :
+          <p
+            className="link"
+            onClick={() => {
+              //REDO THIS SHIT: write router
+              if (this.props.node) {
+                this.props.history.push(`/node/${this.props.node.link}`)
+                document.title = `Kiss Graph: ${this.props.node.name}`
+              }
+              else
+                this.props.history.push("/news")
+            }}
+          >
+            back
           </p>
         }
       </div>

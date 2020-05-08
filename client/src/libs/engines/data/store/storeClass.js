@@ -1,3 +1,5 @@
+import transliterate from 'libs/utils/transliterate'
+
 import {
   getNodes,
   getEdges,
@@ -143,9 +145,10 @@ class store extends listenersClass {
         Object.keys(props).map(key =>
           node[key] && node[key]
             .toLowerCase()
-            .split(/_| |-|\./gm)
-            .map(word => word.startsWith(props[key].toLowerCase()))
-            .reduce((a, b) => a || b)
+            .includes(transliterate(props[key]))
+            // .split(/_| |-|\./gm)
+            // .map(word => word.startsWith(props[key].toLowerCase()))
+            // .reduce((a, b) => a || b)
         )
         .reduce((a, b) => a || b)
       ) || []
