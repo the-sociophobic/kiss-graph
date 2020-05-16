@@ -19,7 +19,7 @@ class NameSearch extends Component {
       this.setState({currentOptions: []})
     else {
       const options = this.context.store.search({name: value, userName: value})
-        .slice(0, window.innerHeight > 736 ? 7 : 5)
+        .slice(0, this.props.optionsNumber || (window.innerHeight > 736 ? 7 : 5))
         .map(option => ({
           value: option,
           style: {':hover': {

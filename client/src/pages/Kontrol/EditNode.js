@@ -113,6 +113,7 @@ class EditNode extends Component {
           onChange={value => this.setNode(value)}
           onKeyDown={e => this.onEnterPress(e)}
           className="mb-4"
+          optionsNumber={15}
         />
         {this.state.name && this.state.name.length > 0 && (
           <Fragment>

@@ -13,6 +13,7 @@ const socialLinks = {
   dribbble: {link: "dribbble.com",},
   discord: {link: "discordapp.com", disabled: true},
   soundcloud: {link: "soundcloud.com"},
+  twitch: {link: "twitch.tv"},
   ticktok: {link: "tiktok.com"}, //REDO THIS SHIT: It's tiktok
   skype: {link: "skype.com", disabled: true},
   linkedin: {link: "linkedin.com"},
