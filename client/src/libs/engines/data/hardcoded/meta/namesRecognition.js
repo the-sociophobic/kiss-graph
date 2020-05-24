@@ -298,30 +298,36 @@ const genderDetermined = node => node.gender === "m" || node.gender === "f"
 
 const calcGay = nodes => nodes.map(node => {
   if (node.mates && genderDetermined(node) &&
-    node.mates.length > 4 && node.mates
+    node.mates.length > 0 && node.mates
       .map(mate => genderDetermined(mate))
       .reduce((a, b) => a && b))
   {
-    let potentialPartners, attractiveness
+    let potentialPartners, attractiveness, bmi
 
     if (node.gender === "m") {
       potentialPartners = node.mates.filter(mate => mate.gender === "f").length
       attractiveness = {am: potentialPartners}
+      if (node.weight && node.height)
+        bmi = {bmim: (node.weight / ((node.height / 100) ** 2)).toFixed(1)}
     } else {
       potentialPartners = node.mates.filter(mate => mate.gender === "m").length
       attractiveness = {af: potentialPartners}
+      if (node.weight && node.height)
+        bmi = {bmif: (node.weight / ((node.height / 100) ** 2)).toFixed(1)}
     }    
     const gayPartners = node.mates.length - potentialPartners
 
-    if (gayPartners > 0)
+    if (gayPartners > 0 && node.mates.length > 4)
       return ({
         ...node,
         ...attractiveness,
+        ...bmi,
         gay: Math.round(gayPartners / node.mates.length * 1000) / 10,
       })
     return ({
       ...node,
       ...attractiveness,
+      ...bmi,
     })
   }
 

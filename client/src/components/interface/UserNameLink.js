@@ -47,8 +47,8 @@ export default props => {
         className="username-link"
         key={props.user.name}
         style={{color: `var(--weight-color-${
-          props.prop === "bmi" && props.user.am ? props.user.am :
-          props.prop === "bmi" && props.user.af? props.user.af :
+          (props.prop === "bmim" || props.prop === "height") ? props.user.am :
+          (props.prop === "bmif" || props.prop === "height") ? props.user.af :
           props.user.connections
         })`}}
       >

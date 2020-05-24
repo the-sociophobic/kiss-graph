@@ -146,15 +146,11 @@ class Stats extends Component {
   renderBMImale = () => (
     <List
       items={this.context.store.get().nodes
-        .filter(node => node.weight && node.height && node.gender === "m")
-        .map(node => ({
-          ...node,
-          bmi: (node.weight / ((node.height / 100) ** 2)).toFixed(1)
-        }))
-        .sort((a, b) => b.bmi - a.bmi)
+        .filter(node => node.bmim)
+        .sort((a, b) => b.bmim - a.bmim)
         .map(node => [
           <UserNameLink
-            prop="bmi"
+            prop="bmim"
             user={node}
             setNode={this.props.setNode}
           />
@@ -165,15 +161,11 @@ class Stats extends Component {
   renderBMIfemale = () => (
     <List
       items={this.context.store.get().nodes
-        .filter(node => node.weight && node.height && node.gender === "f")
-        .map(node => ({
-          ...node,
-          bmi: (node.weight / ((node.height / 100) ** 2)).toFixed(1)
-        }))
-        .sort((a, b) => b.bmi - a.bmi)
+        .filter(node => node.bmif)
+        .sort((a, b) => b.bmif - a.bmif)
         .map(node => [
           <UserNameLink
-            prop="bmi"
+            prop="bmif"
             user={node}
             setNode={this.props.setNode}
           />

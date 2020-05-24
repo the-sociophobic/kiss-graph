@@ -120,9 +120,14 @@ class User extends Component {
         render: () => <><Emoji.ruler />{node.height} cm</>
       },
       {
-        name: "weight",
-        link: "body-mass-index",
-        render: () => <><Emoji.justice /> / <Emoji.ruler /> {(node.weight / ((node.height / 100) ** 2)).toFixed(1)} BMI</>
+        name: "bmim",
+        link: "body-mass-index-male",
+        render: () => <><Emoji.justice /> / <Emoji.ruler /> {node.bmim} BMI</>
+      },
+      {
+        name: "bmif",
+        link: "body-mass-index-female",
+        render: () => <><Emoji.justice /> / <Emoji.ruler /> {node.bmif} BMI</>
       },
       {
         name: "dead",
