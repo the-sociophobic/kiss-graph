@@ -1,5 +1,5 @@
 import React from 'react'
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet'
 
 // import isProduction from 'libs/utils/isProduction'
 import './config'
