@@ -8,6 +8,10 @@ const renderPropValue = props => {
   switch (props.prop) {
     case "IQ":
       return props.user.iq
+    case "mass":
+      return props.user.weight + "kg"
+    case "height":
+      return props.user.height + "cm"
     case "gay":
       return props.user.gay + "%"
     case "sposes":
@@ -42,7 +46,11 @@ export default props => {
       <div
         className="username-link"
         key={props.user.name}
-        style={{color: `var(--weight-color-${props.user.connections})`}}
+        style={{color: `var(--weight-color-${
+          props.prop === "bmi" && props.user.am ? props.user.am :
+          props.prop === "bmi" && props.user.af? props.user.af :
+          props.user.connections
+        })`}}
       >
         {props.emoji &&
           <div className="username-link__type">

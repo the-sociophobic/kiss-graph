@@ -64,7 +64,13 @@ class store extends listenersClass {
 
     //CALC SECONDARY DATA
     this.iqSet = createSortedSet(this.metaData.nodes, "iq")
-    this.weightSet = createSortedSet(this.metaData.nodes, "connections")
+    // this.weightSet = createSortedSet(this.metaData.nodes, "connections")
+    //REDO THIS SHIT -- separate styles for heat maps
+    this.weightSet = createSortedSet([
+      ...this.metaData.nodes,
+      ...this.metaData.nodes.map(node => ({...node, connections: node.am})).filter(node => node.connections),
+      ...this.metaData.nodes.map(node => ({...node, connections: node.af})).filter(node => node.connections),
+    ], "connections")
     this.mentalDisorderSet = createSortedSet(this.metaData.nodes, "mentalDisorder")
 
     const calcNodeUV = (weight, distribution) =>

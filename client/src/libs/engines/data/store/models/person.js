@@ -23,6 +23,8 @@ export default {
   ], canBeUndefined: true},
   dead: {type: "boolean"},
   offended: {type: "boolean"},
+  height: {type: "number"},
+  weight: {type: "number"},
   SHR: {
     type: "object",
     fields: {

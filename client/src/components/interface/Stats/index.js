@@ -113,6 +113,75 @@ class Stats extends Component {
     />
   )
 
+  renderMass = () => (
+    <List
+      items={this.context.store.get().nodes
+        .filter(node => node.weight)
+        .sort((a, b) => b.weight - a.weight)
+        .map(node => [
+          <UserNameLink
+            prop="mass"
+            user={node}
+            setNode={this.props.setNode}
+          />
+        ])
+      }
+    />
+  )
+  renderHeight = () => (
+    <List
+      items={this.context.store.get().nodes
+        .filter(node => node.height)
+        .sort((a, b) => b.height - a.height)
+        .map(node => [
+          <UserNameLink
+            prop="height"
+            user={node}
+            setNode={this.props.setNode}
+          />
+        ])
+      }
+    />
+  )
+  renderBMImale = () => (
+    <List
+      items={this.context.store.get().nodes
+        .filter(node => node.weight && node.height && node.gender === "m")
+        .map(node => ({
+          ...node,
+          bmi: (node.weight / ((node.height / 100) ** 2)).toFixed(1)
+        }))
+        .sort((a, b) => b.bmi - a.bmi)
+        .map(node => [
+          <UserNameLink
+            prop="bmi"
+            user={node}
+            setNode={this.props.setNode}
+          />
+        ])
+      }
+    />
+  )
+  renderBMIfemale = () => (
+    <List
+      items={this.context.store.get().nodes
+        .filter(node => node.weight && node.height && node.gender === "f")
+        .map(node => ({
+          ...node,
+          bmi: (node.weight / ((node.height / 100) ** 2)).toFixed(1)
+        }))
+        .sort((a, b) => b.bmi - a.bmi)
+        .map(node => [
+          <UserNameLink
+            prop="bmi"
+            user={node}
+            setNode={this.props.setNode}
+          />
+        ])
+      }
+    />
+  )
+
   renderMentalDisorder = () => (
     <List
       items={this.context.store.get().nodes
@@ -256,6 +325,26 @@ class Stats extends Component {
           label: () => <><Emoji.IQ /> IQ</>,
           content: () => this.renderIQ(),
           title: "Kiss Graph: Stats / IQ",
+        },
+        mass: {
+          label: () => <><Emoji.justice /> mass</>,
+          content: () => this.renderMass(),
+          title: "Kiss Graph: Stats / mass",
+        },
+        height: {
+          label: () => <><Emoji.ruler /> height</>,
+          content: () => this.renderHeight(),
+          title: "Kiss Graph: Stats / height",
+        },
+        "body-mass-index-male": {
+          label: () => <><Emoji.justice /><Emoji.ruler /><Emoji.male /> Body Mass Index male</>,
+          content: () => this.renderBMImale(),
+          title: "Kiss Graph: Stats / Body Mass Index male",
+        },
+        "body-mass-index-female": {
+          label: () => <><Emoji.justice /><Emoji.ruler /><Emoji.female /> Body Mass Index female</>,
+          content: () => this.renderBMIfemale(),
+          title: "Kiss Graph: Stats / Body Mass Index female",
         },
         "mental-disorder": {
           label: () => <><Emoji.mentalDisorder /> mental disorder</>,

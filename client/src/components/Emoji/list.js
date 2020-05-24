@@ -363,6 +363,10 @@ const emojis = [
     symbol: "📁",
     name: "folder",
   },
+  {
+    symbol: "📏",
+    name: "ruler",
+  },
 ]
 
 export default emojis
