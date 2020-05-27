@@ -46,11 +46,12 @@ export default props => {
       <div
         className="username-link"
         key={props.user.name}
-        style={{color: `var(--weight-color-${
-          (props.prop === "bmim" || props.prop === "height") ? props.user.am :
-          (props.prop === "bmif" || props.prop === "height") ? props.user.af :
-          props.user.connections
-        })`}}
+        // style={{color: `var(--weight-color-${
+        //   (props.prop === "bmim" || props.prop === "height") ? props.user.am :
+        //   (props.prop === "bmif" || props.prop === "height") ? props.user.af :
+        //   props.user.connections
+        // })`}}
+        style={{color: `var(--weight-color-${props.user.connections})`}}
       >
         {props.emoji &&
           <div className="username-link__type">
