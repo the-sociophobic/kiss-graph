@@ -220,11 +220,11 @@ class store extends listenersClass {
     edges: this.metaData.edges,
   }))
   //copy buffer can't handle that size
-  copyPos = () => {
-    console.log(this.geometry.position.map(coordinate => parseFloat(coordinate.toFixed(7))))
+  copyPos = () =>
     copyToClipboard(JSON.stringify(
-    this.geometry.position.map(coordinate => parseFloat(coordinate.toFixed(7)))
-  ))}
+      this.geometry.position
+        .map(coordinate => parseFloat(coordinate.toFixed(7)))
+    ))
   copyUV = () => copyToClipboard(JSON.stringify(
     this.geometry.uv
   ))
