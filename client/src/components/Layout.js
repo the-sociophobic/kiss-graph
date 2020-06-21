@@ -113,9 +113,6 @@ class Layout extends Component {
           <li className="li">Redesigned /stats page</li>
           <li className="li"><Emoji.married /> for married couples, <Emoji.womanBan /> for disputed kisses, <Emoji.heart /> for dating, <Emoji.heartBroken /> for break ups </li>
           <li className="li"><button className="button"><Emoji.copy /> Copy</button> button to quickly Share user</li>
-          {/* <li className="li">
-            <button className="button"><Emoji.gene /><Emoji.winner /><Emoji.male /></button>, <button className="button"><Emoji.gene /><Emoji.winner /><Emoji.female /></button> most attractive people to the opposite gender
-          </li> */}
           <li className="li"><button className="button">#ИмяФамилия</button> backward compatibility with <ExternalLink to="https://vk.com/i_love_my_frens">vk.com/i_love_my_frens</ExternalLink></li>
         </ul>
       </Loader>

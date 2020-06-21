@@ -367,6 +367,10 @@ const emojis = [
     symbol: "📏",
     name: "ruler",
   },
+  {
+    symbol: "👩🏻‍🚀",
+    name: "spaceman",
+  },
 ]
 
 export default emojis

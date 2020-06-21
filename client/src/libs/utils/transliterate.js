@@ -30,7 +30,7 @@ const chars = {
   'ь': '',
   'э': 'e',
   'ю': 'yu',
-  'я': 'yf',
+  'я': 'ya',
 }
 
 const replaceCyrillic = string =>

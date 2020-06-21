@@ -25,6 +25,7 @@ export default {
   offended: {type: "boolean"},
   height: {type: "number"},
   weight: {type: "number"},
+  fWHR: {type: "number"},
   SHR: {
     type: "object",
     fields: {
