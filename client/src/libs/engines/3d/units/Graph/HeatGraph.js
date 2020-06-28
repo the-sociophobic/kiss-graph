@@ -129,6 +129,11 @@ const cylinderGraphGeometry = (nodes, edges, segments) => {
     node0 = nodes[edge.node0]
     node1 = nodes[edge.node1]
 
+    if (!edge.node0 || !edge.node1) {
+      console.log("edge error")
+      console.log(edge)
+    }
+
     subVectors.subVectors(node1.vector, node0.vector)
     normal.copy(subVectors).normalize()
     quaternion.setFromUnitVectors(up, normal)

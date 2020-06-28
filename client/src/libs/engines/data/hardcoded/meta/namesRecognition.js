@@ -244,6 +244,7 @@ const femaleNameList = [
   "Regina",
   "Sara",
   ["Adel", "Adelina"],
+  "Vasilina",
 ]
 
 const changeFromNameList = async (store, inputNameList, gender) => {

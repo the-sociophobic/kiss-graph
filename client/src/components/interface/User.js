@@ -103,12 +103,17 @@ class User extends Component {
       },
       {
         name: "iq",
-        render: () => //REDO THIS SHIT: IQ SHOULD BE COUNTED FROM 1, 2 ON BACKEND
-          <>
-            <Emoji.IQ /> {typeof node.iq === "string" ?
-              node.iq :
-              (node.iq + (node.iq2 || node.iq)) >> 1} IQ
-          </>
+        render: () => {//REDO THIS SHIT: IQ SHOULD BE COUNTED FROM 1, 2 ON BACKEND
+          console.log(node) //REDO THIS SHIT: for unknown reason iq is shown in Production only with {} and this consol.log
+
+          return (
+            <>
+              <Emoji.IQ /> {typeof node.iq === "string" ?
+                node.iq :
+                (node.iq + (node.iq2 || node.iq)) >> 1} IQ
+            </>
+          )
+        }
       },
       {
         name: "weight",
