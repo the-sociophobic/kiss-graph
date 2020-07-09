@@ -7,6 +7,7 @@ import {
   emptyStringToUndefined,
   emptyDataToUndefined,
 } from 'libs/utils/objectUtils'
+import isProduction from 'libs/utils/isProduction'
 
 
 const flattenModel = (model, parentName = "") => 
@@ -143,11 +144,14 @@ const encodeMany = (model, instances) =>
   )
 
 const encodeJSONstring = obj =>
-  JSON.stringify(obj)
-    .replace(/"point/g, "point")
-    .replace(/}\)"/g, "})")
-    .replace(/(?<!\\)\"([^(\")"]+)(?<!\\)\":/g,"$1:")
-    //REDO THIS SHIT PARSE
+  isProduction() ?
+    JSON.stringify(obj)
+    :
+    JSON.stringify(obj)
+      .replace(/"point/g, "point")
+      .replace(/}\)"/g, "})")
+      .replace(/(?<!\\)\"([^(\")"]+)(?<!\\)\":/g,"$1:")
+      // REDO THIS SHIT PARSE
 
 //DECODE FROM DB
 const decode = (model, instance) =>
