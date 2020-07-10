@@ -129,7 +129,7 @@ const cylinderGraphGeometry = (nodes, edges, segments) => {
     node0 = nodes[edge.node0]
     node1 = nodes[edge.node1]
 
-    if (!edge.node0 || !edge.node1) {
+    if (typeof edge.node0 !== "number" || typeof edge.node1 !== "number") {
       console.log("edge error")
       console.log(edge)
     }
