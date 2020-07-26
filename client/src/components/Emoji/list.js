@@ -104,6 +104,10 @@ const emojis = [
     name: "time",
   },
   {
+    symbol: "⌛",
+    name: "timeup",
+  },
+  {
     symbol: "📖",
     name: "book",
   },
