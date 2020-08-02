@@ -127,7 +127,7 @@ const maleNameList = [
   "Valentin",
   ["Ilarion", "Illarion"],
   "Rudolph",
-  
+  "Tagir",
 ]
 const femaleNameList = [
   ["Anastasia", "Anastasiya", "Nastya"],
