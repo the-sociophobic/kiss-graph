@@ -319,7 +319,7 @@ const calcGay = nodes => nodes.map(node => {
     }    
     const gayPartners = node.mates.length - potentialPartners
 
-    if (gayPartners > 0 && node.mates.length > 4)
+    if (gayPartners > 0 && node.mates.length >= 4)
       return ({
         ...node,
         ...attractiveness,
