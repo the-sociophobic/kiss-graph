@@ -18,6 +18,22 @@ export default (store, scene) => {
       // texture.magFilter = THREE.NearestFilter;
       // texture.minFilter = THREE.LinearMipMapLinearFilter;
       let material = new THREE.MeshBasicMaterial( { map: texture } )
+      // let material = new ShaderMaterial({
+      //   fragmentShader: `
+      //     void main()	{
+      //       gl_FragColor = vec4(vec3(min(x, y)), 1.);
+      //     }
+      //     `,
+      //   vertexShader: `
+      //     void main()	{
+      //       gl_Position = vec4( position, 1.0 );
+      //     }
+      //   `,
+      //   uniforms: {
+      //     texture: { type: "t", value: texture }
+      //   },      
+      // })
+
       if (isProduction()) {
         let bufferGeometry = new THREE.BufferGeometry()
         bufferGeometry.setAttribute( 'position', new THREE.BufferAttribute( new Float32Array(store.getGeometry().position), 3 ) )
