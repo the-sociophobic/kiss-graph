@@ -26,7 +26,7 @@ app.get('/libs/recycle-polytech/icon.png', (req, res) =>
   res.sendFile(path.join(__dirname, 'libs/recycle-polytech', 'icon.png')))
 
 
-app.use('/ar', express.static('/ar'))
+app.use('/ar/*', express.static('/ar'))
 
 
 app.get('/data/nodes', (req, res) =>
