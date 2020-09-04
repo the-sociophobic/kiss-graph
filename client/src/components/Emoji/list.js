@@ -212,10 +212,6 @@ const emojis = [
     name: "bath",
   },
   {
-    symbol: "🛁",
-    name: "bath",
-  },
-  {
     symbol: "🍌",
     name: "banana",
   },
@@ -374,6 +370,18 @@ const emojis = [
   {
     symbol: "👩🏻‍🚀",
     name: "spaceman",
+  },
+  {
+    symbol: "🚢",
+    name: "ship",
+  },
+  {
+    symbol: "🌐",
+    name: "browser",
+  },
+  {
+    symbol: "🌺",
+    name: "flower",
   },
 ]
 
