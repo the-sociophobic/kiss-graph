@@ -36,7 +36,7 @@ app.get('/data/position', (req, res) =>
 app.get('/data/uv', (req, res) =>
   res.sendFile(path.join(__dirname, 'src/libs/engines/data/hardcoded/DB', 'uv.json')))
 
-// app.get('/*', (req, res) =>
-//   res.sendFile(path.join(__dirname, 'build', 'index.html')))
+app.get('/*', (req, res) =>
+  res.sendFile(path.join(__dirname, 'build', 'index.html')))
 
 app.listen(3005)
