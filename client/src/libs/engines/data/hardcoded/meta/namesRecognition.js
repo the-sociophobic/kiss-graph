@@ -60,7 +60,7 @@ const maleNameList = [
   ["David", "Devid"],
   ["Damir", "Damyr"],
   ["Tihon", "Tikhon"],
-  ["Leva", "Lyova", "Lev", "Leo"],
+  ["Leva", "Lyova", "Lev", "Leo", "Leon"],
   "Martin",
   "Bogdan",
   "Oslab",
