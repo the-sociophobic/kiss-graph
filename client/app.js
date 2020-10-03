@@ -28,6 +28,7 @@ app.get('/libs/recycle-polytech/icon.png', (req, res) =>
 
 app.use('/ar', express.static('libs/ar'))
 app.use('/nebdt', express.static('libs/nebdt'))
+app.use('/boom-fest', express.static('libs/boom-fest'))
 
 
 app.get('/data/nodes', (req, res) =>
