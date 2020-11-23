@@ -6,6 +6,7 @@ const socialLinks = {
   inst2: {link: "instagram.com",},
   twit: {link: "twitter.com",},
   yt: {link: "www.youtube.com",},
+  yt2: {link: "www.youtube.com",},
   fb: {link: "www.facebook.com",},
   fb2: {link: "www.facebook.com",},
   steam: {link: "steamcommunity.com",},

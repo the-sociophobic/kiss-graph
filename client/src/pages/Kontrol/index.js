@@ -18,7 +18,7 @@ import {
 
 
 const dates = ["commited", "told", "published"]
-const sameDate = 1596929700
+const sameDate = 1602927000
 
 class Kontrol extends Component {
   constructor(props) {
