@@ -18,7 +18,7 @@ import {
 
 
 const dates = ["commited", "told", "published"]
-const sameDate = 1602927000
+const sameDate = 1609616100
 
 class Kontrol extends Component {
   constructor(props) {
@@ -118,7 +118,7 @@ class Kontrol extends Component {
       edge = {
         ...this.createEmptyEdge(node0.id, node1.id),
         ...edge,
-        // told: sameDate
+        told: sameDate
       }
 
       Object.keys(undefinedToEmptyString(edge))
