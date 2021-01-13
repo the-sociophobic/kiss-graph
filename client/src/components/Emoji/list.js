@@ -383,6 +383,14 @@ const emojis = [
     symbol: "🌺",
     name: "flower",
   },
+  {
+    symbol: "🐍",
+    name: "snake",
+  },
+  {
+    symbol: "🎭",
+    name: "theater",
+  },
 ]
 
 export default emojis

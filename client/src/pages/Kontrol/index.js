@@ -118,7 +118,7 @@ class Kontrol extends Component {
       edge = {
         ...this.createEmptyEdge(node0.id, node1.id),
         ...edge,
-        told: sameDate
+        // told: sameDate
       }
 
       Object.keys(undefinedToEmptyString(edge))
