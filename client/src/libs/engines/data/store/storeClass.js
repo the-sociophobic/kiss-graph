@@ -49,7 +49,7 @@ class store extends listenersClass {
 
   getData = async () => {
     if (isProduction()) {
-      this.metaData = (await axios.get("http://cdn.tochkadostupa.spb.ru/the_sociophobic/kiss-graph.com/data/nodes.json")).data
+      this.metaData = (await axios.get("http://cdn.tochkadostupa.spb.ru/the_sociophobic/kiss-graph.com/data/testt.json")).data
       this.geometry = {
         position: (await axios.get("http://cdn.tochkadostupa.spb.ru/the_sociophobic/kiss-graph.com/data/position.json")).data,
         uv: (await axios.get("http://cdn.tochkadostupa.spb.ru/the_sociophobic/kiss-graph.com/data/uv.json")).data,
