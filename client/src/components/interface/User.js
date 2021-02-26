@@ -27,7 +27,8 @@ class User extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      showSecretLinks: !isProduction(),
+      // showSecretLinks: !isProduction(),
+      showSecretLinks: true,
       copied: false,
       sortBy: "date",
       orderDesc: true,
@@ -46,15 +47,23 @@ class User extends Component {
   renderSocialLinks = node =>
     node.social &&
     parseLinks(node.social)
-      .map(link => link.length > 0 && (
-        <ExternalLink
-          key={link}
-          to={"https://" + link}
-          newTab
-          className="secret__link"
-        >
-          random link
-        </ExternalLink>)
+      .map(link => link.url.length > 0 &&
+        link.noLink ?
+          <ExternalLink
+            key={link.url || link.noLink}
+            className="secret__link"
+          >
+            {link.noLink}
+          </ExternalLink>
+          :
+          <ExternalLink
+            key={link.url || link.noLink}
+            to={"https://" + link.url}
+            newTab
+            className="secret__link"
+          >
+            {link.label}
+          </ExternalLink>
       )
 
   renderProps = node => {

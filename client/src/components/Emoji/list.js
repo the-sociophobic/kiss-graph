@@ -391,6 +391,38 @@ const emojis = [
     symbol: "🎭",
     name: "theater",
   },
+  {
+    symbol: "🎥",
+    name: "kinocamera",
+  },
+  {
+    symbol: "⚗️",
+    name: "alchemy",
+  },
+  {
+    symbol: "👩🏼‍⚖️",
+    name: "judge",
+  },
+  {
+    symbol: "🎿",
+    name: "ski",
+  },
+  {
+    symbol: "🍺",
+    name: "beer",
+  },
+  {
+    symbol: "🇩🇪",
+    name: "germany",
+  },
+  {
+    symbol: "🐓",
+    name: "cock",
+  },
+  {
+    symbol: "🤖",
+    name: "robot",
+  },
 ]
 
 export default emojis

@@ -16,7 +16,7 @@ const maleNameList = [
   "German",
   ["Denis", "Den", "Dekhiar", "Dehiar", "Dekhiyar", "Dekhyyar"],
   ["Tema", "Tyoma", "Artyom", "Artem", "Artyomka", "Artemka", "Artemy"],
-  ["Lesha", "Lyosha", "Alexey", "Alexei", "Aleksey", "Aleksei"],
+  ["Lesha", "Lyosha", "Alexey", "Alexei", "Aleksey", "Aleksei", "Alyesha"],
   ["Filip", "Filipp", "Fil", "Fill"],
   ["Dmitriy", "Dmitry", "Dima"],
   ["Danya", "Daniil", "Danyil", "Danik"],
