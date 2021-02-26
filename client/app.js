@@ -32,11 +32,11 @@ app.use('/boom-fest', express.static('libs/boom-fest'))
 
 
 app.get('/data/nodes', (req, res) =>
-  res.sendFile(path.join(__dirname, 'src/libs/engines/data/hardcoded/DB', 'testt.json')))
+  res.sendFile("http://cdn.tochkadostupa.spb.ru/the_sociophobic/kiss-graph.com/data/testt.json"))
 app.get('/data/position', (req, res) =>
-  res.sendFile(path.join(__dirname, 'src/libs/engines/data/hardcoded/DB', 'position.json')))
+  res.sendFile("http://cdn.tochkadostupa.spb.ru/the_sociophobic/kiss-graph.com/data/position.json"))
 app.get('/data/uv', (req, res) =>
-  res.sendFile(path.join(__dirname, 'src/libs/engines/data/hardcoded/DB', 'uv.json')))
+  res.sendFile("http://cdn.tochkadostupa.spb.ru/the_sociophobic/kiss-graph.com/data/uv.json"))
 
 app.get('/*', (req, res) =>
   res.sendFile(path.join(__dirname, 'build', 'index.html')))
