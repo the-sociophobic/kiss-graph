@@ -106,14 +106,14 @@ class Layout extends Component {
 
     return <>
       <Loader>
-        <h1 className="h1">Kiss Graph v5.13</h1>
+        <h1 className="h1">Kiss Graph v5.14</h1>
         <h4 className="h4">Updates:</h4>
         <ul className="ul">
-          <li className="li">Data sorting on /node/ pages</li>
-          <li className="li">Redesigned /stats page</li>
-          <li className="li"><Emoji.married /> for married couples, <Emoji.womanBan /> for disputed kisses, <Emoji.heart /> for dating, <Emoji.heartBroken /> for break ups </li>
-          <li className="li"><button className="button"><Emoji.copy /> Copy</button> button to quickly Share user</li>
-          <li className="li"><button className="button">#ИмяФамилия</button> backward compatibility with <ExternalLink to="https://vk.com/i_love_my_frens">vk.com/i_love_my_frens</ExternalLink></li>
+          <li className="li">Sooooooo I'm kind of rewriting the whole codebase here...</li>
+          <li className="li">And half the old codejust doesn't work</li>
+          <li className="li">But I will not turn back</li>
+          <li className="li">Graph didn't work for a few weeks and now...</li>
+          <li className="li">Well, you'll see in a moment</li>
         </ul>
       </Loader>
       {this.state.storeConnected &&

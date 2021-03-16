@@ -229,16 +229,48 @@ class store extends listenersClass {
         parseFloat(coordinate.toFixed(5)))
 
     parts[1] = this.geometry.position
-      .slice(2000)
+      .slice(2000, 5000)
       .map(coordinate =>
         parseFloat(coordinate.toFixed(5)))
 
-    copyToClipboard(JSON.stringify(parts[1]))
+    parts[2] = this.geometry.position
+      .slice(5000, 9000)
+      .map(coordinate =>
+        parseFloat(coordinate.toFixed(5)))
+
+    parts[3] = this.geometry.position
+      .slice(9000, 17000)
+      .map(coordinate =>
+        parseFloat(coordinate.toFixed(5)))
+
+    parts[4] = this.geometry.position
+      .slice(17000)
+      .map(coordinate =>
+        parseFloat(coordinate.toFixed(5)))
+
+    copyToClipboard(JSON.stringify(parts[4]))
   }
 
-  copyUV = () => copyToClipboard(JSON.stringify(
-    this.geometry.uv
-  ))
+  copyUV = () => {
+    const parts = []
+    
+    parts[0] = this.geometry.position
+      .slice(0, 10000)
+      .map(coordinate =>
+        parseFloat(coordinate.toFixed(5)))
+
+    parts[1] = this.geometry.position
+      .slice(10000, 20000)
+      .map(coordinate =>
+        parseFloat(coordinate.toFixed(5)))
+
+    parts[2] = this.geometry.position
+      .slice(20000)
+      .map(coordinate =>
+        parseFloat(coordinate.toFixed(5)))
+
+    copyToClipboard(JSON.stringify(parts[2]))
+  }
 
   getGeometry = () => {
     return this.geometry

@@ -19,7 +19,7 @@ const maleNameList = [
   ["Lesha", "Lyosha", "Alexey", "Alexei", "Aleksey", "Aleksei", "Alyesha"],
   ["Filip", "Filipp", "Fil", "Fill"],
   ["Dmitriy", "Dmitry", "Dima"],
-  ["Danya", "Daniil", "Danyil", "Danik"],
+  ["Danya", "Daniil", "Danyil", "Danik", "Daniel"],
   ["Danil", "Danila"],
   "Ruslan",
   ["Nikita", "Nikitos", "Nick"],

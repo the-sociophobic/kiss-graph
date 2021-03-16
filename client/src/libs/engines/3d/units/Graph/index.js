@@ -31,11 +31,11 @@ export default class Graph extends classes(Unit, listenersClass) {
     var themeGroup = new THREE.Group()
     var fontColor = color === "light" ? 0x000000 : 0xfffffff
 
-    nodes.forEach(node =>
-      themeGroup.add(this.createNodeSprite(node, fontColor, this.props)))
-    // themeGroup.renderOrder = 1
-    scene.add(themeGroup)
-    this.theme[color] = themeGroup
+    // nodes.forEach(node =>
+    //   themeGroup.add(this.createNodeSprite(node, fontColor, this.props)))
+    // // themeGroup.renderOrder = 1
+    // scene.add(themeGroup)
+    // this.theme[color] = themeGroup
     // addThemeEventListener(this.updateTheme)
   }
 
