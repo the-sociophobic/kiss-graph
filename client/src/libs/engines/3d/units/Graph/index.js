@@ -34,7 +34,7 @@ export default class Graph extends classes(Unit, listenersClass) {
     var fontColor = color === "light" ? 'black' : 'white'
 
     nodes
-      .slice(0, isTouchDevice() ? 55 : 55555)
+      .slice(0, isTouchDevice() ? 1000 : 55555)
       .forEach(node =>
         themeGroup.add(this.createNodeSprite(node, fontColor, this.props)))
     // themeGroup.renderOrder = 1
