@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { Link } from 'react-router-dom'
+
 import StoreContext from 'libs/engines/data/store/StoreContext'
 import RadioHeader from 'components/interface/RadioHeader'
 import UserNameLink from 'components/interface/UserNameLink'
@@ -55,8 +57,9 @@ export default class Feed extends Component {
   }
 
   slowEdgesParser = (edges, type) => {
+    let flag = false
     const mapNodesToEdges = edges => edges
-      .map(edge => {
+      .map((edge, index) => {
         const node0 = this.context.store.get({id: edge.node0})
         const node1 = this.context.store.get({id: edge.node1})
 
@@ -68,6 +71,7 @@ export default class Feed extends Component {
             userName: node0.userName,
             link: node0.link,
             connections: node0.connections,
+            emoji: node0.emoji,
           },
           node1: {
             id: node1.id,
@@ -75,6 +79,7 @@ export default class Feed extends Component {
             userName: node1.userName,
             link: node1.link,
             connections: node1.connections,
+            emoji: node1.emoji,
           },
         }
       })
@@ -141,12 +146,19 @@ export default class Feed extends Component {
               <UserNameLink
                 simple
                 user={entry.node0}
+                emoji={entry.node0.emoji}
                 setNode={this.props.setNode}
               />
-              {this.renderEmoji(entry)}
+              <Link
+                to={`/edge/${entry.id}`}
+                className='edge-link'
+              >
+                ←{this.renderEmoji(entry)} →
+              </Link>
               <UserNameLink
                 simple
                 user={entry.node1}
+                emoji={entry.node1.emoji}
                 setNode={this.props.setNode}
               />
             </div>

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { Link } from 'react-router-dom'
+
 import { EmojiByName } from 'components/Emoji'
 import myDate from 'libs/utils/myDate'
 import isProduction from 'libs/utils/isProduction'
@@ -32,14 +34,17 @@ export default props => {
   if (props.simple)
     return (
       <div className="username-link username-link--simple">
-        <span
-          className="link"
+        <div
+          className="link d-inline-flex flex-row align-items-center"
           // style={{color: `var(--weight-color-${props.user.connections}-gray)`}}
           style={{color: `var(--weight-color-${props.user.connections})`}}
           onClick={() => props.setNode(props.user)}
         >
-          {props.emoji && <EmojiByName name={props.emoji} />} {props.user.userName ? ("@" + props.user.userName) : props.user.name}
-        </span>
+          <div className='link__short-name'>
+            {props.user.userName ? ("@" + props.user.userName) : props.user.name}
+          </div>{props.emoji &&
+            <EmojiByName name={props.emoji} />}
+        </div>
       </div>
     )
   if (props.prop)
@@ -54,7 +59,7 @@ export default props => {
         // })`}}
         style={{color: `var(--weight-color-${props.user.connections})`}}
       >
-        {props.emoji &&
+        {typeof props.emoji === 'string' &&
           <div className="username-link__type">
             <EmojiByName name={props.emoji} />
           </div>
@@ -86,10 +91,18 @@ export default props => {
       key={props.user.name}
       style={{color: `var(--weight-color-${props.user.connections})`}}
     >
-      {props.emoji &&
-        <div className="username-link__type">
-          <EmojiByName name={props.emoji} />
-        </div>
+      {typeof props.emoji === 'string' &&
+        props.emojiLink ?
+          <Link
+            className="username-link__type"
+            to={props.emojiLink}
+          >
+            <EmojiByName name={props.emoji} />
+          </Link>
+          :
+          <div className="username-link__type">
+            <EmojiByName name={props.emoji} />
+          </div>
       } 
       <div className="username-link__number">
         {props.user.connections}

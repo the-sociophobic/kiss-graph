@@ -423,6 +423,10 @@ const emojis = [
     symbol: "🤖",
     name: "robot",
   },
+  {
+    symbol: "😘",
+    name: "empathy",
+  },
 ]
 
 export default emojis

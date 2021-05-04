@@ -24,7 +24,11 @@ const emojisArray = emojis
 export default emojisArray
 
 
-const EmojiByName = props => emojisArray[props.name]()
+const EmojiByName = props =>
+  emojisArray.hasOwnProperty(props.name) ?
+    emojisArray[props.name]()
+    :
+    ''
 // {
 //   if (typeof emojisArray[props.name] === "undefined")
 //     console.log(props.name)

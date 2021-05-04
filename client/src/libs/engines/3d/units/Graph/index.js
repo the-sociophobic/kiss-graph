@@ -1,4 +1,5 @@
 import classes from 'multiple-extend'
+import SpriteText from 'three-spritetext'
 
 import UserSprite from 'libs/engines/3d/units/UserSprite'
 
@@ -29,37 +30,46 @@ export default class Graph extends classes(Unit, listenersClass) {
     const { THREE, scene } = this.props
     const { nodes } = this.props.store.get()
     var themeGroup = new THREE.Group()
-    var fontColor = color === "light" ? 0x000000 : 0xfffffff
+    var fontColor = color === "light" ? 'black' : 'white'
 
-    // nodes.forEach(node =>
-    //   themeGroup.add(this.createNodeSprite(node, fontColor, this.props)))
-    // // themeGroup.renderOrder = 1
-    // scene.add(themeGroup)
-    // this.theme[color] = themeGroup
+    nodes.forEach(node =>
+      themeGroup.add(this.createNodeSprite(node, fontColor, this.props)))
+    // themeGroup.renderOrder = 1
+    scene.add(themeGroup)
+    this.theme[color] = themeGroup
     // addThemeEventListener(this.updateTheme)
   }
 
   createNodeSprite = (node, color, props) => {
     let sprite
     // if (!node.avatar) {
-      sprite = new UserSprite({
-        material: {
+      // sprite = new UserSprite({
+      //   material: {
+      //     color: color,
+      //     fog: false,
+      //   },
+      //   redrawInterval: false,
+      //   textSize: .25,
+      //   // minFontSize: 32,
+      //   minFontSize: 16,
+      //   // maxFontSize: 64,
+      //   maxFontSize: 16,
+      //   texture: {
+      //     // fontFamily: 'Arial, Helvetica, sans-serif',
+      //     // fontFamily: `'SPb', -apple-system, system-ui, Roboto, "Open Sans", "Helvetica Neue", sans-serif`,
+      //     fontFamily: `'Arc', -apple-system, system-ui, Roboto, "Open Sans", "Helvetica Neue", sans-serif`,
+      //     text: (node.name || "").replace(' ', '\n'), //REDO THIS SHIT TEST some nodes has no name?!
+      //   },  
+      // })
+      sprite = new SpriteText(
+        (node.name || "").replace(' ', '\n'), //REDO THIS SHIT TEST some nodes has no name?!
+        .25,
+        color,
+        {
           color: color,
-          fog: false,
-        },
-        redrawInterval: false,
-        textSize: .25,
-        // minFontSize: 32,
-        minFontSize: 16,
-        // maxFontSize: 64,
-        maxFontSize: 16,
-        texture: {
-          // fontFamily: 'Arial, Helvetica, sans-serif',
-          // fontFamily: `'SPb', -apple-system, system-ui, Roboto, "Open Sans", "Helvetica Neue", sans-serif`,
-          fontFamily: `'Arc', -apple-system, system-ui, Roboto, "Open Sans", "Helvetica Neue", sans-serif`,
-          text: (node.name || "").replace(' ', '\n'), //REDO THIS SHIT TEST some nodes has no name?!
-        },  
-      })
+          fontFace: `'Arc', -apple-system, system-ui, Roboto, "Open Sans", "Helvetica Neue", sans-serif`
+        }
+      )
 
       // sprite.position.set(node.pos.x, node.pos.y, node.pos.z + .5)
       sprite.position.set(node.pos.x, node.pos.y, node.pos.z)

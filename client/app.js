@@ -31,15 +31,24 @@ app.use(express.static(path.join(__dirname, 'build')))
 // app.use('/boom-fest', express.static('libs/boom-fest'))
 
 
-app.get('/data/nodes', (req, res) =>
+app.get('/data/nodes', async (req, res) => {
+  const filePath = path.join(__dirname, 'src/libs/engines/data/hardcoded/DB', 'testt.json')
+
   // res.sendFile("http://cdn.tochkadostupa.spb.ru/the_sociophobic/kiss-graph.com/data/testt.json"))
-  res.sendFile(path.join(__dirname, 'src/libs/engines/data/hardcoded/DB', 'testt.json')))
-app.get('/data/position', (req, res) =>
+  res.send(JSON.parse(fs.readFileSync(filePath, 'utf8')))
+})
+app.get('/data/position', async (req, res) => {
+  const filePath = path.join(__dirname, 'src/libs/engines/data/hardcoded/DB', 'position.json')
+
   // res.sendFile("http://cdn.tochkadostupa.spb.ru/the_sociophobic/kiss-graph.com/data/position.json"))
-  res.sendFile(path.join(__dirname, 'src/libs/engines/data/hardcoded/DB', 'position.json')))
-app.get('/data/uv', (req, res) =>
+  res.send(JSON.parse(fs.readFileSync(filePath, 'utf8')))
+})
+app.get('/data/uv', async (req, res) => {
+  const filePath = path.join(__dirname, 'src/libs/engines/data/hardcoded/DB', 'uv.json')
+
   // res.sendFile("http://cdn.tochkadostupa.spb.ru/the_sociophobic/kiss-graph.com/data/uv.json"))
-  res.sendFile(path.join(__dirname, 'src/libs/engines/data/hardcoded/DB', 'uv.json')))
+  res.send(JSON.parse(fs.readFileSync(filePath, 'utf8')))
+})
 
 app.get('/*', (req, res) =>
   res.sendFile(path.join(__dirname, 'build', 'index.html')))

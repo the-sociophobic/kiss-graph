@@ -16,6 +16,7 @@ export default {
   pos: {type: "point3d"},
   iq: {type: "number", canBeString: true},
   iq2: {type: "number", canBeString: true},
+  eq: {type: "number"},
   mentalDisorder: {type: "string"},
   gender: {type: "select", options: [
     "m",

@@ -8,6 +8,7 @@ import Kontrol from 'pages/Kontrol'
 import { registerListeners, unregisterListeners } from 'libs/utils/preventMobileScrolling'
 
 import User from 'components/interface/User'
+import Edge from 'components/interface/Edge'
 import MobileExpander from 'components/interface/MobileExpander'
 import Menu from 'components/interface/Menu'
 // import Feed from 'components/interface/Feed'
@@ -121,6 +122,8 @@ class TextInterface extends Component {
     }
     else if (node && this.props.location.pathname.includes("/node/"))
       content = nodeElem
+    else if (this.props.location.pathname.includes("/edge/"))
+      content = <Edge setNode={this.setNode.bind(this)} />
     else if (this.props.location.pathname === "/kontrol")
       content = <Kontrol />
     else

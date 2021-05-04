@@ -113,6 +113,21 @@ class Stats extends Component {
     />
   )
 
+  renderEQ = () => (
+    <List
+      items={this.context.store.get().nodes
+        .filter(node => node.eq)
+        .sort((a, b) => b.eq - a.eq)
+        .map(node => [
+          <UserNameLink
+            prop="eq"
+            user={node}
+            setNode={this.props.setNode}
+          />
+        ])
+      }
+    />
+  )
   renderMass = () => (
     <List
       items={this.context.store.get().nodes
@@ -317,6 +332,11 @@ class Stats extends Component {
           label: () => <><Emoji.IQ /> IQ</>,
           content: () => this.renderIQ(),
           title: "Kiss Graph: Stats / IQ",
+        },
+        eq: {
+          label: () => <><Emoji.empathy /> EQ</>,
+          content: () => this.renderEQ(),
+          title: "Kiss Graph: Stats / EQ",
         },
         mass: {
           label: () => <><Emoji.justice /> mass</>,

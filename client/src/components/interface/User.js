@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+
+import { withRouter, Link } from 'react-router-dom'
 
 import StoreContext from 'libs/engines/data/store/StoreContext'
 import UserNameLink from 'components/interface/UserNameLink'
@@ -85,7 +86,7 @@ class User extends Component {
           setTimeout(() => this.setState({copied: false}), 10000)
         },
         render: () => <>
-          <Emoji.copy /> {this.state.copied ? "Copied to clipboard" : "Copy"}
+          <Emoji.copy /> {this.state.copied ? "Copied to clipboard" : "Share"}
         </>
       },
       {
@@ -123,6 +124,11 @@ class User extends Component {
             </>
           )
         }
+      },
+      {
+        name: "eq",
+        link: "eq",
+        render: () => <><Emoji.empathy /> {node.eq} EQ</>
       },
       {
         name: "weight",
@@ -266,7 +272,7 @@ class User extends Component {
               (this.state.orderDesc ? "desc-order" : "asc-order"))}
             onClick={() => this.setSortBy("name")}
           >
-            node
+            name
           </div>
           <div
             className={"username-link__date " + (this.state.sortBy === "date" &&
@@ -304,6 +310,7 @@ class User extends Component {
               setNode={this.props.setNode}
               date={connection.date}
               emoji={connection.typeEmoji}
+              emojiLink={`/edge/${connection.edgeId}`}
             />]
           )}
         />

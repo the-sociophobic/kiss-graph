@@ -106,14 +106,12 @@ class Layout extends Component {
 
     return <>
       <Loader>
-        <h1 className="h1">Kiss Graph v5.14</h1>
+        <h1 className="h1">Kiss Graph v5.15</h1>
         <h4 className="h4">Updates:</h4>
         <ul className="ul">
-          <li className="li">Sooooooo I'm kind of rewriting the whole codebase here...</li>
-          <li className="li">And half the old codejust doesn't work</li>
-          <li className="li">But I will not turn back</li>
-          <li className="li">Graph didn't work for a few weeks and now...</li>
-          <li className="li">Well, you'll see in a moment</li>
+          <li className="li">3d Engine optimised</li>
+          <li className="li">clickable edges</li>
+          <li className="li">EQ</li>
         </ul>
       </Loader>
       {this.state.storeConnected &&

@@ -18,6 +18,7 @@ import listenersClass from 'libs/utils/listenersClass'
 import createSortedSet from 'libs/utils/createSortedSet'
 import isProduction from 'libs/utils/isProduction'
 import { nameToPath } from 'libs/utils/stringTransforms'
+import downloadFile from 'libs/utils/downloadFile'
 
 import { calcGay } from 'libs/engines/data/hardcoded/meta/namesRecognition'
 import edgesTypes from 'libs/engines/data/hardcoded/meta/edgesTypes'
@@ -219,57 +220,13 @@ class store extends listenersClass {
     nodes: this.metaData.nodes,
     edges: this.metaData.edges,
   }))
-  //copy buffer can't handle that size
+
   copyPos = () => {
-    const parts = []
-    
-    parts[0] = this.geometry.position
-      .slice(0, 2000)
-      .map(coordinate =>
-        parseFloat(coordinate.toFixed(5)))
-
-    parts[1] = this.geometry.position
-      .slice(2000, 5000)
-      .map(coordinate =>
-        parseFloat(coordinate.toFixed(5)))
-
-    parts[2] = this.geometry.position
-      .slice(5000, 9000)
-      .map(coordinate =>
-        parseFloat(coordinate.toFixed(5)))
-
-    parts[3] = this.geometry.position
-      .slice(9000, 17000)
-      .map(coordinate =>
-        parseFloat(coordinate.toFixed(5)))
-
-    parts[4] = this.geometry.position
-      .slice(17000)
-      .map(coordinate =>
-        parseFloat(coordinate.toFixed(5)))
-
-    copyToClipboard(JSON.stringify(parts[4]))
+    downloadFile('position.json', JSON.stringify(this.geometry.position))
   }
 
   copyUV = () => {
-    const parts = []
-    
-    parts[0] = this.geometry.position
-      .slice(0, 10000)
-      .map(coordinate =>
-        parseFloat(coordinate.toFixed(5)))
-
-    parts[1] = this.geometry.position
-      .slice(10000, 20000)
-      .map(coordinate =>
-        parseFloat(coordinate.toFixed(5)))
-
-    parts[2] = this.geometry.position
-      .slice(20000)
-      .map(coordinate =>
-        parseFloat(coordinate.toFixed(5)))
-
-    copyToClipboard(JSON.stringify(parts[2]))
+    downloadFile('uv.json', JSON.stringify(this.geometry.uv))
   }
 
   getGeometry = () => {
