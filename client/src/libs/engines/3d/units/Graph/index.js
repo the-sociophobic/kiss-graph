@@ -1,10 +1,11 @@
 import classes from 'multiple-extend'
 import SpriteText from 'three-spritetext'
 
-import UserSprite from 'libs/engines/3d/units/UserSprite'
+// import UserSprite from 'libs/engines/3d/units/UserSprite'
 
 import Unit from 'libs/engines/3d/Unit'
 import listenersClass from 'libs/utils/listenersClass'
+import isTouchDevice from 'libs/utils/isTouchDevice'
 
 import HeatGraph from './HeatGraph'
 
@@ -32,11 +33,13 @@ export default class Graph extends classes(Unit, listenersClass) {
     var themeGroup = new THREE.Group()
     var fontColor = color === "light" ? 'black' : 'white'
 
-    // nodes.forEach(node =>
-    //   themeGroup.add(this.createNodeSprite(node, fontColor, this.props)))
-    // // themeGroup.renderOrder = 1
-    // scene.add(themeGroup)
-    // this.theme[color] = themeGroup
+    nodes
+      .slice(0, isTouchDevice() ? 55 : 55555)
+      .forEach(node =>
+        themeGroup.add(this.createNodeSprite(node, fontColor, this.props)))
+    // themeGroup.renderOrder = 1
+    scene.add(themeGroup)
+    this.theme[color] = themeGroup
     // addThemeEventListener(this.updateTheme)
   }
 
