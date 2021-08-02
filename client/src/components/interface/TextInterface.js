@@ -145,7 +145,7 @@ class TextInterface extends Component {
             </div>
           </div>
         </div>
-        {this.state.showFooter && footer}
+        {/* {this.state.showFooter && footer} */}
       </Fragment>
     )
 
