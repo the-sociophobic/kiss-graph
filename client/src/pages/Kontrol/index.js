@@ -18,7 +18,7 @@ import {
 
 
 const dates = ["commited", "told", "published"]
-const sameDate = 1620688920
+const sameDate = 1624277160
 
 class Kontrol extends Component {
   constructor(props) {
@@ -90,17 +90,17 @@ class Kontrol extends Component {
     //try find edge
     if (node0 !== null && node1 !== null) {
       let edge = {}
+      const typeNamesMap = {
+        KISS: "mates",
+        MARRIED: "sposes",
+        DEBATED: "debated",
+        SEX: "sex",
+        DATE: "date",
+        BREAKUP: "breakup",
+      }
+      const arrayName = typeNamesMap[this.state.type]
 
-      if (node0.mates.length > 0 && node1.mates.length > 0) {
-        const typeNamesMap = {
-          KISS: "mates",
-          MARRIED: "sposes",
-          DEBATED: "debated",
-          SEX: "sex",
-          DATE: "date",
-          BREAKUP: "breakup",
-        }
-        const arrayName = typeNamesMap[this.state.type]
+      if (node0[arrayName].length > 0 && node1[arrayName].length > 0) {
         const mateIndex = node0[arrayName].map(mate => mate.id).indexOf(node1.id)
       
         if (mateIndex !== -1) {

@@ -19,7 +19,7 @@ const maleNameList = [
   ["Lesha", "Lyosha", "Alexey", "Alexei", "Aleksey", "Aleksei", "Alyesha"],
   ["Filip", "Filipp", "Fil", "Fill"],
   ["Dmitriy", "Dmitry", "Dima"],
-  ["Danya", "Daniil", "Danyil", "Danik", "Daniel"],
+  ["Danya", "Daniil", "Danyil", "Danik", "Daniel", 'Dan'],
   ["Danil", "Danila"],
   "Ruslan",
   ["Nikita", "Nikitos", "Nick"],
@@ -138,6 +138,7 @@ const maleNameList = [
   "Zerasim",
   'Ramil',
   'Kosta',
+  'Kesha',
 ]
 const femaleNameList = [
   ["Anastasia", "Anastasiya", "Nastya"],
@@ -150,7 +151,7 @@ const femaleNameList = [
   ["Polina", "Polya"],
   ["Masha", "Maria", "Mariya", "Mary", "Mari", "Marusya", "Maryana", "Mariana"],
   "Maya",
-  ["Kira", "‎Keira"],
+  ["Kira", "Keira"],
   ["Lena", "Elena"],
   ["Alyona", "Alena"],
   "Elvira",
@@ -261,6 +262,7 @@ const femaleNameList = [
   "Evdokia",
   "Vladlena",
   ["Uliana", "Ulyana"],
+  'Ioanna'
 ]
 
 const changeFromNameList = async (store, inputNameList, gender) => {
