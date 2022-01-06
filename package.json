@@ -7,7 +7,8 @@
     "start": "concurrently \"yarn run server \" \"yarn run client\"",
     "server": "cd rust",
     "client": "cd client && PORT=3005 yarn start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "(cd client && yarn)"
   },
   "repository": {
     "type": "git",
