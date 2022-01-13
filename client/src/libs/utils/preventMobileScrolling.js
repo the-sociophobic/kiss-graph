@@ -8,10 +8,10 @@ const registerListeners = element => {
 }
 
 const unregisterListeners = element => {
-  element.removeEventListener( 'wheel', preventDefault, { passive: false } )
+  element?.removeEventListener?.( 'wheel', preventDefault, { passive: false } )
   // element.removeEventListener( 'touchstart', preventDefault, { passive: false } )
   // element.removeEventListener( 'touchend', preventDefault, { passive: false } )
-  element.removeEventListener( 'touchmove', preventDefault, { passive: false } )
+  element?.removeEventListener?.( 'touchmove', preventDefault, { passive: false } )
 }
 
 export { registerListeners, unregisterListeners }

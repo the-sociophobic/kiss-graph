@@ -35,7 +35,7 @@ const maleNameList = [
   ["Grisha", "Grigory", "Grigoriy", "Grigorii", "Grigori", "Zhora"],
   "Grigor",
   ["Seryozha", "Serezha", "Sergey", "Sergy", "Sergay", "Sirgey", "Sirgay", "Sirgy"],
-  ["Volodya", "Vladimir", "Vlad", "Vova", "Vovan", "Vladislav", "Vladyslav"],
+  ["Volodya", "Vladimir", "Vlad", "Vova", "Vovan", "Vladislav", "Vladyslav", 'Vladosik'],
   ["Ilia", "Ilya", "Iliya", "Ilias", "Iliyas", "Ilyas"],
   ["Tima", "Timofey", "Timofei"],
   "Timur",
@@ -140,7 +140,7 @@ const maleNameList = [
   'Kosta',
   'Kesha',
   'Luigi',
-  'Yuliy'
+  'Yuliy',
   ['Lui', 'Louis']
 ]
 const femaleNameList = [
@@ -284,18 +284,27 @@ const changeFromNameList = async (store, inputNameList, gender) => {
 
   var changedNamesNumber = 0
 
-  for (const index in nameList) {
+  for (const indexStr in nameList) {
+    const index = parseInt(indexStr)
     const nameOrFn = nameList[index]
     let res
 
-    if (typeof nameOrFn === "string") {
-      res = store.search({name: nameOrFn})
+    switch (typeof nameOrFn) {
+      case 'string':
+        res = store.search({name: nameOrFn})
         .filter(person => 
-          person.name.split(" ")[0].toLowerCase() === nameOrFn.toLowerCase()
-        )
-    } else
-      res = store.get().nodes
-        .filter(node => nameOrFn(node.name.split(" ")[0].toLowerCase()))
+          person.name.split(" ")[0].toLowerCase() === nameOrFn.toLowerCase())
+        break
+      case 'function':
+        res = store.get().nodes
+          .filter(node => nameOrFn(node.name.split(" ")[0].toLowerCase()))
+        break
+      default:
+        console.log(`nameOrFn unexpected type`)
+        console.log(nameOrFn)
+        console.log(nameList.slice(-3))
+        break
+    }      
   
     for (const index2 in res) {
       const person = res[index2]
