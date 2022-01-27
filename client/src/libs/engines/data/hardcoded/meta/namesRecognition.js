@@ -6,7 +6,7 @@ import _ from 'lodash'
 const maleNameList = [
   ["Maxim", "Max"],
   ["Vasya", "Vasily", "Vasiliy"],
-  "Valera",
+  ["Valera", 'Valery'],
   ["Evgeny", "Evgeniy"],  //2 gender name
   "Igor",
   ["Alexander", "Alexandr", "Aleksander", "Aleksandr", "Alek", "Alik", "Sanya", "Sanyok", "Sanek"],  //2 gender name
