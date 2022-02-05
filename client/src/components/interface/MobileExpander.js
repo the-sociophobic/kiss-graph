@@ -32,10 +32,12 @@ export default class MobileExpander extends Component {
     window.addEventListener('orientationchange', this.updateMaxHeight.bind(this))
     this.updateMaxHeight()
     
-    const { prevLocation, node } = this.props
+    const { prevLocation, node, edge } = this.props
 
     if (prevLocation === "/news" ||
-      (typeof prevLocation === "undefined" && typeof node !== "undefined"))
+      (typeof prevLocation === "undefined" && typeof node !== "undefined") ||
+      (typeof prevLocation === "undefined" && typeof edge !== "undefined")
+    )
       setTimeout(() =>  this.open(), 50)
   }
   componentWillUnmount() {

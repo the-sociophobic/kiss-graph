@@ -74,7 +74,8 @@ class TextInterface extends Component {
   })
 
   render = () => {
-    const { node } = this.props
+    const { node, edge } = this.props
+    // console.log(edge)
     const isAboutPage = this.props.location.pathname === "/about"
 
     const footer = (
@@ -145,7 +146,7 @@ class TextInterface extends Component {
             </div>
           </div>
         </div>
-        {/* {this.state.showFooter && footer} */}
+        {this.state.showFooter && footer}
       </Fragment>
     )
 
@@ -175,6 +176,7 @@ class TextInterface extends Component {
           {this.state.deviceWidth <= 1024 ?
             <MobileExpander
               node={node}
+              edge={edge}
               history={this.props.history}
               prevLocation={this.props.prevLocation}
             >

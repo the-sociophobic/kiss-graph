@@ -23,6 +23,7 @@ class Layout extends Component {
     super(props)
     this.state = {
       nodeToShow: undefined,
+      edgeToShow: undefined,
       storeConnected: false, //mounts TextInterface only after initial node os determined via URLs
       spritesCreated: false,
     }
@@ -42,6 +43,16 @@ class Layout extends Component {
             let node = this.context.store.get({link: nodeLink})
             if (node !== null)
               this.setNode(node.id, false, false)
+          }
+        }
+
+        if (this.props.location.pathname.includes("/edge/")) {
+          const edgeLink = this.props.location.pathname.slice("/edge/".length)
+
+          if (edgeLink) {
+            let edge = this.context.store.get({ edgeId: edgeLink, bla: 'a' })
+            if (edge !== null)
+              this.setState({ edgeToShow: edge })
           }
         }
 
@@ -98,6 +109,7 @@ class Layout extends Component {
     const props = {
       data: this.context,
       node: this.state.nodeToShow,
+      edge: this.state.edgeToShow,
       setNode: this.setNode.bind(this),
       nodeToShow: this.state.nodeToShow,
       history: this.props.history,

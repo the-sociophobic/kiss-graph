@@ -115,13 +115,16 @@ class store extends listenersClass {
     // const possibleSearchKeys = ["id", "name", "userName", "link", "edgeId"]
     let { metaData } = this
 
-    let result    
+    let result
     if (typeof props.edgeId !== "undefined") {
       const index = metaData.edges
         .map(edge => edge.id)
-        .indexOf(props.edgeId)
-      if (index !== -1)
+        .indexOf(parseInt(props.edgeId))
+
+      if (index !== -1) {
         result = metaData.edges[index]
+        return result
+      }
     }
     
     Object.keys(props).forEach(key => {

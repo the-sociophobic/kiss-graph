@@ -32,7 +32,7 @@ class About extends Component {
       {
         title: "Зачем всё это?",
         text: <p className="p">Этот сайт о Любви! Самые волнительные моменты людей со всего Мира запечатлены на интерактивном психоделическом полотне.<br />
-        Со временем тут появится больше возможностей для визуализации мыслей чувств и событий. Вы можете следить за разработкой в <ExternalLink newWindow to="https://t.me/Nihilist_R4VE">моём Telegram-канале</ExternalLink>. Если вам нравится сайт, присылайте <ExternalLink newWindow to="/donations">донаты</ExternalLink> и <ExternalLink newWindow to="/btc">биткоины</ExternalLink>. Если у вас есть пожелания, предложения, комментарии, воспользуйтесь <ExternalLink newWindow to="https://forms.gle/i8NxcaSA94SvJXhr9">формой обратной связи</ExternalLink>.</p>,
+        Со временем тут появится больше возможностей для визуализации мыслей чувств и событий. Вы оставить отзыв о проекте мне в <ExternalLink newWindow to="https://t.me/the_sociophobic">лс</ExternalLink>. Если вам нравится сайт, присылайте <ExternalLink newWindow to="/donations">донаты</ExternalLink> и <ExternalLink newWindow to="/btc">биткоины</ExternalLink>. Если у вас есть пожелания, предложения, комментарии, воспользуйтесь <ExternalLink newWindow to="https://forms.gle/i8NxcaSA94SvJXhr9">формой обратной связи</ExternalLink>.</p>,
       },
       {
         title: "Как возник сайт?",

@@ -67,7 +67,7 @@ class Edge extends Component {
           .map(dateType =>
             edge.hasOwnProperty(dateType) &&
               <div>
-                {dateType}: {format(new Date(edge[dateType] * 1000), 'mm:HH dd.MM.yyyy')}
+                {dateType}: {format(new Date(edge[dateType] * 1000), 'HH:mm dd.MM.yyyy')}
               </div>
         )}
 
