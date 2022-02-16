@@ -440,7 +440,7 @@ $arrow-size: 7px
       content: ""
       border-radius: $mobile-expander-button-height * 2
       background-color: $dark-gray
-      height: $mobile-expander-button-width / 2 + $mobile-expander-button-height / 1.1
+      height: calc(#{$mobile-expander-button-width} / 2 + #{$mobile-expander-button-height} / 1.1)
       width: $mobile-expander-button-height
       transition: transform .08s
     &::before
@@ -451,14 +451,14 @@ $arrow-size: 7px
       transform-origin: center left
     &--opened
       &::before
-        transform: rotate(-15deg) translate(-$mobile-expander-button-height / 2, 0)
+        transform: rotate(-15deg) translate(calc(-#{$mobile-expander-button-height} / 2), 0)
       &::after
-        transform: rotate(15deg) translate(-$mobile-expander-button-height / 2, 0)
+        transform: rotate(15deg) translate(calc(-#{$mobile-expander-button-height} / 2), 0)
     &--closed
       &::before
-        transform: rotate(15deg) translate($mobile-expander-button-height / 2, 0)
+        transform: rotate(15deg) translate(calc(#{$mobile-expander-button-height} / 2), 0)
       &::after
-        transform: rotate(-15deg) translate($mobile-expander-button-height / 2, 0)
+        transform: rotate(-15deg) translate(calc(#{$mobile-expander-button-height} / 2), 0)
 
 
 .username-link
@@ -748,9 +748,9 @@ $my-select-inner-circle-size: 8px
       position: absolute
       bottom: calc((#{$mobile-expander-area-height} - #{$mobile-expander-button-height}) / 2)
       content: ""
-      border-radius: $mobile-expander-button-height * 2
+      border-radius: calc(#{$mobile-expander-button-height} * 2)
       background-color: $dark-gray
-      width: $mobile-expander-button-width / 2 + $mobile-expander-button-height / 1.1
+      width: calc(#{$mobile-expander-button-width} / 2 + #{$mobile-expander-button-height} / 1.1)
       height: $mobile-expander-button-height
       transition: transform .08s
     &::before
@@ -762,15 +762,15 @@ $my-select-inner-circle-size: 8px
     
     &.opened
       &::before
-        transform: rotate(-15deg) translate(0, -$mobile-expander-button-height / 2)
+        transform: rotate(-15deg) translate(0, calc(-#{$mobile-expander-button-height} / 2))
       &::after
-        transform: rotate(15deg) translate(0, -$mobile-expander-button-height / 2)
+        transform: rotate(15deg) translate(0, calc(-#{$mobile-expander-button-height} / 2))
       
     &.closed
       &::before
-        transform: rotate(15deg) translate(0, $mobile-expander-button-height / 2)
+        transform: rotate(15deg) translate(0, calc(#{$mobile-expander-button-height} / 2))
       &::after
-        transform: rotate(-15deg) translate(0, $mobile-expander-button-height / 2)
+        transform: rotate(-15deg) translate(0, calc(#{$mobile-expander-button-height} / 2))
 
     &.moving
       &::before
