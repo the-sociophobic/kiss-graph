@@ -5,9 +5,7 @@
   "dependencies": { },
   "scripts": {
     "start": "npx tsc; node dist/index.js",
-    "dev": "nodemon index.ts",
-    "lint": "eslint ./",
-    "test": "mocha ./test"
+    "dev": "nodemon index.ts"
   },
   "devDependencies": {
     "node-fetch": "2.6.1",

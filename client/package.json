@@ -8,7 +8,6 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
-    "cors": "^2.8.5",
     "date-fns": "^2.21.1",
     "lodash": "^4.17.15",
     "multiple-extend": "^0.1.2",
@@ -47,8 +46,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "fs": "^0.0.1-security"
   }
 }
