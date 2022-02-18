@@ -7,6 +7,7 @@ import StoreContext from 'libs/engines/data/store/StoreContext'
 
 import TextInterface from 'components/interface/TextInterface'
 import Loader from 'components/Loader'
+import Login from 'components/Login'
 
 import iOS from 'libs/utils/iOS'
 
@@ -117,7 +118,7 @@ class Layout extends Component {
     }
 
     return <>
-      <Loader>
+      {/* <Loader>
         <h1 className="h1">Kiss Graph v5.15</h1>
         <h4 className="h4">Updates:</h4>
         <ul className="ul">
@@ -125,25 +126,26 @@ class Layout extends Component {
           <li className="li">clickable edges</li>
           <li className="li">EQ</li>
         </ul>
-      </Loader>
+      </Loader> */}
+      <Login />
       {this.state.storeConnected &&
-      <div className="page-container">
-        <TextInterface
-          ref={this.context.textInterfaceRef}
-          {...props}
-        />
-        <div className="viewer-container" >
-          <ThreeScene
-            ref={this.context.threeSceneRef}
-            myScene={myScene}
+        <div className="page-container">
+          <TextInterface
+            ref={this.context.textInterfaceRef}
             {...props}
           />
-          <HeatMap node={this.state.nodeToShow} />
-          <ControlsHelp />
-          <PoweredByNGINX />
+          <div className="viewer-container" >
+            <ThreeScene
+              ref={this.context.threeSceneRef}
+              myScene={myScene}
+              {...props}
+            />
+            <HeatMap node={this.state.nodeToShow} />
+            <ControlsHelp />
+            <PoweredByNGINX />
+          </div>
         </div>
-      </div>
-    }
+      }
     </>
   }
 }
