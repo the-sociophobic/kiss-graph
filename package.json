@@ -4,9 +4,9 @@
   "description": "",
   "scripts": {
     "client": "cd client && PORT=3005 yarn start",
-    "node": "cd node && yarn dev",
+    "server": "cd server && yarn dev",
     "bot": "cd bot && yarn dev",
-    "node:prod": "cd node && yarn start",
+    "server:prod": "cd server && yarn start",
     "bot:prod": "cd bot && yarn start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "(cd client && yarn); (cd node && yarn); (cd bot && yarn)"

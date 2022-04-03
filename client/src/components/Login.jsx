@@ -12,25 +12,21 @@ const Login = (props) => {
   return (
     <div className='Login'>
       <div className='container d-flex flex-grow-1 flex-column justify-content-center'>
-
-        <div className='row mb-3'>
-          <div className='mx-auto col-8 col-md-4 col-lg-4'>
-            <img
-              src={Icon}
-              className='w-100 h-auto'
-            />
-          </div>
-        </div>
-
-        <div className='row mb-3'>
+        <div className='row'>
           <div className='col d-flex flex-column align-items-center'>
             <h1 className='h1 text-center d-inline-block'>
+              <div className='Login__logo mb-3'>
+                <img
+                  src={Icon}
+                  className='Login__logo__item abs-container'
+                />
+              </div>
               Kiss Graph 6.0.0
               <div className='w-100 mt-4'>
-                {!context.sessionToken &&
+                {context.sessionToken &&
                   <ExternalLink
                     newTab
-                    to={`https://t.me/kiss_graph_bot?start=${''}`}
+                    to={`https://t.me/kiss_graph_bot?start=${context.sessionToken}`}
                     className='Login__authorize'
                   >
                     <div className='inline-block mr-2'>
@@ -46,12 +42,6 @@ const Login = (props) => {
             </h1>
           </div>
         </div>
-
-        {/* <div className='row'>
-          <div className='mx-auto col-8 col-md-4 col-lg-4'>
-          </div>
-        </div> */}
-
       </div>
     </div>
   )

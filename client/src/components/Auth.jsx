@@ -1,9 +1,9 @@
 import React from 'react'
 import Cookies from 'universal-cookie'
 import { deviceDetect } from 'react-device-detect'
-import axios from 'axios'
 import _ from 'lodash'
 
+import { post } from '../libs/utils/API'
 
 class Auth extends React.Component {
   state = {
@@ -14,11 +14,16 @@ class Auth extends React.Component {
   cookies = new Cookies()
   checkInterval = null
 
+  // componentDidMount = () =>
+  //   this.checkUser()
+
   checkUser = async () => {
-    const res = await axios.post('https://kiss-graph.com/login', {
+    const res = await post('/login', {
       sessionToken: this.cookies.get('sessionToken'),
       deviceInfo: JSON.stringify(deviceDetect())
     })
+
+    console.log(res)
   
     if (res.newSessionToken)
       this.cookies.set('sessionToken', res.newSessionToken, { path: '/' })
@@ -33,7 +38,7 @@ class Auth extends React.Component {
     if (_.isEmpty(this.state.user))
       return
       
-    const res = await axios.post('/logout', {
+    const res = await post('/logout', {
       sessionToken: this.cookies.get('sessionToken'),
       deviceInfo: JSON.stringify(deviceDetect())
     })

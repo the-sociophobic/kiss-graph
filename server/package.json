@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "npx tsc; node dist/node/app.js",
-    "dev": "nodemon index.ts"
+    "dev": "nodemon app.ts"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",

@@ -1,4 +1,5 @@
 import TelegramBot from 'node-telegram-bot-api'
+import mongoose from 'mongoose'
 
 import Person, { PersonResType } from '../models/Person'
 import Session, { SessionResType } from '../models/Session'
@@ -9,10 +10,11 @@ import printUsername from '../utils/printUsername'
 
 const start = (bot: TelegramBot) => {
   // INITIALIZE BOT IN PRIVATE CHAT
-  bot.onText(/(.*?)/, async (msg: TelegramBot.Message, match: RegExpExecArray | null) => {
+  bot.onText(/\/start (.+)/, async (msg: TelegramBot.Message, match: RegExpExecArray | null) => {
     const sessionToken = match[1]
 
-    if (sessionToken.includes('undefined'))
+    console.log(sessionToken)
+    if (!mongoose.Types.ObjectId.isValid(sessionToken))
       return
 
     let siteSession: SessionResType = await Session.findById({ id: sessionToken })

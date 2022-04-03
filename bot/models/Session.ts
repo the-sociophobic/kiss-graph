@@ -3,8 +3,8 @@ import mongoose, { Model, Document, Schema } from 'mongoose'
 
 
 export interface SessionType {
-  person: mongoose.Schema.Types.ObjectId
-  deviceInfo?: string
+  person?: mongoose.Schema.Types.ObjectId
+  deviceInfo: string
 }
 
 export interface SessionDocumentType extends SessionType, Document {

@@ -5,11 +5,21 @@ import fs from 'fs'
 
 import Session, { SessionResType } from '../bot/models/Session'
 import Person, { PersonResType } from '../bot/models/Person'
+import parseDeviceInfo from './utils/parseDeviceInfo'
 
 
 const app = express()
 
-app.use(cors())
+app.use(cors({
+  credentials: true,
+  origin: [
+    'http://localhost:3005',
+    'http://localhost:3006',
+    'https://kiss-graph.com',
+  ]
+}))
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
 app.use(express.static(path.join(__dirname, '../../../client/build')))
 
@@ -58,13 +68,13 @@ app.get('/data/uv', async (req, res) => {
 const generateNewSessionToken = async (deviceInfo: string) => {
   const newSessionToken: SessionResType = new Session
 
-  newSessionToken.deviceInfo = deviceInfo
+  newSessionToken.deviceInfo = parseDeviceInfo(deviceInfo)
   await newSessionToken.save()
 
   return newSessionToken.id
 }
 
-app.post('/check-user', async (req, res) => {
+app.post('/login', async (req, res) => {
   const { sessionToken, deviceInfo } = req.body
 
   if (!sessionToken)
@@ -127,4 +137,4 @@ app.post('/logout', async (req, res) => {
 app.get('/*', (req, res) =>
   res.sendFile(path.join(__dirname, '../../../client/build', 'index.html')))
 
-app.listen(3005)
+app.listen(3005, () => console.log(`App running at 3005`))

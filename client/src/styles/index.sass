@@ -1341,25 +1341,43 @@ a.edge-link
   background-color: $light
   color: $dark
   @extend .d-flex
+  &__logo
+    margin-left: auto
+    margin-right: auto
+    @extend .d-block
+    width: 100%
+    padding-top: 100%
+    @media (orientation: landscape) and (max-height: 450px)
+      width: 17vw
+      padding-top: 17vw
+    @media (orientation: portrait) and (max-width: 350px)
+      width: 70vw
+      padding-top: 70vw
+    position: relative
+    &__img
+      @extend .d-block
+      @extend .abs-container
   &__authorize
     @extend .input
     @extend .d-flex
     @extend .flex-row
     @extend .align-items-center
     @extend .justify-content-center
+    font-size: 1.35rem
     width: 100%
     &:hover
       text-decoration: none
     *
       @extend .text-center
-      line-height: 32px
+      line-height: 1.8
       color: $dark
       text-decoration: none
       &:hover
         text-decoration: none
         color: $dark
     &__logo
-      height: 20px
+      height: 1.45rem
       width: auto
       @extend .d-block
+      transform: translateY(5%)
       

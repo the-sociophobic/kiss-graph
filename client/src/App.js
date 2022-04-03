@@ -19,7 +19,10 @@ class App extends Auth {
       setState: this.setState,
     })
   }
-  
+
+  // componentDidMount = () =>
+  //   super()
+
   render() {
     return (
       <Router>
