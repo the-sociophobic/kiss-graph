@@ -1,16 +1,25 @@
-import _ from 'lodash'
-
+import _ from "lodash";
 
 // REDO THIS SHIT: DELETE ALL NAMES Unknown 2 etc
 
 const maleNameList = [
   ["Maxim", "Max"],
   ["Vasya", "Vasily", "Vasiliy"],
-  ["Valera", 'Valery'],
-  ["Evgeny", "Evgeniy"],  //2 gender name
+  ["Valera", "Valery"],
+  ["Evgeny", "Evgeniy"], //2 gender name
   "Igor",
-  ["Alexander", "Alexandr", "Aleksander", "Aleksandr", "Alek", "Alik", "Sanya", "Sanyok", "Sanek"],  //2 gender name
-  ["Roma", "Roman"],
+  [
+    "Alexander",
+    "Alexandr",
+    "Aleksander",
+    "Aleksandr",
+    "Alek",
+    "Alik",
+    "Sanya",
+    "Sanyok",
+    "Sanek",
+  ], //2 gender name
+  ["Roma", "Roman", "Romka"],
   ["Mikhail", "Mihail", "Misha", "Michael"],
   ["Vitya", "Viktor"],
   "German",
@@ -19,7 +28,7 @@ const maleNameList = [
   ["Lesha", "Lyosha", "Alexey", "Alexei", "Aleksey", "Aleksei", "Alyesha"],
   ["Filip", "Filipp", "Fil", "Fill"],
   ["Dmitriy", "Dmitry", "Dima"],
-  ["Danya", "Daniil", "Danyil", "Danik", "Daniel", 'Dan'],
+  ["Danya", "Daniil", "Danyil", "Danik", "Daniel", "Dan"],
   ["Danil", "Danila"],
   "Ruslan",
   ["Nikita", "Nikitos", "Nick"],
@@ -34,12 +43,41 @@ const maleNameList = [
   ["Gosha", "Georgy", "Georgiy", "Georgii", "Zhorzh"],
   ["Grisha", "Grigory", "Grigoriy", "Grigorii", "Grigori", "Zhora"],
   "Grigor",
-  ["Seryozha", "Serezha", "Sergey", "Sergy", "Sergay", "Sirgey", "Sirgay", "Sirgy"],
-  ["Volodya", "Vladimir", "Vlad", "Vova", "Vovan", "Vladislav", "Vladyslav", 'Vladosik'],
+  [
+    "Seryozha",
+    "Serezha",
+    "Sergey",
+    "Sergy",
+    "Sergay",
+    "Sirgey",
+    "Sirgay",
+    "Sirgy",
+  ],
+  [
+    "Volodya",
+    "Vladimir",
+    "Vlad",
+    "Vova",
+    "Vovan",
+    "Vladislav",
+    "Vladyslav",
+    "Vladosik",
+  ],
   ["Ilia", "Ilya", "Iliya", "Ilias", "Iliyas", "Ilyas"],
   ["Tima", "Timofey", "Timofei"],
   "Timur",
-  ["Petya", "Petia", "Petiya", "Pyotr", "Pyotor", "Petr", "Peter", "Petyr", "Petir", "Piter"],
+  [
+    "Petya",
+    "Petia",
+    "Petiya",
+    "Pyotr",
+    "Pyotor",
+    "Petr",
+    "Peter",
+    "Petyr",
+    "Petir",
+    "Piter",
+  ],
   "Rolan",
   ["Mark", "Marko"],
   ["Andrey", "Andrei", "Andew"],
@@ -115,7 +153,7 @@ const maleNameList = [
   "Yasha",
   "Ilshat",
   "Svyatoslav",
-  str => str.endsWith("slav"),
+  (str) => str.endsWith("slav"),
   ["Dyonisy", "Dyonisiy", "Dionisy", "Dionisiy"],
   "Papa",
   "Makar",
@@ -136,19 +174,21 @@ const maleNameList = [
   "Mario",
   "Karl",
   "Zerasim",
-  'Ramil',
-  'Kosta',
-  'Kesha',
-  'Luigi',
-  'Yuliy',
-  ['Lui', 'Louis']
-]
+  "Ramil",
+  "Kosta",
+  "Kesha",
+  "Luigi",
+  "Yuliy",
+  ["Lui", "Louis"],
+  "Tair",
+  "Archet",
+];
 const femaleNameList = [
   ["Anastasia", "Anastasiya", "Nastya"],
   ["Olga", "Olya"],
   ["Kristina", "Kris"],
-  ["Anna", "Anya", "Anisya", "Anysya", "Anisia", "Anysia", 'Ani'],
-  ["Alexandra", "Aleksandra"],  //2 gender name
+  ["Anna", "Anya", "Anisya", "Anysya", "Anisia", "Anysia", "Ani"],
+  ["Alexandra", "Aleksandra"], //2 gender name
   "Sveta",
   ["Sonya", "Sonia", "Sofia", "Sophia", "Sofya", "Sofiya"],
   ["Polina", "Polya"],
@@ -162,7 +202,18 @@ const femaleNameList = [
   ["Nata", "Natasha", "Natalya", "Natalia", "Nataliya"],
   ["Tanya", "Tatyana"],
   "Yana",
-  ["Julia", "Juliya", "Julya", "Yulya", "Yuliya", "Yulia", "Yuliana", "Uliya", "Ulia", "Ulya"],
+  [
+    "Julia",
+    "Juliya",
+    "Julya",
+    "Yulya",
+    "Yuliya",
+    "Yulia",
+    "Yuliana",
+    "Uliya",
+    "Ulia",
+    "Ulya",
+  ],
   ["Liza", "Lisa", "Elizaveta"],
   ["Diana", "Dayana"],
   "Dina",
@@ -265,113 +316,128 @@ const femaleNameList = [
   "Evdokia",
   "Vladlena",
   ["Uliana", "Ulyana"],
-  'Ioanna',
-  ['Violeta', 'Veta'],
-  'Staphanie',
-  'Lea',
-  'Scharlotte'
-]
+  "Ioanna",
+  ["Violeta", "Veta"],
+  "Staphanie",
+  "Lea",
+  "Scharlotte",
+];
 
 const changeFromNameList = async (store, inputNameList, gender) => {
-  let nameList = []
+  let nameList = [];
 
-  inputNameList.forEach(name => {
-    if (Array.isArray(name))
-      name.forEach(subName => nameList.push(subName))
-    else
-      nameList.push(name)
-  })
+  inputNameList.forEach((name) => {
+    if (Array.isArray(name)) name.forEach((subName) => nameList.push(subName));
+    else nameList.push(name);
+  });
 
-  var changedNamesNumber = 0
+  var changedNamesNumber = 0;
 
   for (const indexStr in nameList) {
-    const index = parseInt(indexStr)
-    const nameOrFn = nameList[index]
-    let res
+    const index = parseInt(indexStr);
+    const nameOrFn = nameList[index];
+    let res;
 
     switch (typeof nameOrFn) {
-      case 'string':
-        res = store.search({name: nameOrFn})
-        .filter(person => 
-          person.name.split(" ")[0].toLowerCase() === nameOrFn.toLowerCase())
-        break
-      case 'function':
-        res = store.get().nodes
-          .filter(node => nameOrFn(node.name.split(" ")[0].toLowerCase()))
-        break
+      case "string":
+        res = store
+          .search({ name: nameOrFn })
+          .filter(
+            (person) =>
+              person.name.split(" ")[0].toLowerCase() === nameOrFn.toLowerCase()
+          );
+        break;
+      case "function":
+        res = store
+          .get()
+          .nodes.filter((node) =>
+            nameOrFn(node.name.split(" ")[0].toLowerCase())
+          );
+        break;
       default:
-        console.log(`nameOrFn unexpected type`)
-        console.log(nameOrFn)
-        console.log(nameList.slice(-3))
-        break
-    }      
-  
-    for (const index2 in res) {
-      const person = res[index2]
-      if (!person.hasOwnProperty("gender")) {
-        const resolvedName = await store.push({
-          ...person,
-          gender: gender
-        }, false)
-        console.log(++changedNamesNumber + " " + resolvedName.name + " " + resolvedName.gender)
-      }
-    }        
-  }
-}
+        console.log(`nameOrFn unexpected type`);
+        console.log(nameOrFn);
+        console.log(nameList.slice(-3));
+        break;
+    }
 
-const changeGender = store => {
-  changeFromNameList(store, maleNameList, "m") //1/04/2020 478 or 420 names + 7 + 19 + 5 + 10 + 3 + 21 + 12
-  changeFromNameList(store, femaleNameList, "f") //1/04/2020 579 names + 11 + 12 + 8 + 6 + 8 + 19
+    for (const index2 in res) {
+      const person = res[index2];
+      if (!person.hasOwnProperty("gender")) {
+        const resolvedName = await store.push(
+          {
+            ...person,
+            gender: gender,
+          },
+          false
+        );
+        console.log(
+          ++changedNamesNumber +
+            " " +
+            resolvedName.name +
+            " " +
+            resolvedName.gender
+        );
+      }
+    }
+  }
+};
+
+const changeGender = (store) => {
+  changeFromNameList(store, maleNameList, "m"); //1/04/2020 478 or 420 names + 7 + 19 + 5 + 10 + 3 + 21 + 12
+  changeFromNameList(store, femaleNameList, "f"); //1/04/2020 579 names + 11 + 12 + 8 + 6 + 8 + 19
   // changeFromNameList(store, [
   //   ["Anita", "Anyta"],
   //   ["Pelageya", "Pelagea", "Pelageiya", "Pelageia"],
   // ], "f")
-}
+};
 
-export default changeGender
+export default changeGender;
 
-const genderDetermined = node => node.gender === "m" || node.gender === "f"
+const genderDetermined = (node) => node.gender === "m" || node.gender === "f";
 
-const calcGay = nodes => nodes.map(node => {
-  if (node.mates && genderDetermined(node) &&
-    node.mates.length > 0 && node.mates
-      .map(mate => genderDetermined(mate))
-      .reduce((a, b) => a && b))
-  {
-    let potentialPartners, attractiveness, bmi
+const calcGay = (nodes) =>
+  nodes.map((node) => {
+    if (
+      node.mates &&
+      genderDetermined(node) &&
+      node.mates.length > 0 &&
+      node.mates.map((mate) => genderDetermined(mate)).reduce((a, b) => a && b)
+    ) {
+      let potentialPartners, attractiveness, bmi;
 
-    if (node.gender === "m") {
-      potentialPartners = node.mates.filter(mate => mate.gender === "f").length
-      attractiveness = {am: potentialPartners}
-      if (node.weight && node.height)
-        bmi = {bmim: (node.weight / ((node.height / 100) ** 2)).toFixed(1)}
-    } else {
-      potentialPartners = node.mates.filter(mate => mate.gender === "m").length
-      attractiveness = {af: potentialPartners}
-      if (node.weight && node.height)
-        bmi = {bmif: (node.weight / ((node.height / 100) ** 2)).toFixed(1)}
-    }    
-    const gayPartners = node.mates.length - potentialPartners
+      if (node.gender === "m") {
+        potentialPartners = node.mates.filter(
+          (mate) => mate.gender === "f"
+        ).length;
+        attractiveness = { am: potentialPartners };
+        if (node.weight && node.height)
+          bmi = { bmim: (node.weight / (node.height / 100) ** 2).toFixed(1) };
+      } else {
+        potentialPartners = node.mates.filter(
+          (mate) => mate.gender === "m"
+        ).length;
+        attractiveness = { af: potentialPartners };
+        if (node.weight && node.height)
+          bmi = { bmif: (node.weight / (node.height / 100) ** 2).toFixed(1) };
+      }
+      const gayPartners = node.mates.length - potentialPartners;
 
-    if (gayPartners > 0 && node.mates.length >= 4)
-      return ({
+      if (gayPartners > 0 && node.mates.length >= 4)
+        return {
+          ...node,
+          ...attractiveness,
+          ...bmi,
+          gay: Math.round((gayPartners / node.mates.length) * 1000) / 10,
+        };
+      return {
         ...node,
         ...attractiveness,
         ...bmi,
-        gay: Math.round(gayPartners / node.mates.length * 1000) / 10,
-      })
-    return ({
-      ...node,
-      ...attractiveness,
-      ...bmi,
-    })
-  }
+      };
+    }
 
-  return node
-})
+    return node;
+  });
 
-
-export {
-  genderDetermined,
-  calcGay,
-}
+export { genderDetermined, calcGay };
