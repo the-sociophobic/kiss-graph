@@ -118,7 +118,7 @@ class Layout extends Component {
     }
 
     return <>
-      {/* <Loader>
+      <Loader>
         <h1 className="h1">Kiss Graph v5.15</h1>
         <h4 className="h4">Updates:</h4>
         <ul className="ul">
@@ -126,8 +126,8 @@ class Layout extends Component {
           <li className="li">clickable edges</li>
           <li className="li">EQ</li>
         </ul>
-      </Loader> */}
-      <Login />
+      </Loader>
+      {/* <Login /> */}
       {this.state.storeConnected &&
         <div className="page-container">
           <TextInterface

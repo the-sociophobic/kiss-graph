@@ -49,11 +49,12 @@ class store extends listenersClass {
   }
 
   getData = async () => {
-    if (isProduction()) {
-      this.metaData = (await axios.get("https://kiss-graph.com/data/nodes")).data
+    const prefix = 'https://raw.githubusercontent.com/the-sociophobic/kiss-graph-2/main/data/'
+    if (isProduction() || true) {
+      this.metaData = (await axios.get(prefix + 'names.json')).data
       this.geometry = {
-        position: (await axios.get("https://kiss-graph.com/data/position")).data,
-        uv: (await axios.get("https://kiss-graph.com/data/uv")).data,
+        position: (await axios.get(prefix + 'position.json')).data,
+        uv: (await axios.get(prefix + 'uv.json')).data,
       }
     } else {
       this.metaData = edgesTypes({ //REDO THIS SHIT
