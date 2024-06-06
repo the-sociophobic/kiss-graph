@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.2f6ea958.chunk.css",
-    "main.js": "/static/js/main.acbeea37.chunk.js",
-    "main.js.map": "/static/js/main.acbeea37.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.776c1e0d.js",
-    "runtime-main.js.map": "/static/js/runtime-main.776c1e0d.js.map",
-    "static/js/2.e96d01fc.chunk.js": "/static/js/2.e96d01fc.chunk.js",
-    "static/js/2.e96d01fc.chunk.js.map": "/static/js/2.e96d01fc.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.2f6ea958.chunk.css.map": "/static/css/main.2f6ea958.chunk.css.map",
-    "static/js/2.e96d01fc.chunk.js.LICENSE.txt": "/static/js/2.e96d01fc.chunk.js.LICENSE.txt",
-    "static/media/index.sass": "/static/media/ALSArc-Light.3f245062.ttf",
-    "static/media/Icon.6892dca1.png": "/static/media/Icon.6892dca1.png",
-    "static/media/arsenyan.1dd7f172.png": "/static/media/arsenyan.1dd7f172.png",
-    "static/media/greenfrog.3c967fa8.png": "/static/media/greenfrog.3c967fa8.png",
-    "static/media/kiss.938743b7.png": "/static/media/kiss.938743b7.png",
-    "static/media/telegramLogo.5de08e65.svg": "/static/media/telegramLogo.5de08e65.svg"
+    "main.css": "/kiss-graph/static/css/main.10c06d7d.chunk.css",
+    "main.js": "/kiss-graph/static/js/main.176d2536.chunk.js",
+    "main.js.map": "/kiss-graph/static/js/main.176d2536.chunk.js.map",
+    "runtime-main.js": "/kiss-graph/static/js/runtime-main.972c2203.js",
+    "runtime-main.js.map": "/kiss-graph/static/js/runtime-main.972c2203.js.map",
+    "static/js/2.e96d01fc.chunk.js": "/kiss-graph/static/js/2.e96d01fc.chunk.js",
+    "static/js/2.e96d01fc.chunk.js.map": "/kiss-graph/static/js/2.e96d01fc.chunk.js.map",
+    "index.html": "/kiss-graph/index.html",
+    "static/css/main.10c06d7d.chunk.css.map": "/kiss-graph/static/css/main.10c06d7d.chunk.css.map",
+    "static/js/2.e96d01fc.chunk.js.LICENSE.txt": "/kiss-graph/static/js/2.e96d01fc.chunk.js.LICENSE.txt",
+    "static/media/index.sass": "/kiss-graph/static/media/ALSArc-Light.3f245062.ttf",
+    "static/media/Icon.6892dca1.png": "/kiss-graph/static/media/Icon.6892dca1.png",
+    "static/media/arsenyan.1dd7f172.png": "/kiss-graph/static/media/arsenyan.1dd7f172.png",
+    "static/media/greenfrog.3c967fa8.png": "/kiss-graph/static/media/greenfrog.3c967fa8.png",
+    "static/media/kiss.938743b7.png": "/kiss-graph/static/media/kiss.938743b7.png",
+    "static/media/telegramLogo.5de08e65.svg": "/kiss-graph/static/media/telegramLogo.5de08e65.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.776c1e0d.js",
+    "static/js/runtime-main.972c2203.js",
     "static/js/2.e96d01fc.chunk.js",
-    "static/css/main.2f6ea958.chunk.css",
-    "static/js/main.acbeea37.chunk.js"
+    "static/css/main.10c06d7d.chunk.css",
+    "static/js/main.176d2536.chunk.js"
   ]
 }
