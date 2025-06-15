@@ -1,4 +1,5 @@
 import THREE from 'libs/engines/3d/three'
+import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js'
 import heatMap from 'img/heat32.png'
 import isProduction from 'libs/utils/isProduction'
 
@@ -70,8 +71,9 @@ export default (store, scene) => {
             uv: node.uv,
           }))
 
-        let bufferGeometry = new THREE.BufferGeometry()
-          .fromGeometry(cylinderGraphGeometry(nodes, edges, 3))
+        // let bufferGeometry = new THREE.BufferGeometry()
+        //   .fromGeometry(cylinderGraphGeometry(nodes, edges, 3))
+        let bufferGeometry = cylinderGraphGeometry(nodes, edges, 3)
 
         finalMesh = new THREE.Mesh(bufferGeometry, material)
 
@@ -161,18 +163,23 @@ const cylinderGraphGeometry = (nodes, edges, segments) => {
     cylinder.setIndex(indicesAttribute)
     
     //have to convert BufferGeometry into Geometry to .merge() meshes
-    let cylinderMesh = new THREE.Mesh(new THREE.Geometry().fromBufferGeometry(cylinder))
+    // let cylinderMesh = new THREE.Mesh(new THREE.Geometry().fromBufferGeometry(cylinder))
+    let cylinderMesh = new THREE.Mesh(cylinder)
     cylinderMesh.translateX(node0.vector.x)
     cylinderMesh.translateY(node0.vector.y)
     cylinderMesh.translateZ(node0.vector.z)
     cylinderMesh.applyQuaternion(quaternion)
-    
+    cylinderMesh.updateMatrix()
+    cylinderMesh.geometry.applyMatrix4( cylinderMesh.matrix )
+
     return cylinderMesh
   })
   
-  let mergedGeometry = new THREE.Geometry()
-  cylinderMeshes.forEach(mesh =>
-    mergedGeometry.mergeMesh(mesh)
+  let mergedGeometry = cylinderMeshes[0].geometry
+  // console.log(cylinderMeshes[0])
+  cylinderMeshes.slice(1).forEach(mesh =>
+    // mergedGeometry.mergeMesh(mesh)
+    mergedGeometry = BufferGeometryUtils.mergeGeometries([mergedGeometry, mesh.geometry], true)
   )
 
   return mergedGeometry

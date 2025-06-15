@@ -35,7 +35,7 @@ class User extends Component {
       orderDesc: true,
     }
 
-    this.updateNumberOfHashtagPosts()
+    // this.updateNumberOfHashtagPosts()
   }
 
   updateNumberOfHashtagPosts = async () => {

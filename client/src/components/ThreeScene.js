@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
-import { Interaction } from 'three.interaction'
+// import { Interaction } from 'three.interaction'
+import { Interaction } from 'libs/engines/3d/three.interaction/src/index.js'
 import ResizeObserver from 'resize-observer-polyfill'
 
 import THREE from 'libs/engines/3d/three'
