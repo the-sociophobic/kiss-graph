@@ -1,4 +1,5 @@
 Use node 16 + npm to build
+npm i --force
 
 # Getting Started with Create React App
 
