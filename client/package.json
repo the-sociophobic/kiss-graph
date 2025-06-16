@@ -33,7 +33,8 @@
   "scripts": {
     "predeploy": "yarn run build",
     "deploy": "gh-pages -d build",
-    "start": "PORT=3004 react-scripts start",
+    "start": "npx serve -l 3004 -s build",
+    "dev": "PORT=3004 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
